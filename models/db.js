@@ -1,17 +1,28 @@
 const mongoose = require('mongoose');
 
+// if(process.env.PORT == null || process.env.PORT == "") {
+//     const url = 'mongodb://localhost:27017/stsweng-kubernetes';
+// } else {
+//     const MongoClient = require('mongodb').MongoClient;
+//     const url = "mongodb+srv://admin:iamnotsosecure12345@cluster0.nwynq.mongodb.net/bookme-dental?retryWrites=true&w=majority";
+
+//     MongoClient.connect(url, function(err, client){
+//         if(err) {
+//             console.log("Error during connection to MongoDB Atlas: ", err);
+//         } else {
+//             console.log('Connected to MongoDB ATLAS');
+//         }
+
+//     });
+
+//     const options = {
+//         useUnifiedTopology: true,
+//         useNewUrlParser: true
+//     };
+// }
+
 // database functions (CRUD functions)
 const database = {
-
-    /*
-        connects to database
-    */
-    connect: function () {
-        mongoose.connect(url, options, function (error) {
-            if (error) throw error;
-            console.log('Connected to: ' + url);
-        });
-    },
 
     /*
         inserts a single `doc` to the database based on the model `model`

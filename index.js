@@ -1,6 +1,8 @@
 const express = require('express');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
+const path = require('path');
+const mongoose = require('mongoose');
 
 // import routes module
 const routes = require('./routes/routes.js');
@@ -36,7 +38,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 
 // connects to the database
-db.connect();
+const url = 'mongodb://localhost:27017/stsweng-kubernetes';
+const options = {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+};
+
+mongoose.connect(url, options, err => {
+  if (err) throw err;
+  console.log('connected at ' + url);
+});
 
 app.listen(port, function () {
   console.log('App listening at port ' + port)
