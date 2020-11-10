@@ -4,6 +4,7 @@ const session = require('express-session');
 
 // import module `controller` from `../controllers/controller.js`
 const controller = require('../controllers/controller.js');
+const registerController = require('../controllers/registerController.js');
 
 const app = express();
 
@@ -31,7 +32,12 @@ app.use((req, res, next) => {
 });
 
 // call function getIndex when client sends a request for '/' defined in routes.js
-// Add routes here
+// add routes here
+
+// register controller
+app.get('/register', registerController.getRegister);
+
+
 
 // enables to export app object when called in another .js file
 module.exports = app;
