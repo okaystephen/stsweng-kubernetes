@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/okaystephen/stsweng-kubernetes#readme",
   "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "hbs": "^4.1.1",
     "jest": "^26.6.3"
   }
 }
