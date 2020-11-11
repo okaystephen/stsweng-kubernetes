@@ -70,6 +70,14 @@
         display: block;
     }
 
+    input[type="checkbox"]+label+.showother {
+        display: none;
+    }
+
+    input[type="checkbox"]:checked+label+.showother {
+        display: block;
+    }
+
     .form-upload {
         display: flex;
     }
@@ -103,7 +111,7 @@
     .gradient-text {
         /*background: -webkit-linear-gradient(18deg, rgba(110,231,128,1) 0%, rgba(0,212,255,1) 100%);*/
 
-        background: -webkit-linear-gradient(18deg, rgba(40,70,105,1) 0%, rgba(73,150,241,1) 100%);
+        background: -webkit-linear-gradient(18deg, rgb(38, 97, 52) 0%, rgb(27, 196, 66)  100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -294,8 +302,150 @@
     <div class="card mx-auto border shadow-sm" style="width: 50rem; margin-bottom: 2rem;">
         <div class="card-body">
             <div class="card-title" style="font-size: 42px;">Past Medical History<span class="text-danger"> *</span></div>
-            <p style="font-style: italic; font-size: 16px; margin-top: -16px;"></p>
-            
+            <p style="font-style: italic; font-size: 16px; margin-top: -16px;"> All questions are strictly confidential and will become part of your medical record.</p>
+             <small class="text-danger">* Required fields</small>
+             <div class="col-10">
+                <label style="margin-left: -15px; margin-right: 20px">Medical Problems<span class="text-danger"> *</span><span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Check all that applies)</span></label>
+
+                <div class="row">
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Heart Disease </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Diabetes </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Depression </label>
+                    </div>
+                    <div class="form-check col-3 pb-2">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Diarrhea </label>
+                    </div>
+                </div>
+                
+                 <div class="row">
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Chest Pain </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Thyroid </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Stroke </label>
+                    </div>
+                    <div class="form-check col-3 pb-2">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Constipation </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Heart Murmur </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Arthritis </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Nervous Disorder </label>
+                    </div>
+                    <div class="form-check col-3 pb-2">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Stomach Ulcers </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Hypertension  </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Kidney Stones </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Back Pain </label>
+                    </div>
+                    <div class="form-check col-3 pb-2">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Heart burn </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Shortness of breath </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Blood in your urine </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Blood Transfusions </label>
+                    </div>
+                    <div class="form-check col-3 pb-2">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Hernia Repairs </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Asthma/Emphysema </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Frequent Urination </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Pain with urination </label>
+                    </div>
+                    <div class="form-check col-3 pb-2">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Bleeding Tendency </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> HIV or Hepatitis </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Cancer </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Anesthetic Reaction </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Others</label>
+                        <div class="form-check col-1 showother" style="margin-top: -35px; margin-left: 35px">
+                               <input type="text" class="form-control" style="width: 103px" id="otherAnswer" name="otherAnswer" value="" placeholder="" />
+                                <p style="color: red;"></p>
+                        </div>
+                    </div>
+                </div>
+               
+
+            </div>
         </div>
     </div>
 

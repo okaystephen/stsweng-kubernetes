@@ -13,7 +13,7 @@ const db = require('./models/db.js');
 const app = express();
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 9090;
+  port = 3001;
 }
 
 // support json encoded bodies
