@@ -1,16 +1,10 @@
 <style>
-    body {
-        background-color: #F8FCFF;
-    }
-
     form label {
         font-weight: bold;
     }
-
     textarea {
         resize: none;
     }
-
     #container {
         display: flex;
         justify-content: left;
@@ -19,101 +13,61 @@
         margin-top: -20px;
     }
 
-    .container2 {
-        height: auto;
-        width: 250px;
-        padding-top: 40px;
-    }
-
-    .container3 {
-        height: auto;
-        width: 510px;
-        padding-left: 50px;
-        padding-top: 70px;
-        margin-left: -30px;
-    }
-
-    .img-circle {
-        width: 150px;
-        height: 150px;
-        border: 4px solid none;
-        border-radius: 50%;
-    }
-
-    .dropdown {
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-    }
-
-    input[type="radio"]:checked+.showdate {
-        display: block;
-    }
-
-    input[type="radio"]+.details {
-        display: none;
-    }
-
-    input[type="radio"]+.temp {
-        display: none;
-    }
-
     input[type="radio"]:checked+.showrate {
         display: block;
     }
-
     input[type="radio"]+label + .showother {
         display: none;
     }
-
     input[type="radio"]:checked+label+.showother {
         display: block;
     }
-
     input[type="checkbox"]+label+.showother {
         display: none;
     }
-
     input[type="checkbox"]:checked+label+.showother {
         display: block;
     }
-
     .form-upload {
         display: flex;
     }
-
     .card {
         margin-left: 30px;
         margin-right: 30px;
         border: none;
     }
-
     @media only screen and (max-width: 726px) {
         .shrink {
             font-size: 50px !important;
         }
-
         .card {
             width: 80% !important;
             margin: 0 auto;
         }
-
         .form-upload {
             display: block;
         }
     }
-
     .h1 {
     font-weight: 800;
     color: #2f353e;
     }
-
     .gradient-text {
         /*background: -webkit-linear-gradient(18deg, rgba(110,231,128,1) 0%, rgba(0,212,255,1) 100%);*/
-
         background: -webkit-linear-gradient(18deg, rgb(38, 97, 52) 0%, rgb(27, 196, 66)  100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+    }
+
+    .btn-primary {
+        background-color: rgb(38, 97, 52) !important;
+        border-color: rgb(47, 121, 64)  !important;
+    }
+
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+        color: #fff;
+        background-color: rgb(25, 61, 33) !important;
+        border-color: rgb(38, 97, 52) ; 
     }
 </style>
 
@@ -123,7 +77,7 @@
     <script src="https://kit.fontawesome.com/6f00e67846.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body style="background-color: rgb(243, 243, 243);">
 <p class="h1 shrink gradient-text" style="font-size: 70px; text-align: center; margin-top: 4rem;">DoliMed <i class="far fa-hospital"></i></p>
 
 <form class="dirty" id="form" method="POST" action="/register" enctype="multipart/form-data">
@@ -303,9 +257,9 @@
         <div class="card-body">
             <div class="card-title" style="font-size: 42px;">Past Medical History<span class="text-danger"> *</span></div>
             <p style="font-style: italic; font-size: 16px; margin-top: -16px;"> All questions are strictly confidential and will become part of your medical record.</p>
-             <small class="text-danger">* Required fields</small>
-             <div class="col-10">
-                <label style="margin-left: -15px; margin-right: 20px">Medical Problems<span class="text-danger"> *</span><span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Check all that applies)</span></label>
+            <small class="text-danger">* Required fields</small>
+            <div class="col-10">
+                <label style="margin-left: -15px; margin-right: 20px">Medical Problems<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Check all that applies)</span></label>
 
                 <div class="row">
                     <div class="form-check col-3">
@@ -443,9 +397,51 @@
                         </div>
                     </div>
                 </div>
-               
-
             </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-12" style="margin-top: 15px;">
+                        <label for="streetAdd">Please list all of your previous surgeries<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
+                        <input type="text" class="form-control" id="streetAdd" name="streetAdd"
+                            aria-describedby="emailHelp" placeholder="(E.g. Cataract surgery, Cholecystectomy)"
+                            value="" />
+                        <p style="color: red;">
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+             <div class="form-group">
+                <div class="row">
+                    <div class="col-12" >
+                        <label for="streetAdd">Please list all the medications you are currently taking<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
+                        <input type="text" class="form-control" id="streetAdd" name="streetAdd"
+                            aria-describedby="emailHelp" placeholder="(E.g. Prinivil, Zestril)"
+                            value="" />
+                        <p style="color: red;">
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+              <div class="form-group">
+                <div class="row">
+                    <div class="col-12" >
+                        <label for="streetAdd">If applicable, please list all the medications you are currently allergic with<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
+                        <input type="text" class="form-control" id="streetAdd" name="streetAdd"
+                            aria-describedby="emailHelp" placeholder="(E.g. Prinivil, Zestril)"
+                            value="" />
+                        <p style="color: red;">
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">SUBMIT</button>
         </div>
     </div>
 
