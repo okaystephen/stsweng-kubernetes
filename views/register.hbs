@@ -62,11 +62,11 @@
         display: block;
     }
 
-    input[type="checkbox"]+label+.showother {
+    input[type="radio"]+label + .showother {
         display: none;
     }
 
-    input[type="checkbox"]:checked+label+.showother {
+    input[type="radio"]:checked+label+.showother {
         display: block;
     }
 
@@ -158,14 +158,21 @@
         <div class="card-body">
             <div class="card-title" style="font-size: 42px;">Contact Information<span class="text-danger"> *</span>
             </div>
-            <p style="font-style: italic; font-size: 16px; margin-top: -16px;">Tell us about yourself and how we can
-                contact you.</p>
+            <p style="font-style: italic; font-size: 16px; margin-top: -16px;">Tell us about yourself and how we can contact you.</p>
             <small class="text-danger">* Required fields</small>
             <div class="card-text">
                 <div class="form-group">
                     <div class="row">
                         <div class="col pr-2">
                             <label for="fname">First Name<span class="text-danger"> *</span></label>
+                            <input type="text" class="form-control" id="fname" name="fname" aria-describedby="emailHelp"
+                                placeholder="First Name" value="" />
+                            <p style="color: red;">
+                               
+                            </p>
+                        </div>
+                        <div class="col pr-2">
+                            <label for="fname">Middle Name<span class="text-danger"> *</span></label>
                             <input type="text" class="form-control" id="fname" name="fname" aria-describedby="emailHelp"
                                 placeholder="First Name" value="" />
                             <p style="color: red;">
@@ -196,7 +203,7 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-6 pr-1">
+                            <div class="col-4 ">
                                 <label for="date">Date of Birth<span class="text-danger"> *</span></label>
                                  <input type="date" class="form-control" id="date" name="date"
                                     aria-describedby="emailHelp" placeholder="Date of Birth"
@@ -206,7 +213,7 @@
                                     
                                 </p>
                             </div>
-                            <div class="col-4 pl-1 pr-1">
+                            <div class="col-3">
                                 <label for="phone">Phone Number<span class="text-danger"> *</span></label>
                                 <input type="text" class="form-control" id="phone" name="phone"
                                     aria-describedby="emailHelp" placeholder="Phone Number"
@@ -216,14 +223,38 @@
                                   
                                 </p>
                             </div>
+                            <div class="col-5">
+                                <label style="margin-left: -15px; margin-right: 20px">Gender<span class="text-danger"> *</span></label>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" id="Front Desk" value="Front Desk"/>
+                                        <label for="Front Desk" style="font-weight: normal; margin-right: 5px;">Male</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" id="Front Desk" value="Female"/>
+                                        <label for="Front Desk" style="font-weight: normal; margin-right: 5px;">Female</label>
+                                    </div>
+                                    <div class="form-check col-20 ">
+                                        <input class="form-check-input" type="radio" value="Others" id="Others" name="gender">
+                                        <label for="s-other" style="font-weight: normal; margin-right: 5px;"> Others </label>
+                                        <div class="form-check col-1 showother" style="margin-top: -45px; margin-left: 35px">
+                                            <input type="text" class="form-control" style="width: 103px" id="otherAnswer" name="otherAnswer" value="" placeholder="" />
+                                            <p style="color: red;"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            
                         </div>
                     </div>
+                
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-12" style="margin-top: 15px;">
+                            <div class="col-12" style="margin-top: 5px;">
                                 <label for="streetAdd">Name of Emergency Contact Person<span class="text-danger"> *</span></label>
                                 <input type="text" class="form-control" id="streetAdd" name="streetAdd"
-                                    aria-describedby="emailHelp" placeholder="Home Address"
+                                    aria-describedby="emailHelp" placeholder="Name of Emergency Contact Person"
                                     value="" />
                                 <p style="color: red;">
                                     
@@ -233,20 +264,20 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-6 pr-1">
+                            <div class="col-7">
                                 <label for="streetAdd">Emergency Contact Person Number<span class="text-danger"> *</span></label>
                                  <input type="text" class="form-control" id="streetAdd" name="streetAdd"
-                                    aria-describedby="emailHelp" placeholder="Date of Birth"
+                                    aria-describedby="emailHelp" placeholder="Emergency Contact Person Number"
                                     value="" />
 
                                 <p style="color: red;">
                                     
                                 </p>
                             </div>
-                            <div class="col-4 pl-1 pr-1">
+                            <div class="col-5">
                                 <label for="streetAdd">Relationship<span class="text-danger"> *</span></label>
                                 <input type="text" class="form-control" id="streetAdd" name="streetAdd"
-                                    aria-describedby="emailHelp" placeholder="Phone Number"
+                                    aria-describedby="emailHelp" placeholder="Relationship"
                                     value="" />
 
                                 <p style="color: red;">

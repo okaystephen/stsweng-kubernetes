@@ -46,7 +46,7 @@ const options = {
 
 mongoose.connect(url, options, err => {
   if (err) throw err;
-  console.log('connected at ' + url);
+  console.log('Connected at ' + url);
 });
 
 app.listen(port, function () {
