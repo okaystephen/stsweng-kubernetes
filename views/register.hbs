@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <div class="form-group">
                         <label for="phone">Email<span class="text-danger"> *</span></label>
-                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Email" style="margin-bottom: 25px;"
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email" style="margin-bottom: 25px;"
                             value="" />
                         <p style="color: red;">
                            
@@ -27,7 +27,7 @@
                     </div>
                     <div class="form-group">
                         <label for="phone">Password<span class="text-danger"> *</span></label>
-                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Password" style="margin-bottom: 25px;"
+                        <input type="text" class="form-control" id="password" name="password" placeholder="Password" style="margin-bottom: 25px;"
                             value="" />
                         <p style="color: red;">
                            
@@ -35,7 +35,7 @@
                     </div>
                     <div class="form-group">
                         <label for="phone">Confirm Password<span class="text-danger"> *</span></label>
-                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Confirm Password" style="margin-bottom: 25px;"
+                        <input type="text" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Confirm Password" style="margin-bottom: 25px;"
                             value="" />
                         <p style="color: red;">
                            
@@ -56,7 +56,7 @@
                     <div class="row">
                         <div class="col pr-2">
                             <label for="fname">First Name<span class="text-danger"> *</span></label>
-                            <input type="text" class="form-control" id="fname" name="fname" aria-describedby="emailHelp"
+                            <input type="text" class="form-control" id="fname" name="fname" aria-describedby="fname"
                                 placeholder="First Name" value="" />
                             <p style="color: red;">
                                
@@ -64,7 +64,7 @@
                         </div>
                         <div class="col pr-2">
                             <label for="fname">Middle Name<span class="text-danger"> *</span></label>
-                            <input type="text" class="form-control" id="fname" name="fname" aria-describedby="emailHelp"
+                            <input type="text" class="form-control" id="mname" name="mname" aria-describedby="mname"
                                 placeholder="First Name" value="" />
                             <p style="color: red;">
                                
@@ -72,7 +72,7 @@
                         </div>
                         <div class="col pl-2">
                             <label for="lname">Last Name<span class="text-danger"> *</span></label>
-                            <input type="text" class="form-control" id="lname" name="lname" aria-describedby="emailHelp"
+                            <input type="text" class="form-control" id="lname" name="lname" aria-describedby="lname"
                                 placeholder="Last Name" value="" />
                             <p style="color: red;">
                                 
@@ -83,8 +83,8 @@
                         <div class="row">
                             <div class="col-12" style="margin-top: 15px;">
                                 <label for="streetAdd">Home Address<span class="text-danger"> *</span></label>
-                                <input type="text" class="form-control" id="streetAdd" name="streetAdd"
-                                    aria-describedby="emailHelp" placeholder="Home Address"
+                                <input type="text" class="form-control" id="homeAdd" name="homeAdd"
+                                    aria-describedby="homeAdd" placeholder="Home Address"
                                     value="" />
                                 <p style="color: red;">
                                     
@@ -97,9 +97,8 @@
                             <div class="col-4 ">
                                 <label for="date">Date of Birth<span class="text-danger"> *</span></label>
                                  <input type="date" class="form-control" id="date" name="date"
-                                    aria-describedby="emailHelp" placeholder="Date of Birth"
+                                    aria-describedby="date" placeholder="Date of Birth"
                                     value="" />
-
                                 <p style="color: red;">
                                     
                                 </p>
@@ -107,7 +106,7 @@
                             <div class="col-3">
                                 <label for="phone">Phone Number<span class="text-danger"> *</span></label>
                                 <input type="text" class="form-control" id="phone" name="phone"
-                                    aria-describedby="emailHelp" placeholder="Phone Number"
+                                    aria-describedby="phone" placeholder="Phone Number"
                                     value="" />
 
                                 <p style="color: red;">
@@ -118,11 +117,11 @@
                                 <label style="margin-left: -15px; margin-right: 20px">Gender<span class="text-danger"> *</span></label>
                                 <div class="row">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gender" id="Front Desk" value="Front Desk"/>
+                                        <input class="form-check-input" type="radio" name="gender" id="male" value="Male"/>
                                         <label for="Front Desk" style="font-weight: normal; margin-right: 5px;">Male</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gender" id="Front Desk" value="Female"/>
+                                        <input class="form-check-input" type="radio" name="gender" id="female" value="Female"/>
                                         <label for="Front Desk" style="font-weight: normal; margin-right: 5px;">Female</label>
                                     </div>
                                     <div class="form-check col-20 ">
@@ -144,8 +143,8 @@
                         <div class="row">
                             <div class="col-12" style="margin-top: 5px;">
                                 <label for="streetAdd">Name of Emergency Contact Person<span class="text-danger"> *</span></label>
-                                <input type="text" class="form-control" id="streetAdd" name="streetAdd"
-                                    aria-describedby="emailHelp" placeholder="Name of Emergency Contact Person"
+                                <input type="text" class="form-control" id="eContactPerson" name="eContactPerson"
+                                    aria-describedby="eContactPerson" placeholder="Name of Emergency Contact Person"
                                     value="" />
                                 <p style="color: red;">
                                     
@@ -157,7 +156,7 @@
                         <div class="row">
                             <div class="col-7">
                                 <label for="streetAdd">Emergency Contact Person Number<span class="text-danger"> *</span></label>
-                                 <input type="text" class="form-control" id="streetAdd" name="streetAdd"
+                                 <input type="text" class="form-control" id="eContactNum" name="eContactNum"
                                     aria-describedby="emailHelp" placeholder="Emergency Contact Person Number"
                                     value="" />
 
@@ -167,7 +166,7 @@
                             </div>
                             <div class="col-5">
                                 <label for="streetAdd">Relationship<span class="text-danger"> *</span></label>
-                                <input type="text" class="form-control" id="streetAdd" name="streetAdd"
+                                <input type="text" class="form-control" id="relationship" name="relationship"
                                     aria-describedby="emailHelp" placeholder="Relationship"
                                     value="" />
 
@@ -192,129 +191,129 @@
 
                 <div class="row">
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Heart Disease" id="HeartDisease" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Heart Disease </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Diabetes" id="Diabetes" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Diabetes </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Depression" id="Depression" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Depression </label>
                     </div>
                     <div class="form-check col-3 pb-2">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Diarrhea" id="Diarrhea" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Diarrhea </label>
                     </div>
                 </div>
                 
                  <div class="row">
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Chest Pain" id="ChestPain" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Chest Pain </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Thyroid" id="Thyroid" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Thyroid </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Stroke" id="Stroke" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Stroke </label>
                     </div>
                     <div class="form-check col-3 pb-2">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Constipation" id="Constipation" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Constipation </label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Heart Murmur" id="HeartMurmur" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Heart Murmur </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Arthritis" id="Arthritis" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Arthritis </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Nervous Disorder" id="NervousDisorder" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Nervous Disorder </label>
                     </div>
                     <div class="form-check col-3 pb-2">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Stomach Ulcers" id="StomachUlcers" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Stomach Ulcers </label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Hypertension" id="Hypertension" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Hypertension  </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Kidney Stones" id="KidneyStones" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Kidney Stones </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Back Pain" id="BackPain" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Back Pain </label>
                     </div>
                     <div class="form-check col-3 pb-2">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
-                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Heart burn </label>
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Heart Burn" id="HeartBurn" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Heart Burn </label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
-                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Shortness of breath </label>
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Shortness of Breath" id="ShortnessBreath" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Shortness of Breath </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Blood in your urine " id="BloodUrine " style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Blood in your urine </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Blood Transfusions" id="BloodTransfusions" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Blood Transfusions </label>
                     </div>
                     <div class="form-check col-3 pb-2">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Hernia Repairs" id="HerniaRepairs" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Hernia Repairs </label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Asthma/Emphysema" id="Asthma" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Asthma/Emphysema </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Frequent Urination" id="FrequentUrination" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Frequent Urination </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
-                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Pain with urination </label>
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Pain when urinating" id="Painurination" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Pain when urinating </label>
                     </div>
                     <div class="form-check col-3 pb-2">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Bleeding Tendency" id="Bleeding" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Bleeding Tendency </label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
-                        <label for="s-other" style="font-weight: normal; font-size: 14px"> HIV or Hepatitis </label>
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Hepatitis" id="Hepatitis" style="margin-top: 6px">
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Hepatitis </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Cancer" id="Cancer" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Cancer </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Anesthetic Reaction" id="Anesthetic" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Anesthetic Reaction </label>
                     </div>
                     <div class="form-check col-3">
@@ -332,8 +331,8 @@
                 <div class="row">
                     <div class="col-12" style="margin-top: 15px;">
                         <label for="streetAdd">Please list all of your previous surgeries<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
-                        <input type="text" class="form-control" id="streetAdd" name="streetAdd"
-                            aria-describedby="emailHelp" placeholder="(E.g. Cataract surgery, Cholecystectomy)"
+                        <input type="text" class="form-control" id="surgeries" name="surgeries"
+                            aria-describedby="surgeries" placeholder="(E.g. Cataract surgery, Cholecystectomy)"
                             value="" />
                         <p style="color: red;">
                             
@@ -346,8 +345,8 @@
                 <div class="row">
                     <div class="col-12" >
                         <label for="streetAdd">Please list all the medications you are currently taking<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
-                        <input type="text" class="form-control" id="streetAdd" name="streetAdd"
-                            aria-describedby="emailHelp" placeholder="(E.g. Prinivil, Zestril)"
+                        <input type="text" class="form-control" id="medications" name="medications"
+                            aria-describedby="medications" placeholder="(E.g. Prinivil, Zestril)"
                             value="" />
                         <p style="color: red;">
                             
@@ -360,8 +359,8 @@
                 <div class="row">
                     <div class="col-12" >
                         <label for="streetAdd">If applicable, please list all the medications you are currently allergic with<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
-                        <input type="text" class="form-control" id="streetAdd" name="streetAdd"
-                            aria-describedby="emailHelp" placeholder="(E.g. Prinivil, Zestril)"
+                        <input type="text" class="form-control" id="medallergies" name="medallergies"
+                            aria-describedby="medallergies" placeholder="(E.g. Prinivil, Zestril)"
                             value="" />
                         <p style="color: red;">
                             
