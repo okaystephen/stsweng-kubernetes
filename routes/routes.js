@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser');
 const controller = require('../controllers/controller.js');
 const registerController = require('../controllers/registerController.js');
 const dashboardController = require('../controllers/dashboardController.js');
+const loginController = require('../controllers/loginController.js');
 
 //form validation
 const validation = require('../helpers/validation.js');
@@ -44,6 +45,7 @@ app.use((req, res, next) => {
 // register controller
 app.get('/register', registerController.getRegister);
 app.get('/', controller.getLanding);
+app.post('/', loginController.postLogIn);
 
 app.post(
   '/register',
