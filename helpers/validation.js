@@ -37,14 +37,6 @@ const validation = {
                 .matches(/^[A-Za-z\s]+$/)
                 .withMessage('First name should not contain number/s.')
                 .trim(),
-            check('mname')
-                .trim()
-                .notEmpty()
-                .withMessage('Middle name is required.')
-                .bail()
-                .matches(/^[A-Za-z\s]+$/)
-                .withMessage('Middle name should not contain number/s.')
-                .trim(),
             check('lname')
                 .trim()
                 .notEmpty()
@@ -102,6 +94,8 @@ const validation = {
                 .trim(),
             check('eContactNum')
                 .trim()
+                .custom((value, { req }) => value != req.body.phone)
+                .withMessage('Phone Number and Emergency Contact Number should not match.')
                 .isMobilePhone('en-PH')
                 .withMessage('Please enter a valid PH number.')
                 .trim(),

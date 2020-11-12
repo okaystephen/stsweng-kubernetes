@@ -97,7 +97,7 @@ const registerController = {
                             _id: new mongoose.Types.ObjectId(),
                             email: input.email,
                             password: hash,
-                            name: {first: input.fname, middle: input.mname, last: input.lname},
+                            name: {first: input.fname, last: input.lname},
                             phone: input.phone,
                             birthdate: input.date,
                             sex: sex,
@@ -113,7 +113,7 @@ const registerController = {
 
                                 //user id session is stored
                                 req.session.user = user._id;
-                                //redirects to user profile
+                                //redirects to dashboard
                                 console.log('Success!');
                                 res.redirect('/dashboard')
                             }
