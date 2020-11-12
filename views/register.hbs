@@ -1,80 +1,9 @@
-<style>
-    form label {
-        font-weight: bold;
-    }
-    textarea {
-        resize: none;
-    }
-    #container {
-        display: flex;
-        justify-content: left;
-        height: 250px;
-        text-align: center;
-        margin-top: -20px;
-    }
-
-    input[type="radio"]:checked+.showrate {
-        display: block;
-    }
-    input[type="radio"]+label + .showother {
-        display: none;
-    }
-    input[type="radio"]:checked+label+.showother {
-        display: block;
-    }
-    input[type="checkbox"]+label+.showother {
-        display: none;
-    }
-    input[type="checkbox"]:checked+label+.showother {
-        display: block;
-    }
-    .form-upload {
-        display: flex;
-    }
-    .card {
-        margin-left: 30px;
-        margin-right: 30px;
-        border: none;
-    }
-    @media only screen and (max-width: 726px) {
-        .shrink {
-            font-size: 50px !important;
-        }
-        .card {
-            width: 80% !important;
-            margin: 0 auto;
-        }
-        .form-upload {
-            display: block;
-        }
-    }
-    .h1 {
-    font-weight: 800;
-    color: #2f353e;
-    }
-    .gradient-text {
-        /*background: -webkit-linear-gradient(18deg, rgba(110,231,128,1) 0%, rgba(0,212,255,1) 100%);*/
-        background: -webkit-linear-gradient(18deg, rgb(38, 97, 52) 0%, rgb(27, 196, 66)  100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .btn-primary {
-        background-color: rgb(38, 97, 52) !important;
-        border-color: rgb(47, 121, 64)  !important;
-    }
-
-    .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
-        color: #fff;
-        background-color: rgb(25, 61, 33) !important;
-        border-color: rgb(38, 97, 52) ; 
-    }
-</style>
-
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/6f00e67846.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/css/register.css" />
+    <title>Register</title>
 </head>
 
 <body style="background-color: rgb(243, 243, 243);">
@@ -84,7 +13,7 @@
     <div class="card mx-auto border shadow-sm" style="width: 50rem; margin-bottom: 2rem;">
         <div class="card-body">
             <div class="card-title" style="font-size: 42px;">Account Information<span class="text-danger"> *</span></div>
-            <p style="font-style: italic; font-size: 16px; margin-top: -16px;"></p>
+            <p style="font-style: italic; font-size: 16px; margin-top: -16px;">Setting up your account</p>
             <small class="text-danger">* Required fields</small>
             <div class="card-text">
                 <div class="form-group">
@@ -392,7 +321,7 @@
                         <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Others</label>
                         <div class="form-check col-1 showother" style="margin-top: -35px; margin-left: 35px">
-                               <input type="text" class="form-control" style="width: 103px" id="otherAnswer" name="otherAnswer" value="" placeholder="" />
+                               <input type="text" class="form-control" style="width: 205px" id="otherAnswer" name="otherAnswer" value="" placeholder="" />
                                 <p style="color: red;"></p>
                         </div>
                     </div>
