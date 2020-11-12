@@ -40,9 +40,7 @@
     
     .gradient-text {
         /*background: -webkit-linear-gradient(18deg, rgba(110,231,128,1) 0%, rgba(0,212,255,1) 100%);*/
-        background: -webkit-linear-gradient(18deg, #2F8250 0%, #CCDAC8  100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #2F8250 ;
     }
 
     .btn-primary {

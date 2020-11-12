@@ -12,6 +12,7 @@ const UserSchema = mongoose.Schema({
     },
     name: {
         first: String,
+        middle: String,
         last: String,
     },
     phone: {
@@ -20,6 +21,10 @@ const UserSchema = mongoose.Schema({
     },
     birthdate: {
         type: Date,
+        required: true
+    },
+    relationship: {
+        type: String,
         required: true
     },
     sex: {
