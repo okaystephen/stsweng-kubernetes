@@ -12,9 +12,9 @@ const registerController = {
     // render log-in page when client requests '/register' defined in routes.js
     getRegister: function (req, res){
         res.render('register', {
-            active_session: (req.session.user && req.cookies.user_sid),
+               active_session: (req.session.user && req.cookies.user_sid),
                active_user: req.session.user,
-               title: 'Sign Up | DoliMed'
+               title: 'Register | DoliMed'
         });
     },
 
@@ -115,6 +115,7 @@ const registerController = {
                                 req.session.user = user._id;
                                 //redirects to user profile
                                 console.log('Success!');
+                                res.redirect('/dashboard')
                             }
                         });
                     });

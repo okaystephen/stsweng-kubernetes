@@ -90,9 +90,8 @@ const validation = {
                         req.body.sex == 'Others'
                 )
                 .notEmpty()
-                .withMessage('Empty field.')
-                .customSanitizer(value => value.split(',')),
-            check('otherAnswer.*').trim(),
+                .withMessage('Empty field.'),
+                
             check('eContactPerson')
                 .trim()
                 .notEmpty()

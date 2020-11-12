@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 // import module `controller` from `../controllers/controller.js`
 const controller = require('../controllers/controller.js');
 const registerController = require('../controllers/registerController.js');
+const dashboardController = require('../controllers/dashboardController.js');
 
 //form validation
 const validation = require('../helpers/validation.js');
@@ -47,6 +48,9 @@ app.post(
   validation.registerValidation(),
   registerController.postRegister
 );
+
+//dashboard controller
+app.get('/dashboard', dashboardController.getDashboard)
 
 
 // enables to export app object when called in another .js file
