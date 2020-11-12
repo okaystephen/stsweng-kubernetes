@@ -9,6 +9,9 @@ const cookieParser = require('cookie-parser');
 const controller = require('../controllers/controller.js');
 const registerController = require('../controllers/registerController.js');
 
+//form validation
+const validation = require('../helpers/validation.js');
+
 const app = express();
 
 //Init Cookie and Body Parser
@@ -39,7 +42,11 @@ app.use((req, res, next) => {
 
 // register controller
 app.get('/register', registerController.getRegister);
-
+app.post(
+  '/register', 
+  validation.registerValidation(),
+  registerController.postRegister
+);
 
 
 // enables to export app object when called in another .js file

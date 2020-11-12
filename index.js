@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
+const exphbs = require('express-handlebars');
 const path = require('path');
 const mongoose = require('mongoose');
 
@@ -22,6 +23,31 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // set hbs as view engine
 app.set('view engine', 'hbs');
+
+app.engine(
+  'hbs',
+  exphbs({
+      extname: 'hbs',
+      defaultView: 'main',
+      layoutsDir: path.join(__dirname, '/views/layouts'),
+      partialsDir: path.join(__dirname, '/views/partials'),
+
+      // custom helpers
+      helpers: {
+          // Use this helper on <input type="radio"> elements to retain option when submitting form data
+          check: function (value, input, init) {
+              if (!input) input = init;
+              return value === input ? ' checked' : '';
+          },
+          // Use this helper on <input type="checkbox"> elements to retain option when submitting form data
+          checkbox : function (value, input){
+              if(input){
+                  return input.includes(value) ? ' checked' : '';
+              }
+          },
+      },
+  }),
+);
 
 // define css, img, js, and views as static 
 app.use(express.static('public'));
