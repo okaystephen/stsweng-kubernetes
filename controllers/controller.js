@@ -5,6 +5,13 @@ const database = require('../models/db.js');
 const controller = {
 
     // Add controllers here
+    getLanding: function (req, res) {
+        res.render('landing', {
+            // layout: '/layouts/main',
+            title: 'Home | DoLoMed',
+            home_active: true,
+        })
+    },
 
 }
 
