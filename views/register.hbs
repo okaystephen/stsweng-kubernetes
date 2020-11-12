@@ -1,115 +1,36 @@
-<style>
-    form label {
-        font-weight: bold;
-    }
-    textarea {
-        resize: none;
-    }
-    #container {
-        display: flex;
-        justify-content: left;
-        height: 250px;
-        text-align: center;
-        margin-top: -20px;
-    }
+<body style="background-color: #F2F2F2;">
+<p class="h1 shrink gradient-text" style="font-size: 70px; text-align: center; margin-top: 4rem; font-family: 'Montserrat', sans-serif;">DoliMed <i class="far fa-hospital"></i></p>
 
-    input[type="radio"]:checked+.showrate {
-        display: block;
-    }
-    input[type="radio"]+label + .showother {
-        display: none;
-    }
-    input[type="radio"]:checked+label+.showother {
-        display: block;
-    }
-    input[type="checkbox"]+label+.showother {
-        display: none;
-    }
-    input[type="checkbox"]:checked+label+.showother {
-        display: block;
-    }
-    .form-upload {
-        display: flex;
-    }
-    .card {
-        margin-left: 30px;
-        margin-right: 30px;
-        border: none;
-    }
-    @media only screen and (max-width: 726px) {
-        .shrink {
-            font-size: 50px !important;
-        }
-        .card {
-            width: 80% !important;
-            margin: 0 auto;
-        }
-        .form-upload {
-            display: block;
-        }
-    }
-    .h1 {
-    font-weight: 800;
-    color: #2f353e;
-    }
-    .gradient-text {
-        /*background: -webkit-linear-gradient(18deg, rgba(110,231,128,1) 0%, rgba(0,212,255,1) 100%);*/
-        background: -webkit-linear-gradient(18deg, rgb(38, 97, 52) 0%, rgb(27, 196, 66)  100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .btn-primary {
-        background-color: rgb(38, 97, 52) !important;
-        border-color: rgb(47, 121, 64)  !important;
-    }
-
-    .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
-        color: #fff;
-        background-color: rgb(25, 61, 33) !important;
-        border-color: rgb(38, 97, 52) ; 
-    }
-</style>
-
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/6f00e67846.js" crossorigin="anonymous"></script>
-</head>
-
-<body style="background-color: rgb(243, 243, 243);">
-<p class="h1 shrink gradient-text" style="font-size: 70px; text-align: center; margin-top: 4rem;">DoliMed <i class="far fa-hospital"></i></p>
-
-<form class="dirty" id="form" method="POST" action="/register" enctype="multipart/form-data">
+<form class="dirty" id="form" method="POST" action="/register">
     <div class="card mx-auto border shadow-sm" style="width: 50rem; margin-bottom: 2rem;">
         <div class="card-body">
-            <div class="card-title" style="font-size: 42px;">Account Information<span class="text-danger"> *</span></div>
-            <p style="font-style: italic; font-size: 16px; margin-top: -16px;"></p>
+            <div class="card-title" style="font-size: 42px; font-family: 'Montserrat', sans-serif;">Account Information<span class="text-danger"> *</span></div>
+            <p style="font-style: italic; font-size: 16px; margin-top: -16px;">Setting up your account.</p>
             <small class="text-danger">* Required fields</small>
             <div class="card-text">
                 <div class="form-group">
                     <div class="form-group">
                         <label for="phone">Email<span class="text-danger"> *</span></label>
-                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Email" style="margin-bottom: 25px;"
-                            value="" />
-                        <p style="color: red;">
-                           
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email"
+                            value="{{input.email}}" />
+                        <p style="color: red; font-size: 13.5px;">
+                            {{details.emailError}}
                         </p>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Password<span class="text-danger"> *</span></label>
-                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Password" style="margin-bottom: 25px;"
-                            value="" />
-                        <p style="color: red;">
-                           
+                        <label for="phone">Password<span class="text-danger"> *</span><span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Min of 8 characters)</span></label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" 
+                            value="{{input.password}}" />
+                        <p style="color: red; font-size: 13.5px;">
+                            {{details.passwordError}}
                         </p>
                     </div>
                     <div class="form-group">
                         <label for="phone">Confirm Password<span class="text-danger"> *</span></label>
-                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Confirm Password" style="margin-bottom: 25px;"
-                            value="" />
-                        <p style="color: red;">
-                           
+                        <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Confirm Password" 
+                            value="{{input.passwordConfirm}}" />
+                        <p style="color: red; font-size: 13.5px;">
+                            {{details.passwordConfirmError}}
                         </p>
                     </div>
                 </div>
@@ -118,7 +39,7 @@
     </div>
     <div class="card mx-auto border shadow-sm" style="width: 50rem; margin-bottom: 2rem;">
         <div class="card-body">
-            <div class="card-title" style="font-size: 42px;">Contact Information<span class="text-danger"> *</span>
+            <div class="card-title" style="font-size: 42px; font-family: 'Montserrat', sans-serif;">Contact Information<span class="text-danger"> *</span>
             </div>
             <p style="font-style: italic; font-size: 16px; margin-top: -16px;">Tell us about yourself and how we can contact you.</p>
             <small class="text-danger">* Required fields</small>
@@ -127,38 +48,30 @@
                     <div class="row">
                         <div class="col pr-2">
                             <label for="fname">First Name<span class="text-danger"> *</span></label>
-                            <input type="text" class="form-control" id="fname" name="fname" aria-describedby="emailHelp"
-                                placeholder="First Name" value="" />
-                            <p style="color: red;">
-                               
-                            </p>
-                        </div>
-                        <div class="col pr-2">
-                            <label for="fname">Middle Name<span class="text-danger"> *</span></label>
-                            <input type="text" class="form-control" id="fname" name="fname" aria-describedby="emailHelp"
-                                placeholder="First Name" value="" />
-                            <p style="color: red;">
-                               
+                            <input type="text" class="form-control" id="fname" name="fname" aria-describedby="fname"
+                                placeholder="First Name" value="{{input.fname}}" />
+                            <p style="color: red; font-size: 13.5px;">
+                              {{details.fnameError}}
                             </p>
                         </div>
                         <div class="col pl-2">
                             <label for="lname">Last Name<span class="text-danger"> *</span></label>
-                            <input type="text" class="form-control" id="lname" name="lname" aria-describedby="emailHelp"
-                                placeholder="Last Name" value="" />
-                            <p style="color: red;">
-                                
+                            <input type="text" class="form-control" id="lname" name="lname" aria-describedby="lname"
+                                placeholder="Last Name" value="{{input.lname}}" />
+                            <p style="color: red; font-size: 13.5px;">
+                                {{details.lnameError}}
                             </p>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-12" style="margin-top: 15px;">
+                            <div class="col-12" >
                                 <label for="streetAdd">Home Address<span class="text-danger"> *</span></label>
-                                <input type="text" class="form-control" id="streetAdd" name="streetAdd"
-                                    aria-describedby="emailHelp" placeholder="Home Address"
-                                    value="" />
-                                <p style="color: red;">
-                                    
+                                <input type="text" class="form-control" id="homeAdd" name="homeAdd"
+                                    aria-describedby="homeAdd" placeholder="Home Address"
+                                    value="{{input.homeAdd}}" />
+                                <p style="color: red; font-size: 13.5px;">
+                                    {{details.homeAddError}}
                                 </p>
                             </div>
                         </div>
@@ -168,40 +81,39 @@
                             <div class="col-4 ">
                                 <label for="date">Date of Birth<span class="text-danger"> *</span></label>
                                  <input type="date" class="form-control" id="date" name="date"
-                                    aria-describedby="emailHelp" placeholder="Date of Birth"
-                                    value="" />
-
-                                <p style="color: red;">
-                                    
+                                    aria-describedby="date" placeholder="Date of Birth" min="1902-01-01"
+                                    value="{{input.date}}" />
+                                <p style="color: red; font-size: 13.5px;">
+                                    {{details.dateError}}
                                 </p>
                             </div>
                             <div class="col-3">
                                 <label for="phone">Phone Number<span class="text-danger"> *</span></label>
                                 <input type="text" class="form-control" id="phone" name="phone"
-                                    aria-describedby="emailHelp" placeholder="Phone Number"
-                                    value="" />
+                                    aria-describedby="phone" placeholder="09xxxxxxxxx"
+                                    value="{{input.phone}}" />
 
-                                <p style="color: red;">
-                                  
+                                <p style="color: red; font-size: 13.5px;">
+                                    {{details.phoneError}}
                                 </p>
                             </div>
                             <div class="col-5">
-                                <label style="margin-left: -15px; margin-right: 20px">Gender<span class="text-danger"> *</span></label>
+                                <label style="margin-left: -15px; margin-right: 20px; margin-bottom: 15px">Sex<span class="text-danger"> *</span></label>
                                 <div class="row">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gender" id="Front Desk" value="Front Desk"/>
+                                        <input class="form-check-input" type="radio" name="sex" id="Male" value="Male" {{check "Male" input.sex "Male"}}/>
                                         <label for="Front Desk" style="font-weight: normal; margin-right: 5px;">Male</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gender" id="Front Desk" value="Female"/>
+                                        <input class="form-check-input" type="radio" name="sex" id="Female" value="Female" {{check "Female" input.sex "Male"}}/>
                                         <label for="Front Desk" style="font-weight: normal; margin-right: 5px;">Female</label>
                                     </div>
                                     <div class="form-check col-20 ">
-                                        <input class="form-check-input" type="radio" value="Others" id="Others" name="gender">
+                                        <input class="form-check-input" type="radio" name="sex" value="Others" id="Others" {{check "Others" input.sex "Male"}}>
                                         <label for="s-other" style="font-weight: normal; margin-right: 5px;"> Others </label>
-                                        <div class="form-check col-1 showother" style="margin-top: -45px; margin-left: 35px">
-                                            <input type="text" class="form-control" style="width: 103px" id="otherAnswer" name="otherAnswer" value="" placeholder="" />
-                                            <p style="color: red;"></p>
+                                        <div class="form-check col-1 showother" style="margin-top: -42px; margin-left: 35px">
+                                            <input type="text" class="form-control" style="width: 103px" id="otherAnswer" name="otherAnswer" value="{{input.otherAnswer}}" />
+                                            <p style="color: red; font-size: 13.5px; width: 100px; margin-bottom: -10px">{{details.otherAnswerError}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -215,11 +127,11 @@
                         <div class="row">
                             <div class="col-12" style="margin-top: 5px;">
                                 <label for="streetAdd">Name of Emergency Contact Person<span class="text-danger"> *</span></label>
-                                <input type="text" class="form-control" id="streetAdd" name="streetAdd"
-                                    aria-describedby="emailHelp" placeholder="Name of Emergency Contact Person"
-                                    value="" />
-                                <p style="color: red;">
-                                    
+                                <input type="text" class="form-control" id="eContactPerson" name="eContactPerson"
+                                    aria-describedby="eContactPerson" placeholder="Name of Emergency Contact Person"
+                                    value="{{input.eContactPerson}}" />
+                                <p style="color: red; font-size: 13.5px;">
+                                    {{details.eContactPersonError}}
                                 </p>
                             </div>
                         </div>
@@ -228,22 +140,22 @@
                         <div class="row">
                             <div class="col-7">
                                 <label for="streetAdd">Emergency Contact Person Number<span class="text-danger"> *</span></label>
-                                 <input type="text" class="form-control" id="streetAdd" name="streetAdd"
-                                    aria-describedby="emailHelp" placeholder="Emergency Contact Person Number"
-                                    value="" />
+                                 <input type="text" class="form-control" id="eContactNum" name="eContactNum"
+                                    aria-describedby="emailHelp" placeholder="09xxxxxxxxx"
+                                    value="{{input.eContactNum}}" />
 
-                                <p style="color: red;">
-                                    
+                                <p style="color: red; font-size: 13.5px;">
+                                    {{details.eContactNumError}}
                                 </p>
                             </div>
                             <div class="col-5">
                                 <label for="streetAdd">Relationship<span class="text-danger"> *</span></label>
-                                <input type="text" class="form-control" id="streetAdd" name="streetAdd"
-                                    aria-describedby="emailHelp" placeholder="Relationship"
-                                    value="" />
+                                <input type="text" class="form-control" id="relationship" name="relationship"
+                                    aria-describedby="emailHelp" placeholder="(E.g. Father, Mother, etc.)"
+                                    value="{{input.relationship}}" />
 
-                                <p style="color: red;">
-                                  
+                                <p style="color: red;font-size: 13.5px;">
+                                    {{details.relationshipError}}
                                 </p>
                             </div>
                         </div>
@@ -255,145 +167,144 @@
 
     <div class="card mx-auto border shadow-sm" style="width: 50rem; margin-bottom: 2rem;">
         <div class="card-body">
-            <div class="card-title" style="font-size: 42px;">Past Medical History<span class="text-danger"> *</span></div>
+            <div class="card-title" style="font-size: 42px; font-family: 'Montserrat', sans-serif;">Past Medical History<span class="text-danger"> *</span></div>
             <p style="font-style: italic; font-size: 16px; margin-top: -16px;"> All questions are strictly confidential and will become part of your medical record.</p>
-            <small class="text-danger">* Required fields</small>
             <div class="col-10">
-                <label style="margin-left: -15px; margin-right: 20px">Medical Problems<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Check all that applies)</span></label>
+                <label style="margin-left: -15px; margin-right: 20px">Medical Problems<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Check all that applies. If others, separate with a comma)</span></label>
 
                 <div class="row">
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Heart Disease" id="HeartDisease" style="margin-top: 6px" {{checkbox "Heart Disease" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Heart Disease </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Diabetes" id="Diabetes" style="margin-top: 6px" {{checkbox "Diabetes" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Diabetes </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Depression" id="Depression" style="margin-top: 6px" {{checkbox "Depression" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Depression </label>
                     </div>
                     <div class="form-check col-3 pb-2">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Diarrhea" id="Diarrhea" style="margin-top: 6px" {{checkbox "Diarrhea" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Diarrhea </label>
                     </div>
                 </div>
                 
                  <div class="row">
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Chest Pain" id="ChestPain" style="margin-top: 6px" {{checkbox "Chest Pain" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Chest Pain </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Thyroid" id="Thyroid" style="margin-top: 6px" {{checkbox "Thyroid" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Thyroid </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Stroke" id="Stroke" style="margin-top: 6px" {{checkbox "Stroke" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Stroke </label>
                     </div>
                     <div class="form-check col-3 pb-2">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Constipation" id="Constipation" style="margin-top: 6px" {{checkbox "Constipation" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Constipation </label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Heart Murmur" id="HeartMurmur" style="margin-top: 6px" {{checkbox "Heart Murmur" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Heart Murmur </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Arthritis" id="Arthritis" style="margin-top: 6px" {{checkbox "Arthritis" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Arthritis </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Nervous Disorder" id="NervousDisorder" style="margin-top: 6px" {{checkbox "Nervous Disorder" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Nervous Disorder </label>
                     </div>
                     <div class="form-check col-3 pb-2">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Stomach Ulcers" id="StomachUlcers" style="margin-top: 6px" {{checkbox "Stomach Ulcers" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Stomach Ulcers </label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Hypertension" id="Hypertension" style="margin-top: 6px" {{checkbox "Hypertension" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Hypertension  </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Kidney Stones" id="KidneyStones" style="margin-top: 6px" {{checkbox "Kidney Stones" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Kidney Stones </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Back Pain" id="BackPain" style="margin-top: 6px" {{checkbox "Back Pain" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Back Pain </label>
                     </div>
                     <div class="form-check col-3 pb-2">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
-                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Heart burn </label>
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Heart Burn" id="HeartBurn" style="margin-top: 6px" {{checkbox "Heart Burn" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Heart Burn </label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
-                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Shortness of breath </label>
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Shortness of Breath" id="ShortnessBreath" style="margin-top: 6px" {{checkbox "Shortness of Breath" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Shortness of Breath </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Blood in your urine " id="BloodUrine " style="margin-top: 6px" {{checkbox "Blood in your urine" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Blood in your urine </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Blood Transfusions" id="BloodTransfusions" style="margin-top: 6px" {{checkbox "Blood Transfusions" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Blood Transfusions </label>
                     </div>
                     <div class="form-check col-3 pb-2">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Hernia Repairs" id="HerniaRepairs" style="margin-top: 6px" {{checkbox "Hernia Repairs" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Hernia Repairs </label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
-                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Asthma/Emphysema </label>
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Asthma" id="Asthma" style="margin-top: 6px" {{checkbox "Asthma" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Asthma </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Frequent Urination" id="FrequentUrination" style="margin-top: 6px" {{checkbox "Frequent Urination" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Frequent Urination </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
-                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Pain with urination </label>
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Pain when urinating" id="Painurination" style="margin-top: 6px" {{checkbox "Pain when urinating" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Pain when urinating </label>
                     </div>
                     <div class="form-check col-3 pb-2">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Bleeding Tendency" id="Bleeding" style="margin-top: 6px" {{checkbox "Bleeding Tendency" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Bleeding Tendency </label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
-                        <label for="s-other" style="font-weight: normal; font-size: 14px"> HIV or Hepatitis </label>
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Hepatitis" id="Hepatitis" style="margin-top: 6px" {{checkbox "Hepatitis" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Hepatitis </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Cancer" id="Cancer" style="margin-top: 6px" {{checkbox "Cancer" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Cancer </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Anesthetic Reaction" id="Anesthetic" style="margin-top: 6px" {{checkbox "Anesthetic Reaction" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Anesthetic Reaction </label>
                     </div>
                     <div class="form-check col-3">
-                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px" {{checkbox "Others" input.medprob}}>
                         <label for="s-other" style="font-weight: normal; font-size: 14px"> Others</label>
                         <div class="form-check col-1 showother" style="margin-top: -35px; margin-left: 35px">
-                               <input type="text" class="form-control" style="width: 103px" id="otherAnswer" name="otherAnswer" value="" placeholder="" />
-                                <p style="color: red;"></p>
+                               <input type="text" class="form-control" style="width: 205px" id="medprob_other" name="medprob_other" value="{{input.medprob_other}}" placeholder="" />
+                                <p style="color: red; width: 100px; margin-top: 5px; font-size: 13.5px; margin-bottom: -10px">{{details.medprob_otherError}}</p>
                         </div>
                     </div>
                 </div>
@@ -402,13 +313,10 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-12" style="margin-top: 15px;">
-                        <label for="streetAdd">Please list all of your previous surgeries<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
-                        <input type="text" class="form-control" id="streetAdd" name="streetAdd"
-                            aria-describedby="emailHelp" placeholder="(E.g. Cataract surgery, Cholecystectomy)"
-                            value="" />
-                        <p style="color: red;">
-                            
-                        </p>
+                        <label for="streetAdd">If applicable, please list all of your previous surgeries<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
+                        <input type="text" class="form-control" id="surgeries" name="surgeries"
+                            aria-describedby="surgeries" placeholder="(E.g. Cataract surgery, Cholecystectomy)"
+                            value="{{input.surgeries}}" />
                     </div>
                 </div>
             </div>
@@ -416,13 +324,10 @@
              <div class="form-group">
                 <div class="row">
                     <div class="col-12" >
-                        <label for="streetAdd">Please list all the medications you are currently taking<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
-                        <input type="text" class="form-control" id="streetAdd" name="streetAdd"
-                            aria-describedby="emailHelp" placeholder="(E.g. Prinivil, Zestril)"
-                            value="" />
-                        <p style="color: red;">
-                            
-                        </p>
+                        <label for="streetAdd">If applicable, please list all the medications you are currently taking<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
+                        <input type="text" class="form-control" id="medications" name="medications"
+                            aria-describedby="medications" placeholder="(E.g. Prinivil, Zestril)"
+                            value="{{input.medications}}" />
                     </div>
                 </div>
             </div>
@@ -431,12 +336,9 @@
                 <div class="row">
                     <div class="col-12" >
                         <label for="streetAdd">If applicable, please list all the medications you are currently allergic with<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
-                        <input type="text" class="form-control" id="streetAdd" name="streetAdd"
-                            aria-describedby="emailHelp" placeholder="(E.g. Prinivil, Zestril)"
-                            value="" />
-                        <p style="color: red;">
-                            
-                        </p>
+                        <input type="text" class="form-control" id="medallergies" name="medallergies"
+                            aria-describedby="medallergies" placeholder="(E.g. Prinivil, Zestril)"
+                            value="{{input.medallergies}}" />
                     </div>
                 </div>
             </div>
