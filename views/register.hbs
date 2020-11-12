@@ -18,7 +18,7 @@
                         </p>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Password<span class="text-danger"> *</span></label>
+                        <label for="phone">Password<span class="text-danger"> *</span><span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Min of 8 characters)</span></label>
                         <input type="password" class="form-control" id="password" name="password" placeholder="Password" 
                             value="{{input.password}}" />
                         <p style="color: red; font-size: 13.5px;">
@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label for="phone">Confirm Password<span class="text-danger"> *</span></label>
                         <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Confirm Password" 
-                            value="" />
+                            value="{{input.passwordConfirm}}" />
                         <p style="color: red; font-size: 13.5px;">
                             {{details.passwordConfirmError}}
                         </p>
@@ -159,7 +159,7 @@
                             <div class="col-5">
                                 <label for="streetAdd">Relationship<span class="text-danger"> *</span></label>
                                 <input type="text" class="form-control" id="relationship" name="relationship"
-                                    aria-describedby="emailHelp" placeholder="Relationship"
+                                    aria-describedby="emailHelp" placeholder="(E.g. Father, Mother, etc.)"
                                     value="{{input.relationship}}" />
 
                                 <p style="color: red;font-size: 13.5px;">
@@ -321,7 +321,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-12" style="margin-top: 15px;">
-                        <label for="streetAdd">Please list all of your previous surgeries<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
+                        <label for="streetAdd">If applicable, please list all of your previous surgeries<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
                         <input type="text" class="form-control" id="surgeries" name="surgeries"
                             aria-describedby="surgeries" placeholder="(E.g. Cataract surgery, Cholecystectomy)"
                             value="{{input.surgeries}}" />
@@ -332,7 +332,7 @@
              <div class="form-group">
                 <div class="row">
                     <div class="col-12" >
-                        <label for="streetAdd">Please list all the medications you are currently taking<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
+                        <label for="streetAdd">If applicable, please list all the medications you are currently taking<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
                         <input type="text" class="form-control" id="medications" name="medications"
                             aria-describedby="medications" placeholder="(E.g. Prinivil, Zestril)"
                             value="{{input.medications}}" />

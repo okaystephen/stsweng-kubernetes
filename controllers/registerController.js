@@ -1,5 +1,11 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
+const sanitize = require('mongo-sanitize');
+const db = require('../models/db');
+const User = require('../models/UserModel');
+const MedHistory = require('../models/MedHistoryModel');
+const saltRounds = 10;
 
 // define objects for client request functions for a certain path in the server
 const registerController = {
@@ -14,13 +20,13 @@ const registerController = {
 
     postRegister: function (req, res){
         var errors = validationResult(req);
+        console.log(req.body)
 
         if (!errors.isEmpty()) {
             errors = errors.errors;
 
             var details = {};
 
-            
             for (let i = 0; i < errors.length; i++) {
                 // remove array indices for wildcard checks
                 details[`${errors[i].param.replace(/\[\d\]/g, '')}Error`] =
@@ -34,7 +40,88 @@ const registerController = {
                 title: 'Register | DoliMed',
             });
         } else {
-        
+            //sanitize user inputs
+            const input = {};
+            for (const field in req.body) {
+                if (req.body.hasOwnProperty(field)) {
+                    input[field] = sanitize(req.body[field]);
+                    
+                }
+            }
+
+            var sex = input.sex;
+            if(sex == 'Others'){
+                sex = input.otherAnswer;
+            }
+            
+            var medprob = input.medprob;
+            if(medprob == 'Others'){
+                medprob = input.medprob_other;
+            }
+            else if(medprob == ''){
+                medprob = "None"
+            }
+            else if(medprob.includes('Others')){
+                medprob = medprob.concat(input.medprob_other);
+                var i = medprob.indexOf('Others');
+                medprob.splice(i, 1);
+            }
+
+            var surgeries = input.surgeries;
+            var medications = input.medications;
+            var medallergies = input.medallargies;
+
+            if(surgeries == ''){
+                surgeries = "None"
+            }
+            if(medications == ''){
+                medications = "None"
+            }
+            if(medallergies == ''){
+                medallergies = "None"
+            }
+
+            var medhist = {
+                _id: new mongoose.Types.ObjectId(),
+                problems: medprob,
+                surgeries: surgeries,
+                medications: medications,
+                medallargies: medallergies
+            }
+
+            db.insertOne(MedHistory, medhist, function(flag){
+                if(flag){
+                    // apply hashing
+                    bcrypt.hash(input.password, saltRounds, (err, hash) => {
+                        var user = {
+                            _id: new mongoose.Types.ObjectId(),
+                            email: input.email,
+                            password: hash,
+                            name: {first: input.fname, middle: input.mname, last: input.lname},
+                            phone: input.phone,
+                            birthdate: input.date,
+                            sex: sex,
+                            address: input.homeAdd,
+                            eContactPerson: input.eContactPerson,
+                            eContactNum: input.eContactNum,
+                            medhistory: medhist._id
+                        };
+
+                        // create a new User document
+                        db.insertOne(User, user, function (flag) {
+                            if (flag) {
+
+                                //user id session is stored
+                                req.session.user = user._id;
+                                //redirects to user profile
+                                console.log('Success!');
+                            }
+                        });
+                    });
+                }
+            })
+            
+                    
         }
     }
 };
