@@ -41,12 +41,14 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown {{#if login_active}}show{{/if}}">
                     <a class="nav-link dropdown-toggle caret-off" href="#" id="navbarDropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="{{#if login_active}}true{{else}}false{{/if}}">
                         Log In
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right p-4" aria-labelledby="navbarDropdownMenuLink">
+                    <div class="dropdown-menu dropdown-menu-right p-4 {{#if login_active}}show{{/if}}"
+                        aria-labelledby="navbarDropdownMenuLink">
                         <div class="container-fluid p-2">
                             <form method="POST">
                                 {{#if loginError}}

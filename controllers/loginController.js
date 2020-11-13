@@ -10,8 +10,6 @@ const loginController = {
         var email = sanitize(req.body.loginemail);
         var password = sanitize(req.body.loginpass);
 
-        console.log(email);
-
         database.findOne(User, { email: email }, {}, function (user) {
             if (user) {
                 console.log(user);
@@ -28,6 +26,7 @@ const loginController = {
                             // layout: '/layouts/main',
                             title: 'Home | DoLoMed',
                             home_active: true,
+                            login_active: true,
                             loginError: 'Invalid credentials!'
                         });
                     }
@@ -38,6 +37,7 @@ const loginController = {
                     // layout: '/layouts/main',
                     title: 'Home | DoLoMed',
                     home_active: true,
+                    login_active: true,
                     loginError: 'Invalid credentials!'
                 });
             }

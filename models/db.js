@@ -1,7 +1,24 @@
 const mongoose = require('mongoose');
 
+const url = "mongodb://localhost:27017";
+const options = {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true
+};
+
 // database functions (CRUD functions)
 const database = {
+
+    /*
+        connects to database
+    */
+    connect: function () {
+        mongoose.connect(url, options, function (error) {
+            if (error) throw error;
+            console.log('Connected to: ' + url);
+        });
+    },
 
     /*
         inserts a single `doc` to the database based on the model `model`
