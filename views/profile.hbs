@@ -1,0 +1,323 @@
+<head>
+
+    <link rel="stylesheet" type="text/css" media="all" href="/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/6f00e67846.js" crossorigin="anonymous"></script>
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body style="background-color: rgb(243, 243, 243);">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+        <a class="navbar-brand" href="/"><img src="/img/rainbow.png" width="100">DoLiMed</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+            aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item {{#if home_active}}active{{/if}}">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item {{#if about_active}}active{{/if}}">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item {{#if hp_active}}active{{/if}}">
+                    <a class="nav-link" href="/healthprograms">Health Programs</a>
+                </li>
+                <li class="nav-item {{#if doctors_active}}active{{/if}}">
+                    <a class="nav-link" href="/doctors">Doctors</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/landing">Sign Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="card mx-auto border shadow-sm" style="width: 50rem; margin-bottom: 2rem; margin-top: 2rem;">
+        <div class="card-body">
+            <div class="card-title" style="font-size: 42px; font-family: 'Montserrat', sans-serif;">Personal Information</div>
+            <div class="card-text">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col pr-2">
+                            <h5>First Name</h5>
+                            <p style="font-size: 18px;">
+                                Bong
+                            </p>
+                        </div>
+                        <div class="col pl-2">
+                            <h5>Last Name</h5>
+                            <p style="font-size: 18px;">
+                                Duterte
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h5>Home Address</h5>
+                        <p style="font-size: 18px;">
+                            Malacañang Complex. J.P. Laurel Street. San Miguel, Manila
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-4 ">
+                                <h5>Date of Birth</h3>
+                                <p style="font-size: 18px;">
+                                    14 June 1974
+                                </p>
+                            </div>
+                            <div class="col-3">
+                                <h5>Phone Number</h3>
+                                <p style="font-size: 18px;">
+                                    (02) 8736 4662
+                                </p>
+                            </div>
+                            <div class="col-5">
+                                <h5>Sex</h5>
+                                <p style="font-size: 18px;">
+                                    Male
+                                </p>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                        <div class="row">
+                            <div class="col-12" style="margin-top: 5px;">
+                                <h5>Name of Emergency Contact Person</h5>
+                                <p style="font-size: 18px;">
+                                    Rodrigo Roa Duterte
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-7">
+                                <h5>Emergency Contact Person Number</h5>
+                                <p style="font-size: 18px;">
+                                    09123456789
+                                </p>
+                            </div>
+                            <div class="col-5">
+                                <h5>Relationship</h5>
+                                <p style="font-size: 18px;">
+                                    Father
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="card mx-auto border shadow-sm" style="width: 50rem; margin-bottom: 2rem; margin-top: 2rem;">
+        <div class="card-body">
+            <div class="card-title" style="font-size: 42px; font-family: 'Montserrat', sans-serif;">Account Information</div>
+            <div class="card-text">
+                <div class="form-group">
+                    <div class="form-group">
+                        <h5>Email</h5>
+                        <p style="font-size: 18px;">
+                            kuyabonggo@gmail.com.ph
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <h5>Password</h5>
+                        <p style="font-size: 18px;">
+                            **********
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mx-auto border shadow-sm" style="width: 50rem; margin-bottom: 2rem;">
+        <div class="card-body">
+            <div class="card-title" style="font-size: 42px; font-family: 'Montserrat', sans-serif;">Past Medical History</div>
+            <h5>Medical Problems</h5>
+            <div class="col-10">
+                <div class="row">
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Heart Disease" id="HeartDisease" style="margin-top: 6px" {{checkbox "Heart Disease" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Heart Disease </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Diabetes" id="Diabetes" style="margin-top: 6px" {{checkbox "Diabetes" input.medprob}} checked>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Diabetes </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Depression" id="Depression" style="margin-top: 6px" {{checkbox "Depression" input.medprob}} checked>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Depression </label>
+                    </div>
+                    <div class="form-check col-3 pb-2">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Diarrhea" id="Diarrhea" style="margin-top: 6px" {{checkbox "Diarrhea" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Diarrhea </label>
+                    </div>
+                </div>
+                
+                 <div class="row">
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Chest Pain" id="ChestPain" style="margin-top: 6px" {{checkbox "Chest Pain" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Chest Pain </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Thyroid" id="Thyroid" style="margin-top: 6px" {{checkbox "Thyroid" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Thyroid </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Stroke" id="Stroke" style="margin-top: 6px" {{checkbox "Stroke" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Stroke </label>
+                    </div>
+                    <div class="form-check col-3 pb-2">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Constipation" id="Constipation" style="margin-top: 6px" {{checkbox "Constipation" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Constipation </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Heart Murmur" id="HeartMurmur" style="margin-top: 6px" {{checkbox "Heart Murmur" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Heart Murmur </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Arthritis" id="Arthritis" style="margin-top: 6px" {{checkbox "Arthritis" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Arthritis </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Nervous Disorder" id="NervousDisorder" style="margin-top: 6px" {{checkbox "Nervous Disorder" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Nervous Disorder </label>
+                    </div>
+                    <div class="form-check col-3 pb-2">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Stomach Ulcers" id="StomachUlcers" style="margin-top: 6px" {{checkbox "Stomach Ulcers" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Stomach Ulcers </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Hypertension" id="Hypertension" style="margin-top: 6px" {{checkbox "Hypertension" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Hypertension  </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Kidney Stones" id="KidneyStones" style="margin-top: 6px" {{checkbox "Kidney Stones" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Kidney Stones </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Back Pain" id="BackPain" style="margin-top: 6px" {{checkbox "Back Pain" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Back Pain </label>
+                    </div>
+                    <div class="form-check col-3 pb-2">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Heart Burn" id="HeartBurn" style="margin-top: 6px" {{checkbox "Heart Burn" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Heart Burn </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Shortness of Breath" id="ShortnessBreath" style="margin-top: 6px" {{checkbox "Shortness of Breath" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Shortness of Breath </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Blood in your urine " id="BloodUrine " style="margin-top: 6px" {{checkbox "Blood in your urine" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Blood in your urine </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Blood Transfusions" id="BloodTransfusions" style="margin-top: 6px" {{checkbox "Blood Transfusions" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Blood Transfusions </label>
+                    </div>
+                    <div class="form-check col-3 pb-2">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Hernia Repairs" id="HerniaRepairs" style="margin-top: 6px" {{checkbox "Hernia Repairs" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Hernia Repairs </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Asthma" id="Asthma" style="margin-top: 6px" {{checkbox "Asthma" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Asthma </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Frequent Urination" id="FrequentUrination" style="margin-top: 6px" {{checkbox "Frequent Urination" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Frequent Urination </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Pain when urinating" id="Painurination" style="margin-top: 6px" {{checkbox "Pain when urinating" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Pain when urinating </label>
+                    </div>
+                    <div class="form-check col-3 pb-2">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Bleeding Tendency" id="Bleeding" style="margin-top: 6px" {{checkbox "Bleeding Tendency" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Bleeding Tendency </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Hepatitis" id="Hepatitis" style="margin-top: 6px" {{checkbox "Hepatitis" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Hepatitis </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Cancer" id="Cancer" style="margin-top: 6px" {{checkbox "Cancer" input.medprob}} checked>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Cancer </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Anesthetic Reaction" id="Anesthetic" style="margin-top: 6px" {{checkbox "Anesthetic Reaction" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Anesthetic Reaction </label>
+                    </div>
+                    <div class="form-check col-3">
+                        <input class="form-check-input" type="checkbox" name="medprob" value="Others" id="Others" style="margin-top: 6px" {{checkbox "Others" input.medprob}}>
+                        <label for="s-other" style="font-weight: normal; font-size: 14px"> Others</label>
+                        <div class="form-check col-1 showother" style="margin-top: -35px; margin-left: 35px">
+                               <input type="text" class="form-control" style="width: 205px" id="medprob_other" name="medprob_other" value="{{input.medprob_other}}" placeholder="" />
+                                <p style="color: red; width: 100px; margin-top: 5px; font-size: 13.5px; margin-bottom: -10px">{{details.medprob_otherError}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-3" style="margin-top: 15px;">
+                        <h5>Previous Surgeries</h5>
+                        <ul>
+                            <li>
+                                Vasectomy
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-4" style="margin-top: 15px">
+                        <h5>Current Medication List</h5>
+                        <ul>
+                            <li>Fentanyl</li>
+                        </ul>
+                    </div>
+                    <div class="col-4" style="margin-top: 15px">
+                        <h5>Allergic Medicines List</h5>
+                        <ul>
+                            <li>FLINTSTONES Vitamins</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            
+</body>
