@@ -56,6 +56,5 @@ app.post(
 //dashboard controller
 app.get('/dashboard', dashboardController.getDashboard)
 
-
 // enables to export app object when called in another .js file
 module.exports = app;
