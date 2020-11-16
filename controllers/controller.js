@@ -8,7 +8,7 @@ const controller = {
     getLanding: function (req, res) {
         res.render('landing', {
             // layout: '/layouts/main',
-            title: 'Home | DoLoMed',
+            title: 'Home | DoloMed',
             home_active: true,
         })
     },

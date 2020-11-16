@@ -14,7 +14,7 @@ const registerController = {
         res.render('register', {
                active_session: (req.session.user && req.cookies.user_sid),
                active_user: req.session.user,
-               title: 'Register | DoliMed'
+               title: 'Register | DoloMed'
         });
     },
 
@@ -37,7 +37,7 @@ const registerController = {
                 details: details,
                 active_session: req.session.user && req.cookies.user_sid,
                 active_user: req.session.user,
-                title: 'Register | DoliMed',
+                title: 'Register | DoloMed',
             });
         } else {
             //sanitize user inputs

@@ -24,7 +24,7 @@ const loginController = {
                     else {
                         res.render('landing', {
                             // layout: '/layouts/main',
-                            title: 'Home | DoLoMed',
+                            title: 'Home | DoloMed',
                             home_active: true,
                             login_active: true,
                             loginError: 'Invalid credentials!'
@@ -35,7 +35,7 @@ const loginController = {
             else {
                 res.render('landing', {
                     // layout: '/layouts/main',
-                    title: 'Home | DoLoMed',
+                    title: 'Home | DoloMed',
                     home_active: true,
                     login_active: true,
                     loginError: 'Invalid credentials!'
