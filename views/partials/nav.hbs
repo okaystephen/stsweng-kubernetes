@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+        <a class="navbar-brand" href="/"><img src="/img/rainbow.png" width="100">DoloMed</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+            aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item {{#if home_active}}active{{/if}}">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item {{#if about_active}}active{{/if}}">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item {{#if hp_active}}active{{/if}}">
+                    <a class="nav-link" href="/healthprograms">Health Programs</a>
+                </li>
+                <li class="nav-item {{#if doctors_active}}active{{/if}}">
+                    <a class="nav-link" href="/doctors">Doctors</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item dropdown {{#if login_active}}show{{/if}}">
+                    <a class="nav-link dropdown-toggle caret-off" href="#" id="navbarDropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="{{#if login_active}}true{{else}}false{{/if}}">
+                        Log In
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right p-4 {{#if login_active}}show{{/if}}"
+                        aria-labelledby="navbarDropdownMenuLink">
+                        <div class="container-fluid p-2">
+                            <form method="POST">
+                                {{#if loginError}}
+                                <div class="text-center pb-2" style="color: red"><small>{{loginError}}</small></div>
+                                {{/if}}
+                                <div class="form-group">
+                                    <label for="loginemail">Email address</label>
+                                    <input type="email" class="form-control" name="loginemail" id="loginemail"
+                                        aria-describedby="emailHelp" placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="loginpass">Password</label>
+                                    <input type="password" class="form-control" name="loginpass" id="loginpass"
+                                        placeholder="Password">
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary pb-1">Submit</button>
+                                </div>
+                                <div class="text-center pt-3">
+                                    <small>Forgot password?</small>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item {{#if register_active}}active{{/if}}">
+                    <a class="nav-link" href="/register">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+</nav>

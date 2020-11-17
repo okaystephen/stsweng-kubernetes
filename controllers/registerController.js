@@ -14,6 +14,7 @@ const registerController = {
         res.render('register', {
                active_session: (req.session.user && req.cookies.user_sid),
                active_user: req.session.user,
+               register_active: true,
                title: 'Register | DoloMed'
         });
     },
