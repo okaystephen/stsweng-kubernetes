@@ -10,6 +10,7 @@ const controller = require('../controllers/controller.js');
 const registerController = require('../controllers/registerController.js');
 const dashboardController = require('../controllers/dashboardController.js');
 const loginController = require('../controllers/loginController.js');
+const doc_directoryController = require('../controllers/doc_directoryController.js');
 
 //form validation
 const validation = require('../helpers/validation.js');
@@ -44,17 +45,21 @@ app.use((req, res, next) => {
 
 // register controller
 app.get('/register', registerController.getRegister);
-app.get('/', controller.getLanding);
-app.post('/', loginController.postLogIn);
-
 app.post(
   '/register',
   validation.registerValidation(),
   registerController.postRegister
 );
 
+// landing & login controller
+app.get('/', controller.getLanding);
+app.post('/', loginController.postLogIn);
+
 //dashboard controller
 app.get('/dashboard', dashboardController.getDashboard)
+
+// doctors directory controller
+app.get('/doctors', doc_directoryController.getDocDirectory);
 
 
 // enables to export app object when called in another .js file

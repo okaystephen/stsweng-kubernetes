@@ -17,15 +17,6 @@
     display: none !important;
 }
 
-
-#container {
-    display: flex;
-    justify-content: left;
-    height: 250px;
-    text-align: center;
-    margin-top: -20px;
-}
-
 form label {
     font-weight: bold;
 }
