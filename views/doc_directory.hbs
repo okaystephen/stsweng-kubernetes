@@ -21,37 +21,107 @@ text-align: center;
             <div class="p-3 card border m-0 mb-2" style="background-color: #E0E0E0;">
                 <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif;">Doctors Directory</p>
                 <hr>
-                    <p class="h6"> Doctor's First Name </p>
-                <div class="form-check">
-                    <input type="text" name="placement" value="First Name" id="temporary" style="margin-bottom: 15px;">
-                </div>
                 
                 <p class="h6"> Doctor's Surname </p>
-                <div class="form-check">
-                    <input type="text" name="placement" value="Surname" id="temporary" style="margin-bottom: 15px;">
-                </div>
-
-                <p class="h6"> Doctor's Code </p>
-                <div class="form-check">
-                    <input type="text" name="placement" value="Code" id="temporary" style="margin-bottom: 15px;">
-                </div>
-
+                <input type="text" name="placement" value="Surname" id="temporary" style="margin-bottom: 15px;">
+                
                 <p class="h6"> Specialization </p>
-                <div class="form-check">
-                    <input type="text" name="placement" value="Specialization" id="temporary" style="margin-bottom: 15px;">
+                <div class="dropdown" style="margin-bottom: 15px;">
+                        <select id="specialization" name="specialization" style="border: solid 1px rgb(119, 118, 118); background-color: white; cursor: pointer; width: 270px">
+                            <option value="Anesthesiology">Anesthesiology</option>
+                            <option value="Dental Medicine">Dental Medicine</option>
+                            <option value="Dermatology">Dermatology</option>
+                            <option value="Family and Community Medicine">Family and Community Medicine</option>
+                            <option value="Internal Medicine">Internal Medicine</option>
+                            <option value="Laboratory Medicine">Laboratory Medicine</option>
+                            <option value="Legal Medicine">Legal Medicine</option>
+                            <option value="Nuclear Medicine">Nuclear Medicine</option>
+                            <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
+                            <option value="Occupational Medicine">Occupational Medicine</option>
+                            <option value="Ophthalmology">Ophthalmology</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                            <option value="Otorhinolaryngology">Otorhinolaryngology</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Radiology">Radiology</option>
+                            <option value="Rehabilitation Medicine">Rehabilitation Medicine</option>
+                        </select>
                 </div>
 
                 <p class="h6"> Availability </p>
-                <div class="form-check">
-                    <input type="text" name="placement" value="Availability" id="temporary" style="margin-bottom: 35px;">
+                <div class="dropdown" style="margin-bottom: 30px;">
+                    <select id="availablity" name="availability" style="border: solid 1px rgb(119, 118, 118); background-color: white; cursor: pointer; width: 270px">
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                    </select>
                 </div>
+                
 
                 <button id="filter" class="btn btn-primary w-100" role="button" type="submit">Filter</button>
 
             </div>
         </form>
     </div>
-    <div class="col-9 m-0 mb-2" style="display: flex; flex-direction:row; flex-wrap:wrap; background-color: #E0E0E0;">
+    <div class="col-9 m-0 mb-2" style="display: flex; flex-direction:row; flex-wrap:wrap; padding-left: 50px">
+        <div class="card" style="width: 15rem; height:fit-content; background-color: #E0E0E0; margin-bottom: 20px">
+            <img class="card-img-top mx-auto" src="/img/rainbow.png" alt="Card image cap" style="height: 200px; width: 100%; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title mb-0">Abacan, Mary Anne</h5>
+                <p class="card-text">Pediatrics</p>
+                <p class="card-text" style="text-align: center">
+                    <a href="#" class="btn btn-primary w-75 mt-2">View Schedule</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="card" style="width: 15rem; height:fit-content; background-color: #E0E0E0; margin-bottom: 20px">
+            <img class="card-img-top mx-auto" src="/img/rainbow.png" alt="Card image cap" style="height: 200px; width: 100%; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title mb-0">Abacan, Mary Anne</h5>
+                <p class="card-text">Pediatrics</p>
+                <p class="card-text" style="text-align: center">
+                    <a href="#" class="btn btn-primary w-75 mt-2">View Schedule</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="card" style="width: 15rem; height:fit-content; background-color: #E0E0E0; margin-bottom: 20px">
+            <img class="card-img-top mx-auto" src="/img/rainbow.png" alt="Card image cap" style="height: 200px; width: 100%; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title mb-0">Abacan, Mary Anne</h5>
+                <p class="card-text">Pediatrics</p>
+                <p class="card-text" style="text-align: center">
+                    <a href="#" class="btn btn-primary w-75 mt-2">View Schedule</a>
+                </p>
+            </div>
+        </div>
+
+         <div class="card" style="width: 15rem; height:fit-content; background-color: #E0E0E0; margin-bottom: 20px">
+            <img class="card-img-top mx-auto" src="/img/rainbow.png" alt="Card image cap" style="height: 200px; width: 100%; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title mb-0">Abacan, Mary Anne</h5>
+                <p class="card-text">Pediatrics</p>
+                <p class="card-text" style="text-align: center">
+                    <a href="#" class="btn btn-primary w-75 mt-2">View Schedule</a>
+                </p>
+            </div>
+        </div>
+
+         <div class="card" style="width: 15rem; height:fit-content; background-color: #E0E0E0; margin-bottom: 20px">
+            <img class="card-img-top mx-auto" src="/img/rainbow.png" alt="Card image cap" style="height: 200px; width: 100%; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title mb-0">Abacan, Mary Anne</h5>
+                <p class="card-text">Pediatrics</p>
+                <p class="card-text" style="text-align: center">
+                    <a href="#" class="btn btn-primary w-75 mt-2">View Schedule</a>
+                </p>
+            </div>
+        </div>
+        
         
     </div>
 
