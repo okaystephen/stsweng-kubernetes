@@ -1,7 +1,7 @@
 <div class="card" style="width: 15rem; height:fit-content; background-color: #E0E0E0; margin-bottom: 20px">
     <img class="card-img-top mx-auto" src="/img/{{avatar}}" alt="Card image cap" style="height: 200px; width: 100%; object-fit: cover;">
     <div class="card-body">
-        <h5 class="card-title mb-0">{{name.last}}, {{name.first}}</h5>
+        <h5 class="card-title mb-0">{{lname}}, {{fname}}</h5>
         <p class="card-text">{{specialization}}</p>
         <p class="card-text" style="text-align: center">
             <button type="button" class="btn btn-primary w-75 mt-2" data-toggle="modal" data-target="#a{{_id}}"> View Schedule </button>
@@ -44,23 +44,7 @@
                              </div>
                             
                         {{/each}}
-
-                        {{!-- {{#schedule}}
-                            <div class="col-8 col-sm-6" style="padding: 5px; border: 1px rgb(184, 181, 181) solid">
-                                {{day}}
-                            </div>
-
-                            {{!-- {{#time}} --}}
-                            {{!-- {{#each time}} --}}
-                            {{!-- <div class="col-4 col-sm-6" style="padding:5px; border: 1px rgb(184, 181, 181) solid;">
-                                {{time}}
-                            </div> --}}
-                            {{!-- {{/each}} --}}
-                            {{!-- {{/time}} --}}
-                        {{!-- {{/schedule}} --}}
                     </div>
-
-
                 </div>
             </div>
         </div>

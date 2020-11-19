@@ -16,7 +16,8 @@ mongoose.connect(url, options, err => {
 
 var doctor = {
     _id: new mongoose.Types.ObjectId(),
-    name: {first: 'Natalio', last: 'Albana'},
+    fname: 'Natalio', 
+    lname: 'Albana',
     specialization: 'Surgery',
     avatar: 'doctor.png',
     department: 'Department of Surgery',
@@ -42,7 +43,8 @@ db.insertOne(Doctor, doctor, function(){
 
 var doctor1 = {
     _id: new mongoose.Types.ObjectId(),
-    name: {first: 'Elmer', last: 'Reyes'},
+    fname: 'Elmer', 
+    lname: 'Reyes',
     specialization: 'Family Medicine',
     avatar: 'doctor.png',
     department: 'Department of Family Medicine',
@@ -68,7 +70,8 @@ db.insertOne(Doctor, doctor1, function(){
 
 var doctor2 = {
     _id: new mongoose.Types.ObjectId(),
-    name: {first: 'Ramon', last: 'Arcadio'},
+    fname: 'Ramon', 
+    lname: 'Arcadio',
     specialization: 'Pediatrics',
     avatar: 'doctor.png',
     department: 'Department of Pediatrics',
@@ -93,7 +96,8 @@ db.insertOne(Doctor, doctor2, function(){
 
 var doctor3 = {
     _id: new mongoose.Types.ObjectId(),
-    name: {first: 'Orlando', last: 'Bernardo'},
+    fname: 'Orlando', 
+    lname: 'Bernardo',
     specialization: 'Anesthiology',
     avatar: 'doctor.png',
     department: 'Department of Anesthiology',
@@ -124,7 +128,8 @@ db.insertOne(Doctor, doctor3, function(){
 
 var doctor4 = {
     _id: new mongoose.Types.ObjectId(),
-    name: {first: 'Roland', last: 'Capito'},
+    fname: 'Roland',
+    lname: 'Capito',
     specialization: 'Obstetrics and Gynecology',
     avatar: 'doctor.png',
     department: 'Department of Obstetrics and Gynecology',
