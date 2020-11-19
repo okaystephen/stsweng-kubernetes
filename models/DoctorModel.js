@@ -1,5 +1,24 @@
 const mongoose = require('mongoose');
 
+
+const timeSchema = {
+    start: {
+        type: String, 
+        required: true
+    },
+    end: {
+        type: String, 
+        required: true
+    }
+}
+
+const scheduleSchema = {
+    day: {
+        type: String
+    },
+    time: [timeSchema]   
+}
+
 const doctorSchema = {
     _id: mongoose.Schema.Types.ObjectId,
     name: {
@@ -10,13 +29,7 @@ const doctorSchema = {
         type: String,
         required: true
     },
-    schedule: [{
-        day: {type: String},
-        time: [{
-            start: {type: String, required: true},
-            end: {type: String, required: true}
-        }]
-    }],
+    schedule: [scheduleSchema],
     avatar: {
         type: String,
     },

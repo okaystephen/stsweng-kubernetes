@@ -43,9 +43,9 @@ db.insertOne(Doctor, doctor, function(){
 var doctor1 = {
     _id: new mongoose.Types.ObjectId(),
     name: {first: 'Elmer', last: 'Reyes'},
-    specialization: 'Family and Community Medicine',
+    specialization: 'Family Medicine',
     avatar: 'doctor.png',
-    department: 'Department of Community Medicine',
+    department: 'Department of Family Medicine',
     schedule: [
         {
             day: 'Tuesday',
