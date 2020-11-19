@@ -60,6 +60,7 @@ app.get('/dashboard', dashboardController.getDashboard)
 
 // doctors directory controller
 app.get('/doctors', doc_directoryController.getDocDirectory);
+app.post('/filter', doc_directoryController.getFilter);
 
 
 // enables to export app object when called in another .js file
