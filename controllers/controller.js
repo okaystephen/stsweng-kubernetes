@@ -7,9 +7,15 @@ const controller = {
     // Add controllers here
     getLanding: function (req, res) {
         res.render('landing', {
-            // layout: '/layouts/main',
             title: 'Home | DoloMed',
             home_active: true,
+        })
+    },
+
+    getHealthPrograms: function (req, res) {
+        res.render('hp_directory', {
+            title: 'Health Programs | DoloMed',
+            hp_active: true,
         })
     },
 

@@ -55,6 +55,9 @@ app.post(
 app.get('/', controller.getLanding);
 app.post('/', loginController.postLogIn);
 
+// health program controller
+app.get('/healthprograms', controller.getHealthPrograms);
+
 //dashboard controller
 app.get('/dashboard', dashboardController.getDashboard)
 
