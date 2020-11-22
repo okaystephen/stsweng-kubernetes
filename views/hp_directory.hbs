@@ -1,6 +1,123 @@
 <div class="container-fluid p-5">
-    <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">Health Programs</p>
-    <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">Insert caption here.</p>
-
-
+    <div class="row">
+        <div class="col">
+            <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">Health
+                Programs</p>
+            <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">Insert caption here.</p>
+            <div class="card ">
+                <div class="card-body" style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">
+                    <div class="table-responsive text-center">
+                        <table class="table text-left blog-project-table" id="hp-table">
+                            <thead class=" text-primary">
+                                <th style="width:20%">
+                                    Name
+                                </th>
+                                <th style="width:30%">
+                                    Description
+                                </th>
+                                <th class="text-center" style="width:15%">
+                                    Start Time
+                                </th>
+                                <th class="text-center" style="width:15%">
+                                    End Time
+                                </th>
+                                <th class="text-center" style="width:15%">
+                                    Location
+                                </th>
+                                <th class="text-center" style="width:5%">
+                                    Cap
+                                </th>
+                            </thead>
+                            <tbody id="entries-table">
+                                <tr>
+                                    <td>
+                                        <span>Test #1</span>
+                                    </td>
+                                    <td style="font-size:small;">
+                                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                            quis nostrud exercitation ullamco</span>
+                                    </td>
+                                    <td class="text-center">
+                                        {{!-- {{dateFormat this.proj_date "YYYY-MM-DD"}} --}}
+                                        2020-12-20
+                                    </td>
+                                    <td class="text-center">
+                                        {{!-- {{dateFormat this.proj_date "YYYY-MM-DD"}} --}}
+                                        2020-12-25
+                                    </td>
+                                    <td class="text-center">
+                                        <span>Alabang, Manila</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span>150</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>Test #2</span>
+                                    </td>
+                                    <td style="font-size:small;">
+                                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                            quis nostrud exercitation ullamco</span>
+                                    </td>
+                                    <td class="text-center">
+                                        {{!-- {{dateFormat this.proj_date "YYYY-MM-DD"}} --}}
+                                        2020-12-21
+                                    </td>
+                                    <td class="text-center">
+                                        {{!-- {{dateFormat this.proj_date "YYYY-MM-DD"}} --}}
+                                        2020-12-23
+                                    </td>
+                                    <td class="text-center">
+                                        <span>Biñan, Laguna</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span>200</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>Test #3</span>
+                                    </td>
+                                    <td style="font-size:small;">
+                                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                            quis nostrud exercitation ullamco</span>
+                                    </td>
+                                    <td class="text-center">
+                                        {{!-- {{dateFormat this.proj_date "YYYY-MM-DD"}} --}}
+                                        2021-01-14
+                                    </td>
+                                    <td class="text-center">
+                                        {{!-- {{dateFormat this.proj_date "YYYY-MM-DD"}} --}}
+                                        2021-01-19
+                                    </td>
+                                    <td class="text-center">
+                                        <span>Las Piñas, Manila</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span>150</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<script>
+    // Health Programs Table Sort
+    $(document).ready(function () {
+        $('#hp-table').DataTable({
+            "aaSorting": [],
+            columnDefs: [{
+                orderable: false,
+                targets: [1]
+            }]
+        })
+    });
+</script>
