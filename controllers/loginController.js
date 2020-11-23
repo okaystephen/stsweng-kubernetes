@@ -19,7 +19,7 @@ const loginController = {
                         // console.log('Username and password is correct.. Redirecting..');
                         req.session.userid = user._id;
                         console.log('Success!');
-                        res.redirect('/dashboard');
+                        res.redirect('/');
                     }
                     else {
                         res.render('landing', {

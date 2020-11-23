@@ -7,10 +7,26 @@ const controller = {
 
     // Add controllers here
     getLanding: function (req, res) {
-        res.render('landing', {
-            title: 'Home | DoloMed',
-            home_active: true,
-        })
+        if (req.cookies.user_sid && !req.session.user) {
+            res.render('landing', {
+                title: 'Home | DoloMed',
+                home_active: true,
+                user_active: true,
+            })
+        }
+        else {
+            res.render('landing', {
+                title: 'Home | DoloMed',
+                home_active: true,
+                user_active: false,
+            })
+        }
+    },
+
+    getLogOut: function (req, res) {
+        req.logout;
+        req.session.destroy(function (err) { });
+        res.redirect('/')
     },
 
     getHealthPrograms: function (req, res) {

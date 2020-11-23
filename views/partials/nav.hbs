@@ -20,6 +20,11 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            {{#if user_active}}
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard">My Dashboard</a>
+            </li>
+            {{else}}
             <li class="nav-item dropdown {{#if login_active}}show{{/if}}">
                 <a class="nav-link dropdown-toggle caret-off" href="#" id="navbarDropdownMenuLink"
                     data-toggle="dropdown" aria-haspopup="true"
@@ -53,9 +58,16 @@
                     </div>
                 </div>
             </li>
+            {{/if}}
+            {{#if user_active}}
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Log Out</a>
+            </li>
+            {{else}}
             <li class="nav-item {{#if register_active}}active{{/if}}">
                 <a class="nav-link" href="/register">Sign Up</a>
             </li>
+            {{/if}}
         </ul>
     </div>
 </nav>
