@@ -14,6 +14,7 @@ const loginController = require('../controllers/loginController.js');
 //form validation
 const validation = require('../helpers/validation.js');
 const profileController = require('../controllers/profileController.js');
+const accountController = require('../controllers/accountController.js');
 
 const app = express();
 
@@ -59,6 +60,9 @@ app.get('/dashboard', dashboardController.getDashboard);
 
 //profile controller
 app.get('/profile', profileController.getProfile);
+
+//account controller
+app.get('/account', accountController.getAccount);
 
 // enables to export app object when called in another .js file
 module.exports = app;
