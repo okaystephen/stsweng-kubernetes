@@ -101,6 +101,30 @@
                                         <span>150</span>
                                     </td>
                                 </tr>
+                                {{#each healthprogramsContent}}
+                                <tr>
+                                    <td>
+                                        <span>{{this.hp_name}}</span>
+                                    </td>
+                                    <td style="font-size:small;">
+                                        <span>{{this.hp_desc}}</span>
+                                    </td>
+                                    <td class="text-center">
+                                        {{!-- {{dateFormat this.proj_date "YYYY-MM-DD"}} --}}
+                                        {{this.hp_startdate}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{!-- {{dateFormat this.proj_date "YYYY-MM-DD"}} --}}
+                                        {{this.hp_enddate}}
+                                    </td>
+                                    <td class="text-center">
+                                        <span>{{this.hp_location}}</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span>{{this.hp_cap}}</span>
+                                    </td>
+                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>

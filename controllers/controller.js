@@ -1,5 +1,6 @@
 // import module from db.js in models directory
 const database = require('../models/db.js');
+const HealthProgram = require('../models/HealthProgramModel.js');
 
 // define objects for client request functions for a certain path in the server
 const controller = {
@@ -13,10 +14,13 @@ const controller = {
     },
 
     getHealthPrograms: function (req, res) {
-        res.render('hp_directory', {
-            title: 'Health Programs | DoloMed',
-            hp_active: true,
-        })
+        database.findMany(HealthProgram, {}, {}, function (healthprogramsContent) {
+            res.render('hp_directory', {
+                title: 'Health Programs | DoloMed',
+                hp_active: true,
+                healthprogramsContent: healthprogramsContent,
+            })
+        });
     },
 
 }
