@@ -20,7 +20,7 @@ var healthprograms = [
         hp_location: 'Parañaque, Manila',
         hp_startdate: "2021-01-20",
         hp_enddate: "2021-02-20",
-        hp_cap: '130',
+        hp_maxCap: 130,
     },
     {
         hp_name: 'Climate Change',
@@ -28,7 +28,8 @@ var healthprograms = [
         hp_location: 'Muntinlupa, Manila',
         hp_startdate: "2021-03-27",
         hp_enddate: "2021-03-28",
-        hp_cap: '400',
+        hp_curCap: 400,
+        hp_maxCap: 400,
     },
     {
         hp_name: 'Environmental Health',
@@ -36,7 +37,8 @@ var healthprograms = [
         hp_location: 'Calamba, Laguna',
         hp_startdate: "2021-06-20",
         hp_enddate: "2021-07-01",
-        hp_cap: '250',
+        hp_curCap: 10,
+        hp_maxCap: 250,
     },
 ];
 
