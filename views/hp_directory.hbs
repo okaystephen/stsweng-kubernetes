@@ -22,10 +22,10 @@
                                     Description
                                 </th>
                                 <th class="text-center" style="width:15%">
-                                    Start Time
+                                    Start Date
                                 </th>
                                 <th class="text-center" style="width:15%">
-                                    End Time
+                                    End Date
                                 </th>
                                 <th class="text-center" style="width:15%">
                                     Location
@@ -33,99 +33,38 @@
                                 <th class="text-center" style="width:5%">
                                     Cap
                                 </th>
+                                <th class="text-center" style="width:5%">
+
+                                </th>
                             </thead>
                             <tbody id="entries-table">
-                                <tr>
-                                    <td>
-                                        <span>Test #1</span>
-                                    </td>
-                                    <td style="font-size:small;">
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco</span>
-                                    </td>
-                                    <td class="text-center">
-                                        {{!-- {{dateFormat this.proj_date "YYYY-MM-DD"}} --}}
-                                        2020-12-20
-                                    </td>
-                                    <td class="text-center">
-                                        {{!-- {{dateFormat this.proj_date "YYYY-MM-DD"}} --}}
-                                        2020-12-25
-                                    </td>
-                                    <td class="text-center">
-                                        <span>Alabang, Manila</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <span>150</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>Test #2</span>
-                                    </td>
-                                    <td style="font-size:small;">
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco</span>
-                                    </td>
-                                    <td class="text-center">
-                                        {{!-- {{dateFormat this.proj_date "YYYY-MM-DD"}} --}}
-                                        2020-12-21
-                                    </td>
-                                    <td class="text-center">
-                                        {{!-- {{dateFormat this.proj_date "YYYY-MM-DD"}} --}}
-                                        2020-12-23
-                                    </td>
-                                    <td class="text-center">
-                                        <span>Biñan, Laguna</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <span>200</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>Test #3</span>
-                                    </td>
-                                    <td style="font-size:small;">
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco</span>
-                                    </td>
-                                    <td class="text-center">
-                                        {{!-- {{dateFormat this.proj_date "YYYY-MM-DD"}} --}}
-                                        2021-01-14
-                                    </td>
-                                    <td class="text-center">
-                                        {{!-- {{dateFormat this.proj_date "YYYY-MM-DD"}} --}}
-                                        2021-01-19
-                                    </td>
-                                    <td class="text-center">
-                                        <span>Las Piñas, Manila</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <span>150</span>
-                                    </td>
-                                </tr>
                                 {{#each healthprogramsContent}}
                                 <tr>
                                     <td>
-                                        <span>{{this.hp_name}}</span>
+                                        <small>{{this.hp_name}}</small>
                                     </td>
                                     <td style="font-size:small;">
-                                        <span>{{this.hp_desc}}</span>
+                                        <small>{{this.hp_desc}}</small>
                                     </td>
                                     <td class="text-center">
-                                        {{dateFormat this.hp_startdate "YYYY-MM-DD"}}
+                                        <small>{{dateFormat this.hp_startdate "YYYY-MM-DD"}}</small>
                                     </td>
                                     <td class="text-center">
-                                        {{dateFormat this.hp_enddate "YYYY-MM-DD"}}
+                                        <small>{{dateFormat this.hp_enddate "YYYY-MM-DD"}}</small>
                                     </td>
                                     <td class="text-center">
-                                        <span>{{this.hp_location}}</span>
+                                        <small>{{this.hp_location}}</small>
                                     </td>
                                     <td class="text-center">
-                                        <span>{{this.hp_cap}}</span>
+                                        <small
+                                            style="color: {{#equals hp_curCap hp_maxCap}}red{{else}}#2F8250{{/equals}};">{{this.hp_curCap}}/{{this.hp_maxCap}}</small>
+                                    </td>
+                                    <td class="text-center">
+                                        {{#equals hp_curCap hp_maxCap}}<small><button class="btn btn-outline-secondary"
+                                                href="#" role="button" style="cursor:not-allowed"
+                                                disabled>Register</button></small>{{else}}<small><a
+                                                class="btn btn-success" href="#"
+                                                role="button">Register</a></small>{{/equals}}
                                     </td>
                                 </tr>
                                 {{/each}}
@@ -144,7 +83,7 @@
             "aaSorting": [],
             columnDefs: [{
                 orderable: false,
-                targets: [1]
+                targets: [1, 6]
             }]
         })
     });
