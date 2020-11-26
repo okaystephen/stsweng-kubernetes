@@ -115,7 +115,7 @@ const registerController = {
                                 req.session.user = user._id;
                                 //redirects to dashboard
                                 console.log('Success!');
-                                res.redirect('/dashboard')
+                                res.redirect('/profile')
                             }
                         });
                     });

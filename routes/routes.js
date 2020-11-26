@@ -64,5 +64,12 @@ app.get('/profile', profileController.getProfile);
 //account controller
 app.get('/account', accountController.getAccount);
 
+//logout
+app.get('/logout', function (req, res) {
+  req.logout;
+  req.session.destroy(function (err) {});
+  res.redirect('/');
+});
+
 // enables to export app object when called in another .js file
 module.exports = app;

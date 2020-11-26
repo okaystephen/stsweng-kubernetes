@@ -12,6 +12,7 @@ const UserSchema = mongoose.Schema({
     },
     name: {
         first: String,
+        middle: String,
         last: String,
     },
     phone: {

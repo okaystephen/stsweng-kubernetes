@@ -17,14 +17,14 @@ const loginController = {
                     // console.log(equal)
                     if (equal) {
                         // console.log('Username and password is correct.. Redirecting..');
-                        req.session.userid = user._id;
+                        req.session.user = user._id;
                         console.log('Success!');
-                        res.redirect('/dashboard');
+                        res.redirect('/profile');
                     }
                     else {
                         res.render('landing', {
                             // layout: '/layouts/main',
-                            title: 'Home | DoLoMed',
+                            title: 'Home | DoloMed',
                             home_active: true,
                             login_active: true,
                             loginError: 'Invalid credentials!'
@@ -35,7 +35,7 @@ const loginController = {
             else {
                 res.render('landing', {
                     // layout: '/layouts/main',
-                    title: 'Home | DoLoMed',
+                    title: 'Home | DoloMed',
                     home_active: true,
                     login_active: true,
                     loginError: 'Invalid credentials!'
