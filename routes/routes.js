@@ -58,6 +58,7 @@ app.get('/logout', controller.getLogOut);
 
 // health program controller
 app.get('/healthprograms', controller.getHealthPrograms);
+app.post('/healthprograms', loginController.postLogIn);
 
 //dashboard controller
 app.get('/dashboard', dashboardController.getDashboard)

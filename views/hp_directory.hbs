@@ -9,7 +9,8 @@
         <div class="col">
             <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">Health
                 Programs</p>
-            <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">Insert caption here.</p>
+            <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">Insert caption here.
+            </p>
             <div class="card ">
                 <div class="card-body" style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">
                     <div class="table-responsive text-center">
@@ -67,8 +68,8 @@
                                         {{#equals hp_curCap hp_maxCap}}<small><button class="btn btn-secondary" href="#"
                                                 role="button" style="cursor:not-allowed"
                                                 disabled>Register</button></small>{{else}}<small><a
-                                                class="btn btn-success" href="#"
-                                                role="button">Register</a></small>{{/equals}}
+                                                class="btn btn-success" role="button"
+                                                onclick="{{#if ../user_active}}register_user('{{this.hp_name}}'){{else}}register(){{/if}}">Register</a></small>{{/equals}}
                                     </td>
                                 </tr>
                                 {{/each}}
@@ -91,4 +92,25 @@
             }]
         })
     });
+
+    function register_user(hp_name) {
+        var hp_confirm = confirm("Do you want to register in the following program: " + hp_name);
+
+        if (hp_confirm == true) {
+            //$.ajax({
+            //    url: "/healthprograms-reserve/",
+            //    data: { id: self },
+            //    success: function (response) {
+            //        alert("Successfully reserved! Please check your dashboard.")
+            //    },
+            //    error: function (xhr) { }
+            //});
+
+            alert("Successfully reserved! Please check your dashboard.")
+        }
+    }
+
+    function register() {
+        alert("Please log in first!");
+    }
 </script>
