@@ -18,7 +18,6 @@ const loginController = {
                     if (equal) {
                         // console.log('Username and password is correct.. Redirecting..');
                         req.session.user = user._id;
-                        console.log('Success!');
                         res.redirect('/profile');
                     }
                     else {

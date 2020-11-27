@@ -27,25 +27,29 @@ app.set('view engine', 'hbs');
 app.engine(
   'hbs',
   exphbs({
-      extname: 'hbs',
-      defaultView: 'main',
-      layoutsDir: path.join(__dirname, '/views/layouts'),
-      partialsDir: path.join(__dirname, '/views/partials'),
+    extname: 'hbs',
+    defaultView: 'main',
+    layoutsDir: path.join(__dirname, '/views/layouts'),
+    partialsDir: path.join(__dirname, '/views/partials'),
 
-      // custom helpers
-      helpers: {
-          // Use this helper on <input type="radio"> elements to retain option when submitting form data
-          check: function (value, input, init) {
-              if (!input) input = init;
-              return value === input ? ' checked' : '';
-          },
-          // Use this helper on <input type="checkbox"> elements to retain option when submitting form data
-          checkbox : function (value, input){
-              if(input){
-                  return input.includes(value) ? ' checked' : '';
-              }
-          },
+    // custom helpers
+    helpers: {
+      // Use this helper on <input type="radio"> elements to retain option when submitting form data
+      check: function (value, input, init) {
+        if (!input) input = init;
+        return value === input ? ' checked' : '';
       },
+      // Use this helper on <input type="checkbox"> elements to retain option when submitting form data
+      checkbox: function (value, input) {
+        if (input) {
+          return input.includes(value) ? ' checked' : '';
+        }
+      },
+      dateFormat: require('handlebars-dateformat'),
+      equals: function (arg1, arg2, options) {
+        return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+      },
+    },
   }),
 );
 
@@ -66,8 +70,8 @@ app.use('/', routes);
 // connects to the database
 const url = 'mongodb://localhost:27017/stsweng-kubernetes';
 const options = {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
 };
 
 mongoose.connect(url, options, err => {

@@ -1,5 +1,4 @@
-<body style="background-color: #F2F2F2;">
-<p class="h1 shrink gradient-text" style="font-size: 70px; text-align: center; margin-top: 4rem; font-family: 'Montserrat', sans-serif;">DoliMed <i class="far fa-hospital"></i></p>
+<p class="h1 shrink gradient-text" style="font-size: 70px; text-align: center; margin-top: 4rem; font-family: 'Montserrat', sans-serif;">DoloMed <i class="far fa-hospital"></i></p>
 
 <form class="dirty" id="form" method="POST" action="/register">
     <div class="card mx-auto border shadow-sm" style="width: 50rem; margin-bottom: 2rem;">
@@ -54,12 +53,20 @@
                               {{details.fnameError}}
                             </p>
                         </div>
-                        <div class="col pl-2">
+                        <div class="col pr-2">
                             <label for="lname">Last Name<span class="text-danger"> *</span></label>
                             <input type="text" class="form-control" id="lname" name="lname" aria-describedby="lname"
                                 placeholder="Last Name" value="{{input.lname}}" />
                             <p style="color: red; font-size: 13.5px;">
                                 {{details.lnameError}}
+                            </p>
+                        </div>
+                        <div class="col pl-2">
+                            <label for="fname">Middle Name</label>
+                            <input type="text" class="form-control" id="mname" name="mname" aria-describedby="mname"
+                                placeholder="Middle Name" value="{{input.mname}}" />
+                            <p style="color: red; font-size: 13.5px;">
+                               {{details.mnameError}}
                             </p>
                         </div>
                     </div>
@@ -307,6 +314,7 @@
                                 <p style="color: red; width: 100px; margin-top: 5px; font-size: 13.5px; margin-bottom: -10px">{{details.medprob_otherError}}</p>
                         </div>
                     </div>
+                    <input type="hidden" name="medprob" value="0" />
                 </div>
             </div>
 
@@ -348,5 +356,3 @@
     </div>
 
 </form>
-
-</body>

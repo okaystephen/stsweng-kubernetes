@@ -23,6 +23,10 @@ const UserSchema = mongoose.Schema({
         type: Date,
         required: true
     },
+    relationship: {
+        type: String,
+        required: true
+    },
     sex: {
         type: String,
         required: true
