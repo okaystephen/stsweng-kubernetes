@@ -19,6 +19,10 @@
         rel="stylesheet"> -->
     <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
 
+    <!-- MDBootstrap Datatables  -->
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
 </head>
 
 <style>
@@ -120,7 +124,7 @@
                                 </th>
                                 <th class="text-center" style="width:5%"></th>
                             </thead>
-                            <tbody id="entries-table">
+                            <tbody>
                                 <tr>
                                     <td>
                                         Data 1
@@ -149,22 +153,6 @@
                     Your Health
                     Programs</div>
                 <div class="card mx-auto" style="width: 913px; margin-bottom: 2rem;">
-                    {{!-- <table class="table">
-                        <thead>
-                            <tr>
-                                <th span="1" style="width: 60%;">Appointment</th>
-                                <th span="1" style="width: 20%;">Time</th>
-                                <th span="1" style="width: 20%;">Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Data</td>
-                                <td>Data</td>
-                                <td>Data</td>
-                            </tr>
-                        </tbody>
-                    </table> --}}
                     <div class="table-responsive text-center">
                         <table class="table text-left" id="hp-table">
                             <thead class=" text-primary">
@@ -180,7 +168,7 @@
                                 <th class="text-center" style="width:5%"></th>
                                 <th class="text-center" style="width:5%"></th>
                             </thead>
-                            <tbody id="entries-table">
+                            <tbody>
                                 <tr>
                                     <td>
                                         Data
@@ -207,10 +195,6 @@
             </div>
         </div>
     </div>
-
-    <!-- MDBootstrap Datatables  -->
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 
     <script>
         window.onscroll = function () { myFunction() };
@@ -243,17 +227,17 @@
                 "aaSorting": [],
                 columnDefs: [{
                     orderable: false,
-                    targets: []
+                    targets: [0]
                 }]
             })
         });
 
         $(document).ready(function () {
-            $('#app-table').DataTable({
+            $('#hp-table').DataTable({
                 "aaSorting": [],
                 columnDefs: [{
                     orderable: false,
-                    targets: []
+                    targets: [0]
                 }]
             })
         });
