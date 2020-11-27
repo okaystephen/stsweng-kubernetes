@@ -98,9 +98,9 @@ var doctor3 = {
     _id: new mongoose.Types.ObjectId(),
     fname: 'Orlando', 
     lname: 'Bernardo',
-    specialization: 'Anesthiology',
+    specialization: 'Anesthesiology',
     avatar: 'doctor.png',
-    department: 'Department of Anesthiology',
+    department: 'Department of Anesthesiology',
     schedule: [
         {
             day: 'Monday',
