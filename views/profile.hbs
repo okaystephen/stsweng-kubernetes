@@ -53,7 +53,8 @@
         style="height: 72px; padding-top: 1rem; margin-left: 20%;">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-                <h6 style="font-family: 'Roboto Mono';">{{user.name.last}}, {{user.name.first}} {{user.name.middle}}</h6>
+                <h6 style="font-family: 'Roboto Mono';">{{user.name.last}}, {{user.name.first}} {{user.name.middle}}
+                </h6>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0" style="list-style-type: none;">
@@ -124,15 +125,16 @@
                     <div class="table-responsive text-center">
                         <table class="table text-left" id="app-table">
                             <thead class=" text-primary">
-                                <th style="width:50%">
+                                <th style="width:51%">
                                     Appointment Name
                                 </th>
-                                <th style="width:25%">
+                                <th style="width:22%">
                                     Time
                                 </th>
-                                <th style="width:25%">
+                                <th style="width:22%">
                                     Date
                                 </th>
+                                <th class="text-center" style="width:5%"></th>
                             </thead>
                             <tbody id="entries-table">
                                 <tr>
@@ -144,6 +146,9 @@
                                     </td>
                                     <td>
                                         Data
+                                    </td>
+                                    <td class="text-center">
+                                        <small><a class="btn btn-danger" role="button" href="">Cancel</a></small>
                                     </td>
                                 </tr>
                             </tbody>
@@ -181,12 +186,14 @@
                                 <th style="width:50%">
                                     Health Program Name
                                 </th>
-                                <th style="width:25%">
+                                <th style="width:20%">
                                     Time
                                 </th>
-                                <th style="width:25%">
+                                <th style="width:20%">
                                     Date
                                 </th>
+                                <th class="text-center" style="width:5%"></th>
+                                <th class="text-center" style="width:5%"></th>
                             </thead>
                             <tbody id="entries-table">
                                 <tr>
@@ -198,6 +205,13 @@
                                     </td>
                                     <td>
                                         Data
+                                    </td>
+                                    <td class="text-center">
+                                        <small><a class="btn btn-success" role="button"
+                                                onclick="reschedApp()">Reschedule</a></small>
+                                    </td>
+                                    <td class="text-center">
+                                        <small><a class="btn btn-danger" role="button" href="">Cancel</a></small>
                                     </td>
                                 </tr>
                             </tbody>
@@ -237,6 +251,22 @@
 
         var navbar = document.getElementById("navbar navbar-expand-lg sticky-top navbar-dark");
         var sticky = navbar.offsetTop;
+
+        function reschedApp() {
+            alert("Insert resched modal here")
+        }
+
+        function cancelApp() {
+            alert("Insert resched modal here")
+        }
+
+        function reschedDoc() {
+            alert("Insert resched modal here")
+        }
+
+        function cancelDoc() {
+            alert("Insert resched modal here")
+        }
 
         function myFunction() {
             if (window.pageYOffset >= sticky) {
