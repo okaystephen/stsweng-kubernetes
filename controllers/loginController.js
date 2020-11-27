@@ -17,9 +17,8 @@ const loginController = {
                     // console.log(equal)
                     if (equal) {
                         // console.log('Username and password is correct.. Redirecting..');
-                        req.session.userid = user._id;
-                        console.log('Success!');
-                        res.redirect('back');
+                        req.session.user = user._id;
+                        res.redirect('/profile');
                     }
                     else {
                         res.render('landing', {
