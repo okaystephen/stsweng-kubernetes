@@ -59,18 +59,22 @@
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0" style="list-style-type: none;">
             <li class="nav-item dropdown {{#if login_active}}show{{/if}}">
-
                 <a class="nav-link dropdown-toggle caret-off" href="#" id="navbarDropdownMenuLink"
                     data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="{{#if login_active}}true{{else}}false{{/if}}">
                     <h6>Settings</h6>
                 </a>
-
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <ul class="vertical-navbar-settings">
-                        <li><a href="/account">Account</a></li>
-                        <li><a href="/logout">Log Out</a></li>
-                    </ul>
+                <div class="dropdown-menu dropdown-menu-right p-4 {{#if login_active}}show{{/if}}"
+                    aria-labelledby="navbarDropdownMenuLink">
+                    <div class="container-fluid m-auto text-center p-auto">
+                        <form method="POST">
+                            <div class="text-center px-3">
+                                <h6><a href="/account" style="color:#2F8250;">Account</a></h6>
+                                <hr>
+                                <h6><a href="/logout" style="color:#2F8250;">Log Out</a></h6>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </li>
         </ul>
