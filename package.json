@@ -23,7 +23,6 @@
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
     "express-validator": "^6.6.1",
-    "handlebars-dateformat": "^1.1.1",
     "hbs": "^4.1.1",
     "jest": "^26.6.3",
     "moment": "^2.29.1",

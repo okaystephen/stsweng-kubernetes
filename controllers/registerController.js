@@ -10,16 +10,15 @@ const saltRounds = 10;
 // define objects for client request functions for a certain path in the server
 const registerController = {
     // render log-in page when client requests '/register' defined in routes.js
-    getRegister: function (req, res) {
+    getRegister: function (req, res){
         res.render('register', {
-            active_session: (req.session.user && req.cookies.user_sid),
-            active_user: req.session.user,
-            register_active: true,
-            title: 'Register | DoloMed'
+               active_session: (req.session.user && req.cookies.user_sid),
+               active_user: req.session.user,
+               title: 'Register | DoliMed'
         });
     },
 
-    postRegister: function (req, res) {
+    postRegister: function (req, res){
         var errors = validationResult(req);
         console.log(req.body)
 
@@ -38,7 +37,7 @@ const registerController = {
                 details: details,
                 active_session: req.session.user && req.cookies.user_sid,
                 active_user: req.session.user,
-                title: 'Register | DoloMed',
+                title: 'Register | DoliMed',
             });
         } else {
             //sanitize user inputs
@@ -46,50 +45,39 @@ const registerController = {
             for (const field in req.body) {
                 if (req.body.hasOwnProperty(field)) {
                     input[field] = sanitize(req.body[field]);
-
+                    
                 }
             }
-
-            var mname = input.mname;
-
-            // if(mname == ''){
-            //     mname = "None";
-            // }
 
             var sex = input.sex;
-            if (sex == 'Others') {
+            if(sex == 'Others'){
                 sex = input.otherAnswer;
             }
-
+            
             var medprob = input.medprob;
-            if (medprob == 'Others') {
+            if(medprob == 'Others'){
                 medprob = input.medprob_other;
             }
-            else if (medprob.includes('0')) {
+            else if(medprob == ''){
                 medprob = "None"
             }
-            else if (medprob.includes('Others')) {
-                var index = medprob.indexOf('0');
-                if (index > -1) {
-                    medprob.splice(index, 1);
-                }
+            else if(medprob.includes('Others')){
                 medprob = medprob.concat(input.medprob_other);
                 var i = medprob.indexOf('Others');
                 medprob.splice(i, 1);
             }
 
-
             var surgeries = input.surgeries;
             var medications = input.medications;
-            var medallergies = input.medallergies;
+            var medallergies = input.medallargies;
 
-            if (surgeries == '') {
+            if(surgeries == ''){
                 surgeries = "None"
             }
-            if (medications == '') {
+            if(medications == ''){
                 medications = "None"
             }
-            if (medallergies == '') {
+            if(medallergies == ''){
                 medallergies = "None"
             }
 
@@ -98,25 +86,24 @@ const registerController = {
                 problems: medprob,
                 surgeries: surgeries,
                 medications: medications,
-                medallergic: medallergies
+                medallargies: medallergies
             }
 
-            db.insertOne(MedHistory, medhist, function (flag) {
-                if (flag) {
+            db.insertOne(MedHistory, medhist, function(flag){
+                if(flag){
                     // apply hashing
                     bcrypt.hash(input.password, saltRounds, (err, hash) => {
                         var user = {
                             _id: new mongoose.Types.ObjectId(),
                             email: input.email,
                             password: hash,
-                            name: { first: input.fname, middle: mname, last: input.lname },
+                            name: {first: input.fname, last: input.lname},
                             phone: input.phone,
                             birthdate: input.date,
                             sex: sex,
                             address: input.homeAdd,
                             eContactPerson: input.eContactPerson,
                             eContactNum: input.eContactNum,
-                            relationship: input.relationship,
                             medhistory: medhist._id
                         };
 
@@ -126,14 +113,16 @@ const registerController = {
 
                                 //user id session is stored
                                 req.session.user = user._id;
+                                //redirects to dashboard
+                                console.log('Success!');
                                 res.redirect('/profile')
                             }
                         });
                     });
                 }
             })
-
-
+            
+                    
         }
     }
 };

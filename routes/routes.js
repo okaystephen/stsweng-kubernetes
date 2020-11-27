@@ -10,7 +10,6 @@ const controller = require('../controllers/controller.js');
 const registerController = require('../controllers/registerController.js');
 const dashboardController = require('../controllers/dashboardController.js');
 const loginController = require('../controllers/loginController.js');
-const doc_directoryController = require('../controllers/doc_directoryController.js');
 
 //form validation
 const validation = require('../helpers/validation.js');
@@ -47,20 +46,14 @@ app.use((req, res, next) => {
 
 // register controller
 app.get('/register', registerController.getRegister);
+app.get('/', controller.getLanding);
+app.post('/', loginController.postLogIn);
+
 app.post(
   '/register',
   validation.registerValidation(),
   registerController.postRegister
 );
-
-// landing & login controller
-app.get('/', controller.getLanding);
-app.post('/', loginController.postLogIn);
-app.get('/logout', controller.getLogOut);
-
-// health program controller
-app.get('/healthprograms', controller.getHealthPrograms);
-app.post('/healthprograms', loginController.postLogIn);
 
 //dashboard controller
 app.get('/dashboard', dashboardController.getDashboard);
@@ -74,13 +67,9 @@ app.get('/account', accountController.getAccount);
 //logout
 app.get('/logout', function (req, res) {
   req.logout;
-  req.session.destroy(function (err) { });
+  req.session.destroy(function (err) {});
   res.redirect('/');
 });
-// doctors directory controller
-app.get('/doctors', doc_directoryController.getDocDirectory);
-app.post('/filter', doc_directoryController.getFilter);
-
 
 // enables to export app object when called in another .js file
 module.exports = app;

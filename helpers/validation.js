@@ -45,11 +45,6 @@ const validation = {
                 .matches(/^[A-Za-z\s]+$/)
                 .withMessage('Last name should not contain number/s.')
                 .trim(),
-            check('mname')
-                .trim()
-                .matches(/^$|^[\sA-Za-z\s]+$/)
-                .withMessage('Middle name should not contain number/s.')
-                .trim(),
             check('homeAdd')
                 .trim()
                 .notEmpty()
