@@ -34,7 +34,7 @@
                 <div class="dropdown-menu dropdown-menu-right p-4 {{#if login_active}}show{{/if}}"
                     aria-labelledby="navbarDropdownMenuLink">
                     <div class="container-fluid p-2">
-                        <form method="POST">
+                        <form method="POST" action="/">
                             {{#if loginError}}
                             <div class="text-center pb-2" style="color: red"><small>{{loginError}}</small></div>
                             {{/if}}
