@@ -1,30 +1,3 @@
-<head>
-
-    <link rel="stylesheet" type="text/css" media="all" href="/css/profile.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/6f00e67846.js" crossorigin="anonymous"></script>
-
-    <!-- MDBootstrap Datatables  -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-
-
-    <!--    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet"> -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
-
-    <!-- MDBootstrap Datatables  -->
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-
-</head>
-
 <style>
     th {
         color: #2F8250 !important;
@@ -79,6 +52,7 @@
             </li>
         </ul>
     </nav>
+
     <!-- End of Navigation Bar -->
 
     <div class="profile-content">
@@ -94,16 +68,7 @@
             <br>
             Birthday: {{date}}
         </p>
-        {{!-- <p style="font-size: 18; font-family: 'Roboto Mono';">
-        <ul style="list-style-type: none;">
-            <li><b>Address:</b></li>
-            <li><b>Contact Number:</b></li>
-            <li><b>Birthday:</b></li>
-        </ul>
-        </p> --}}
-
         <hr>
-
         <div class="card mx-auto border shadow-sm" style="width: 973px; margin-bottom: 2rem;">
             <div class="card-body">
                 <div class="card-title" style="font-size: 45px; font-family: 'Montserrat', sans-serif; color: #2F8250;">
@@ -111,7 +76,7 @@
                     Appointments</div>
                 <div class="card mx-auto " style="width: 913px; margin-bottom: 2rem;">
                     <div class="table-responsive text-center">
-                        <table class="table text-left" id="app-table">
+                        <table class="table text-left" id="profileapp-table">
                             <thead class=" text-primary">
                                 <th style="width:51%">
                                     Appointment Name
@@ -145,6 +110,25 @@
                                                 onclick="cancelApp()">Cancel</a></small>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        Data 2
+                                    </td>
+                                    <td>
+                                        13:00
+                                    </td>
+                                    <td>
+                                        2021-01-12
+                                    </td>
+                                    <td class="text-center">
+                                        <small><a class="btn btn-success" role="button"
+                                                onclick="reschedApp()">Reschedule</a></small>
+                                    </td>
+                                    <td class="text-center">
+                                        <small><a class="btn btn-danger" role="button"
+                                                onclick="cancelApp()">Cancel</a></small>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -159,7 +143,7 @@
                     Programs</div>
                 <div class="card mx-auto" style="width: 913px; margin-bottom: 2rem;">
                     <div class="table-responsive text-center">
-                        <table class="table text-left" id="hp-table">
+                        <table class="table text-left" id="profilehp-table">
                             <thead class=" text-primary">
                                 <th style="width:50%">
                                     Health Program Name
@@ -175,13 +159,43 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        Data
+                                        Data 1
                                     </td>
                                     <td>
-                                        Data
+                                        12:00
                                     </td>
                                     <td>
-                                        Data
+                                        2020-12-23
+                                    </td>
+                                    <td class="text-center">
+                                        <small><a class="btn btn-danger" role="button"
+                                                onclick="cancelHP()">Cancel</a></small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Data 2
+                                    </td>
+                                    <td>
+                                        08:00
+                                    </td>
+                                    <td>
+                                        2020-11-22
+                                    </td>
+                                    <td class="text-center">
+                                        <small><a class="btn btn-danger" role="button"
+                                                onclick="cancelHP()">Cancel</a></small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Data 3
+                                    </td>
+                                    <td>
+                                        15:00
+                                    </td>
+                                    <td>
+                                        2020-12-30
                                     </td>
                                     <td class="text-center">
                                         <small><a class="btn btn-danger" role="button"
@@ -197,6 +211,26 @@
     </div>
 
     <script>
+        $(document).ready(function () {
+            $('#profilehp-table').DataTable({
+                "aaSorting": [],
+                columnDefs: [{
+                    orderable: false,
+                    targets: [3]
+                }]
+            })
+        });
+
+        $(document).ready(function () {
+            $('#profileapp-table').DataTable({
+                "aaSorting": [],
+                columnDefs: [{
+                    orderable: false,
+                    targets: [3, 4]
+                }]
+            })
+        });
+
         window.onscroll = function () { myFunction() };
 
         var navbar = document.getElementById("navbar navbar-expand-lg sticky-top navbar-dark");
@@ -221,25 +255,5 @@
                 navbar.classList.remove("sticky");
             }
         }
-
-        $(document).ready(function () {
-            $('#app-table').DataTable({
-                "aaSorting": [],
-                columnDefs: [{
-                    orderable: false,
-                    targets: [0]
-                }]
-            })
-        });
-
-        $(document).ready(function () {
-            $('#hp-table').DataTable({
-                "aaSorting": [],
-                columnDefs: [{
-                    orderable: false,
-                    targets: [0]
-                }]
-            })
-        });
     </script>
 </body>

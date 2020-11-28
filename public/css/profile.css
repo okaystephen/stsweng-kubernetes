@@ -79,7 +79,7 @@ input[type="checkbox"]:checked+label+.showother {
 }
 
 .h1 {
-    font-weight: 800;
+    /* font-weight: 800; */
     color: #2f353e;
 }
 
