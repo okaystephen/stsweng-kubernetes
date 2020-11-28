@@ -42,7 +42,7 @@
         </li>
         <hr>
         <li>
-            <a href="/health-programs" style="font-size: medium;">Health Programs</a>
+            <a href="/healthprograms" style="font-size: medium;">Health Programs</a>
         </li>
         <li><a href="/doctors" style="font-size: medium;">Doctors</a></li>
         <li><a href="/appointments" style="font-size: medium;">Appointments</a></li>
@@ -123,6 +123,7 @@
                                     Date
                                 </th>
                                 <th class="text-center" style="width:5%"></th>
+                                <th class="text-center" style="width:5%"></th>
                             </thead>
                             <tbody>
                                 <tr>
@@ -134,6 +135,10 @@
                                     </td>
                                     <td>
                                         2021-03-21
+                                    </td>
+                                    <td class="text-center">
+                                        <small><a class="btn btn-success" role="button"
+                                                onclick="reschedApp()">Reschedule</a></small>
                                     </td>
                                     <td class="text-center">
                                         <small><a class="btn btn-danger" role="button"
@@ -166,7 +171,6 @@
                                     Date
                                 </th>
                                 <th class="text-center" style="width:5%"></th>
-                                <th class="text-center" style="width:5%"></th>
                             </thead>
                             <tbody>
                                 <tr>
@@ -178,10 +182,6 @@
                                     </td>
                                     <td>
                                         Data
-                                    </td>
-                                    <td class="text-center">
-                                        <small><a class="btn btn-success" role="button"
-                                                onclick="reschedHP()">Reschedule</a></small>
                                     </td>
                                     <td class="text-center">
                                         <small><a class="btn btn-danger" role="button"
@@ -206,7 +206,7 @@
             confirm("Are you sure you want to cancel this appointment?")
         }
 
-        function reschedHP() {
+        function reschedApp() {
             alert("Insert resched modal here")
         }
 
