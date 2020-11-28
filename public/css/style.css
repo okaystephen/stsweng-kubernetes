@@ -21,23 +21,7 @@ form label {
     font-weight: bold;
 }
 
-textarea {
-    resize: none;
-}
-
-#container {
-    display: flex;
-    justify-content: left;
-    height: 250px;
-    text-align: center;
-    margin-top: -20px;
-}
-
-input[type="radio"]:checked+.showrate {
-    display: block;
-}
-
-input[type="radio"]+label+.showother {
+input[type="radio"]+label + .showother {
     display: none;
 }
 
@@ -67,40 +51,27 @@ input[type="checkbox"]:checked+label+.showother {
     .shrink {
         font-size: 50px !important;
     }
-
     .card {
         width: 80% !important;
         margin: 0 auto;
     }
-
-    .form-upload {
-        display: block;
-    }
 }
 
 .h1 {
-    font-weight: 800;
-    color: #2f353e;
+    font-weight: 600;
 }
 
 .gradient-text {
     /*background: -webkit-linear-gradient(18deg, rgba(110,231,128,1) 0%, rgba(0,212,255,1) 100%);*/
-    background: -webkit-linear-gradient(18deg, rgb(38, 97, 52) 0%, rgb(27, 196, 66) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #35724e ;
 }
-
 .btn-primary {
     background-color: rgb(38, 97, 52) !important;
-    border-color: rgb(47, 121, 64) !important;
+    border-color: rgb(47, 121, 64)  !important;
 }
 
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active,
-.open>.dropdown-toggle.btn-primary {
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
     color: #fff;
     background-color: rgb(25, 61, 33) !important;
-    border-color: rgb(38, 97, 52);
+    border-color: rgb(38, 97, 52) ; 
 }
