@@ -25,14 +25,14 @@
                 <a class="nav-link" href="/dashboard">My Dashboard</a>
             </li>
             {{else}}
-            <li class="nav-item dropdown {{#if login_active}}show{{/if}}">
+            <li class="nav-item dropdown {{#if login_active}}show{{/if}}" id="login-nav1">
                 <a class="nav-link dropdown-toggle caret-off" href="#" id="navbarDropdownMenuLink"
                     data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="{{#if login_active}}true{{else}}false{{/if}}">
                     Log In
                 </a>
                 <div class="dropdown-menu dropdown-menu-right p-4 {{#if login_active}}show{{/if}}"
-                    aria-labelledby="navbarDropdownMenuLink">
+                    aria-labelledby="navbarDropdownMenuLink" id="login-nav2">
                     <div class="container-fluid p-2">
                         <form method="POST" action="/">
                             {{#if loginError}}
