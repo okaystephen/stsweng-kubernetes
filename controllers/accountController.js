@@ -1,6 +1,9 @@
 const db = require('../models/db');
 const User = require('../models/UserModel');
 const moment = require('moment');
+const sanitize = require('mongo-sanitize');
+const saltRounds = 10;
+const bcrypt = require('bcrypt');
 
 const accountController = {
     // render account page when client requests '/account' defined in routes.js
@@ -18,6 +21,37 @@ const accountController = {
             })
         }
     },
+
+    updateProfile: function(req, res){
+        if(!req.session.user) res.redirect('/')
+        else{
+            //sanitize user inputs
+            const input = {};
+            for (const field in req.body) {
+                if (req.body.hasOwnProperty(field)) {
+                    input[field] = sanitize(req.body[field]);
+                    
+                }
+            }
+            console.log(input);
+            if(input.password == ''){
+                db.updateOne(User, {_id: req.session.user}, {phone: input.phone, address: input.homeAdd, relationship: input.relationship, eContactPerson: input.eContactPerson, eContactNum: input.eContactNum}, function(result){
+                    if(result){
+                        res.redirect('/account');
+                    }
+                })
+            }
+            else{
+                bcrypt.hash(input.password, saltRounds, (err, hash) => {
+                    db.updateOne(User, {_id: req.session.user}, {password: hash, phone: input.phone, address: input.address, relationship: input.relationship, eContactPerson: input.eContactPerson, eContactNum: input.eContactNum}, function(result){
+                        if(result){
+                            res.redirect('/account');
+                        }
+                    })
+                });
+            }
+        }
+    }
 }
 
 // enables to account controller object when called in another .js file

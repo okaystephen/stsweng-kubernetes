@@ -66,8 +66,8 @@
 
     <div class="profile-content">
         
-        <p style="font-size: 130px; font-family: 'Montserrat', sans-serif; color: #2F8250">Account</p>
-        <p style="font-size: 25px; font-family: 'Montserrat', sans-serif; color: #566551">Update your profile.</p>
+        <p  class="h1" style="font-size: 13vh; font-family: 'Montserrat', sans-serif; color: #2F8250">Account</p>
+        <p style="font-size: 25px; font-family: 'Montserrat', sans-serif; color: #2F8250">Update your profile.</p>
 
             <div class="card mx-auto border shadow-sm" style="width: 50rem; margin-bottom: 2rem;">
                 <div class="card-body">
@@ -161,8 +161,7 @@
     </div>
 
 
-<div class="modal fade" id="accountEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="accountEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -172,102 +171,87 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="updateForm-{{_id}}">
-                    <div class="form-group">
+                <form id="updateProfile" method="post" action="/updateProfile">
+                    
                         <div class="form-group">
-                            <div class="row">
+                            
                                 <div class="col-12" >
                                     <label for="streetAdd">Home Address<span class="text-danger"> *</span></label>
                                     <input type="text" class="form-control" id="homeAdd" name="homeAdd"
                                         aria-describedby="homeAdd" placeholder="Home Address"
-                                        value="{{input.homeAdd}}" />
-                                    <p style="color: red; font-size: 13.5px;">
-                                        {{details.homeAddError}}
-                                    </p>
+                                        value="{{user.address}}" />
                                 </div>
-                            </div>
+                                <div class="col-sm-10" style="font-size: smaller; color: red"></div>
+                            
                         </div>
                         <div class="form-group">
-                            <div class="row">
+                            
                                 <div class="col-12" >
                                     <label for="phone">Phone Number<span class="text-danger"> *</span></label>
                                     <input type="text" class="form-control" id="phone" name="phone"
                                         aria-describedby="phone" placeholder="09xxxxxxxxx"
-                                        value="{{input.phone}}" />
-
-                                    <p style="color: red; font-size: 13.5px;">
-                                        {{details.phoneError}}
-                                    </p>
+                                        value="{{user.phone}}" />                
                                 </div>
-                            </div>
+                                <div class="col-sm-10" style="font-size: smaller; color: red"></div>
+                            
                         </div>
                         <div class="form-group">
-                            <div class="row">
+                            
                                 <div class="col-12" >
                                     <label for="streetAdd">Name of Emergency Contact Person<span class="text-danger"> *</span></label>
                                     <input type="text" class="form-control" id="eContactPerson" name="eContactPerson"
                                         aria-describedby="eContactPerson" placeholder="Name of Emergency Contact Person"
-                                        value="{{input.eContactPerson}}" />
-                                    <p style="color: red; font-size: 13.5px;">
-                                        {{details.eContactPersonError}}
-                                    </p>
+                                        value="{{user.eContactPerson}}" />
                                 </div>
-                            </div>
+                                <div class="col-sm-12" style="font-size: smaller; color: red"></div>
+                            
                         </div>
                         <div class="form-group">
-                            <div class="row">
+                            
                                 <div class="col-12" >
                                     <label for="streetAdd">Relationship<span class="text-danger"> *</span></label>
                                     <input type="text" class="form-control" id="relationship" name="relationship"
                                         aria-describedby="emailHelp" placeholder="(E.g. Father, Mother, etc.)"
-                                        value="{{input.relationship}}" />
-
-                                    <p style="color: red;font-size: 13.5px;">
-                                        {{details.relationshipError}}
-                                    </p>
+                                        value="{{user.relationship}}" />
                                 </div>
-                            </div>
+                                <div class="col-sm-10" style="font-size: smaller; color: red"></div>
+                            
                         </div>
                         <div class="form-group">
-                            <div class="row">
+                            
                                 <div class="col-12" >
                                     <label for="streetAdd">Emergency Contact Person Number<span class="text-danger"> *</span></label>
                                     <input type="text" class="form-control" id="eContactNum" name="eContactNum"
                                         aria-describedby="emailHelp" placeholder="09xxxxxxxxx"
-                                        value="{{input.eContactNum}}" />
-
-                                    <p style="color: red; font-size: 13.5px;">
-                                        {{details.eContactNumError}}
-                                    </p>
+                                        value="{{user.eContactNum}}" />
                                 </div>
+                                <div class="col-sm-10" style="font-size: smaller; color: red"></div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <div class="col-12" >
+                                <label for="phone">Password<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Min of 8 characters)</span></label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password"/>
                             </div>
+                            <div class="col-sm-10" style="font-size: smaller; color: red"></div>
                         </div>
                         <div class="form-group">
-                        <label for="phone">Password<span class="text-danger"> *</span><span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Min of 8 characters)</span></label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" 
-                            value="{{input.password}}" />
-                        <p style="color: red; font-size: 13.5px;">
-                            {{details.passwordError}}
-                        </p>
+                            <div class="col-12" >
+                                <label for="phone">Confirm Password</span></label>
+                                <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Confirm Password" />
+                            </div>
+                           <div class="col-sm-10" style="font-size: smaller; color: red"></div>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">Confirm Password<span class="text-danger"> *</span></label>
-                            <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Confirm Password" 
-                                value="{{input.passwordConfirm}}" />
-                            <p style="color: red; font-size: 13.5px;">
-                                {{details.passwordConfirmError}}
-                            </p>
-                        </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" id="profile-saveChanges" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="profile-saveChanges" class="btn btn-primary" onclick="saveChanges('{{itemID}}');">Save changes</button>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="modal fade" id="medHistoryEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -473,10 +457,6 @@
 </div>
 
 
-
-
-
-
     <script>
         window.onscroll = function() {myFunction()};
 
@@ -488,31 +468,6 @@
                 navbar.classList.add("sticky")
             } else {
                 navbar.classList.remove("sticky");
-            }
-        }
-
-        function saveChanges(itemID) {
-            var labelName = $('#firstName');
-            var pname = labelName.attr('value');
-            var labelAmt = $('#amountPerPack-' + itemID);
-            var amt = labelAmt.attr('value');
-            var stock = $("#stockQuantity-" + itemID).val();
-            var price = $("#pricePerPack-" + itemID).val();
-            var low = $("#lowStock-" + itemID).val();
-            var _id = itemID;
-
-            if(!isFilledUpdate(itemID)) {
-                $("#errorUpdate-" + itemID).text("Properly fill out all fields.");
-            }
-            else if (!isValid(itemID)) {
-                $("#errorUpdate-" + itemID).text("Input should be a positive integer and not empty.");
-            }
-            else {  
-                $.post('/updateProd',{_id: _id, name: pname, amountPerPack: amt, quantity: stock, price: price, lowstockQuantity: low}, function(data, status) {
-                    setTimeout(function() {
-                        window.location.reload();
-                    }, 500);
-                })
             }
         }
     </script>
