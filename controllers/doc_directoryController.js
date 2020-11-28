@@ -5,20 +5,34 @@ const sanitize = require('mongo-sanitize');
 
 const doc_directoryController = {
     getDocDirectory: function (req, res){
-
         Doctor.find({})
             .lean()
             .sort({lname: 1})
             .exec(function(err,doctors){
-                if(err) throw err
-                res.render('doc_directory', {
-                doctors_active: true,
-                active_session: (req.session.user && req.cookies.user_sid),
-                active_user: req.session.user,
-                title: 'Doctors | DoloMed',
-                doctors: doctors
-                
-            }) 
+                if(err) {
+                    throw err
+                }
+                else{
+                    if (req.cookies.user_sid && req.session.user) {
+                        res.render('doc_directory', {
+                            doctors_active: true,
+                            user_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Doctors | DoloMed',
+                            doctors: doctors
+                        }) 
+                    }else{
+                        res.render('doc_directory', {
+                            doctors_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Doctors | DoloMed',
+                            doctors: doctors
+                        }) 
+                    }
+
+                }          
         })
     },
 
@@ -37,15 +51,30 @@ const doc_directoryController = {
             .lean()
             .sort({lname: 1})
             .exec(function(err,doctors){
-                if(err) throw err
-                    res.render('doc_directory', {
-                    doctors_active: true,
-                    active_session: (req.session.user && req.cookies.user_sid),
-                    active_user: req.session.user,
-                    title: 'Doctors | DoloMed',
-                    doctors: doctors
-                    
-                }) 
+                if(err) {
+                    throw err
+                }
+                else{
+                    if (req.cookies.user_sid && req.session.user) {
+                        res.render('doc_directory', {
+                            doctors_active: true,
+                            user_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Doctors | DoloMed',
+                            doctors: doctors
+                        }) 
+                    }else{
+                        res.render('doc_directory', {
+                            doctors_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Doctors | DoloMed',
+                            doctors: doctors
+                        }) 
+                    }
+
+                }    
             })
         }
 
@@ -54,15 +83,30 @@ const doc_directoryController = {
             .lean()
             .sort({lname: 1})
             .exec(function(err,doctors){
-                if(err) throw err
-                    res.render('doc_directory', {
-                    doctors_active: true,
-                    active_session: (req.session.user && req.cookies.user_sid),
-                    active_user: req.session.user,
-                    title: 'Doctors | DoloMed',
-                    doctors: doctors
-                    
-                }) 
+                if(err) {
+                    throw err
+                }
+                else{
+                    if (req.cookies.user_sid && req.session.user) {
+                        res.render('doc_directory', {
+                            doctors_active: true,
+                            user_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Doctors | DoloMed',
+                            doctors: doctors
+                        }) 
+                    }else{
+                        res.render('doc_directory', {
+                            doctors_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Doctors | DoloMed',
+                            doctors: doctors
+                        }) 
+                    }
+
+                }    
             })
         }
 
@@ -71,15 +115,30 @@ const doc_directoryController = {
             .lean()
             .sort({lname: 1})
             .exec(function(err,doctors){
-                if(err) throw err
-                    res.render('doc_directory', {
-                    doctors_active: true,
-                    active_session: (req.session.user && req.cookies.user_sid),
-                    active_user: req.session.user,
-                    title: 'Doctors | DoloMed',
-                    doctors: doctors
-                    
-                }) 
+                if(err) {
+                    throw err
+                }
+                else{
+                    if (req.cookies.user_sid && req.session.user) {
+                        res.render('doc_directory', {
+                            doctors_active: true,
+                            user_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Doctors | DoloMed',
+                            doctors: doctors
+                        }) 
+                    }else{
+                        res.render('doc_directory', {
+                            doctors_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Doctors | DoloMed',
+                            doctors: doctors
+                        }) 
+                    }
+
+                }    
             })
         }
 
@@ -88,15 +147,30 @@ const doc_directoryController = {
             .lean()
             .sort({lname: 1})
             .exec(function(err,doctors){
-                if(err) throw err
-                    res.render('doc_directory', {
-                    doctors_active: true,
-                    active_session: (req.session.user && req.cookies.user_sid),
-                    active_user: req.session.user,
-                    title: 'Doctors | DoloMed',
-                    doctors: doctors
-                    
-                }) 
+                if(err) {
+                    throw err
+                }
+                else{
+                    if (req.cookies.user_sid && req.session.user) {
+                        res.render('doc_directory', {
+                            doctors_active: true,
+                            user_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Doctors | DoloMed',
+                            doctors: doctors
+                        }) 
+                    }else{
+                        res.render('doc_directory', {
+                            doctors_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Doctors | DoloMed',
+                            doctors: doctors
+                        }) 
+                    }
+
+                }    
             })
         }
 
@@ -105,15 +179,30 @@ const doc_directoryController = {
             .lean()
             .sort({lname: 1})
             .exec(function(err,doctors){
-                if(err) throw err
-                    res.render('doc_directory', {
-                    doctors_active: true,
-                    active_session: (req.session.user && req.cookies.user_sid),
-                    active_user: req.session.user,
-                    title: 'Doctors | DoloMed',
-                    doctors: doctors
-                    
-                }) 
+                if(err) {
+                    throw err
+                }
+                else{
+                    if (req.cookies.user_sid && req.session.user) {
+                        res.render('doc_directory', {
+                            doctors_active: true,
+                            user_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Doctors | DoloMed',
+                            doctors: doctors
+                        }) 
+                    }else{
+                        res.render('doc_directory', {
+                            doctors_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Doctors | DoloMed',
+                            doctors: doctors
+                        }) 
+                    }
+
+                }    
             })
         }
 
@@ -122,15 +211,30 @@ const doc_directoryController = {
             .lean()
             .sort({lname: 1})
             .exec(function(err,doctors){
-                if(err) throw err
-                    res.render('doc_directory', {
-                    doctors_active: true,
-                    active_session: (req.session.user && req.cookies.user_sid),
-                    active_user: req.session.user,
-                    title: 'Doctors | DoloMed',
-                    doctors: doctors
-                    
-                }) 
+                if(err) {
+                    throw err
+                }
+                else{
+                    if (req.cookies.user_sid && req.session.user) {
+                        res.render('doc_directory', {
+                            doctors_active: true,
+                            user_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Doctors | DoloMed',
+                            doctors: doctors
+                        }) 
+                    }else{
+                        res.render('doc_directory', {
+                            doctors_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Doctors | DoloMed',
+                            doctors: doctors
+                        }) 
+                    }
+
+                }    
             })
         }
 
@@ -156,15 +260,30 @@ const doc_directoryController = {
             .lean()
             .sort({lname: 1})
             .exec(function(err,doctors){
-                if(err) throw err
-                    res.render('doc_directory', {
-                    doctors_active: true,
-                    active_session: (req.session.user && req.cookies.user_sid),
-                    active_user: req.session.user,
-                    title: 'Doctors | DoloMed',
-                    doctors: doctors
-                    
-                }) 
+                if(err) {
+                    throw err
+                }
+                else{
+                    if (req.cookies.user_sid && req.session.user) {
+                        res.render('doc_directory', {
+                            doctors_active: true,
+                            user_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Doctors | DoloMed',
+                            doctors: doctors
+                        }) 
+                    }else{
+                        res.render('doc_directory', {
+                            doctors_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Doctors | DoloMed',
+                            doctors: doctors
+                        }) 
+                    }
+
+                }    
             })
         }
 
