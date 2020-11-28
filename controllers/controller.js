@@ -7,7 +7,7 @@ const controller = {
 
     // Add controllers here
     getLanding: function (req, res) {
-        if (req.cookies.user_sid && !req.session.user) {
+        if (req.cookies.user_sid && req.session.user) {
             res.render('landing', {
                 title: 'Home | DoloMed',
                 home_active: true,
@@ -32,7 +32,7 @@ const controller = {
 
     getHealthPrograms: function (req, res) {
         database.findMany(HealthProgram, {}, {}, function (healthprogramsContent) {
-            if (req.cookies.user_sid && !req.session.user) {
+            if (req.cookies.user_sid && req.session.user) {
                 res.render('hp_directory', {
                     title: 'Health Programs | DoloMed',
                     hp_active: true,
