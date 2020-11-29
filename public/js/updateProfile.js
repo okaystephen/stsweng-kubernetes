@@ -74,10 +74,31 @@ $(document).ready(function() {
             error.appendTo(element.parent().next());
         },
     });
-    
-    $('#modalEdit').on('hidden.bs.modal', function () { 
-        location.reload();
-    });
+
+    $('#Others').on('change',function() {
+        if(this.checked){
+            $('#other_error').text('Empty field.');
+            $('#medhistsave').prop('disabled',true);
+
+            $('#medprob_other').keyup(function(){
+                var other = $('#medprob_other').val()
+               
+                if(other == ''){
+                    $('#other_error').text('Empty field.');
+                    $('#medhistsave').prop('disabled',true);
+                }
         
+                else{
+                    $('#other_error').text('');
+                    $('#medhistsave').prop('disabled',false);
+                }
+            });
+        }
+        else{
+            $('#other_error').text('');
+            $('#medhistsave').prop('disabled',false);
+        }
+    })
+
 });
     

@@ -74,6 +74,7 @@ const accountController = {
                 }
             }
             var medprob = input.medprob;
+
             if(medprob == 'Others'){
                 medprob = input.medprob_other;
             }
@@ -81,12 +82,44 @@ const accountController = {
                 medprob = "None"
             }
             else if(medprob.includes('Others')){
-                medprob = medprob.concat(input.medprob_other);
+                var others = input.medprob_other.split(',')
+                for (var i = 0; i < others.length; i++) {
+                    others[i] = others[i].trim()
+                }
+
+                medprob = medprob.concat(others);
                 var i = medprob.indexOf('Others');
                 medprob.splice(i, 1);
             }
+
+            
+
+            var surgeries = input.surgeries.split(',');
+            for (var i = 0; i < surgeries.length; i++) {
+                surgeries[i] = surgeries[i].trim()
+            }
+
+            var medications = input.medications.split(',');
+            for (var i = 0; i < medications.length; i++) {
+                medications[i] = medications[i].trim()
+            }
+
+            var medallergies = input.medallergic.split(',');
+            for (var i = 0; i < medallergies.length; i++) {
+                medallergies[i] = medallergies[i].trim()
+            }
+
+            if(surgeries == ''){
+                surgeries = "None"
+            }
+            if(medications == ''){
+                medications = "None"
+            }
+            if(medallergies == ''){
+                medallergies = "None"
+            }
             console.log(input);
-            db.updateOne(MedHistory, {_id: req.session.usermedhis}, {problems: input.medprob, surgeries: input.surgeries, medications: input.medications, medallergic: input.medallergic}, function(result){
+            db.updateOne(MedHistory, {_id: req.session.usermedhis}, {problems: medprob, surgeries: surgeries, medications: medications, medallergic: medallergies}, function(result){
                 if(result){
                     res.redirect('/account');
                 }
