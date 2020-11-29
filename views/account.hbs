@@ -264,7 +264,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="updateForm-{{_id}}">
+                <form id="updateMedHis" method="post" action="/updateMedHis">
                     <div class="form-group">
                             <div class="col-10">
                                 <label for="streetAdd">Medical Problems<span class="text-danger"> *</span></label>
@@ -446,12 +446,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" id="medHistory-saveChanges" class="btn btn-primary">Save changes</button>
+            </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="medHistory-saveChanges" class="btn btn-primary" onclick="">Save changes</button>
-            </div>
+            
         </div>
     </div>
 </div>
