@@ -54,12 +54,20 @@
                               {{details.fnameError}}
                             </p>
                         </div>
-                        <div class="col pl-2">
+                        <div class="col pr-2">
                             <label for="lname">Last Name<span class="text-danger"> *</span></label>
                             <input type="text" class="form-control" id="lname" name="lname" aria-describedby="lname"
                                 placeholder="Last Name" value="{{input.lname}}" />
                             <p style="color: red; font-size: 13.5px;">
                                 {{details.lnameError}}
+                            </p>
+                        </div>
+                        <div class="col pl-2">
+                            <label for="fname">Middle Name</label>
+                            <input type="text" class="form-control" id="mname" name="mname" aria-describedby="mname"
+                                placeholder="Middle Name" value="{{input.mname}}" />
+                            <p style="color: red; font-size: 13.5px;">
+                               {{details.mnameError}}
                             </p>
                         </div>
                     </div>

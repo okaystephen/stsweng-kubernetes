@@ -97,7 +97,7 @@ const registerController = {
                             _id: new mongoose.Types.ObjectId(),
                             email: input.email,
                             password: hash,
-                            name: {first: input.fname, last: input.lname},
+                            name: {first: input.fname, middle: input.mname, last: input.lname},
                             phone: input.phone,
                             relationship: input.relationship,
                             birthdate: input.date,
