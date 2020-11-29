@@ -1,5 +1,6 @@
 const db = require('../models/db');
 const User = require('../models/UserModel');
+const MedHis = require('../models/MedHistoryModel');
 const moment = require('moment');
 const sanitize = require('mongo-sanitize');
 const saltRounds = 10;
@@ -59,7 +60,27 @@ const accountController = {
                 });
             }
         }
-    }
+    },
+
+    updateMedHis: function(req, res){
+        if(!req.session.user) res.redirect('/')
+        else{
+            //sanitize user inputs
+            const input = {};
+            for (const field in req.body) {
+                if (req.body.hasOwnProperty(field)) {
+                    input[field] = sanitize(req.body[field]);
+                    
+                }
+            }
+            console.log(input);
+            db.updateOne(MedHis, {_id: req.session.usermedhis}, {problems: input.medprob, surgeries: input.surgeries, medications: input.medications, medallergic: input.medallergies}, function(result){
+                if(result){
+                    res.redirect('/account');
+                }
+            })
+        }
+    },
 }
 
 // enables to account controller object when called in another .js file
