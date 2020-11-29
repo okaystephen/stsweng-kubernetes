@@ -11,13 +11,21 @@ const accountController = {
         if(!req.session.user) res.redirect('/')
         else{
             db.findOne(User, {_id: req.session.user}, '', function(user){
-                res.render('account', {
-                    active_session: (req.session.user && req.cookies.user_sid),
-                    active_user: req.session.user,
-                    title: 'Account | DoloMed',
-                    user: user.toObject(),
-                    date: moment(user.date).format('YYYY-MM-DD')
-             });
+                if(user){
+                    user    
+                        .populate('medhistory')
+                        .execPopulate(function(err, data){
+                            if(err) throw err;
+                            console.log(data);
+                            res.render('account', {
+                                active_session: (req.session.user && req.cookies.user_sid),
+                                active_user: req.session.user,
+                                title: 'Account | DoloMed',
+                                user: data.toObject(),
+                                date: moment(user.date).format('YYYY-MM-DD')
+                            });
+                        })
+                }
             })
         }
     },

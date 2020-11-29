@@ -137,18 +137,30 @@
                 <div class="card-title" style="font-size: 45px; font-family: 'Montserrat', sans-serif; color: #2F8250;">
                     Medical History</div>
                 <div class="card-text">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Past Medical Problems</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{user.medHistory}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                     <div class="row">
+                            <div class="col pr-2">
+                                <h5><u>Medical Problems</u></h5>
+                                <h6>{{user.medhistory.problems}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col pr-2">
+                                <h5><u>Surgeries</u></h5>
+                                <h6>{{user.medhistory.surgeries}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col pr-2">
+                                <h5><u>Current Medications</u></h5>
+                                <h6>{{user.medhistory.medications}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col pr-2">
+                                <h5><u>Drug allergies</u></h5>
+                                <h6>{{user.medhistory.medallergic}}</h6>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

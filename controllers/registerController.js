@@ -69,7 +69,7 @@ const registerController = {
 
             var surgeries = input.surgeries;
             var medications = input.medications;
-            var medallergies = input.medallargies;
+            var medallergies = input.medallergies;
 
             if(surgeries == ''){
                 surgeries = "None"
@@ -86,7 +86,7 @@ const registerController = {
                 problems: medprob,
                 surgeries: surgeries,
                 medications: medications,
-                medallargies: medallergies
+                medallergic: medallergies
             }
 
             db.insertOne(MedHistory, medhist, function(flag){
