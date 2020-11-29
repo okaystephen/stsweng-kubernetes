@@ -114,6 +114,7 @@ const registerController = {
 
                                 //user id session is stored
                                 req.session.user = user._id;
+                                req.session.usermedhis = user.medhistory
                                 //redirects to dashboard
                                 console.log('Success!');
                                 res.redirect('/profile')

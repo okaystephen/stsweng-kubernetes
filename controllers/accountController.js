@@ -1,6 +1,6 @@
 const db = require('../models/db');
 const User = require('../models/UserModel');
-const MedHis = require('../models/MedHistoryModel');
+const MedHistory = require('../models/MedHistoryModel');
 const moment = require('moment');
 const sanitize = require('mongo-sanitize');
 const saltRounds = 10;
@@ -73,8 +73,20 @@ const accountController = {
                     
                 }
             }
+            var medprob = input.medprob;
+            if(medprob == 'Others'){
+                medprob = input.medprob_other;
+            }
+            else if(medprob == ''){
+                medprob = "None"
+            }
+            else if(medprob.includes('Others')){
+                medprob = medprob.concat(input.medprob_other);
+                var i = medprob.indexOf('Others');
+                medprob.splice(i, 1);
+            }
             console.log(input);
-            db.updateOne(MedHis, {_id: req.session.usermedhis}, {problems: input.medprob, surgeries: input.surgeries, medications: input.medications, medallergic: input.medallergies}, function(result){
+            db.updateOne(MedHistory, {_id: req.session.usermedhis}, {problems: input.medprob, surgeries: input.surgeries, medications: input.medications, medallergic: input.medallergic}, function(result){
                 if(result){
                     res.redirect('/account');
                 }
