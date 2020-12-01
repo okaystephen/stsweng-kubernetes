@@ -22,7 +22,7 @@ const loginController = {
                     }
                     else {
                         res.render('landing', {
-                            // layout: '/layouts/main',
+                            layout: 'main',
                             title: 'Home | DoloMed',
                             home_active: true,
                             login_active: true,
@@ -33,7 +33,7 @@ const loginController = {
             }
             else {
                 res.render('landing', {
-                    // layout: '/layouts/main',
+                    layout: 'main',
                     title: 'Home | DoloMed',
                     home_active: true,
                     login_active: true,

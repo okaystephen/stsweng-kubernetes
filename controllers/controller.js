@@ -9,6 +9,7 @@ const controller = {
     getLanding: function (req, res) {
         if (req.cookies.user_sid && req.session.user) {
             res.render('landing', {
+                layout: 'main',
                 title: 'Home | DoloMed',
                 home_active: true,
                 user_active: true,
@@ -16,6 +17,7 @@ const controller = {
         }
         else {
             res.render('landing', {
+                layout: 'main',
                 title: 'Home | DoloMed',
                 home_active: true,
                 user_active: false,
@@ -34,19 +36,19 @@ const controller = {
         database.findMany(HealthProgram, {}, {}, function (healthprogramsContent) {
             if (req.cookies.user_sid && req.session.user) {
                 res.render('hp_directory', {
+                    layout: 'main',
                     title: 'Health Programs | DoloMed',
                     hp_active: true,
                     user_active: true,
                     healthprogramsContent: healthprogramsContent,
-                    test: "Test 1"
                 })
             }
             else {
                 res.render('hp_directory', {
+                    layout: 'main',
                     title: 'Health Programs | DoloMed',
                     hp_active: true,
                     healthprogramsContent: healthprogramsContent,
-                    test: "Test 2"
                 })
             }
         });
