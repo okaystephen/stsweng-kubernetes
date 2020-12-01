@@ -1,10 +1,11 @@
 const accountController = {
     // render account page when client requests '/account' defined in routes.js
-    getAccount: function (req, res){
+    getAccount: function (req, res) {
         res.render('account', {
-               active_session: (req.session.user && req.cookies.user_sid),
-               active_user: req.session.user,
-               title: 'Account | DoliMed'
+            layout: 'profile',
+            active_session: (req.session.user && req.cookies.user_sid),
+            active_user: req.session.user,
+            title: 'Account | DoliMed'
         });
     },
 }

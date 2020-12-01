@@ -12,6 +12,7 @@ const registerController = {
     // render log-in page when client requests '/register' defined in routes.js
     getRegister: function (req, res) {
         res.render('register', {
+            layout: 'main',
             active_session: (req.session.user && req.cookies.user_sid),
             active_user: req.session.user,
             register_active: true,
@@ -34,6 +35,7 @@ const registerController = {
                     errors[i].msg;
             }
             res.render('register', {
+                layout: 'main',
                 input: req.body,
                 details: details,
                 active_session: req.session.user && req.cookies.user_sid,
