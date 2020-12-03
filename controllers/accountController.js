@@ -73,12 +73,14 @@ const accountController = {
                     
                 }
             }
+
+            console.log(input);
             var medprob = input.medprob;
 
             if(medprob == 'Others'){
                 medprob = input.medprob_other;
             }
-            else if(medprob == ''){
+            else if(medprob.includes('0')){
                 medprob = "None"
             }
             else if(medprob.includes('Others')){
@@ -87,12 +89,15 @@ const accountController = {
                     others[i] = others[i].trim()
                 }
 
+                var index = medprob.indexOf('0');
+                if (index > -1) {
+                    medprob.splice(index, 1);
+                }
+
                 medprob = medprob.concat(others);
                 var i = medprob.indexOf('Others');
                 medprob.splice(i, 1);
             }
-
-            
 
             var surgeries = input.surgeries.split(',');
             for (var i = 0; i < surgeries.length; i++) {
@@ -118,7 +123,7 @@ const accountController = {
             if(medallergies == ''){
                 medallergies = "None"
             }
-            console.log(input);
+
             db.updateOne(MedHistory, {_id: req.session.usermedhis}, {problems: medprob, surgeries: surgeries, medications: medications, medallergic: medallergies}, function(result){
                 if(result){
                     res.redirect('/account');

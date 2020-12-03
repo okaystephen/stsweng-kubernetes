@@ -280,6 +280,7 @@
                     <div class="form-group">
                             <div class="col-10">
                                 <label for="streetAdd">Medical Problems<span class="text-danger"> *</span></label>
+                            
                             <div class="row">
                                 <div class="form-check col-4">
                                     <input class="form-check-input" type="checkbox" name="medprob" value="Heart Disease" id="HeartDisease" style="margin-top: 6px" {{checkbox "Heart Disease" user.medhistory.problems}}>
@@ -424,12 +425,14 @@
                                     </div>
                                 </div>
                             </div>
+
+                             <input type="hidden" name="medprob" value="0" />
                         </div>
 
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-12" style="margin-top: 15px;">
-                                    <label for="streetAdd">If applicable, please list all of your previous surgeries<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
+                                    <label for="streetAdd" style="font-size: 14px;">If applicable, please list all of your previous surgeries<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
                                     <input type="text" class="form-control" id="surgeries" name="surgeries"
                                         aria-describedby="surgeries" placeholder="(E.g. Cataract surgery, Cholecystectomy)"
                                         value="{{user.medhistory.surgeries}}" />
@@ -440,7 +443,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-12" >
-                                    <label for="streetAdd">If applicable, please list all the medications you are currently taking<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
+                                    <label for="streetAdd" style="font-size: 14px;">If applicable, please list all the medications you are currently taking<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
                                     <input type="text" class="form-control" id="medications" name="medications"
                                         aria-describedby="medications" placeholder="(E.g. Prinivil, Zestril)"
                                         value="{{user.medhistory.medications}}" />
@@ -451,7 +454,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-12" >
-                                    <label for="streetAdd">If applicable, please list all the medications you are currently allergic with<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
+                                    <label for="streetAdd" style="font-size: 14px;">If applicable, please list all the medications you are currently allergic with<span style="font-weight: normal; font-size:smaller; margin-left: 5px; font-style:italic">(Separate with a comma)</span></label>
                                     <input type="text" class="form-control" id="medallergic" name="medallergic"
                                         aria-describedby="medallergic" placeholder="(E.g. Prinivil, Zestril)"
                                         value="{{user.medhistory.medallergic}}" />
