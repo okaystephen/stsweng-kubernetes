@@ -5,7 +5,7 @@ name: Node.js CI
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [ main, sprint1, sprint2, sprint3 ]
 
 jobs:
   test_pull_request: 
