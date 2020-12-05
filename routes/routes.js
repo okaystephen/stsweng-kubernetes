@@ -11,11 +11,13 @@ const registerController = require('../controllers/registerController.js');
 const dashboardController = require('../controllers/dashboardController.js');
 const loginController = require('../controllers/loginController.js');
 const doc_directoryController = require('../controllers/doc_directoryController.js');
+const appointmentController = require('../controllers/appointmentController.js');
 
 //form validation
 const validation = require('../helpers/validation.js');
 const profileController = require('../controllers/profileController.js');
 const accountController = require('../controllers/accountController.js');
+const hp_directoryController = require('../controllers/hp_directoryController.js');
 
 const app = express();
 
@@ -59,8 +61,8 @@ app.post('/', loginController.postLogIn);
 app.get('/logout', controller.getLogOut);
 
 // health program controller
-app.get('/healthprograms', controller.getHealthPrograms);
-app.post('/healthprograms', loginController.postLogIn);
+app.get('/healthprograms', hp_directoryController.getHPDirectory);
+
 
 //dashboard controller
 app.get('/dashboard', dashboardController.getDashboard);
@@ -70,6 +72,9 @@ app.get('/profile', profileController.getProfile);
 
 //account controller
 app.get('/account', accountController.getAccount);
+
+//appointment controller
+app.get('/appointments', appointmentController.getAppointment);
 
 //logout
 app.get('/logout', function (req, res) {
