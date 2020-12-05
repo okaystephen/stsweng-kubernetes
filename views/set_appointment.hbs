@@ -60,9 +60,9 @@
         <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">Set an appointment
         </p>
         <hr>
-        <div class="card mx-auto border shadow-sm" style="width: 973px; margin-bottom: 2rem;">
+        <div class="card mx-auto border shadow-sm pt-2" style="width: 973px; ">
             <div class="card-body">
-                <div class="card mx-auto " style="width: 913px; margin-bottom: 2rem;">
+                <div class="card mx-auto " style="width: 913px; ">
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -71,7 +71,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="appointment-time">Time</label>
-                                <input type="time" id="appointment-time" name="appointment-time">
+                                <input type="time" class="form-control" id="appointment-time" name="appointment-time">
                             </div>
                         </div>
                         <div class="form-group">
@@ -85,7 +85,7 @@
                             <label for="appointment-reason">Reason for appointment</label>
                             <textarea class="form-control" id="appointment-reason" rows="3"></textarea>
                         </div>
-                        <div class="form-group text-center">
+                        <div class="form-group text-center pt-3">
                             <button type="submit" class="btn btn-success"
                                 onclick="registerappointment()">Submit</button>
                         </div>
@@ -104,12 +104,15 @@
 
         function registerappointment() {
             confirm("Your appointment details:"
-                + "<br><br>"
+                + "\n\n"
                 + "Date: "
+                + "\n"
                 + "Time: "
+                + "\n"
                 + "Doctor: "
+                + "\n"
                 + "Reason: "
-                + "<br><br>"
+                + "\n\n"
                 + "Are you sure you want to submit this appointment?")
         }
 
