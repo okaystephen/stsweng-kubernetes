@@ -64,11 +64,7 @@ const controller = {
             })
         }
         else {
-            res.render('set_appointment', {
-                layout: 'profile',
-                title: 'Set Appointment | DoloMed',
-                appointment_true: true,
-            })
+            res.redirect('/');
         }
     },
 }
