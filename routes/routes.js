@@ -71,6 +71,9 @@ app.get('/profile', profileController.getProfile);
 //account controller
 app.get('/account', accountController.getAccount);
 
+//appointment controller
+app.get('/appointments', controller.getAppointment);
+
 //logout
 app.get('/logout', function (req, res) {
   req.logout;

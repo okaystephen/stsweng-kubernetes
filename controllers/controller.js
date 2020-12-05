@@ -54,7 +54,7 @@ const controller = {
         });
     },
 
-    getHealthPrograms: function (req, res) {
+    getAppointment: function (req, res) {
         if (req.cookies.user_sid && req.session.user) {
             res.render('set_appointment', {
                 layout: 'profile',
