@@ -11,6 +11,7 @@ const registerController = require('../controllers/registerController.js');
 const dashboardController = require('../controllers/dashboardController.js');
 const loginController = require('../controllers/loginController.js');
 const doc_directoryController = require('../controllers/doc_directoryController.js');
+const appointmentController = require('../controllers/appointmentController.js');
 
 //form validation
 const validation = require('../helpers/validation.js');
@@ -72,6 +73,9 @@ app.get('/profile', profileController.getProfile);
 app.get('/account', accountController.getAccount);
 app.post('/updateProfile', accountController.updateProfile);
 app.post('/updateMedHis', accountController.updateMedHis);
+
+//appointment controller
+app.get('/appointments', appointmentController.getAppointment);
 
 //logout
 app.get('/logout', function (req, res) {
