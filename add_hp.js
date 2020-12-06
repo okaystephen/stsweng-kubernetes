@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const db = require('./models/db');
 const HealthProgram = require('./models/HealthProgramModel');
 
-const url = 'mongodb://localhost:27017/stsweng-kubernetes';
+const url = "mongodb+srv://stsweng-kubernetes:dadWym-mefseg-cuqhi2@cluster0.5z9xl.mongodb.net/stsweng-kubernetes?retryWrites=true&w=majority";
 const options = {
     useUnifiedTopology: true,
     useNewUrlParser: true,

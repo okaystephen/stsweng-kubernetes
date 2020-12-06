@@ -2,21 +2,21 @@ const mongoose = require('mongoose');
 const db = require('./models/db');
 const Doctor = require('./models/DoctorModel');
 
-const url = 'mongodb://localhost:27017/stsweng-kubernetes';
+const url = "mongodb+srv://stsweng-kubernetes:dadWym-mefseg-cuqhi2@cluster0.5z9xl.mongodb.net/stsweng-kubernetes?retryWrites=true&w=majority";
 const options = {
     useUnifiedTopology: true,
     useNewUrlParser: true,
 };
 
 mongoose.connect(url, options, err => {
-  if (err) throw err;
-  console.log('Connected at ' + url);
+    if (err) throw err;
+    console.log('Connected at ' + url);
 });
 
 
 var doctor = {
     _id: new mongoose.Types.ObjectId(),
-    fname: 'Natalio', 
+    fname: 'Natalio',
     lname: 'Albana',
     specialization: 'Surgery',
     avatar: 'doctor.png',
@@ -24,26 +24,26 @@ var doctor = {
     schedule: [
         {
             day: 'Monday',
-            time: [ 
-                { start: '09:00 am', end: '12:00 pm'},
-                { start: '3:00 pm', end: '5:00 pm'}
+            time: [
+                { start: '09:00 am', end: '12:00 pm' },
+                { start: '3:00 pm', end: '5:00 pm' }
             ]
         },
         {
             day: 'Thursday',
-            time: [ 
-                { start: '2:00 pm', end: '4:00 pm'}
+            time: [
+                { start: '2:00 pm', end: '4:00 pm' }
             ]
         },
     ]
 }
 
-db.insertOne(Doctor, doctor, function(){
+db.insertOne(Doctor, doctor, function () {
 })
 
 var doctor1 = {
     _id: new mongoose.Types.ObjectId(),
-    fname: 'Elmer', 
+    fname: 'Elmer',
     lname: 'Reyes',
     specialization: 'Family Medicine',
     avatar: 'doctor.png',
@@ -51,26 +51,26 @@ var doctor1 = {
     schedule: [
         {
             day: 'Tuesday',
-            time: [ 
-                { start: '07:00 am', end: '09:00 am'},
+            time: [
+                { start: '07:00 am', end: '09:00 am' },
             ]
         },
         {
             day: 'Wednesday',
-            time: [ 
-                { start: '9:00 am', end: '10:00 am'},
-                { start: '2:00 pm', end: '4:00 pm'},
+            time: [
+                { start: '9:00 am', end: '10:00 am' },
+                { start: '2:00 pm', end: '4:00 pm' },
             ]
         },
     ]
 }
 
-db.insertOne(Doctor, doctor1, function(){
+db.insertOne(Doctor, doctor1, function () {
 })
 
 var doctor2 = {
     _id: new mongoose.Types.ObjectId(),
-    fname: 'Ramon', 
+    fname: 'Ramon',
     lname: 'Arcadio',
     specialization: 'Pediatrics',
     avatar: 'doctor.png',
@@ -78,25 +78,25 @@ var doctor2 = {
     schedule: [
         {
             day: 'Friday',
-            time: [ 
-                { start: '09:00 am', end: '12:00 pm'}
+            time: [
+                { start: '09:00 am', end: '12:00 pm' }
             ]
         },
         {
             day: 'Saturday',
-            time: [ 
-                { start: '12:00 pm', end: '2:00 pm'}
+            time: [
+                { start: '12:00 pm', end: '2:00 pm' }
             ]
         },
     ]
 }
 
-db.insertOne(Doctor, doctor2, function(){
+db.insertOne(Doctor, doctor2, function () {
 })
 
 var doctor3 = {
     _id: new mongoose.Types.ObjectId(),
-    fname: 'Orlando', 
+    fname: 'Orlando',
     lname: 'Bernardo',
     specialization: 'Anesthesiology',
     avatar: 'doctor.png',
@@ -104,26 +104,26 @@ var doctor3 = {
     schedule: [
         {
             day: 'Monday',
-            time: [ 
-                { start: '3:00 pm', end: '6:00 pm'}
+            time: [
+                { start: '3:00 pm', end: '6:00 pm' }
             ]
         },
         {
             day: 'Thursday',
-            time: [ 
-                { start: '2:00 pm', end: '4:00 pm'}
+            time: [
+                { start: '2:00 pm', end: '4:00 pm' }
             ]
         },
         {
             day: 'Sunday',
-            time: [ 
-                { start: '10:00 am', end: '1:00 pm'}
+            time: [
+                { start: '10:00 am', end: '1:00 pm' }
             ]
         },
     ]
 }
 
-db.insertOne(Doctor, doctor3, function(){
+db.insertOne(Doctor, doctor3, function () {
 })
 
 var doctor4 = {
@@ -136,15 +136,15 @@ var doctor4 = {
     schedule: [
         {
             day: 'Wednesday',
-            time: [ 
-                { start: '09:00 am', end: '12:00 pm'},
-                { start: '3:00 pm', end: '5:00 pm'}
+            time: [
+                { start: '09:00 am', end: '12:00 pm' },
+                { start: '3:00 pm', end: '5:00 pm' }
             ]
         },
     ]
 }
 
-db.insertOne(Doctor, doctor4, function(){
+db.insertOne(Doctor, doctor4, function () {
 })
 
 
