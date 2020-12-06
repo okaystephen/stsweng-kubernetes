@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const { ObjectID } = require('mongodb');
-const { $date } = require('mongodb');
 
 const UserModel = require('../../models/UserModel.js');
 
@@ -12,8 +11,8 @@ const hpData = {
     hp_name: 'Blood Donation Program',
     hp_desc: 'Republic Act No. 7719, also known as the National Blood Services Act of 1994, promotes voluntary blood donation to provide sufficient supply of safe blood and to regulate blood banks. This act aims to inculcate public awareness that blood donation is a humanitarian act.',
     hp_location: 'Parañaque, Manila',
-    hp_startdate: "2021-01-20T00:00:00.000Z",
-    hp_enddate: "2021-02-20T05:00:00.000Z",
+    hp_startdate: new Date("2021-01-20T00:00:00.000Z"),
+    hp_enddate: new Date("2021-02-20T05:00:00.000Z"),
     hp_maxCap: 130,
 }
 
