@@ -68,7 +68,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 
 // connects to the database
-const url = 'mongodb://localhost:27017/stsweng-kubernetes';
+const url = "mongodb+srv://stsweng-kubernetes:dadWym-mefseg-cuqhi2@cluster0.5z9xl.mongodb.net/stsweng-kubernetes?retryWrites=true&w=majority";
 const options = {
   useUnifiedTopology: true,
   useNewUrlParser: true,

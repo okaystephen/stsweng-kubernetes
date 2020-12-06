@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-const url = "mongodb://localhost:27017";
+// const url = "mongodb://localhost:27017";
+const url = "mongodb+srv://stsweng-kubernetes:dadWym-mefseg-cuqhi2@cluster0.5z9xl.mongodb.net/stsweng-kubernetes?retryWrites=true&w=majority";
 const options = {
     useUnifiedTopology: true,
     useNewUrlParser: true,
@@ -63,8 +64,8 @@ const database = {
         callback function is called after the execution of findMany() function
     */
     findMany: function (model, query, projection, callback) {
-       model.find(query, projection).lean().exec(function(error, result) {
-            if(error) return callback(false);
+        model.find(query, projection).lean().exec(function (error, result) {
+            if (error) return callback(false);
             return callback(result);
         });
     },
@@ -74,9 +75,9 @@ const database = {
         on a single document based on the model `model`
         filtered by the object `filter`
     */
-    updateOne: function(model, filter, update, callback) {
-        model.updateOne(filter, update, function(error, result) {
-            if(error) return callback(false);
+    updateOne: function (model, filter, update, callback) {
+        model.updateOne(filter, update, function (error, result) {
+            if (error) return callback(false);
             console.log('Document modified: ' + result.nModified);
             return callback(true);
         });
