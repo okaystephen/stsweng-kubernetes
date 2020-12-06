@@ -44,7 +44,15 @@ describe('Database Model Test', () => {
         expect(savedHP.hp_startdate).toBe(hpData.hp_startdate);
         expect(savedHP.hp_enddate).toBe(hpData.hp_enddate);
         expect(savedHP.hp_maxCap).toBe(hpData.hp_maxCap);
+
+
     });
+
+    afterAll(done => {
+        // Closing the DB connection allows Jest to exit successfully.
+        mongoose.connection.close()
+        done()
+    })
 
     // // Test Schema is working!!!
     // // You shouldn't be able to add in any field that isn't defined in the schema
