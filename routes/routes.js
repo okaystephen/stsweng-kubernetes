@@ -73,6 +73,7 @@ app.post('/updateMedHis', accountController.updateMedHis);
 
 //appointment controller
 app.get('/appointments', appointmentController.getAppointment);
+app.post('/appointments', appointmentController.postAppointment);
 
 // health program controller
 app.get('/healthprograms', hp_directoryController.getHealthPrograms);
