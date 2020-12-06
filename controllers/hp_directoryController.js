@@ -1,23 +1,33 @@
-const db = require('../models/db');
+const database = require('../models/db');
 const User = require('../models/UserModel');
 const moment = require('moment');
+const HealthProgram = require('../models/HealthProgramModel.js');
 
 const hp_directoryController = {
     // render account page when client requests '/account' defined in routes.js
-    getHPDirectory: function (req, res) {
-        if (!req.session.user) res.redirect('/')
-        else {
-            db.findOne(User, { _id: req.session.user }, '', function (user) {
+   
+    getHealthPrograms: function (req, res) {
+        database.findMany(HealthProgram, {}, {}, function (healthprogramsContent) {
+            if (req.cookies.user_sid && req.session.user) {
                 res.render('hp_directory', {
-                    layout: 'profile',
-                    active_session: (req.session.user && req.cookies.user_sid),
-                    active_user: req.session.user,
+                    layout: 'main',
                     title: 'Health Programs | DoloMed',
-                    user: user.toObject(),
-                    date: moment(user.date).format('YYYY-MM-DD')
-                });
-            })
-        }
+                    hp_active: true,
+                    user_active: true,
+                    healthprogramsContent: healthprogramsContent,
+                    test: "Test 1"
+                })
+            }
+            else {
+                res.render('hp_directory', {
+                    layout: 'main',
+                    title: 'Health Programs | DoloMed',
+                    hp_active: true,
+                    healthprogramsContent: healthprogramsContent,
+                    test: "Test 2"
+                })
+            }
+        });
     },
 }
 

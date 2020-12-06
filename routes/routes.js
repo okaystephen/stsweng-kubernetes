@@ -60,10 +60,6 @@ app.get('/', controller.getLanding);
 app.post('/', loginController.postLogIn);
 app.get('/logout', controller.getLogOut);
 
-// health program controller
-app.get('/healthprograms', hp_directoryController.getHPDirectory);
-
-
 //dashboard controller
 app.get('/dashboard', dashboardController.getDashboard);
 
@@ -75,6 +71,10 @@ app.get('/account', accountController.getAccount);
 
 //appointment controller
 app.get('/appointments', appointmentController.getAppointment);
+
+// health program controller
+app.get('/healthprograms', hp_directoryController.getHealthPrograms);
+app.post('/healthprograms', loginController.postLogIn);
 
 //logout
 app.get('/logout', function (req, res) {
