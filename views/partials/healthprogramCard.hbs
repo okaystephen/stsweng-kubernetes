@@ -26,7 +26,7 @@
         {{#equals hp_curCap hp_maxCap}}
         {{!-- <span tabindex="0" data-toggle="tooltip" data-placement="right" title="You already sent your response to this applicant"></span>
         <small><button class="btn btn-secondary" role="button" style="pointer-events: none;" disabled>Register</button></small> --}}
-        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom" title="{{hp_name}} has reached the maximum number of patients">
+        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom" title="{{hp_name}} has already reached the maximum number of patients">
             <button class="btn btn-secondary" style="pointer-events: none;" type="button" disabled>Register</button>
         </span>
         {{else}}
@@ -51,7 +51,17 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+          <form id="registerHealth" method="post" action="/registerhealth">
+            <div class="form-group">         
+                <div class="col-12" >
+                    <label for="streetAdd">Home Address<span class="text-danger"> *</span></label>
+                    <input type="text" class="form-control" id="homeAdd" name="homeAdd"
+                        aria-describedby="homeAdd" placeholder="Home Address"
+                        value="{{user.address}}" />
+                </div>
+                <div class="col-sm-10" style="font-size: smaller; color: red"></div>
+            </div>
+          </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -63,9 +73,9 @@
 
 
 <script>
-    function register_user(hp_name) {
-        var hp_confirm = confirm("Do you want to register in the following program: " + hp_name);
-        if (hp_confirm == true) {
+    //function register_user(hp_name) {
+        //var hp_confirm = confirm("Do you want to register in the following program: " + hp_name);
+        //if (hp_confirm == true) {
             //$.ajax({
             //    url: "/healthprograms-reserve/",
             //    data: { id: self },
@@ -74,8 +84,8 @@
             //    },
             //    error: function (xhr) { }
             //});
-        }
-    }
+        //}
+    //}
     function register() {
         alert("Please log in first!");
         $("#login-nav1").addClass("show");
