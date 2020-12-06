@@ -19,6 +19,7 @@ const accountController = {
                             if(err) throw err;
                             console.log(data);
                             res.render('account', {
+                                layout: 'profile',
                                 active_session: (req.session.user && req.cookies.user_sid),
                                 active_user: req.session.user,
                                 title: 'Account | DoloMed',
