@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const db = require('./models/db');
 const HealthProgram = require('./models/HealthProgramModel');
+const dotenv = require('dotenv');
 
-const url = "mongodb+srv://stsweng-kubernetes:dadWym-mefseg-cuqhi2@cluster0.5z9xl.mongodb.net/stsweng-kubernetes?retryWrites=true&w=majority";
+dotenv.config();
+const url = process.env.MONGO_URI;
 const options = {
     useUnifiedTopology: true,
     useNewUrlParser: true,
