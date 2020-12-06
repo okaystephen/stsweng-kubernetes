@@ -1,7 +1,21 @@
 const mongoose = require('mongoose');
+const { ObjectID } = require('mongodb');
+
 const UserModel = require('../../models/UserModel.js');
+
 const DoctorModel = require('../../models/DoctorModel.js');
+
 const HealthProgramModel = require('../../models/HealthProgramModel.js');
+const hpData = {
+    _id: new ObjectID(),
+    hp_name: 'Blood Donation Program',
+    hp_desc: 'Republic Act No. 7719, also known as the National Blood Services Act of 1994, promotes voluntary blood donation to provide sufficient supply of safe blood and to regulate blood banks. This act aims to inculcate public awareness that blood donation is a humanitarian act.',
+    hp_location: 'Parañaque, Manila',
+    hp_startdate: '2021-01-20 08:00',
+    hp_enddate: '2021-02-20 13:00',
+    hp_maxCap: 130,
+}
+
 const MedHistoryModel = require('../../models/MedHistoryModel.js');
 
 describe('Database Model Test', () => {
@@ -18,17 +32,19 @@ describe('Database Model Test', () => {
         });
     });
 
-    // it('create & save user successfully', async () => {
-    //     const validUser = new UserModel(userData);
-    //     const savedUser = await validUser.save();
+    it('Health Program Model - create & save a health program successfully', async () => {
+        const validHP = new HealthProgramModel(hpData);
+        const savedHP = await validHP.save();
 
-    //     // Object Id should be defined when successfully saved to MongoDB.
-    //     expect(savedUser._id).toBeDefined();
-    //     expect(savedUser.name).toBe(userData.name);
-    //     expect(savedUser.gender).toBe(userData.gender);
-    //     expect(savedUser.dob).toBe(userData.dob);
-    //     expect(savedUser.loginUsing).toBe(userData.loginUsing);
-    // });
+        // Object Id should be defined when successfully saved to MongoDB.
+        expect(savedHP._id).toBe(hpData._id);
+        expect(savedHP.hp_name).toBe(hpData.hp_name);
+        expect(savedHP.hp_desc).toBe(hpData.hp_desc);
+        expect(savedHP.hp_location).toBe(hpData.hp_location);
+        expect(savedHP.hp_startdate).toBe(hpData.hp_startdate);
+        expect(savedHP.hp_enddate).toBe(hpData.hp_enddate);
+        expect(savedHP.hp_maxCap).toBe(hpData.hp_maxCap);
+    });
 
     // // Test Schema is working!!!
     // // You shouldn't be able to add in any field that isn't defined in the schema
