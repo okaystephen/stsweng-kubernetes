@@ -113,6 +113,7 @@ const registerController = {
                             password: hash,
                             name: { first: input.fname, middle: mname, last: input.lname },
                             phone: input.phone,
+                            relationship: input.relationship,
                             birthdate: input.date,
                             sex: sex,
                             address: input.homeAdd,

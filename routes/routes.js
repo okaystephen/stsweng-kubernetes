@@ -68,6 +68,8 @@ app.get('/profile', profileController.getProfile);
 
 //account controller
 app.get('/account', accountController.getAccount);
+app.post('/updateProfile', accountController.updateProfile);
+app.post('/updateMedHis', accountController.updateMedHis);
 
 //appointment controller
 app.get('/appointments', appointmentController.getAppointment);

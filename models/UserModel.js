@@ -15,6 +15,10 @@ const UserSchema = mongoose.Schema({
         middle: String,
         last: String,
     },
+    relationship: {
+        type: String,
+        required: true,
+    },
     phone: {
         type: String,
         required: true,
