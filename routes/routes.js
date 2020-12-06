@@ -17,6 +17,7 @@ const appointmentController = require('../controllers/appointmentController.js')
 const validation = require('../helpers/validation.js');
 const profileController = require('../controllers/profileController.js');
 const accountController = require('../controllers/accountController.js');
+const hp_directoryController = require('../controllers/hp_directoryController.js');
 
 const app = express();
 
@@ -59,10 +60,6 @@ app.get('/', controller.getLanding);
 app.post('/', loginController.postLogIn);
 app.get('/logout', controller.getLogOut);
 
-// health program controller
-app.get('/healthprograms', controller.getHealthPrograms);
-app.post('/healthprograms', loginController.postLogIn);
-
 //dashboard controller
 app.get('/dashboard', dashboardController.getDashboard);
 
@@ -76,6 +73,11 @@ app.post('/updateMedHis', accountController.updateMedHis);
 
 //appointment controller
 app.get('/appointments', appointmentController.getAppointment);
+app.post('/appointments', appointmentController.postAppointment);
+
+// health program controller
+app.get('/healthprograms', hp_directoryController.getHealthPrograms);
+app.post('/healthprograms', loginController.postLogIn);
 
 //logout
 app.get('/logout', function (req, res) {

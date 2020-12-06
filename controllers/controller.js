@@ -31,28 +31,6 @@ const controller = {
         // res.redirect('/')
         res.redirect('back');
     },
-
-    getHealthPrograms: function (req, res) {
-        database.findMany(HealthProgram, {}, {}, function (healthprogramsContent) {
-            if (req.cookies.user_sid && req.session.user) {
-                res.render('hp_directory', {
-                    layout: 'main',
-                    title: 'Health Programs | DoloMed',
-                    hp_active: true,
-                    user_active: true,
-                    healthprogramsContent: healthprogramsContent,
-                })
-            }
-            else {
-                res.render('hp_directory', {
-                    layout: 'main',
-                    title: 'Health Programs | DoloMed',
-                    hp_active: true,
-                    healthprogramsContent: healthprogramsContent,
-                })
-            }
-        });
-    },
 }
 
 // enables to export controller object when called in another .js file

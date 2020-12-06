@@ -40,38 +40,7 @@
                             </thead>
                             <tbody id="entries-table">
                                 {{#each healthprogramsContent}}
-                                <tr>
-                                    <td>
-                                        <small>{{this.hp_name}}</small>
-                                    </td>
-                                    <td style="font-size:small;">
-                                        <small>{{this.hp_desc}}</small>
-                                    </td>
-                                    <td class="text-center">
-                                        <small>{{dateFormat this.hp_startdate "YYYY-MM-DD"}}</small>
-                                        <br>
-                                        <small>{{dateFormat this.hp_startdate "h:mm a"}}</small>
-                                    </td>
-                                    <td class="text-center">
-                                        <small>{{dateFormat this.hp_enddate "YYYY-MM-DD"}}</small>
-                                        <br>
-                                        <small>{{dateFormat this.hp_enddate "h:mm a"}}</small>
-                                    </td>
-                                    <td class="text-center">
-                                        <small>{{this.hp_location}}</small>
-                                    </td>
-                                    <td class="text-center">
-                                        <small
-                                            style="color: {{#equals hp_curCap hp_maxCap}}red{{else}}#2F8250{{/equals}};">{{this.hp_curCap}}/{{this.hp_maxCap}}</small>
-                                    </td>
-                                    <td class="text-center">
-                                        {{#equals hp_curCap hp_maxCap}}<small><button class="btn btn-secondary" href="#"
-                                                role="button" style="cursor:not-allowed"
-                                                disabled>Register</button></small>{{else}}<small><a
-                                                class="btn btn-success" role="button"
-                                                onclick="{{#if ../user_active}}register_user('{{this.hp_name}}'){{else}}register(){{/if}}">Register</a></small>{{/equals}}
-                                    </td>
-                                </tr>
+                                    {{> healthprogramCard user_active = ../user_active}}
                                 {{/each}}
                             </tbody>
                         </table>
@@ -81,6 +50,9 @@
         </div>
     </div>
 </div>
+
+
+
 <script>
     // Health Programs Table Sort
     $(document).ready(function () {
@@ -92,10 +64,8 @@
             }]
         })
     });
-
     function register_user(hp_name) {
         var hp_confirm = confirm("Do you want to register in the following program: " + hp_name);
-
         if (hp_confirm == true) {
             //$.ajax({
             //    url: "/healthprograms-reserve/",
@@ -105,12 +75,12 @@
             //    },
             //    error: function (xhr) { }
             //});
-
-            alert("Successfully reserved! Please check your dashboard.")
         }
     }
-
     function register() {
         alert("Please log in first!");
+        $("#login-nav1").addClass("show");
+        $("#navbarDropdownMenuLink").attr("aria-expanded", "true");
+        $("#login-nav2").addClass("show");
     }
 </script>
