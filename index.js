@@ -1,10 +1,10 @@
+const dotenv = require('dotenv').config();
 const express = require('express');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
 
 // import routes module
 const routes = require('./routes/routes.js');
@@ -69,7 +69,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 
 // connects to the database
-dotenv.config();
 const url = process.env.MONGO_URI;
 const options = {
   useUnifiedTopology: true,
