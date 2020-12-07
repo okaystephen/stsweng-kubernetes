@@ -79,7 +79,7 @@
                             <select id="appointment_name" name="appointment_name" class="form-control">
                                 <option selected>Choose...</option>
                                 {{#each docList}}
-                                <option value="{{docList._id}}">{{docList.lname}}, {{docList.fname}}</option>
+                                <option value="{{this.lname}}, {{this.fname}}">{{this.lname}}, {{this.fname}}</option>
                                 {{/each}}
                             </select>
                         </div>
@@ -89,8 +89,38 @@
                                 rows="3"></textarea>
                         </div>
                         <div class="form-group text-center pt-3">
-                            <button type="submit" class="btn btn-success"
-                                onclick="registerappointment()">Submit</button>
+                            <input type="button" name="btn" id="submit_btn" value="Submit" class="btn btn-success"
+                                data-toggle="modal" data-target="#a{{_id}}">
+                            {{!-- <a class="btn btn-success" id="submit_btn" role="button" data-toggle="modal"
+                                data-target="#a{{_id}}">Submit</a> --}}
+                        </div>
+
+                        {{!-- Set Appointment Modal --}}
+                        <div class="modal fade" id="a{{_id}}" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Appointment Details</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Date: <span id="app-date"></span></p>
+                                        <p>Time: <span id="app-time"></span></p>
+                                        <p>Doctor: <span id="app-doc"></span></p>
+                                        <p>Reason: <span id="app-reason"></span></p>
+                                        <br>
+                                        <p>Ready to submit appointment?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -98,26 +128,21 @@
         </div>
     </div>
 
+
+
     <script>
 
         window.onscroll = function () { myFunction() };
 
+        $('#submit_btn').click(function () {
+            $('#app-date').text($('#appointment_date').val());
+            $('#app-time').text($('#appointment_time').val());
+            $('#app-doc').text($('#appointment_name').val());
+            $('#app-reason').text($('#appointment_reason').val());
+        });
+
         var navbar = document.getElementById("navbar navbar-expand-lg sticky-top navbar-dark");
         var sticky = navbar.offsetTop;
-
-        function registerappointment() {
-            confirm("Your appointment details:"
-                + "\n\n"
-                + "Date: "
-                + "\n"
-                + "Time: "
-                + "\n"
-                + "Doctor: "
-                + "\n"
-                + "Reason: "
-                + "\n\n"
-                + "Are you sure you want to submit this appointment?")
-        }
 
         function myFunction() {
             if (window.pageYOffset >= sticky) {

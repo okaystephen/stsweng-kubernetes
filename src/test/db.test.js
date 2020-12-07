@@ -5,6 +5,15 @@ const UserModel = require('../../models/UserModel.js');
 
 const DoctorModel = require('../../models/DoctorModel.js');
 
+const AppointmentModel = require('../../models/AppointmentModel.js');
+const appData = {
+    _id: new ObjectID(),
+    appointment_id: new ObjectID(),
+    appointment_date: new Date("2021-01-20T00:00:00.000Z"),
+    appointment_name: 'Last, First',
+    appointment_reason: 'Reason',
+}
+
 const HealthProgramModel = require('../../models/HealthProgramModel.js');
 const hpData = {
     _id: new ObjectID(),
@@ -45,6 +54,18 @@ describe('Database Model Test', () => {
         expect(savedHP.hp_enddate).toBe(hpData.hp_enddate);
         expect(savedHP.hp_maxCap).toBe(hpData.hp_maxCap);
 
+    });
+
+    it('Appointment Model - create & save an appointment successfully', async () => {
+        const validApp = new AppointmentModel(appData);
+        const savedApp = await validApp.save();
+
+        // Object Id should be defined when successfully saved to MongoDB.
+        expect(savedApp._id).toBeDefined();
+        expect(savedApp.appointment_id).toBe(validApp.appointment_id);
+        expect(savedApp.appointment_date).toBe(validApp.appointment_date);
+        expect(savedApp.appointment_name).toBe(validApp.appointment_name);
+        expect(savedApp.appointment_reason).toBe(validApp.appointment_reason);
 
     });
 
