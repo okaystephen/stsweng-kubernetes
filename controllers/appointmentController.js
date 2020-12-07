@@ -48,6 +48,16 @@ const appointmentController = {
             }
         });
     },
+
+    deleteAppointment: function (req, res) {
+        var appointment_id = req.query.id;
+        var appointment_details = {
+            _id: ObjectID(appointment_id)
+        }
+
+        db.deleteOne(Appointment, appointment_details);
+        res.redirect('/profile');
+    },
 }
 
 // enables to profile controller object when called in another .js file
