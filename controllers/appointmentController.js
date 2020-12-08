@@ -31,12 +31,14 @@ const appointmentController = {
         var appointment_id = req.session.user;
         var appointment_date = req.body.appointment_date + " " + req.body.appointment_time;
         var appointment_name = req.body.appointment_name;
+        var appointment_docID = req.body.appointment_docID;
         var appointment_reason = req.body.appointment_reason;
 
         var newAppointment = {
             _id: new ObjectID(),
             appointment_id: ObjectID(appointment_id),
             appointment_date: appointment_date,
+            appointment_docID: ObjectID(appointment_docID),
             appointment_name: appointment_name,
             appointment_reason: appointment_reason,
         }
@@ -47,6 +49,16 @@ const appointmentController = {
                 res.redirect('/profile');
             }
         });
+    },
+
+    deleteAppointment: function (req, res) {
+        var appointment_id = req.query.id;
+        var appointment_details = {
+            _id: ObjectID(appointment_id)
+        }
+
+        db.deleteOne(Appointment, appointment_details);
+        res.redirect('/profile');
     },
 }
 

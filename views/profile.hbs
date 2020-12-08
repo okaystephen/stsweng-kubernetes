@@ -92,44 +92,27 @@
                                 <th class="text-center" style="width:5%"></th>
                             </thead>
                             <tbody>
+                                {{#each appList}}
                                 <tr>
                                     <td>
-                                        Data 1
+                                        {{this.appointment_name}}
                                     </td>
                                     <td>
-                                        12:00
+                                        {{dateFormat this.appointment_date "h:mm a"}}
                                     </td>
                                     <td>
-                                        2021-03-21
+                                        {{dateFormat this.appointment_date "YYYY-MM-DD"}}
                                     </td>
                                     <td class="text-center">
                                         <small><a class="btn btn-success" role="button"
-                                                onclick="reschedApp()">Reschedule</a></small>
+                                                onclick="reschedApp('{{this._id}}')">Reschedule</a></small>
                                     </td>
                                     <td class="text-center">
                                         <small><a class="btn btn-danger" role="button"
-                                                onclick="cancelApp()">Cancel</a></small>
+                                                onclick="cancelApp('{{this._id}}')">Cancel</a></small>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        Data 2
-                                    </td>
-                                    <td>
-                                        13:00
-                                    </td>
-                                    <td>
-                                        2021-01-12
-                                    </td>
-                                    <td class="text-center">
-                                        <small><a class="btn btn-success" role="button"
-                                                onclick="reschedApp()">Reschedule</a></small>
-                                    </td>
-                                    <td class="text-center">
-                                        <small><a class="btn btn-danger" role="button"
-                                                onclick="cancelApp()">Cancel</a></small>
-                                    </td>
-                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
@@ -232,13 +215,19 @@
             })
         });
 
-        window.onscroll = function () { myFunction() };
+        function cancelApp(id) {
+            var cancelAppointment = confirm("Are you sure you want to cancel this appointment?");
+            if (cancelAppointment == 1) {
+                $.ajax({
+                    url: "/profile/deleteapp",
+                    data: { id: id },
+                    success: function (response) {
+                        window.location.href = 'profile';
+                    },
+                    error: function (xhr) { }
+                });
+            }
 
-        var navbar = document.getElementById("navbar navbar-expand-lg sticky-top navbar-dark");
-        var sticky = navbar.offsetTop;
-
-        function cancelApp() {
-            confirm("Are you sure you want to cancel this appointment?")
         }
 
         function reschedApp() {
@@ -248,6 +237,11 @@
         function cancelHP() {
             confirm("Are you sure you want to cancel this health program?")
         }
+
+        window.onscroll = function () { myFunction() };
+
+        var navbar = document.getElementById("navbar navbar-expand-lg sticky-top navbar-dark");
+        var sticky = navbar.offsetTop;
 
         function myFunction() {
             if (window.pageYOffset >= sticky) {

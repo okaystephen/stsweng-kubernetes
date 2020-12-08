@@ -14,6 +14,10 @@ const AppointmentSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    appointment_docID: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+    },
     appointment_reason: {
         type: String,
         required: true,
