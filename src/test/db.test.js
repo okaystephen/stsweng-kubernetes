@@ -11,6 +11,7 @@ const appData = {
     appointment_id: new ObjectID(),
     appointment_date: new Date("2021-01-20T00:00:00.000Z"),
     appointment_name: 'Last, First',
+    appointment_docID: new ObjectID(),
     appointment_reason: 'Reason',
 }
 
@@ -65,6 +66,7 @@ describe('Database Model Test', () => {
         expect(savedApp.appointment_id).toBe(validApp.appointment_id);
         expect(savedApp.appointment_date).toBe(validApp.appointment_date);
         expect(savedApp.appointment_name).toBe(validApp.appointment_name);
+        expect(savedApp.appointment_docID).toBeDefined();
         expect(savedApp.appointment_reason).toBe(validApp.appointment_reason);
 
     });
