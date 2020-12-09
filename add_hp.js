@@ -28,7 +28,6 @@ var healthprograms = [
         hp_location: 'Muntinlupa, Manila',
         hp_startdate: "2021-03-27 10:00",
         hp_enddate: "2021-03-28 12:00",
-        hp_curCap: 400,
         hp_maxCap: 400,
     },
     {
@@ -37,7 +36,6 @@ var healthprograms = [
         hp_location: 'Calamba, Laguna',
         hp_startdate: "2021-06-20 12:00",
         hp_enddate: "2021-07-01 15:00",
-        hp_curCap: 10,
         hp_maxCap: 250,
     },
 ];

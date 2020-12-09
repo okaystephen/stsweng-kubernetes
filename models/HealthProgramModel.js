@@ -22,15 +22,15 @@ const HealthProgramSchema = mongoose.Schema({
         type: Date,
         required: true,
     },
-    hp_curCap: {
-        type: Number,
-        default: 0,
-    },
     hp_maxCap: {
         type: Number,
         default: 0,
         required: true,
     },
+    participants: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 });
 
 module.exports = mongoose.model('HealthProgram', HealthProgramSchema);
