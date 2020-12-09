@@ -40,7 +40,7 @@
                             </thead>
                             <tbody id="entries-table">
                                 {{#each healthprogramsContent}}
-                                    {{> healthprogramCard user_active = ../user_active}}
+                                    {{> healthprogramCard user_active = ../user_active participants_count = this.participants.length}}
                                 {{/each}}
                             </tbody>
                         </table>
