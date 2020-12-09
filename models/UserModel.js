@@ -57,7 +57,7 @@ const UserSchema = mongoose.Schema({
     }],
     programs: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Program'
+        ref: 'UserHProgram'
     }],
     created: {
         type: Date,
