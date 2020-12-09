@@ -77,6 +77,7 @@ app.get('/appointments', appointmentController.getAppointment);
 // health program controller
 app.get('/healthprograms', hp_directoryController.getHealthPrograms);
 app.post('/healthprograms', loginController.postLogIn);
+app.post('/registerhealth/:hpId', hp_directoryController.postUserProgram);
 
 //logout
 app.get('/logout', function (req, res) {
@@ -86,6 +87,7 @@ app.get('/logout', function (req, res) {
 });
 // doctors directory controller
 app.get('/doctors', doc_directoryController.getDocDirectory);
+app.post('/doctors', loginController.postLogIn);
 app.post('/filter', doc_directoryController.getFilter);
 
 
