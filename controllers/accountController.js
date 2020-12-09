@@ -1,7 +1,6 @@
 const db = require('../models/db');
 const User = require('../models/UserModel');
 const MedHistory = require('../models/MedHistoryModel');
-const moment = require('moment');
 const sanitize = require('mongo-sanitize');
 const saltRounds = 10;
 const bcrypt = require('bcrypt');
@@ -24,7 +23,6 @@ const accountController = {
                                 active_user: req.session.user,
                                 title: 'Account | DoloMed',
                                 user: data.toObject(),
-                                date: moment(user.date).format('YYYY-MM-DD')
                             });
                         })
                 }

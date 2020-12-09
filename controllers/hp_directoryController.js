@@ -7,8 +7,11 @@ const HealthProgram = require('../models/HealthProgramModel.js');
 const UserProgram = require('../models/UserHProgramModel.js');
 
 const hp_directoryController = {
-    // render account page when client requests '/account' defined in routes.js
+    // render health program directory page when client requests '/healthprograms' defined in routes.js
     getHealthPrograms: function (req, res) {
+        //filter userid in userprogram and project all program id then array of id result dapat di na marreturn dito use $nin
+
+        db.findMany(UserProgram, {})
         db.findMany(HealthProgram, {}, {}, function (healthprogramsContent) {
             if (req.cookies.user_sid && req.session.user) {
                 res.render('hp_directory', {
@@ -40,6 +43,7 @@ const hp_directoryController = {
 
         var program = new UserProgram({
             _id: new mongoose.Types.ObjectId(),
+            user: req.session.user,
             program: req.params.hpId,
             reason: reason,
             exposure: exposure
