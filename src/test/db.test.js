@@ -18,7 +18,7 @@ const user = {
     password: 'sample',
     name: { first: 'Sample', middle: 'Test', last: 'User' },
     phone: '09194638338',
-    birthdate: new Date("2000-01-14T16:00:00.000+00:00Z"),
+    birthdate: new Date("2000-01-20T00:00:00.000Z"),
     sex: 'Female',
     address: 'B1 L15',
     eContactPerson: 'Sample',
@@ -37,16 +37,18 @@ const doctor = {
     department: 'Department of Surgery',
     schedule: [
         {
+            _id: new ObjectID(),
             day: 'Monday',
             time: [
-                { start: '09:00 am', end: '12:00 pm' },
-                { start: '3:00 pm', end: '5:00 pm' }
+                { _id: new ObjectID(), start: '09:00 am', end: '12:00 pm' },
+                { _id: new ObjectID(), start: '3:00 pm', end: '5:00 pm' }
             ]
         },
         {
+            _id: new ObjectID(),
             day: 'Thursday',
             time: [
-                { start: '2:00 pm', end: '4:00 pm' }
+                { _id: new ObjectID(), start: '2:00 pm', end: '4:00 pm' }
             ]
         },
     ]
@@ -99,10 +101,10 @@ describe('Database Model Test', () => {
 
         // Object Id should be defined when successfully saved to MongoDB.
         expect(savedUMH._id).toBeDefined();
-        expect(savedUMH.problems).toBe(medhist.problems);
-        expect(savedUMH.surgeries).toBe(medhist.surgeries);
-        expect(savedUMH.medications).toBe(medhist.medications);
-        expect(savedUMH.medallergic).toBe(medhist.medallergic);
+        expect(savedUMH.problems).toBe([medhist.problems]);
+        expect(savedUMH.surgeries).toBe([medhist.surgeries]);
+        expect(savedUMH.medications).toBe([medhist.medications]);
+        expect(savedUMH.medallergic).toBe([medhist.medallergic]);
     });
 
 
