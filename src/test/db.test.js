@@ -1,9 +1,56 @@
 const mongoose = require('mongoose');
 const { ObjectID } = require('mongodb');
 
+
+const MedHistoryModel = require('../../models/MedHistoryModel.js');
+const medhist = {
+    _id: new ObjectID(),
+    problems: 'None',
+    surgeries: 'None',
+    medications: 'None',
+    medallergic: 'None'
+}
+
 const UserModel = require('../../models/UserModel.js');
+const user = {
+    _id: new ObjectID(),
+    email: 'sample@gmail.com',
+    password: 'sample',
+    name: { first: 'Sample', middle: 'Test', last: 'User' },
+    phone: '09194638338',
+    birthdate: new Date("2000-01-14T16:00:00.000+00:00Z"),
+    sex: 'Female',
+    address: 'B1 L15',
+    eContactPerson: 'Sample',
+    eContactNum: '09194638339',
+    relationship: 'Sibling',
+    medhistory: medhist._id
+}
 
 const DoctorModel = require('../../models/DoctorModel.js');
+const doctor = {
+    _id: new ObjectId(),
+    fname: 'Natalio',
+    lname: 'Albana',
+    specialization: 'Surgery',
+    avatar: 'doctor.png',
+    department: 'Department of Surgery',
+    schedule: [
+        {
+            day: 'Monday',
+            time: [
+                { start: '09:00 am', end: '12:00 pm' },
+                { start: '3:00 pm', end: '5:00 pm' }
+            ]
+        },
+        {
+            day: 'Thursday',
+            time: [
+                { start: '2:00 pm', end: '4:00 pm' }
+            ]
+        },
+    ]
+}
 
 const AppointmentModel = require('../../models/AppointmentModel.js');
 const appData = {
@@ -26,7 +73,11 @@ const hpData = {
     hp_maxCap: 130,
 }
 
-const MedHistoryModel = require('../../models/MedHistoryModel.js');
+const UserHProgramModel = require('../../models/UserHProgramModel.js');
+const program = {
+    _id: hpData._id,
+    reason: "no reason"
+}
 
 describe('Database Model Test', () => {
 
@@ -40,6 +91,52 @@ describe('Database Model Test', () => {
                 process.exit(1);
             }
         });
+    });
+
+    it('User Medical History Model - create user medical history successfully', async () => {
+        const validMH = new MedHistoryModel(medhist);
+        const savedUMH = await validMH.save();
+
+        // Object Id should be defined when successfully saved to MongoDB.
+        expect(savedUMH._id).toBeDefined();
+        expect(savedUMH.problems).toBe(medhist.problems);
+        expect(savedUMH.surgeries).toBe(medhist.surgeries);
+        expect(savedUMH.medications).toBe(medhist.medications);
+        expect(savedUMH.medallergic).toBe(medhist.medallergic);
+    });
+
+
+    it('User Model - register user successfully', async () => {
+        const validUser = new UserModel(user);
+        const savedUM = await validUser.save();
+
+        // Object Id should be defined when successfully saved to MongoDB.
+        expect(savedUM._id).toBeDefined();
+        expect(savedUM.address).toBe(user.address);
+        expect(savedUM.birthdate).toBe(user.birthdate);
+        expect(savedUM.eContactNum).toBe(user.eContactNum);
+        expect(savedUM.eContactPerson).toBe(user.eContactPerson);
+        expect(savedUM.email).toBe(user.email);
+        expect(savedUM.medhistory).toBe(user.medhistory);
+        expect(savedUM.name).toBe(user.name);
+        expect(savedUM.password).toBe(user.password);
+        expect(savedUM.phone).toBe(user.phone);
+        expect(savedUM.relationship).toBe(user.relationship);
+        expect(savedUM.sex).toBe(user.sex);
+    });
+
+    it('Doctor Model - create & save a doctor successfully', async () => {
+        const validDoc = new DoctorModel(doctor);
+        const savedDoc = await validDoc.save();
+
+        // Object Id should be defined when successfully saved to MongoDB.
+        expect(savedDoc._id).toBeDefined();
+        expect(savedDoc.fname).toBe(doctor.fname);
+        expect(savedDoc.lname).toBe(doctor.lname);
+        expect(savedDoc.department).toBe(doctor.department);
+        expect(savedDoc.schedule).toBe(doctor.schedule);
+        expect(savedDoc.specialization).toBe(doctor.specialization);
+        expect(savedDoc.avatar).toBe(doctor.avatar);
     });
 
     it('Health Program Model - create & save a health program successfully', async () => {
@@ -69,6 +166,15 @@ describe('Database Model Test', () => {
         expect(savedApp.appointment_docID).toBeDefined();
         expect(savedApp.appointment_reason).toBe(validApp.appointment_reason);
 
+    });
+
+    it('User Health Program Model - user registers to health program successfully', async () => {
+        const validUHP = new UserHProgramModel(program);
+        const savedUHP = await validUHP.save();
+
+        // Object Id should be defined when successfully saved to MongoDB.
+        expect(savedUHP._id).toBe(hpData._id);
+        expect(savedUHP.reason).toBe(program.reason);
     });
 
     afterAll(done => {

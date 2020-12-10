@@ -119,7 +119,6 @@ const registerController = {
                             address: input.homeAdd,
                             eContactPerson: input.eContactPerson,
                             eContactNum: input.eContactNum,
-                            relationship: input.relationship,
                             medhistory: medhist._id
                         };
 
