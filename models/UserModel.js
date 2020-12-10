@@ -27,10 +27,6 @@ const UserSchema = mongoose.Schema({
         type: Date,
         required: true
     },
-    relationship: {
-        type: String,
-        required: true
-    },
     sex: {
         type: String,
         required: true
@@ -57,7 +53,7 @@ const UserSchema = mongoose.Schema({
     }],
     programs: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Program'
+        ref: 'UserHProgram'
     }],
     created: {
         type: Date,

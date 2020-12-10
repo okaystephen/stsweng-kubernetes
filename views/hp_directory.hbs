@@ -12,6 +12,13 @@
             <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">Insert caption here.
             </p>
             <div class="card ">
+                    {{#if alert}}
+                        <div class="alert alert-success hide" style="margin-bottom: 1px;">You have successfully registered to {{test}}</div>
+                    {{/if}}
+                    {{#if error}}
+                        <div class="alert alert-danger hide" style="margin-bottom: 1px;">Registration failed: You tried submitting an empty field. Please try again.</div>
+                    {{/if}}
+                
                 <div class="card-body" style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">
                     <div class="table-responsive text-center">
                         <table class="table text-left blog-project-table" id="hp-table">
@@ -40,7 +47,7 @@
                             </thead>
                             <tbody id="entries-table">
                                 {{#each healthprogramsContent}}
-                                    {{> healthprogramCard user_active = ../user_active}}
+                                    {{> healthprogramCard user_active = ../user_active participants_count = this.participants.length}}
                                 {{/each}}
                             </tbody>
                         </table>
@@ -52,7 +59,7 @@
 </div>
 
 
-
+ <script src="/js/userProgram.js"></script>
 <script>
     // Health Programs Table Sort
     $(document).ready(function () {
@@ -65,8 +72,14 @@
         })
     });
     function register_user(hp_name) {
-        var hp_confirm = confirm("Do you want to register in the following program: " + hp_name);
-        if (hp_confirm == true) {
+        //var hp_confirm = confirm("Do you want to register in the following program: " + hp_name );
+
+    //$('.reasonErrorMsg').show();
+    var reason = $('#reason').val()
+        if(reason == ''){
+            $('.reasonErrorMsg').show();
+        }
+        //if (hp_confirm == true) {
             //$.ajax({
             //    url: "/healthprograms-reserve/",
             //    data: { id: self },
@@ -75,7 +88,7 @@
             //    },
             //    error: function (xhr) { }
             //});
-        }
+        //} 
     }
     function register() {
         alert("Please log in first!");

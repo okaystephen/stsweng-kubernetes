@@ -22,7 +22,6 @@ var healthprograms = [
         hp_location: 'Parañaque, Manila',
         hp_startdate: "2021-01-20 08:00",
         hp_enddate: "2021-02-20 13:00",
-        hp_curCap: 90,
         hp_maxCap: 130,
     },
     {
@@ -31,7 +30,6 @@ var healthprograms = [
         hp_location: 'Muntinlupa, Manila',
         hp_startdate: "2021-03-27 10:00",
         hp_enddate: "2021-03-28 12:00",
-        hp_curCap: 400,
         hp_maxCap: 400,
     },
     {
@@ -40,7 +38,6 @@ var healthprograms = [
         hp_location: 'Calamba, Laguna',
         hp_startdate: "2021-06-20 12:00",
         hp_enddate: "2021-07-01 15:00",
-        hp_curCap: 10,
         hp_maxCap: 250,
     },
     {
@@ -49,7 +46,6 @@ var healthprograms = [
         hp_location: 'San Pedro, Laguna',
         hp_startdate: "2021-01-20 9:00",
         hp_enddate: "2021-02-01 12:00",
-        hp_curCap: 50,
         hp_maxCap: 250,
     },
     {
@@ -58,7 +54,6 @@ var healthprograms = [
         hp_location: 'Sta. Rosa, Laguna',
         hp_startdate: "2021-02-15 11:00",
         hp_enddate: "2021-02-28 13:00",
-        hp_curCap: 20,
         hp_maxCap: 50,
     },
     {
@@ -67,7 +62,6 @@ var healthprograms = [
             hp_location: 'Sta. Rosa, Laguna',
             hp_startdate: "2021-01-15 13:00",
             hp_enddate: "2021-02-01 16:00",
-            hp_curCap: 18,
             hp_maxCap: 70,
     },
     {
@@ -76,7 +70,6 @@ var healthprograms = [
             hp_location: 'Navotas, Manila',
             hp_startdate: "2021-03-15 11:00",
             hp_enddate: "2021-03-27 13:00",
-            hp_curCap: 100,
             hp_maxCap: 100,
     },
     {
@@ -85,7 +78,6 @@ var healthprograms = [
             hp_location: 'Marikina, Manila',
             hp_startdate: "2021-04-01 13:00",
             hp_enddate: "2021-04-20 15:00",
-            hp_curCap: 40,
             hp_maxCap: 100,
     },
     {
@@ -94,7 +86,6 @@ var healthprograms = [
             hp_location: 'Mandaluyong, Manila',
             hp_startdate: "2021-01-03 9:00",
             hp_enddate: "2021-02-25 11:00",
-            hp_curCap: 0,
             hp_maxCap: 50,
     },
     {
@@ -103,7 +94,6 @@ var healthprograms = [
             hp_location: 'Pasay, Manila',
             hp_startdate: "2021-04-01 8:00",
             hp_enddate: "2021-04-29 12:00",
-            hp_curCap: 10,
             hp_maxCap: 30,
     },
     {
@@ -112,7 +102,6 @@ var healthprograms = [
             hp_location: 'Pasay, Manila',
             hp_startdate: "2021-04-01 13:00",
             hp_enddate: "2021-04-29 15:00",
-            hp_curCap: 20,
             hp_maxCap: 30,
     },
     {
@@ -121,7 +110,6 @@ var healthprograms = [
             hp_location: 'Pasay, Manila',
             hp_startdate: "2021-04-01 10:00",
             hp_enddate: "2021-04-29 12:00",
-            hp_curCap: 40,
             hp_maxCap: 40,
     },
     {
@@ -130,7 +118,6 @@ var healthprograms = [
             hp_location: 'Quezon City, Manila',
             hp_startdate: "2021-05-15 9:00",
             hp_enddate: "2021-05-30 13:00",
-            hp_curCap: 10,
             hp_maxCap: 60,
     },
     {
@@ -139,7 +126,6 @@ var healthprograms = [
             hp_location: 'Hermosa, Bulacan',
             hp_startdate: "2021-03-10 10:00",
             hp_enddate: "2021-03-20 14:00",
-            hp_curCap: 30,
             hp_maxCap: 35,
     },
     {
@@ -148,7 +134,6 @@ var healthprograms = [
             hp_location: 'Limay, Bulacan',
             hp_startdate: "2021-04-15 11:00",
             hp_enddate: "2021-05-10 15:00",
-            hp_curCap: 30,
             hp_maxCap: 35,
     },
 ];

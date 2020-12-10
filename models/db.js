@@ -80,7 +80,7 @@ const database = {
         model.updateOne(filter, update, function (error, result) {
             if (error) return callback(false);
             console.log('Document modified: ' + result.nModified);
-            return callback(true);
+            return callback(result);
         });
     },
 

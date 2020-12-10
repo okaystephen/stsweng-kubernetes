@@ -67,7 +67,7 @@
             <br>
             Contact Number: {{user.phone}}
             <br>
-            Birthday: {{date}}
+            Birthday: {{dateFormat user.birthdate "YYYY-MM-DD"}}
         </p>
         <hr>
         <div class="card mx-auto border shadow-sm" style="width: 973px; margin-bottom: 2rem;">
@@ -141,51 +141,9 @@
                                 <th class="text-center" style="width:5%"></th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        Data 1
-                                    </td>
-                                    <td>
-                                        12:00
-                                    </td>
-                                    <td>
-                                        2020-12-23
-                                    </td>
-                                    <td class="text-center">
-                                        <small><a class="btn btn-danger" role="button"
-                                                onclick="cancelHP()">Cancel</a></small>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Data 2
-                                    </td>
-                                    <td>
-                                        08:00
-                                    </td>
-                                    <td>
-                                        2020-11-22
-                                    </td>
-                                    <td class="text-center">
-                                        <small><a class="btn btn-danger" role="button"
-                                                onclick="cancelHP()">Cancel</a></small>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Data 3
-                                    </td>
-                                    <td>
-                                        15:00
-                                    </td>
-                                    <td>
-                                        2020-12-30
-                                    </td>
-                                    <td class="text-center">
-                                        <small><a class="btn btn-danger" role="button"
-                                                onclick="cancelHP()">Cancel</a></small>
-                                    </td>
-                                </tr>
+                                {{#each healthprograms}}
+                                    {{> userhprogramsCard}}
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
