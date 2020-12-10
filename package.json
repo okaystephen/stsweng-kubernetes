@@ -17,6 +17,21 @@
   },
   "homepage": "https://github.com/okaystephen/stsweng-kubernetes#readme",
   "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.6.1",
+    "handlebars-dateformat": "^1.1.1",
+    "hbs": "^4.1.1",
+    "moment": "^2.29.1",
+    "mongo-sanitize": "^1.1.0",
+    "mongoose": "^5.10.13"
+  },
+  "devDependencies": {
+    "@shelf/jest-mongodb": "^1.2.3",
     "jest": "^26.6.3"
   }
 }
