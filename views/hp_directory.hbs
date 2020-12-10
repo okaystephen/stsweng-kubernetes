@@ -15,6 +15,10 @@
                     {{#if alert}}
                         <div class="alert alert-success hide" style="margin-bottom: 1px;">You have successfully registered to {{test}}</div>
                     {{/if}}
+                    {{#if error}}
+                        <div class="alert alert-danger hide" style="margin-bottom: 1px;">Registration failed: You tried submitting an empty field. Please try again.</div>
+                    {{/if}}
+                
                 <div class="card-body" style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">
                     <div class="table-responsive text-center">
                         <table class="table text-left blog-project-table" id="hp-table">

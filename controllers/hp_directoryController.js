@@ -35,40 +35,49 @@ const hp_directoryController = {
         else {
             var reason = sanitize(req.body.reason);
 
-            if (reason == ''){
-                reason = 'None'
-            }
-           
              var program = new UserProgram({
                 _id: req.params.hpId,
                 user: req.session.user,
                 reason: reason,
-                exposure: exposure
             })
 
-            db.insertOne(UserProgram, program, function(flag){
-                if(flag){
-                    db.updateOne(User, {_id: req.session.user}, { $push: { programs: program._id} }, function (result){
-                        if(result){
-                            db.updateOne(HealthProgram, {_id: req.params.hpId},  { $push: { participants: req.session.user } }, function (hp){
-                                if(hp){
-                                    db.findMany(HealthProgram, {participants: {$ne: req.session.user }}, '', function(healthprogramsContent){
-                                            res.render('hp_directory', {
-                                                layout: 'main',
-                                                title: 'Health Programs | DoloMed',
-                                                hp_active: true,
-                                                user_active: true,
-                                                healthprogramsContent: healthprogramsContent,
-                                                test: req.body.hp_name,
-                                                alert: true,
-                                            })
-                                    });
-                                }
-                            })
-                        }
-                    })
-                }
-            })
+            if(reason == ''){  
+                db.findMany(HealthProgram, {participants: {$ne: req.session.user }}, '', function(healthprogramsContent){
+                        res.render('hp_directory', {
+                            layout: 'main',
+                            title: 'Health Programs | DoloMed',
+                            hp_active: true,
+                            user_active: true,
+                            healthprogramsContent: healthprogramsContent,
+                            test: req.body.hp_name,
+                            error: true
+                        })
+                });
+            } else {
+                db.insertOne(UserProgram, program, function(flag){
+                    if(flag){
+                        db.updateOne(User, {_id: req.session.user}, { $push: { programs: program._id} }, function (result){
+                            if(result){
+                                db.updateOne(HealthProgram, {_id: req.params.hpId},  { $push: { participants: req.session.user } }, function (hp){
+                                    if(hp){
+                                        db.findMany(HealthProgram, {participants: {$ne: req.session.user }}, '', function(healthprogramsContent){
+                                                res.render('hp_directory', {
+                                                    layout: 'main',
+                                                    title: 'Health Programs | DoloMed',
+                                                    hp_active: true,
+                                                    user_active: true,
+                                                    healthprogramsContent: healthprogramsContent,
+                                                    test: req.body.hp_name,
+                                                    alert: true,
+                                                })
+                                        });
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
+            }
     
         }
     },
