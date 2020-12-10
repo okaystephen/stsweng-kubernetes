@@ -78,6 +78,7 @@ app.get('/appointments', appointmentController.getAppointment);
 app.get('/healthprograms', hp_directoryController.getHealthPrograms);
 app.post('/healthprograms', loginController.postLogIn);
 app.post('/registerhealth/:hpId', hp_directoryController.postUserProgram);
+app.post('/canceluserhealth/:hpId', hp_directoryController.cancelProgram);
 
 //logout
 app.get('/logout', function (req, res) {

@@ -36,7 +36,7 @@ $(document).ready(function() {
             }
 
         },
-    // Custom message for error
+        // Custom message for error
         messages: {
             homeAdd: {
                 required: "Home Address is required.",
