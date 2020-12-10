@@ -65,6 +65,7 @@ app.get('/dashboard', dashboardController.getDashboard);
 
 //profile controller
 app.get('/profile', profileController.getProfile);
+app.get('/profile/deleteapp/', appointmentController.deleteAppointment);
 
 //account controller
 app.get('/account', accountController.getAccount);
@@ -73,6 +74,7 @@ app.post('/updateMedHis', accountController.updateMedHis);
 
 //appointment controller
 app.get('/appointments', appointmentController.getAppointment);
+app.post('/appointments', appointmentController.postAppointment);
 
 // health program controller
 app.get('/healthprograms', hp_directoryController.getHealthPrograms);

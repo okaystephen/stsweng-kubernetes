@@ -1,3 +1,4 @@
+const dotenv = require('dotenv').config();
 const express = require('express');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
@@ -68,7 +69,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 
 // connects to the database
-const url = "mongodb+srv://stsweng-kubernetes:dadWym-mefseg-cuqhi2@cluster0.5z9xl.mongodb.net/stsweng-kubernetes?retryWrites=true&w=majority";
+const url = process.env.MONGO_URI;
 const options = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
