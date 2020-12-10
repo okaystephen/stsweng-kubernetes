@@ -42,47 +42,51 @@
 
 {{!-- Register Health Program Modal --}}
 <div class="modal fade" id="a{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLongTitle">{{hp_name}}</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <form id="registerHealth" method="post" action="/registerhealth/{{_id}}">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Registration Confirmation</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="registerUserProgram" method="post" action="/registerhealth/{{_id}}">
                 
-                <div>
-                    <div class="col-12" >
-                        <label for="streetAdd" style="margin-left: -210px; font-weight:bolder; font-size: 13px">Reason for joining the program<span class="text-danger"> *</span></label>
-                        <textarea class="form-control" id="reason" name="reason"
-                            aria-describedby="homeAdd" placeholder=""
-                            value=""></textarea>
-                    </div>
-                    <div class="col-sm-10" style="font-size: smaller; color: red"></div>
-                </div>
+                    <div class="form-group">
 
-                <div style="margin-top: 15px; margin-bottom: 10px">
-                    <div class="col-12" >
-                        <label for="streetAdd" style="margin-left: -3px; font-weight:bolder; font-size: 13px">For safety precaution, when is the last time you went outside?<span class="text-danger"> *</span></label>
-                        <input type="date" class="form-control" id="exposure" name="exposure"
-                            aria-describedby="homeAdd" placeholder=""
-                            value=""/>
+                        <div class="col-12" >
+                            <label for="streetAdd" style="margin-left: -220px; font-weight:bolder; font-size: 13px">Reason for joining the program<span class="text-danger"></span></label>
+                            <textarea class="form-control" id="reason" name="reason" class="access required" data-errormsg="reasonErrorMsg"
+                                aria-describedby="homeAdd" placeholder=""
+                                value="" required></textarea>
+                        </div>
+                        {{!-- <p class="hide reasonErrorMsg error">Please enter first name</p>
+                        <div style="font-size: 12px; color: red; margin-left: -400px"></div> --}}
+
                     </div>
-                    <div class="col-sm-10" style="font-size: smaller; color: red"></div>
-                </div>
-          
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Register</button>
-      </div>
-      </form>
+
+                    <div class="form-group" style="margin-top: 15px; margin-bottom: 20px">
+
+                        <div class="col-12" >
+                            <label for="streetAdd" style="margin-left: -3px; font-weight:bolder; font-size: 13px">For safety precaution, when is the last time you went outside?<span class="text-danger"></span></label>
+                            <input type="date" class="form-control" id="exposure" name="exposure" data-errormsg="exposureErrorMsg"
+                                aria-describedby="homeAdd" required/>
+                        </div>
+                        {{!-- <p class="hide exposureErrorMsg error">Please enter last name</p>
+
+                        <div style="font-size: 12px; color: red; margin-left: -400px"></div> --}}
+                    </div>
+                    <input type="hidden" value="{{hp_name}}" name="hp_name" id="hp_name"/> 
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="programsave">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
 
 <script>
     //function register_user(hp_name) {
@@ -98,6 +102,54 @@
             //});
         //}
     //}
+
+    function check(hp_name){
+        alert("You have successfuly registered to " + hp_name);
+    }
+
+    function register_user(hp_name) {
+        //var hp_confirm = confirm("Do you want to register in the following program: " + hp_name );
+
+    //$('.reasonErrorMsg').show();
+
+    //var yes = document.getElementById('reason').value 
+    //if(yes=='')
+    var reason = $('#reason').val()
+    var exposure = $('#exposure').val()
+        //if(reason == ''){
+        //    $('.reasonErrorMsg').show();
+        //    $('#programsave').prop('disabled',true);
+        //} else{
+         //   $('#programsave').prop('disabled',false);
+       // }
+        //if(exposure == ''){
+          //  $('.exposureErrorMsg').show();
+         //   $('#programsave').prop('disabled',true);
+        //} else{
+          //  $('#programsave').prop('disabled',false);
+        //}
+
+        //if (hp_confirm == true) {
+            //$.ajax({
+            //    url: "/healthprograms-reserve/",
+            //    data: { id: self },
+            //    success: function (response) {
+            //        alert("Successfully reserved! Please check your dashboard.")
+            //    },
+            //    error: function (xhr) { }
+            //});
+        //} 
+
+        if(reason == '') || (exposure == ''){
+            $('.exposureErrorMsg').show();
+            $('#programsave').prop('disabled',true);
+        }
+        else{
+            $('.exposureErrorMsg').hide();
+            $('#programsave').prop('disabled',false);
+        }
+    }
+    
     function register() {
         alert("Please log in first!");
         $("#login-nav1").addClass("show");

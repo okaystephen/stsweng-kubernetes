@@ -9,10 +9,7 @@ const UserProgram = require('../models/UserHProgramModel.js');
 const hp_directoryController = {
     // render health program directory page when client requests '/healthprograms' defined in routes.js
     getHealthPrograms: function (req, res) {
-        //filter userid in userprogram and project all program id then array of id result dapat di na marreturn dito use $nin
-
-        db.findMany(UserProgram, {})
-        db.findMany(HealthProgram, {}, {}, function (healthprogramsContent) {
+        db.findMany(HealthProgram, {participants: {$ne: req.session.user }}, '', function(healthprogramsContent){
             if (req.cookies.user_sid && req.session.user) {
                 res.render('hp_directory', {
                     layout: 'main',
@@ -20,7 +17,6 @@ const hp_directoryController = {
                     hp_active: true,
                     user_active: true,
                     healthprogramsContent: healthprogramsContent,
-                    test: "Test 1"
                 })
             }
             else {
@@ -29,43 +25,92 @@ const hp_directoryController = {
                     title: 'Health Programs | DoloMed',
                     hp_active: true,
                     healthprogramsContent: healthprogramsContent,
-                    test: "Test 2"
                 })
             }
         });
     },
 
     postUserProgram: function (req, res){
-        console.log(req.params.hpId)
-        var reason = sanitize(req.body.reason);
-        var exposure = sanitize(req.body.exposure);
+        if(!req.session.user) res.redirect('/')
+        else {
+            var reason = sanitize(req.body.reason);
+            var exposure = sanitize(req.body.exposure);
 
+            if (reason == ''){
+                reason = 'None'
+            }
+            if (exposure == ''){
+                exposure = new Date()
+            }
 
-        var program = new UserProgram({
-            _id: new mongoose.Types.ObjectId(),
-            user: req.session.user,
-            program: req.params.hpId,
-            reason: reason,
-            exposure: exposure
-        })
+             //check date if valid
+            var [year, month, day] = exposure.split('-');
 
-        console.log(program);
-        console.log(req.session.user);
+            var input = Date.UTC(
+                Number(year),
+                Number(month) - 1, // parameter month starts at 0
+                Number(day),
+            );
 
-        db.insertOne(UserProgram, program, function(flag){
-            if(flag){
-                db.updateOne(User, {_id: req.session.user}, { $push: { programs: program._id} }, function (result){
-                    if(result){
-                        db.updateOne(HealthProgram, {_id: req.params.hpId},  { $push: { participants: req.session.user } }, function (result){
+            var now = Date.now();
+
+             var program = new UserProgram({
+                _id: req.params.hpId,
+                user: req.session.user,
+                reason: reason,
+                exposure: exposure
+            })
+
+            if(input > now){  
+                db.findMany(HealthProgram, {participants: {$ne: req.session.user }}, '', function(healthprogramsContent){
+                        res.render('hp_directory', {
+                            layout: 'main',
+                            title: 'Health Programs | DoloMed',
+                            hp_active: true,
+                            user_active: true,
+                            healthprogramsContent: healthprogramsContent,
+                            test: req.body.hp_name,
+                            error: true
+                        })
+                });
+            } else {
+                db.insertOne(UserProgram, program, function(flag){
+                    if(flag){
+                        db.updateOne(User, {_id: req.session.user}, { $push: { programs: program._id} }, function (result){
                             if(result){
-                                res.redirect('/healthprograms')
+                                db.updateOne(HealthProgram, {_id: req.params.hpId},  { $push: { participants: req.session.user } }, function (hp){
+                                    if(hp){
+                                        db.findMany(HealthProgram, {participants: {$ne: req.session.user }}, '', function(healthprogramsContent){
+                                                res.render('hp_directory', {
+                                                    layout: 'main',
+                                                    title: 'Health Programs | DoloMed',
+                                                    hp_active: true,
+                                                    user_active: true,
+                                                    healthprogramsContent: healthprogramsContent,
+                                                    test: req.body.hp_name,
+                                                    alert: true,
+                                                })
+                                        });
+                                    }
+                                })
                             }
                         })
                     }
                 })
             }
-        })
+    
+        }
+    },
 
+    cancelProgram: function (req, res){
+        db.updateOne(User, {_id: req.session.user}, {$pull: {programs: req.params.hpId}}, function(result){
+            db.updateOne(HealthProgram, {_id: req.params.hpId},  { $pull: { participants: req.session.user } }, function (hp){
+                if(hp){
+                    db.deleteOne(UserProgram, {_id: req.params.hpId})
+                    res.redirect('/profile')
+                }
+            })
+        })
     }
 }
 
