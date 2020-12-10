@@ -34,26 +34,11 @@ const hp_directoryController = {
         if(!req.session.user) res.redirect('/')
         else {
             var reason = sanitize(req.body.reason);
-            var exposure = sanitize(req.body.exposure);
 
             if (reason == ''){
                 reason = 'None'
             }
-            if (exposure == ''){
-                exposure = new Date()
-            }
-
-             //check date if valid
-            var [year, month, day] = exposure.split('-');
-
-            var input = Date.UTC(
-                Number(year),
-                Number(month) - 1, // parameter month starts at 0
-                Number(day),
-            );
-
-            var now = Date.now();
-
+           
              var program = new UserProgram({
                 _id: req.params.hpId,
                 user: req.session.user,
@@ -61,43 +46,29 @@ const hp_directoryController = {
                 exposure: exposure
             })
 
-            if(input > now){  
-                db.findMany(HealthProgram, {participants: {$ne: req.session.user }}, '', function(healthprogramsContent){
-                        res.render('hp_directory', {
-                            layout: 'main',
-                            title: 'Health Programs | DoloMed',
-                            hp_active: true,
-                            user_active: true,
-                            healthprogramsContent: healthprogramsContent,
-                            test: req.body.hp_name,
-                            error: true
-                        })
-                });
-            } else {
-                db.insertOne(UserProgram, program, function(flag){
-                    if(flag){
-                        db.updateOne(User, {_id: req.session.user}, { $push: { programs: program._id} }, function (result){
-                            if(result){
-                                db.updateOne(HealthProgram, {_id: req.params.hpId},  { $push: { participants: req.session.user } }, function (hp){
-                                    if(hp){
-                                        db.findMany(HealthProgram, {participants: {$ne: req.session.user }}, '', function(healthprogramsContent){
-                                                res.render('hp_directory', {
-                                                    layout: 'main',
-                                                    title: 'Health Programs | DoloMed',
-                                                    hp_active: true,
-                                                    user_active: true,
-                                                    healthprogramsContent: healthprogramsContent,
-                                                    test: req.body.hp_name,
-                                                    alert: true,
-                                                })
-                                        });
-                                    }
-                                })
-                            }
-                        })
-                    }
-                })
-            }
+            db.insertOne(UserProgram, program, function(flag){
+                if(flag){
+                    db.updateOne(User, {_id: req.session.user}, { $push: { programs: program._id} }, function (result){
+                        if(result){
+                            db.updateOne(HealthProgram, {_id: req.params.hpId},  { $push: { participants: req.session.user } }, function (hp){
+                                if(hp){
+                                    db.findMany(HealthProgram, {participants: {$ne: req.session.user }}, '', function(healthprogramsContent){
+                                            res.render('hp_directory', {
+                                                layout: 'main',
+                                                title: 'Health Programs | DoloMed',
+                                                hp_active: true,
+                                                user_active: true,
+                                                healthprogramsContent: healthprogramsContent,
+                                                test: req.body.hp_name,
+                                                alert: true,
+                                            })
+                                    });
+                                }
+                            })
+                        }
+                    })
+                }
+            })
     
         }
     },

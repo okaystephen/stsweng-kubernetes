@@ -6,10 +6,6 @@ const UserHealthProgramSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    exposure: {
-        type: Date,
-        required: true
-    }
 });
 
 module.exports = mongoose.model('UserHProgram', UserHealthProgramSchema);
