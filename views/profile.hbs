@@ -71,7 +71,7 @@
         </p>
         <hr>
         <div class="card mx-auto border shadow-sm" style="width: 973px; margin-bottom: 2rem;">
-            <div class="card-body">
+            <div class="card-body" style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; font-size: 15px">
                 <div class="card-title" style="font-size: 45px; font-family: 'Montserrat', sans-serif; color: #2F8250;">
                     Your
                     Appointments</div>
@@ -121,11 +121,14 @@
         </div>
 
         <div class="card mx-auto border shadow-sm" style="width: 973px; margin-bottom: 2rem;">
-            <div class="card-body">
+            <div class="card-body" style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; font-size: 15px">
                 <div class="card-title" style="font-size: 45px; font-family: 'Montserrat', sans-serif; color: #2F8250;">
                     Your Health
                     Programs</div>
                 <div class="card mx-auto" style="width: 913px; margin-bottom: 2rem;">
+                    {{#if alert}}
+                    <div class="alert alert-success hide" style="margin-bottom: 20px;">You have successfuly cancelled your registration to {{success}}.</div>
+                    {{/if}}
                     <div class="table-responsive text-center">
                         <table class="table text-left" id="profilehp-table">
                             <thead class=" text-primary">
