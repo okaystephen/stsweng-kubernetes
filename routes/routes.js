@@ -79,6 +79,7 @@ app.post('/appointments', appointmentController.postAppointment);
 // health program controller
 app.get('/healthprograms', hp_directoryController.getHealthPrograms);
 app.post('/healthprograms', loginController.postLogIn);
+app.post('/healthprograms/modal', hp_directoryController.loginHealthProgram);
 app.post('/registerhealth/:hpId/status', hp_directoryController.postUserProgram);
 app.post('/canceluserhealth/:hpId/status', hp_directoryController.cancelProgram);
 

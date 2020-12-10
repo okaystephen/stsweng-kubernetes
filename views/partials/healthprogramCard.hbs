@@ -26,39 +26,85 @@
         {{#equals hp_curCap hp_maxCap}}
         {{!-- <span tabindex="0" data-toggle="tooltip" data-placement="right" title="You already sent your response to this applicant"></span>
         <small><button class="btn btn-secondary" role="button" style="pointer-events: none;" disabled>Register</button></small> --}}
-        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom" title="{{hp_name}} has already reached the maximum number of patients">
+        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
+            title="{{hp_name}} has already reached the maximum number of patients">
             <button class="btn btn-secondary" style="pointer-events: none;" type="button" disabled>Register</button>
         </span>
         {{else}}
-            {{#if user_active}}
-                <small><a class="btn btn-success" role="button" data-toggle="modal" data-target="#a{{_id}}">Register</a></small>
-            {{else}}
-                <small><a class="btn btn-success" role="button" onclick="register()">Register</a></small>
-            {{/if}}
+        {{#if user_active}}
+        <small><a class="btn btn-success" role="button" data-toggle="modal" data-target="#a{{_id}}">Register</a></small>
+        {{else}}
+        <small><a class="btn btn-success" role="button" data-toggle="modal"
+                data-target="#login{{_id}}">Register</a></small>
+        {{/if}}
         {{!-- <small><a class="btn btn-success" role="button" onclick="{{#if ../user_active}}register_user('{{this.hp_name}}'){{else}}register(){{/if}}">Register</a></small> --}}
         {{/equals}}
     </td>
 </tr>
 
+{{!-- Register Health Program Login Modal --}}
+<div class="modal fade" id="login{{_id}}" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="loginModalTitle">Log in first!</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="/healthprograms/modal">
+                    {{#if loginError}}
+                    <div class="text-center pb-2" style="color: red">
+                        <small>{{loginError}}</small></div>
+                    {{/if}}
+                    <div class="form-group text-center">
+                        <label for="loginemail_modal">Email address</label>
+                        <input type="email" class="form-control" name="loginemail_modal" id="loginemail_modal"
+                            aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group text-center">
+                        <label for="loginpass_modal">Password</label>
+                        <input type="password" class="form-control" name="loginpass_modal" id="loginpass_modal"
+                            placeholder="Password">
+                    </div>
+                    <div class="text-center">
+                        {{!-- <button type="submit" class="btn btn-primary pb-1">Submit</button> --}}
+                        <button class="btn btn-primary pb-1" onclick="loginModalSubmit()">Submit</button>
+                    </div>
+                    <div class="text-center pt-3">
+                        <small><a href="/forgotpassword" style="color:#2F8250;">Forgot
+                                password?</a></small>
+                        <hr>
+                        <small>Don't have an account? <a href="/register" style="color:#2F8250;">Sign
+                                up.</a></small>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 {{!-- Register Health Program Modal --}}
-<div class="modal fade" id="a{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="a{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="exampleModalLongTitle">Registration Confirmation</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form id="registerUserProgram" method="post" action="/registerhealth/{{_id}}/status">
-                
                     <div class="form-group">
-
-                        <div class="col-12" >
-                            <label for="streetAdd" style="margin-left: -220px; font-weight:bolder; font-size: 13px">Reason for joining the program<span class="text-danger"> *</span></label>
-                            <textarea class="form-control" id="reason" name="reason" class="access required" data-errormsg="reasonErrorMsg"
-                                aria-describedby="homeAdd" placeholder=""
+                        <div class="col-12">
+                            <label for="streetAdd"
+                                style="margin-left: -220px; font-weight:bolder; font-size: 13px">Reason for joining the
+                                program<span class="text-danger"> *</span></label>
+                            <textarea class="form-control" id="reason" name="reason" class="access required"
+                                data-errormsg="reasonErrorMsg" aria-describedby="homeAdd" placeholder=""
                                 value=""></textarea>
                         </div>
                         {{!-- <p class="hide reasonErrorMsg error">Please enter first name</p>
@@ -66,7 +112,7 @@
 
                     </div>
 
-                    <input type="hidden" value="{{hp_name}}" name="hp_name" id="hp_name"/> 
+                    <input type="hidden" value="{{hp_name}}" name="hp_name" id="hp_name" />
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary" id="programsave">Register</button>
@@ -77,72 +123,59 @@
     </div>
 </div>
 
-<script>
-    //function register_user(hp_name) {
-        //var hp_confirm = confirm("Do you want to register in the following program: " + hp_name);
-        //if (hp_confirm == true) {
-            //$.ajax({
-            //    url: "/healthprograms-reserve/",
-            //    data: { id: self },
-            //    success: function (response) {
-            //        alert("Successfully reserved! Please check your dashboard.")
-            //    },
-            //    error: function (xhr) { }
-            //});
-        //}
-    //}
 
-    function check(hp_name){
+
+<script>
+
+    $(document).ready(function () {
+        // $('#login5fd20234efcb6a75aca14a1e').modal('show');
+        alert("Test");
+    });
+
+    function check(hp_name) {
         alert("You have successfuly registered to " + hp_name);
     }
 
     function register_user(hp_name) {
         //var hp_confirm = confirm("Do you want to register in the following program: " + hp_name );
 
-    //$('.reasonErrorMsg').show();
+        //$('.reasonErrorMsg').show();
 
-    //var yes = document.getElementById('reason').value 
-    //if(yes=='')
-    var reason = $('#reason').val()
-    var exposure = $('#exposure').val()
+        //var yes = document.getElementById('reason').value 
+        //if(yes=='')
+        var reason = $('#reason').val()
+        var exposure = $('#exposure').val()
         //if(reason == ''){
         //    $('.reasonErrorMsg').show();
         //    $('#programsave').prop('disabled',true);
         //} else{
-         //   $('#programsave').prop('disabled',false);
-       // }
+        //   $('#programsave').prop('disabled',false);
+        // }
         //if(exposure == ''){
-          //  $('.exposureErrorMsg').show();
-         //   $('#programsave').prop('disabled',true);
+        //  $('.exposureErrorMsg').show();
+        //   $('#programsave').prop('disabled',true);
         //} else{
-          //  $('#programsave').prop('disabled',false);
+        //  $('#programsave').prop('disabled',false);
         //}
 
         //if (hp_confirm == true) {
-            //$.ajax({
-            //    url: "/healthprograms-reserve/",
-            //    data: { id: self },
-            //    success: function (response) {
-            //        alert("Successfully reserved! Please check your dashboard.")
-            //    },
-            //    error: function (xhr) { }
-            //});
+        //$.ajax({
+        //    url: "/healthprograms-reserve/",
+        //    data: { id: self },
+        //    success: function (response) {
+        //        alert("Successfully reserved! Please check your dashboard.")
+        //    },
+        //    error: function (xhr) { }
+        //});
         //} 
 
-        if(reason == '') || (exposure == ''){
+        if (reason == '') || (exposure == ''){
             $('.exposureErrorMsg').show();
-            $('#programsave').prop('disabled',true);
+            $('#programsave').prop('disabled', true);
         }
-        else{
+        else {
             $('.exposureErrorMsg').hide();
-            $('#programsave').prop('disabled',false);
+            $('#programsave').prop('disabled', false);
         }
-    }
-    
-    function register() {
-        alert("Please log in first!");
-        $("#login-nav1").addClass("show");
-        $("#navbarDropdownMenuLink").attr("aria-expanded", "true");
-        $("#login-nav2").addClass("show");
     }
 </script>
