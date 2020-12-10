@@ -29,7 +29,7 @@ const user = {
 
 const DoctorModel = require('../../models/DoctorModel.js');
 const doctor = {
-    _id: new ObjectId(),
+    _id: new ObjectID(),
     fname: 'Natalio',
     lname: 'Albana',
     specialization: 'Surgery',
