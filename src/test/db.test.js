@@ -5,10 +5,10 @@ const { ObjectID } = require('mongodb');
 const MedHistoryModel = require('../../models/MedHistoryModel.js');
 const medhist = {
     _id: new ObjectID(),
-    problems: 'None',
-    surgeries: 'None',
-    medications: 'None',
-    medallergic: 'None'
+    problems: ['None'],
+    surgeries: ['None'],
+    medications: ['None'],
+    medallergic: ['None']
 }
 
 const UserModel = require('../../models/UserModel.js');
@@ -37,18 +37,16 @@ const doctor = {
     department: 'Department of Surgery',
     schedule: [
         {
-            _id: new ObjectID(),
             day: 'Monday',
             time: [
-                { _id: new ObjectID(), start: '09:00 am', end: '12:00 pm' },
-                { _id: new ObjectID(), start: '3:00 pm', end: '5:00 pm' }
+                { start: '09:00 am', end: '12:00 pm' },
+                { start: '3:00 pm', end: '5:00 pm' }
             ]
         },
         {
-            _id: new ObjectID(),
             day: 'Thursday',
             time: [
-                { _id: new ObjectID(), start: '2:00 pm', end: '4:00 pm' }
+                { start: '2:00 pm', end: '4:00 pm' }
             ]
         },
     ]
@@ -101,10 +99,10 @@ describe('Database Model Test', () => {
 
         // Object Id should be defined when successfully saved to MongoDB.
         expect(savedUMH._id).toBeDefined();
-        expect(savedUMH.problems).toBe([medhist.problems]);
-        expect(savedUMH.surgeries).toBe([medhist.surgeries]);
-        expect(savedUMH.medications).toBe([medhist.medications]);
-        expect(savedUMH.medallergic).toBe([medhist.medallergic]);
+        expect(savedUMH.problems).toBe(medhist.problems);
+        expect(savedUMH.surgeries).toBe(medhist.surgeries);
+        expect(savedUMH.medications).toBe(medhist.medications);
+        expect(savedUMH.medallergic).toBe(medhist.medallergic);
     });
 
 
@@ -120,7 +118,7 @@ describe('Database Model Test', () => {
         expect(savedUM.eContactPerson).toBe(user.eContactPerson);
         expect(savedUM.email).toBe(user.email);
         expect(savedUM.medhistory).toBe(user.medhistory);
-        expect(savedUM.name).toBe(user.name);
+        expect(savedUM.name).toBe(validUser.name);
         expect(savedUM.password).toBe(user.password);
         expect(savedUM.phone).toBe(user.phone);
         expect(savedUM.relationship).toBe(user.relationship);
@@ -136,7 +134,7 @@ describe('Database Model Test', () => {
         expect(savedDoc.fname).toBe(doctor.fname);
         expect(savedDoc.lname).toBe(doctor.lname);
         expect(savedDoc.department).toBe(doctor.department);
-        expect(savedDoc.schedule).toBe(doctor.schedule);
+        expect(savedDoc.schedule).toBe(validDoc.schedule);
         expect(savedDoc.specialization).toBe(doctor.specialization);
         expect(savedDoc.avatar).toBe(doctor.avatar);
     });
