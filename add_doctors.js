@@ -149,5 +149,256 @@ var doctor4 = {
 db.insertOne(Doctor, doctor4, function () {
 })
 
+var doctor5 = {
+    _id: new mongoose.Types.ObjectId(),
+    fname: 'Juan',
+    lname: 'Dela Cruz',
+    specialization: 'Dental Medicine',
+    avatar: 'doctor.png',
+    department: 'Department of Dental Medicine',
+    schedule: [
+        {
+            day: 'Wednesday',
+            time: [
+                { start: '09:00 am', end: '12:00 pm' },
+                { start: '3:00 pm', end: '5:00 pm' }
+            ]
+        },
+    ]
+}
+
+db.insertOne(Doctor, doctor5, function () {
+})
+
+var doctor6 = {
+    _id: new mongoose.Types.ObjectId(),
+    fname: 'James',
+    lname: 'Bones',
+    specialization: 'Orthopedics',
+    avatar: 'doctor.png',
+    department: 'Department of Orthopedics',
+    schedule: [
+        {
+            day: 'Wednesday',
+            time: [
+                { start: '09:00 am', end: '12:00 pm' },
+                { start: '3:00 pm', end: '5:00 pm' }
+            ]
+        },
+    ]
+}
+
+db.insertOne(Doctor, doctor6, function () {
+})
+
+var doctor7 = {
+    _id: new mongoose.Types.ObjectId(),
+    fname: 'Der',
+    lname: 'Matology',
+    specialization: 'Dermatology',
+    avatar: 'doctor.png',
+    department: 'Department of Dermatology',
+    schedule: [
+        {
+            day: 'Wednesday',
+            time: [
+                { start: '09:00 am', end: '12:00 pm' },
+                { start: '3:00 pm', end: '5:00 pm' }
+            ]
+        },
+    ]
+}
+
+db.insertOne(Doctor, doctor7, function () {
+})
+
+var doctor8 = {
+    _id: new mongoose.Types.ObjectId(),
+    fname: 'Int',
+    lname: 'Ernal Med',
+    specialization: 'Internal Medicine',
+    avatar: 'doctor.png',
+    department: 'Department of Internal Medicine',
+    schedule: [
+        {
+            day: 'Wednesday',
+            time: [
+                { start: '09:00 am', end: '12:00 pm' },
+                { start: '3:00 pm', end: '5:00 pm' }
+            ]
+        },
+    ]
+}
+
+db.insertOne(Doctor, doctor8, function () {
+})
+
+var doctor9 = {
+    _id: new mongoose.Types.ObjectId(),
+    fname: 'Lab',
+    lname: 'Kita',
+    specialization: 'Laboratory Medicine',
+    avatar: 'doctor.png',
+    department: 'Department of Laboratory Medicine',
+    schedule: [
+        {
+            day: 'Wednesday',
+            time: [
+                { start: '09:00 am', end: '12:00 pm' },
+                { start: '3:00 pm', end: '5:00 pm' }
+            ]
+        },
+    ]
+}
+
+db.insertOne(Doctor, doctor9, function () {
+})
+
+var doctor10 = {
+    _id: new mongoose.Types.ObjectId(),
+    fname: 'Lawyer',
+    lname: 'Dela Cruz',
+    specialization: 'Legal Medicine',
+    avatar: 'doctor.png',
+    department: 'Department of Legal Medicine',
+    schedule: [
+        {
+            day: 'Wednesday',
+            time: [
+                { start: '09:00 am', end: '12:00 pm' },
+                { start: '3:00 pm', end: '5:00 pm' }
+            ]
+        },
+    ]
+}
+
+db.insertOne(Doctor, doctor10, function () {
+})
+
+var doctor11 = {
+    _id: new mongoose.Types.ObjectId(),
+    fname: 'Boom',
+    lname: 'Dela Cruz',
+    specialization: 'Nuclear Medicine',
+    avatar: 'doctor.png',
+    department: 'Department of Nuclear Medicine',
+    schedule: [
+        {
+            day: 'Wednesday',
+            time: [
+                { start: '09:00 am', end: '12:00 pm' },
+                { start: '3:00 pm', end: '5:00 pm' }
+            ]
+        },
+    ]
+}
+
+db.insertOne(Doctor, doctor11, function () {
+})
+
+var doctor12 = {
+    _id: new mongoose.Types.ObjectId(),
+    fname: 'Sana',
+    lname: 'Ol May Trabaho',
+    specialization: 'Occupational Medicine',
+    avatar: 'doctor.png',
+    department: 'Department of Occupational Medicine',
+    schedule: [
+        {
+            day: 'Wednesday',
+            time: [
+                { start: '09:00 am', end: '12:00 pm' },
+                { start: '3:00 pm', end: '5:00 pm' }
+            ]
+        },
+    ]
+}
+
+db.insertOne(Doctor, doctor12, function () {
+})
+
+var doctor13 = {
+    _id: new mongoose.Types.ObjectId(),
+    fname: 'Eyes',
+    lname: 'On You',
+    specialization: 'Ophthalmology',
+    avatar: 'doctor.png',
+    department: 'Department of Ophthalmology',
+    schedule: [
+        {
+            day: 'Wednesday',
+            time: [
+                { start: '09:00 am', end: '12:00 pm' },
+                { start: '3:00 pm', end: '5:00 pm' }
+            ]
+        },
+    ]
+}
+
+db.insertOne(Doctor, doctor13, function () {
+})
+
+var doctor14 = {
+    _id: new mongoose.Types.ObjectId(),
+    fname: 'Eyes Nose Lips',
+    lname: 'Taeyang',
+    specialization: 'Otorhinolaryngology',
+    avatar: 'doctor.png',
+    department: 'Department of Otorhinolaryngology',
+    schedule: [
+        {
+            day: 'Saturday',
+            time: [
+                { start: '09:00 am', end: '12:00 pm' },
+                { start: '3:00 pm', end: '5:00 pm' }
+            ]
+        },
+    ]
+}
+
+db.insertOne(Doctor, doctor14, function () {
+})
+
+var doctor15 = {
+    _id: new mongoose.Types.ObjectId(),
+    fname: 'Xavier',
+    lname: 'Tagubat',
+    specialization: 'Radiology',
+    avatar: 'doctor.png',
+    department: 'Department of Radiology',
+    schedule: [
+        {
+            day: 'Friday',
+            time: [
+                { start: '09:00 am', end: '12:00 pm' },
+                { start: '3:00 pm', end: '5:00 pm' }
+            ]
+        },
+    ]
+}
+
+db.insertOne(Doctor, doctor15, function () {
+})
+
+var doctor16 = {
+    _id: new mongoose.Types.ObjectId(),
+    fname: 'Rekta',
+    lname: 'Jailt',
+    specialization: 'Rehabilitation Medicine',
+    avatar: 'doctor.png',
+    department: 'Department of Rehab',
+    schedule: [
+        {
+            day: 'Friday',
+            time: [
+                { start: '09:00 am', end: '12:00 pm' },
+                { start: '3:00 pm', end: '5:00 pm' }
+            ]
+        },
+    ]
+}
+
+db.insertOne(Doctor, doctor16, function () {
+})
 
 
