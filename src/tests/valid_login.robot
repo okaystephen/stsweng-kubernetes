@@ -6,8 +6,8 @@ Documentation     A test suite with tests for valid login.
 Resource          resource.robot
 
 *** Test Cases ***
-Valid Login Chrome
-    Open Browser to Login Page Chrome
+Valid Login
+    Open Browser to Login Page
     Click Element                   id=navbarDropdownMenuLink
     Input Username                  sample@gmail.com
     Input Password                  sample12
@@ -15,11 +15,9 @@ Valid Login Chrome
     Page Should Contain Element     id=navbarDropdownMenuLink
     [Teardown]  Close Browser
 
-Valid Login Firefox
-    Open Browser to Login Page Firefox
+SignUp
+    Open Browser to Login Page
     Click Element                   id=navbarDropdownMenuLink
-    Input Username                  sample@gmail.com
-    Input Password                  sample12
-    Click Button                    css=.btn
-    Page Should Contain Element     id=navbarDropdownMenuLink
+    Click Link                      xpath=//a[contains(@href, '/register')]
+    Page Should Contain Element     xpath=(//button[@type='submit'])[2]
     [Teardown]  Close Browser

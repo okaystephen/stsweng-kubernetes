@@ -10,16 +10,11 @@ Library           SeleniumLibrary
 ${SERVER}       localhost:3001
 ${BROWSER}      Chrome
 ${LOGIN URL}    https://${SERVER}/
-${DELAY}        0
+${DELAY}        0.1
 
 *** Keywords ***
-Open Browser To Login Page Chrome
+Open Browser To Login Page
     Open Browser                    ${SERVER}        ${BROWSER}
-    Login Page Should Be Open
-    Set Selenium Speed              ${DELAY}
-
-Open Browser To Login Page Firefox
-    Open Browser                    ${SERVER}        ff
     Login Page Should Be Open
     Set Selenium Speed              ${DELAY}
 

@@ -6,8 +6,8 @@ Documentation     A test suite with tests for invalid login.
 Resource          resource.robot
 
 *** Test Cases ***
-Invalid User Login Chrome
-    Open Browser to Login Page Chrome
+Invalid User Login
+    Open Browser to Login Page
     Click Element                   id=navbarDropdownMenuLink
     Input Username                  sample@gmail.com
     Input Password                  wrong_password
