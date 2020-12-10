@@ -5,6 +5,7 @@ const moment = require('moment');
 const sanitize = require('mongo-sanitize');
 const HealthProgram = require('../models/HealthProgramModel.js');
 const UserProgram = require('../models/UserHProgramModel.js');
+const Appointment = require('../models/AppointmentModel');
 
 const hp_directoryController = {
     // render health program directory page when client requests '/healthprograms' defined in routes.js
@@ -87,7 +88,23 @@ const hp_directoryController = {
             db.updateOne(HealthProgram, {_id: req.params.hpId},  { $pull: { participants: req.session.user } }, function (hp){
                 if(hp){
                     db.deleteOne(UserProgram, {_id: req.params.hpId})
-                    res.redirect('/profile')
+                    db.findOne(User, { _id: req.session.user }, '', function (user) {
+                        db.findMany(HealthProgram, {participants: {$elemMatch: {$eq: req.session.user }}}, '', function(result){
+                            db.findMany(Appointment, { appointment_id: req.session.user }, {}, function (appList) {
+                                res.render('profile', {
+                                    layout: 'profile',
+                                    active_session: (req.session.user && req.cookies.user_sid),
+                                    active_user: req.session.user,
+                                    title: 'Profile | DoloMed',
+                                    user: user.toObject(),
+                                    healthprograms: result,
+                                    appList: appList,
+                                    success: req.body.hp_name,
+                                    alert: true
+                                });
+                            })
+                        });
+                    })
                 }
             })
         })

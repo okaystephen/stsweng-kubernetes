@@ -25,9 +25,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="cancelUserProgram" method="post" action="/canceluserhealth/{{_id}}">
-                
-                    <p style="text-align:left; padding: 10px">Are you sure you want to cancel your registration to {{hp_name}}?</p>
+                <form id="cancelUserProgram" method="post" action="/canceluserhealth/{{_id}}/status">
+
+                    <input type="hidden" value="{{hp_name}}" name="hp_name" id="hp_name"/> 
+                    <p style="text-align:left; padding: 10px">Are you sure you want to <span style="color:red">cancel</span> your registration to {{hp_name}}?</p>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-danger" id="programsave">Confirm</button>
