@@ -1,13 +1,4 @@
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-
-dotenv.config();
-const url = process.env.MONGO_URI;
-const options = {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true
-};
 
 // database functions (CRUD functions)
 const database = {
@@ -65,7 +56,7 @@ const database = {
         callback function is called after the execution of findMany() function
     */
     findMany: function (model, query, projection, callback) {
-        model.find(query, projection).lean().exec(function (error, result) {
+        model.find(query, projection, function (error, result) {
             if (error) return callback(false);
             return callback(result);
         });
@@ -76,11 +67,11 @@ const database = {
         on a single document based on the model `model`
         filtered by the object `filter`
     */
-    updateOne: function (model, filter, update, callback) {
+    updateOne: function (model, filter, update) {
         model.updateOne(filter, update, function (error, result) {
-            if (error) return callback(false);
+            if (error) throw error;
             console.log('Document modified: ' + result.nModified);
-            return callback(result);
+            return result;
         });
     },
 

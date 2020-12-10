@@ -1,23 +1,9 @@
 // import module `express`
 const database = require('../models/db.js');
 const session = require('express-session');
-const express = require('express');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 
 // import module `controller` from `../controllers/controller.js`
 const controller = require('../controllers/controller.js');
-const registerController = require('../controllers/registerController.js');
-const dashboardController = require('../controllers/dashboardController.js');
-const loginController = require('../controllers/loginController.js');
-const doc_directoryController = require('../controllers/doc_directoryController.js');
-const appointmentController = require('../controllers/appointmentController.js');
-
-//form validation
-const validation = require('../helpers/validation.js');
-const profileController = require('../controllers/profileController.js');
-const accountController = require('../controllers/accountController.js');
-const hp_directoryController = require('../controllers/hp_directoryController.js');
 
 const app = express();
 
@@ -45,54 +31,7 @@ app.use((req, res, next) => {
 });
 
 // call function getIndex when client sends a request for '/' defined in routes.js
-// add routes here
-
-// register controller
-app.get('/register', registerController.getRegister);
-app.post(
-  '/register',
-  validation.registerValidation(),
-  registerController.postRegister
-);
-
-// landing & login controller
-app.get('/', controller.getLanding);
-app.post('/', loginController.postLogIn);
-app.get('/logout', controller.getLogOut);
-
-//dashboard controller
-app.get('/dashboard', dashboardController.getDashboard);
-
-//profile controller
-app.get('/profile', profileController.getProfile);
-app.get('/profile/deleteapp/', appointmentController.deleteAppointment);
-
-//account controller
-app.get('/account', accountController.getAccount);
-app.post('/updateProfile', accountController.updateProfile);
-app.post('/updateMedHis', accountController.updateMedHis);
-
-//appointment controller
-app.get('/appointments', appointmentController.getAppointment);
-app.post('/appointments', appointmentController.postAppointment);
-
-// health program controller
-app.get('/healthprograms', hp_directoryController.getHealthPrograms);
-app.post('/healthprograms', loginController.postLogIn);
-app.post('/registerhealth/:hpId/status', hp_directoryController.postUserProgram);
-app.post('/canceluserhealth/:hpId/status', hp_directoryController.cancelProgram);
-
-//logout
-app.get('/logout', function (req, res) {
-  req.logout;
-  req.session.destroy(function (err) { });
-  res.redirect('/');
-});
-// doctors directory controller
-app.get('/doctors', doc_directoryController.getDocDirectory);
-app.post('/doctors', loginController.postLogIn);
-app.post('/filter', doc_directoryController.getFilter);
-
+// Add routes here
 
 // enables to export app object when called in another .js file
 module.exports = app;
