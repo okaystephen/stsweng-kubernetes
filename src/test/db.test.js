@@ -99,10 +99,10 @@ describe('Database Model Test', () => {
 
         // Object Id should be defined when successfully saved to MongoDB.
         expect(savedUMH._id).toBeDefined();
-        expect(savedUMH.problems).toBe(medhist.problems);
-        expect(savedUMH.surgeries).toBe(medhist.surgeries);
-        expect(savedUMH.medications).toBe(medhist.medications);
-        expect(savedUMH.medallergic).toBe(medhist.medallergic);
+        expect(savedUMH.problems).toBe(validMH.problems);
+        expect(savedUMH.surgeries).toBe(validMH.surgeries);
+        expect(savedUMH.medications).toBe(validMH.medications);
+        expect(savedUMH.medallergic).toBe(validMH.medallergic);
     });
 
 
