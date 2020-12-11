@@ -58,10 +58,14 @@ const hp_directoryController = {
                             req.session.user = user._id;
                             res.redirect('/healthprograms');
                         }
-                        else { res.redirect('/healthprograms/fail'); }
+                        else {
+                            res.redirect('/healthprograms/fail');
+                        }
                     });
                 }
-                else { res.redirect('/healthprograms/fail'); }
+                else {
+                    res.redirect('/healthprograms/fail');
+                }
             });
         })
     },
