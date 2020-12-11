@@ -28,7 +28,6 @@ const controller = {
     getLogOut: function (req, res) {
         req.logout;
         req.session.destroy(function (err) { });
-        // res.redirect('/')
         res.redirect('back');
     },
 }

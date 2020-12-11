@@ -1,5 +1,6 @@
 const dotenv = require('dotenv').config();
 const express = require('express');
+const session = require('express-session');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
