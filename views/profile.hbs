@@ -8,11 +8,12 @@
     <!-- Navigation Bar -->
     <!-- Sticky Vertical Navigation Bar -->
     <ul class="vertical-navbar">
-        <li>
+        <a href="/" style=" text-decoration: none;">
             <p class="h1 shrink gradient-text"
                 style="text-align: center; margin-left: 8px; margin-top: .5rem; font-family: 'Montserrat', sans-serif;">
-                DoloMed <i class="far fa-hospital"></i></p>
-        </li>
+                DoloMed <i class="far fa-hospital"></i>
+            </p>
+        </a>
         <hr>
         <li><a href="/profile" style="font-size: medium;">Dashboard</a></li>
         <li>
@@ -59,7 +60,8 @@
     <div class="profile-content">
         <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">Hello, Patient!
         </p>
-        {{!-- <p style="font-size: 130px; font-family: 'Montserrat', sans-serif; color: #2F8250">Hello, Patient!</p> --}}
+        {{!-- <p style="font-size: 130px; font-family: 'Montserrat', sans-serif; color: #2F8250">Hello, Patient!</p>
+        --}}
         <p style="font-size: 25px; font-family: 'Montserrat', sans-serif; color: #2F8250">Here's an overview of your
             account.</p>
         <p style="color: #5C6B6B ; font-family: 'Roboto Mono',">
@@ -127,7 +129,8 @@
                     Programs</div>
                 <div class="card mx-auto" style="width: 913px; margin-bottom: 2rem;">
                     {{#if alert}}
-                    <div class="alert alert-success hide" style="margin-bottom: 20px;">You have successfuly cancelled your registration to {{success}}.</div>
+                    <div class="alert alert-success hide" style="margin-bottom: 20px;">You have successfuly cancelled
+                        your registration to {{success}}.</div>
                     {{/if}}
                     <div class="table-responsive text-center">
                         <table class="table text-left" id="profilehp-table">
@@ -145,7 +148,7 @@
                             </thead>
                             <tbody>
                                 {{#each healthprograms}}
-                                    {{> userhprogramsCard}}
+                                {{> userhprogramsCard}}
                                 {{/each}}
                             </tbody>
                         </table>
