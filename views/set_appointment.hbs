@@ -64,7 +64,7 @@
         <div class="card mx-auto border shadow-sm pt-2" style="width: 973px; ">
             <div class="card-body">
                 <div class="card mx-auto " style="width: 913px; ">
-                    <form method="POST" class="needs-validation" novalidate>
+                    <form method="POST" class="needs-validation" id="appFormSubmit" novalidate>
                         <div class="form-group">
                             <label for="appointment_name">Doctor</label>
                             <select id="appointment_name" name="appointment_name" class="form-control" required>
@@ -122,8 +122,7 @@
                             {{!-- <input type="button" name="btn" id="submit_btn" value="Submit" class="btn btn-success"
                                 data-toggle="modal" data-target="#a{{_id}}"> --}}
 
-                            <button class="btn btn-success" id="submit_btn" type="submit"
-                                onclick="confirm()">Submit</button>
+                            <button class="btn btn-success" id="submit_btn" type="submit">Submit</button>
 
                             {{!-- <a class=" btn btn-success" id="submit_btn" role="button" data-toggle="modal"
                                 data-target="#a{{_id}}">Submit</a> --}}
@@ -151,7 +150,8 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-success">Submit</button>
+                                        <button type="submit" id="submit_btn_modal" class="btn btn-success"
+                                            onclick="returnTrue()">Submit</button>
                                     </div>
                                 </div>
                             </div>
@@ -177,7 +177,7 @@
                             event.stopPropagation();
                         }
                         else {
-                            //event.preventDefault();
+                            event.preventDefault();
                             $('#confirmAppointment').modal('show');
                         }
                         form.classList.add('was-validated');
@@ -200,6 +200,11 @@
             var maxDate = year + '-' + month + '-' + day;
             $('#appointment_date').attr('min', maxDate);
         });
+
+        $('#submit_btn_modal').click(function () {
+            document.getElementById("appFormSubmit").submit();
+        });
+
     </script>
 
     <script>
@@ -207,6 +212,7 @@
 
         $(document).ready(function () {
             $('#appointment_name').select2();
+
         });
 
         $('#submit_btn').click(function () {
