@@ -71,8 +71,9 @@ const hp_directoryController = {
         else {
             var reason = sanitize(req.body.reason);
 
-            var program = new UserProgram({
-                _id: req.params.hpId,
+             var program = new UserProgram({
+                _id: new mongoose.Types.ObjectId(),
+                healthprogram: req.params.hpId,
                 user: req.session.user,
                 reason: reason,
             })
@@ -90,22 +91,22 @@ const hp_directoryController = {
                     })
                 });
             } else {
-                db.insertOne(UserProgram, program, function (flag) {
-                    if (flag) {
-                        db.updateOne(User, { _id: req.session.user }, { $push: { programs: program._id } }, function (result) {
-                            if (result) {
-                                db.updateOne(HealthProgram, { _id: req.params.hpId }, { $push: { participants: req.session.user } }, function (hp) {
-                                    if (hp) {
-                                        db.findMany(HealthProgram, { participants: { $ne: req.session.user } }, '', function (healthprogramsContent) {
-                                            res.render('hp_directory', {
-                                                layout: 'main',
-                                                title: 'Health Programs | DoloMed',
-                                                hp_active: true,
-                                                user_active: true,
-                                                healthprogramsContent: healthprogramsContent,
-                                                test: req.body.hp_name,
-                                                alert: true,
-                                            })
+                db.insertOne(UserProgram, program, function(flag){
+                    if(flag){
+                        db.updateOne(User, {_id: req.session.user}, { $push: { programs: program.healthprogram} }, function (result){
+                            if(result){
+                                db.updateOne(HealthProgram, {_id: req.params.hpId},  { $push: { participants: req.session.user } }, function (hp){
+                                    if(hp){
+                                        db.findMany(HealthProgram, {participants: {$ne: req.session.user }}, '', function(healthprogramsContent){
+                                                res.render('hp_directory', {
+                                                    layout: 'main',
+                                                    title: 'Health Programs | DoloMed',
+                                                    hp_active: true,
+                                                    user_active: true,
+                                                    healthprogramsContent: healthprogramsContent,
+                                                    test: req.body.hp_name,
+                                                    alert: true,
+                                                })
                                         });
                                     }
                                 })
@@ -118,11 +119,11 @@ const hp_directoryController = {
         }
     },
 
-    cancelProgram: function (req, res) {
-        db.updateOne(User, { _id: req.session.user }, { $pull: { programs: req.params.hpId } }, function (result) {
-            db.updateOne(HealthProgram, { _id: req.params.hpId }, { $pull: { participants: req.session.user } }, function (hp) {
-                if (hp) {
-                    db.deleteOne(UserProgram, { _id: req.params.hpId })
+    cancelProgram: function (req, res){
+        db.updateOne(User, {_id: req.session.user}, {$pull: {programs: req.params.hpId}}, function(result){
+            db.updateOne(HealthProgram, {_id: req.params.hpId},  { $pull: { participants: req.session.user } }, function (hp){
+                if(hp){
+                    db.deleteOne(UserProgram, {user: req.session.user, healthprogram: req.params.hpId})
                     db.findOne(User, { _id: req.session.user }, '', function (user) {
                         db.findMany(HealthProgram, { participants: { $elemMatch: { $eq: req.session.user } } }, '', function (result) {
                             db.findMany(Appointment, { appointment_id: req.session.user }, {}, function (appList) {
