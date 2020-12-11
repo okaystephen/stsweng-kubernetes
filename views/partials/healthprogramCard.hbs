@@ -20,10 +20,10 @@
     </td>
     <td class="text-center">
         <small
-            style="color: {{#equals hp_curCap hp_maxCap}}red{{else}}#2F8250{{/equals}};">{{participants_count}}/{{this.hp_maxCap}}</small>
+            style="color: {{#equals participants_count hp_maxCap}}red{{else}}#2F8250{{/equals}};">{{participants_count}}/{{this.hp_maxCap}}</small>
     </td>
     <td class="text-center">
-        {{#equals hp_curCap hp_maxCap}}
+        {{#equals participants_count hp_maxCap}}
         {{!-- <span tabindex="0" data-toggle="tooltip" data-placement="right" title="You already sent your response to this applicant"></span>
         <small><button class="btn btn-secondary" role="button" style="pointer-events: none;" disabled>Register</button></small> --}}
         <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom" title="{{hp_name}} has already reached the maximum number of patients">
