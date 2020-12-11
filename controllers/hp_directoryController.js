@@ -32,6 +32,19 @@ const hp_directoryController = {
         });
     },
 
+    getHealthProgramsFail: function (req, res) {
+        db.findMany(HealthProgram, { participants: { $ne: req.session.user } }, '', function (healthprogramsContent) {
+            res.render('hp_directory', {
+                layout: 'main',
+                title: 'Health Programs | DoloMed',
+                hp_active: true,
+                healthprogramsContent: healthprogramsContent,
+                loginError: 'Invalid credentials!',
+                loginmodalError: true,
+            });
+        });
+    },
+
     loginHealthProgram: function (req, res) {
         var email = sanitize(req.body.loginemail_modal);
         var password = sanitize(req.body.loginpass_modal);
@@ -45,39 +58,10 @@ const hp_directoryController = {
                             req.session.user = user._id;
                             res.redirect('/healthprograms');
                         }
-                        else {
-                            // req.render('hp_directory', {
-                            //     loginError: 'Invalid credentials!',
-                            //     loginmodalError: true,
-                            // });
-
-                            // res.send({ loginmodalError: true });
-
-                            res.status(200).redirect('/healthprograms');
-
-                            // res.redirect('/healthprograms');
-                            // res.render('hp_directory', {
-                            //     layout: 'main',
-                            //     title: 'Health Programs | DoloMed',
-                            //     hp_active: true,
-                            //     healthprogramsContent: healthprogramsContent,
-                            //     loginError: 'Invalid credentials!',
-                            //     loginmodalError: true,
-                            // });
-                        }
+                        else { res.redirect('/healthprograms/fail'); }
                     });
                 }
-                else {
-                    res.redirect('/healthprograms');
-                    res.render('hp_directory', {
-                        layout: 'main',
-                        title: 'Health Programs | DoloMed',
-                        hp_active: true,
-                        healthprogramsContent: healthprogramsContent,
-                        loginError: 'Invalid credentials!',
-                        loginmodalError: true,
-                    });
-                }
+                else { res.redirect('/healthprograms/fail'); }
             });
         })
     },

@@ -35,55 +35,12 @@
         <small><a class="btn btn-success" role="button" data-toggle="modal" data-target="#a{{_id}}">Register</a></small>
         {{else}}
         <small><a class="btn btn-success" role="button" data-toggle="modal"
-                data-target="#login{{_id}}">Register</a></small>
+                data-target="#loginModal">Register</a></small>
         {{/if}}
         {{!-- <small><a class="btn btn-success" role="button" onclick="{{#if ../user_active}}register_user('{{this.hp_name}}'){{else}}register(){{/if}}">Register</a></small> --}}
         {{/equals}}
     </td>
 </tr>
-
-{{!-- Register Health Program Login Modal --}}
-<div class="modal fade" id="login{{_id}}" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="loginModalTitle">Log in first!</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="/healthprograms/modal">
-                    {{#if loginError}}
-                    <div class="text-center pb-2" style="color: red">
-                        <small>{{loginError}}</small></div>
-                    {{/if}}
-                    <div class="form-group text-center">
-                        <label for="loginemail_modal">Email address</label>
-                        <input type="email" class="form-control" name="loginemail_modal" id="loginemail_modal"
-                            aria-describedby="emailHelp" placeholder="Enter email">
-                    </div>
-                    <div class="form-group text-center">
-                        <label for="loginpass_modal">Password</label>
-                        <input type="password" class="form-control" name="loginpass_modal" id="loginpass_modal"
-                            placeholder="Password">
-                    </div>
-                    <div class="text-center">
-                        {{!-- <button type="submit" class="btn btn-primary pb-1">Submit</button> --}}
-                        <button class="btn btn-primary pb-1" onclick="loginModalSubmit()">Submit</button>
-                    </div>
-                    <div class="text-center pt-3">
-                        <small><a href="/forgotpassword" style="color:#2F8250;">Forgot
-                                password?</a></small>
-                        <hr>
-                        <small>Don't have an account? <a href="/register" style="color:#2F8250;">Sign
-                                up.</a></small>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 {{!-- Register Health Program Modal --}}
 <div class="modal fade" id="a{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -126,11 +83,6 @@
 
 
 <script>
-
-    $(document).ready(function () {
-        // $('#login5fd20234efcb6a75aca14a1e').modal('show');
-        alert("Test");
-    });
 
     function check(hp_name) {
         alert("You have successfuly registered to " + hp_name);
