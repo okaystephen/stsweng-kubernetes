@@ -75,7 +75,9 @@ const hpData = {
 
 const UserHProgramModel = require('../../models/UserHProgramModel.js');
 const program = {
-    _id: hpData._id,
+    _id: new ObjectID(),
+    healthprogram: hpData._id,
+    user: user._id,
     reason: "no reason"
 }
 
@@ -173,7 +175,9 @@ describe('Database Model Test', () => {
         const savedUHP = await validUHP.save();
 
         // Object Id should be defined when successfully saved to MongoDB.
-        expect(savedUHP._id).toBe(hpData._id);
+        expect(savedUHP._id).toBeDefined();
+        expect(savedUHP.healthprogram).toBe(program.healthprogram);
+        expect(savedUHP.user).toBe(program.user);
         expect(savedUHP.reason).toBe(program.reason);
     });
 
