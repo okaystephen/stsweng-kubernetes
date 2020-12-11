@@ -83,6 +83,16 @@ app.post('/healthprograms', loginController.postLogIn);
 app.post('/healthprograms/modal', hp_directoryController.loginHealthProgram);
 app.post('/registerhealth/:hpId/status', hp_directoryController.postUserProgram);
 app.post('/canceluserhealth/:hpId/status', hp_directoryController.cancelProgram);
+app.get('/registerhealth/:hpId/status', function (req, res) {
+  req.logout;
+  req.session.destroy(function (err) { });
+  res.redirect('/');
+});
+app.get('/canceluserhealth/:hpId/status', function (req, res) {
+  req.logout;
+  req.session.destroy(function (err) { });
+  res.redirect('/');
+});
 
 //logout
 app.get('/logout', function (req, res) {
