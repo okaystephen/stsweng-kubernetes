@@ -110,13 +110,63 @@
                                                 onclick="reschedApp('{{this._id}}')">Reschedule</a></small>
                                     </td>
                                     <td class="text-center">
-                                        <small><a class="btn btn-danger" role="button"
-                                                onclick="cancelApp('{{this._id}}')">Cancel</a></small>
+                                        <small>
+                                            {{!-- <a class="btn btn-danger" role="button"
+                                                onclick="cancelApp('{{this._id}}', '{{this.appointment_date}}')">Cancel</a>
+                                            --}}
+                                            <button class="btn btn-danger"
+                                                onclick="cancelApp('{{this._id}}', '{{this.appointment_date}}')">Cancel</button>
+                                        </small>
+
+                                        {{!-- // '{{this._id}}' --}}
                                     </td>
                                 </tr>
                                 {{/each}}
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{!-- Cancel Appointment Modal --}}
+        <div class="modal fade" id="cancelAppointment" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="cancelMessage"></p>
+                    </div>
+                    <div class="modal-footer text-right" style="display:initial;">
+                        {{!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                        <button type="submit" class="btn btn-danger modalCancelButton" onclick="">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{!-- Success Cancel Modal --}}
+        <div class="modal fade" id="successcancelAppointment" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>You've successfully cancelled the appointment.</p>
+                    </div>
+                    <div class="modal-footer text-right" style="display:initial;">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -179,20 +229,44 @@
             })
         });
 
-        function cancelApp(id) {
-            var cancelAppointment = confirm("Are you sure you want to cancel this appointment?");
-            if (cancelAppointment == 1) {
-                $.ajax({
-                    url: "/profile/deleteapp",
-                    data: { id: id },
-                    success: function (response) {
-                        window.location.href = 'profile';
-                    },
-                    error: function (xhr) { }
-                });
-            }
+        function cancelApp(id, date) {
+            var todayDate = new Date();
+            var destDate = new Date(date);
+            var Difference_In_Time = destDate.getTime() - todayDate.getTime();
+            var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
 
+            if (Difference_In_Days <= 7) {
+                $('.modal-title').text('Cancel Notice');
+                $('.cancelMessage').text('Sorry! You cannot cancel this appointment because it\'s within 7 days from now.');
+                $('.modal-footer').attr('style', 'display: none');
+                $('#cancelAppointment').modal('show');
+            } else {
+                $('.modal-title').text('Cancellation Confirmation');
+                $('.cancelMessage').text('Are you sure about cancelling this appointment?');
+                $('.modal-footer').attr('style', 'display: initial');
+                $('.modalCancelButton').attr('onclick', 'cancelModalApp(' + '\'' + id + '\'' + ')');
+                $('#cancelAppointment').modal('show');
+            }
         }
+
+        function cancelModalApp(id) {
+            $.ajax({
+                url: "/profile/deleteapp",
+                data: { id: id },
+                success: function (response) {
+                    $('.modal-title').text('Successful Cancellation');
+                    $('#cancelAppointment').modal('hide');
+                    $('#successcancelAppointment').modal('show');
+                    // window.location.href = 'profile';
+
+                },
+                error: function (xhr) { }
+            });
+        }
+
+        $('#successcancelAppointment').on('hidden.bs.modal', function () {
+            location.reload();
+        })
 
         function reschedApp() {
             alert("Insert resched modal here")
