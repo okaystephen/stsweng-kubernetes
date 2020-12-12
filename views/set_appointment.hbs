@@ -8,11 +8,12 @@
     <!-- Navigation Bar -->
     <!-- Sticky Vertical Navigation Bar -->
     <ul class="vertical-navbar">
-        <li>
+        <a href="/" style=" text-decoration: none;">
             <p class="h1 shrink gradient-text"
                 style="text-align: center; margin-left: 8px; margin-top: .5rem; font-family: 'Montserrat', sans-serif;">
-                DoloMed <i class="far fa-hospital"></i></p>
-        </li>
+                DoloMed <i class="far fa-hospital"></i>
+            </p>
+        </a>
         <hr>
         <li><a href="/profile" style="font-size: medium;">Dashboard</a></li>
         <li>
@@ -63,42 +64,72 @@
         <div class="card mx-auto border shadow-sm pt-2" style="width: 973px; ">
             <div class="card-body">
                 <div class="card mx-auto " style="width: 913px; ">
-                    <form method="POST">
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="appointment_date">Date</label>
-                                <input type="date" class="form-control" id="appointment_date" name="appointment_date">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="appointment_time">Time</label>
-                                <input type="time" class="form-control" id="appointment_time" name="appointment_time">
-                            </div>
-                        </div>
+                    <form method="POST" class="needs-validation" id="appFormSubmit" novalidate>
                         <div class="form-group">
                             <label for="appointment_name">Doctor</label>
-                            <select id="appointment_name" name="appointment_name" class="form-control">
-                                <option selected>Choose...</option>
+                            <select id="appointment_name" name="appointment_name" class="form-control" required>
+                                <option selected disabled value="">Choose...</option>
                                 {{#each docList}}
                                 <option class="selectDoc" id="{{this._id}}" value="{{this.lname}}, {{this.fname}}">
                                     {{this.lname}}, {{this.fname}}</option>
                                 {{/each}}
                             </select>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Choose a doctor.
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="appointment_date">Date</label>
+                                <input type="date" class="form-control" id="appointment_date" name="appointment_date"
+                                    required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Enter a valid date.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="appointment_time">Time</label>
+                                <input type="time" class="form-control" id="appointment_time" name="appointment_time"
+                                    required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Enter a valid time.
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="appointment_reason">Reason for appointment</label>
-                            <textarea class="form-control" id="appointment_reason" name="appointment_reason"
-                                rows="3"></textarea>
+                            <textarea class="form-control" id="appointment_reason" name="appointment_reason" rows="3"
+                                required></textarea>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Enter reason for appointment.
+                            </div>
                         </div>
                         <div class="form-group text-center pt-3">
                             <input type="hidden" id="appointment_docID" name="appointment_docID" value="">
-                            <input type="button" name="btn" id="submit_btn" value="Submit" class="btn btn-success"
-                                data-toggle="modal" data-target="#a{{_id}}">
-                            {{!-- <a class="btn btn-success" id="submit_btn" role="button" data-toggle="modal"
+
+                            {{!-- <input type="button" name="btn" id="submit_btn" value="Submit" class="btn btn-success"
+                                data-toggle="modal" data-target="#a{{_id}}"> --}}
+
+                            <button class="btn btn-success" id="submit_btn" type="submit">Submit</button>
+
+                            {{!-- <a class=" btn btn-success" id="submit_btn" role="button" data-toggle="modal"
                                 data-target="#a{{_id}}">Submit</a> --}}
                         </div>
 
                         {{!-- Set Appointment Modal --}}
-                        <div class="modal fade" id="a{{_id}}" tabindex="-1" role="dialog"
+                        <div class="modal fade" id="confirmAppointment" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -119,7 +150,8 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-success">Submit</button>
+                                        <button type="submit" id="submit_btn_modal" class="btn btn-success"
+                                            onclick="returnTrue()">Submit</button>
                                     </div>
                                 </div>
                             </div>
@@ -130,11 +162,58 @@
         </div>
     </div>
 
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        else {
+                            event.preventDefault();
+                            $('#confirmAppointment').modal('show');
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
 
+        $(function () {
+            var dtToday = new Date();
+
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
+
+            var maxDate = year + '-' + month + '-' + day;
+            $('#appointment_date').attr('min', maxDate);
+        });
+
+        $('#submit_btn_modal').click(function () {
+            document.getElementById("appFormSubmit").submit();
+        });
+
+    </script>
 
     <script>
-
         window.onscroll = function () { myFunction() };
+
+        $(document).ready(function () {
+            $('#appointment_name').select2();
+
+        });
 
         $('#submit_btn').click(function () {
             $('#app-date').text($('#appointment_date').val());
