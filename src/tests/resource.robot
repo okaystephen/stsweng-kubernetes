@@ -10,7 +10,7 @@ Library           SeleniumLibrary
 ${SERVER}       localhost:3001
 ${BROWSER}      Chrome
 ${LOGIN URL}    https://${SERVER}/
-${DELAY}        0.1
+${DELAY}        0.2
 
 *** Keywords ***
 Open Browser To Login Page
@@ -23,8 +23,8 @@ Login Page Should Be Open
 
 Input Username
     [Arguments]                     ${username}
-    Input Text                      id=loginemail       ${username}
+    Input Text                      id=loginemail_modal       ${username}
 
 Input Password
     [Arguments]                     ${password}
-    Input Text                      id=loginpass        ${password}
+    Input Text                      id=loginpass_modal        ${password}
