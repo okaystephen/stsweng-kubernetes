@@ -1,3 +1,6 @@
+{{#invalid this.hp_enddate}}
+
+{{else}}
 <tr>
     <td>
         <small>{{hp_name}}</small>
@@ -22,12 +25,12 @@
         <small
             style="color: {{#equals participants_count hp_maxCap}}red{{else}}#2F8250{{/equals}};">{{participants_count}}/{{this.hp_maxCap}}</small>
     </td>
-    <td class="text-center">
+    <td class="text-center">    
         {{#equals participants_count hp_maxCap}}
         {{!-- <span tabindex="0" data-toggle="tooltip" data-placement="right" title="You already sent your response to this applicant"></span>
         <small><button class="btn btn-secondary" role="button" style="pointer-events: none;" disabled>Register</button></small> --}}
         <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
-            title="{{hp_name}} has already reached the maximum number of patients">
+            title="{{hp_name}} has already reached the maximum number of participants">
             <button class="btn btn-secondary" style="pointer-events: none;" type="button" disabled>Register</button>
         </span>
         {{else}}
@@ -69,6 +72,12 @@
 
                     </div>
 
+                    {{!-- <input type="hidden" value="{{this.hp_enddate}}" name="hp_enddate" id="hp_enddate"/>  --}}
+                    {{!-- <input type="hidden" value="{{dateFormat this.hp_enddate "MMM-DD-YYYY"}}" name="hp_enddate" id="hp_enddate"/> 
+                    <input type="hidden" value="{{dateFormat this.hp_startdate "MMM-DD-YYYY"}}" name="hp_startdate" id="hp_startdate"/> 
+                    <input type="hidden" value="{{dateFormat this.hp_enddate "h:mm a"}}" name="hp_endtime" id="hp_endtime"/> 
+                    <input type="hidden" value="{{dateFormat this.hp_startdate "h:mm a"}}" name="hp_starttime" id="hp_starttime"/> 
+                    <input type="hidden" value="{{hp_location}}" name="hp_location" id="hp_location"/>  --}}
                     <input type="hidden" value="{{hp_name}}" name="hp_name" id="hp_name" />
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -79,55 +88,14 @@
         </div>
     </div>
 </div>
+{{/invalid}}
 
-
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
 
 <script>
-
-    function check(hp_name) {
-        alert("You have successfuly registered to " + hp_name);
-    }
-
-    function register_user(hp_name) {
-        //var hp_confirm = confirm("Do you want to register in the following program: " + hp_name );
-
-        //$('.reasonErrorMsg').show();
-
-        //var yes = document.getElementById('reason').value 
-        //if(yes=='')
-        var reason = $('#reason').val()
-        var exposure = $('#exposure').val()
-        //if(reason == ''){
-        //    $('.reasonErrorMsg').show();
-        //    $('#programsave').prop('disabled',true);
-        //} else{
-        //   $('#programsave').prop('disabled',false);
-        // }
-        //if(exposure == ''){
-        //  $('.exposureErrorMsg').show();
-        //   $('#programsave').prop('disabled',true);
-        //} else{
-        //  $('#programsave').prop('disabled',false);
-        //}
-
-        //if (hp_confirm == true) {
-        //$.ajax({
-        //    url: "/healthprograms-reserve/",
-        //    data: { id: self },
-        //    success: function (response) {
-        //        alert("Successfully reserved! Please check your dashboard.")
-        //    },
-        //    error: function (xhr) { }
-        //});
-        //} 
-
-        if (reason == '') || (exposure == ''){
-            $('.exposureErrorMsg').show();
-            $('#programsave').prop('disabled', true);
-        }
-        else {
-            $('.exposureErrorMsg').hide();
-            $('#programsave').prop('disabled', false);
-        }
-    }
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>

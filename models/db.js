@@ -30,7 +30,7 @@ const database = {
             console.log(error);
             if (error) return callback(false);
             console.log('Added ' + result);
-            return callback(true);
+            return callback(result);
         });
     },
 

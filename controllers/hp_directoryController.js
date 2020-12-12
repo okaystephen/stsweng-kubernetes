@@ -74,7 +74,7 @@ const hp_directoryController = {
         if (!req.session.user) res.redirect('/')
         else {
             var reason = sanitize(req.body.reason);
-
+            
              var program = new UserProgram({
                 _id: new mongoose.Types.ObjectId(),
                 healthprogram: req.params.hpId,
@@ -102,16 +102,37 @@ const hp_directoryController = {
                                 db.updateOne(HealthProgram, {_id: req.params.hpId},  { $push: { participants: req.session.user } }, function (hp){
                                     if(hp){
                                         db.findMany(HealthProgram, {participants: {$ne: req.session.user }}, '', function(healthprogramsContent){
-                                                res.render('hp_directory', {
-                                                    layout: 'main',
-                                                    title: 'Health Programs | DoloMed',
-                                                    hp_active: true,
-                                                    user_active: true,
-                                                    healthprogramsContent: healthprogramsContent,
-                                                    test: req.body.hp_name,
-                                                    alert: true,
-                                                })
+                                            res.render('hp_directory', {
+                                                layout: 'main',
+                                                title: 'Health Programs | DoloMed',
+                                                hp_active: true,
+                                                user_active: true,
+                                                healthprogramsContent: healthprogramsContent,
+                                                test: req.body.hp_name,
+                                                alert: true,
+                                            })
                                         });
+                                        //email user
+                                        // db.findOne(User, {_id: req.session.user}, 'email', function(user){
+                                        //     const output = `
+                                        //     <p>You have a new message from Dolomed<p>
+                                        //     <h3> ${req.body.hp_name} Details </h3>
+                                        //     <p> Registration ID: ${flag._id} <p>
+                                        //     <p> Date: ${req.body.hp_startdate} to ${req.body.hp_enddate} <p>
+                                        //     <p> Timeslot: ${req.body.hp_starttime} - ${req.body.hp_endtime} </p>
+                                        //     <p> Location: ${req.body.hp_location} </p>
+                                        //     `;
+                                            
+                                        //     console.log(user.email);
+                                        //     var mailOptions = {
+                                        //         from: `${req.body.contact_email}`,
+                                        //         to: 'victor_tulabot@dlsu.edu.ph',
+                                        //         cc: 'tulabot18@gmail.com',
+                                        //         subject: `${req.body.contact_subject}`,
+                                        //         html: output,
+                                        //     };
+                                        // })
+                                        
                                     }
                                 })
                             }
