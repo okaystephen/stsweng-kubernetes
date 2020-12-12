@@ -30,6 +30,7 @@
     "moment": "^2.29.1",
     "mongo-sanitize": "^1.1.0",
     "mongoose": "^5.10.13",
+    "nodemailer": "^6.4.16",
     "sifter": "^0.5.4"
   },
   "devDependencies": {

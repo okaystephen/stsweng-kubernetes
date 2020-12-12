@@ -51,6 +51,13 @@ app.engine(
       equals: function (arg1, arg2, options) {
         return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
       },
+      invalid: function(date, options){
+        if(Date.now() > date){
+          return options.fn(this)
+        } else{
+          return options.inverse(this)
+        }
+      }
     },
   }),
 );
