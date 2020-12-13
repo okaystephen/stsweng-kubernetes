@@ -1,5 +1,6 @@
 const db = require('../models/db');
 const User = require('../models/UserModel');
+const HealthProgram = require('../models/HealthProgramModel.js');
 const Appointment = require('../models/AppointmentModel');
 const Doctor = require('../models/DoctorModel');
 const { ObjectID } = require('mongodb');
@@ -53,12 +54,30 @@ const appointmentController = {
 
     deleteAppointment: function (req, res) {
         var appointment_id = req.query.id;
+        var docname = req.query.doc;
         var appointment_details = {
             _id: ObjectID(appointment_id)
         }
 
         db.deleteOne(Appointment, appointment_details);
-        res.redirect('/profile');
+
+        db.findOne(User, { _id: req.session.user }, '', function (user) {
+            db.findMany(HealthProgram, { participants: { $elemMatch: { $eq: req.session.user } } }, '', function (result) {
+                db.findMany(Appointment, { appointment_id: req.session.user }, {}, function (appList) {
+                    res.render('profile', {
+                        layout: 'profile',
+                        active_session: (req.session.user && req.cookies.user_sid),
+                        active_user: req.session.user,
+                        title: 'Profile | DoloMed',
+                        user: user.toObject(),
+                        healthprograms: result,
+                        appList: appList,
+                        doctor_success: docname,
+                        doctor_alert: true,
+                    });
+                })
+            });
+        })
     },
 }
 
