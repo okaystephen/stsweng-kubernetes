@@ -60,8 +60,6 @@
     <div class="profile-content">
         <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">Hello, Patient!
         </p>
-        {{!-- <p style="font-size: 130px; font-family: 'Montserrat', sans-serif; color: #2F8250">Hello, Patient!</p>
-        --}}
         <p style="font-size: 25px; font-family: 'Montserrat', sans-serif; color: #2F8250">Here's an overview of your
             account.</p>
         <p style="color: #5C6B6B ; font-family: 'Roboto Mono',">
@@ -78,6 +76,15 @@
                     Your
                     Appointments</div>
                 <div class="card mx-auto " style="width: 913px; margin-bottom: 2rem;">
+                    {{#if doctor_alert}}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert"
+                        style="margin-bottom: 20px;">
+                        You have successfully cancelled your appointment with {{doctor_success}}.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {{/if}}
                     <div class="table-responsive text-center">
                         <table class="table text-left" id="profileapp-table">
                             <thead class=" text-primary">
@@ -95,32 +102,7 @@
                             </thead>
                             <tbody>
                                 {{#each appList}}
-                                <tr>
-                                    <td>
-                                        {{this.appointment_name}}
-                                    </td>
-                                    <td>
-                                        {{dateFormat this.appointment_date "h:mm a"}}
-                                    </td>
-                                    <td>
-                                        {{dateFormat this.appointment_date "YYYY-MM-DD"}}
-                                    </td>
-                                    <td class="text-center">
-                                        <small><a class="btn btn-success" role="button"
-                                                onclick="reschedApp('{{this._id}}')">Reschedule</a></small>
-                                    </td>
-                                    <td class="text-center">
-                                        <small>
-                                            {{!-- <a class="btn btn-danger" role="button"
-                                                onclick="cancelApp('{{this._id}}', '{{this.appointment_date}}')">Cancel</a>
-                                            --}}
-                                            <button class="btn btn-danger"
-                                                onclick="cancelApp('{{this._id}}', '{{this.appointment_date}}')">Cancel</button>
-                                        </small>
-
-                                        {{!-- // '{{this._id}}' --}}
-                                    </td>
-                                </tr>
+                                {{> userdocCard}}
                                 {{/each}}
                             </tbody>
                         </table>
@@ -131,7 +113,8 @@
 
         {{!-- Cancel Appointment Modal --}}
         <div class="modal fade" id="cancelAppointment" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+            style="font-size: 45px; font-family: 'Montserrat', sans-serif; color: #2F8250;">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -144,29 +127,7 @@
                         <p class="cancelMessage"></p>
                     </div>
                     <div class="modal-footer text-right" style="display:initial;">
-                        {{!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
                         <button type="submit" class="btn btn-danger modalCancelButton" onclick="">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{!-- Success Cancel Modal --}}
-        <div class="modal fade" id="successcancelAppointment" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>You've successfully cancelled the appointment.</p>
-                    </div>
-                    <div class="modal-footer text-right" style="display:initial;">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -179,8 +140,13 @@
                     Programs</div>
                 <div class="card mx-auto" style="width: 913px; margin-bottom: 2rem;">
                     {{#if alert}}
-                    <div class="alert alert-success hide" style="margin-bottom: 20px;">You have successfuly cancelled
-                        your registration to {{success}}.</div>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert"
+                        style="margin-bottom: 20px;">
+                        You have successfully cancelled your registration to {{success}}.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     {{/if}}
                     <div class="table-responsive text-center">
                         <table class="table text-left" id="profilehp-table">
@@ -235,17 +201,18 @@
             var Difference_In_Time = destDate.getTime() - todayDate.getTime();
             var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
 
+            var modalID = 'doc' + id;
+
             if (Difference_In_Days <= 7) {
-                $('.modal-title').text('Cancel Notice');
-                $('.cancelMessage').text('Sorry! You cannot cancel this appointment because it\'s within 7 days from now.');
-                $('.modal-footer').attr('style', 'display: none');
-                $('#cancelAppointment').modal('show');
+                $('.cancelDocAppointmentSuccess').attr('style', 'display: none');
+                $('.cancelDocAppointmentFail').attr('style', 'display: initial');
+                $('.cancelDocAppointmentButton').attr('style', 'display: none');
+                $('#' + modalID).modal('show');
             } else {
-                $('.modal-title').text('Cancellation Confirmation');
-                $('.cancelMessage').text('Are you sure about cancelling this appointment?');
-                $('.modal-footer').attr('style', 'display: initial');
-                $('.modalCancelButton').attr('onclick', 'cancelModalApp(' + '\'' + id + '\'' + ')');
-                $('#cancelAppointment').modal('show');
+                $('.cancelDocAppointmentFail').attr('style', 'display: none');
+                $('.cancelDocAppointmentSuccess').attr('style', 'display: initial');
+                $('.cancelDocAppointmentButton').attr('style', 'display: initial');
+                $('#' + modalID).modal('show');
             }
         }
 

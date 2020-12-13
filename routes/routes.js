@@ -65,7 +65,7 @@ app.get('/dashboard', dashboardController.getDashboard);
 
 //profile controller
 app.get('/profile', profileController.getProfile);
-app.get('/profile/deleteapp/', appointmentController.deleteAppointment);
+app.get('/profile/deleteapp', appointmentController.deleteAppointment);
 
 //account controller
 app.get('/account', accountController.getAccount);
