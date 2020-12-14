@@ -63,7 +63,7 @@ Without Login Health Program Register
     # Check User Profile if successfully registered
     Click Link                                          link=My Dashboard
     Element Text Should Be                              css=#profilehp-table td:nth-child(1)                                    Test Program
-    [Teardown]  Close All Browsers
+    Close Browser
     # Health Program Cancel
     Health Program Cancel
 
@@ -90,6 +90,6 @@ With Login Health Program Register
     # Check User Profile if successfully registered
     Click Link                                          link=My Dashboard
     Element Text Should Be                              css=#profilehp-table td:nth-child(1)                                    Test Program
-    [Teardown]  Close All Browsers
+    Close Browser
     # Health Program Cancel
     Health Program Cancel

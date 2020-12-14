@@ -52,6 +52,6 @@ Set Appointment
     Click Element                                       id=submit_btn_modal
     # Check User Profile Page
     Wait Until Page Contains Element                    css=#profileapp-table td:nth-child(1)
+    Close Browser
     # Cancel Appointment
     Cancel Appointment
-    [Teardown]  Close All Browsers
