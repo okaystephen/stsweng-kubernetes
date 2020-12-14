@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.2.2 (Python 3.9.0 on darwin)" generated="20201214 16:29:05.385" rpa="false">
+<robot generator="Robot 3.2.2 (Python 3.9.0 on darwin)" generated="20201214 19:06:55.797" rpa="false">
 <suite id="s1" name="Tests" source="/Users/victortulabot/Desktop/stsweng-kubernetes/src/tests">
-<suite id="s1-s1" name="Login" source="/Users/victortulabot/Desktop/stsweng-kubernetes/src/tests/login.robot">
-<test id="s1-s1-t1" name="Valid Login">
+<suite id="s1-s1" name="Health Program" source="/Users/victortulabot/Desktop/stsweng-kubernetes/src/tests/health_program.robot">
+<test id="s1-s1-t1" name="With Login Health Program">
 <kw name="Successful Login" library="resource">
 <kw name="Open Browser To Login Page" library="resource">
 <kw name="Open Browser" library="SeleniumLibrary">
@@ -11,16 +11,16 @@
 <arg>${SERVER}</arg>
 <arg>${BROWSER}</arg>
 </arguments>
-<msg timestamp="20201214 16:29:05.923" level="INFO">Opening browser 'Chrome' to base url 'localhost:3001'.</msg>
-<status status="PASS" starttime="20201214 16:29:05.923" endtime="20201214 16:29:10.662"></status>
+<msg timestamp="20201214 19:06:56.018" level="INFO">Opening browser 'Chrome' to base url 'localhost:3001'.</msg>
+<status status="PASS" starttime="20201214 19:06:56.017" endtime="20201214 19:07:00.069"></status>
 </kw>
 <kw name="Click Link" library="SeleniumLibrary">
 <doc>Clicks a link identified by ``locator``.</doc>
 <arguments>
 <arg>link=Login</arg>
 </arguments>
-<msg timestamp="20201214 16:29:10.663" level="INFO">Clicking link 'link=Login'.</msg>
-<status status="PASS" starttime="20201214 16:29:10.662" endtime="20201214 16:29:10.749"></status>
+<msg timestamp="20201214 19:07:00.073" level="INFO">Clicking link 'link=Login'.</msg>
+<status status="PASS" starttime="20201214 19:07:00.072" endtime="20201214 19:07:00.165"></status>
 </kw>
 <kw name="Login Page Should Be Open" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -28,19 +28,19 @@
 <arguments>
 <arg>id=loginbtn</arg>
 </arguments>
-<msg timestamp="20201214 16:29:10.764" level="INFO">Current page contains element 'id=loginbtn'.</msg>
-<status status="PASS" starttime="20201214 16:29:10.751" endtime="20201214 16:29:10.764"></status>
+<msg timestamp="20201214 19:07:00.181" level="INFO">Current page contains element 'id=loginbtn'.</msg>
+<status status="PASS" starttime="20201214 19:07:00.166" endtime="20201214 19:07:00.181"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:10.750" endtime="20201214 16:29:10.764"></status>
+<status status="PASS" starttime="20201214 19:07:00.165" endtime="20201214 19:07:00.181"></status>
 </kw>
 <kw name="Set Selenium Speed" library="SeleniumLibrary">
 <doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
 <arg>${DELAY}</arg>
 </arguments>
-<status status="PASS" starttime="20201214 16:29:10.764" endtime="20201214 16:29:10.765"></status>
+<status status="PASS" starttime="20201214 19:07:00.181" endtime="20201214 19:07:00.182"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:05.923" endtime="20201214 16:29:10.765"></status>
+<status status="PASS" starttime="20201214 19:06:56.017" endtime="20201214 19:07:00.182"></status>
 </kw>
 <kw name="Login Page Should Be Open" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -48,10 +48,10 @@
 <arguments>
 <arg>id=loginbtn</arg>
 </arguments>
-<msg timestamp="20201214 16:29:10.980" level="INFO">Current page contains element 'id=loginbtn'.</msg>
-<status status="PASS" starttime="20201214 16:29:10.765" endtime="20201214 16:29:10.980"></status>
+<msg timestamp="20201214 19:07:00.394" level="INFO">Current page contains element 'id=loginbtn'.</msg>
+<status status="PASS" starttime="20201214 19:07:00.183" endtime="20201214 19:07:00.396"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:10.765" endtime="20201214 16:29:10.981"></status>
+<status status="PASS" starttime="20201214 19:07:00.182" endtime="20201214 19:07:00.398"></status>
 </kw>
 <kw name="Input Username" library="resource">
 <arguments>
@@ -63,10 +63,10 @@
 <arg>id=loginemail_modal</arg>
 <arg>${username}</arg>
 </arguments>
-<msg timestamp="20201214 16:29:10.983" level="INFO">Typing text 'sample@gmail.com' into text field 'id=loginemail_modal'.</msg>
-<status status="PASS" starttime="20201214 16:29:10.982" endtime="20201214 16:29:11.811"></status>
+<msg timestamp="20201214 19:07:00.401" level="INFO">Typing text 'sample@gmail.com' into text field 'id=loginemail_modal'.</msg>
+<status status="PASS" starttime="20201214 19:07:00.399" endtime="20201214 19:07:01.253"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:10.981" endtime="20201214 16:29:11.811"></status>
+<status status="PASS" starttime="20201214 19:07:00.398" endtime="20201214 19:07:01.253"></status>
 </kw>
 <kw name="Input Password" library="resource">
 <arguments>
@@ -78,18 +78,18 @@
 <arg>id=loginpass_modal</arg>
 <arg>${password}</arg>
 </arguments>
-<msg timestamp="20201214 16:29:11.813" level="INFO">Typing text 'sample12' into text field 'id=loginpass_modal'.</msg>
-<status status="PASS" starttime="20201214 16:29:11.813" endtime="20201214 16:29:12.536"></status>
+<msg timestamp="20201214 19:07:01.255" level="INFO">Typing text 'sample12' into text field 'id=loginpass_modal'.</msg>
+<status status="PASS" starttime="20201214 19:07:01.255" endtime="20201214 19:07:01.993"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:11.812" endtime="20201214 16:29:12.536"></status>
+<status status="PASS" starttime="20201214 19:07:01.254" endtime="20201214 19:07:01.993"></status>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
 <doc>Clicks the button identified by ``locator``.</doc>
 <arguments>
 <arg>id=loginbtn</arg>
 </arguments>
-<msg timestamp="20201214 16:29:12.537" level="INFO">Clicking button 'id=loginbtn'.</msg>
-<status status="PASS" starttime="20201214 16:29:12.537" endtime="20201214 16:29:14.920"></status>
+<msg timestamp="20201214 19:07:01.994" level="INFO">Clicking button 'id=loginbtn'.</msg>
+<status status="PASS" starttime="20201214 19:07:01.994" endtime="20201214 19:07:04.239"></status>
 </kw>
 <kw name="User Profile Page Should Be Open" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -97,81 +97,362 @@
 <arguments>
 <arg>id=profileapp-table_wrapper</arg>
 </arguments>
-<msg timestamp="20201214 16:29:15.142" level="INFO">Current page contains element 'id=profileapp-table_wrapper'.</msg>
-<status status="PASS" starttime="20201214 16:29:14.922" endtime="20201214 16:29:15.142"></status>
+<msg timestamp="20201214 19:07:04.463" level="INFO">Current page contains element 'id=profileapp-table_wrapper'.</msg>
+<status status="PASS" starttime="20201214 19:07:04.241" endtime="20201214 19:07:04.464"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:14.921" endtime="20201214 16:29:15.143"></status>
+<status status="PASS" starttime="20201214 19:07:04.239" endtime="20201214 19:07:04.465"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:05.922" endtime="20201214 16:29:15.143"></status>
+<status status="PASS" starttime="20201214 19:06:56.016" endtime="20201214 19:07:04.465"></status>
 </kw>
-<kw name="Close Browser" library="SeleniumLibrary" type="teardown">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20201214 16:29:15.144" endtime="20201214 16:29:15.472"></status>
-</kw>
-<status status="PASS" starttime="20201214 16:29:05.921" endtime="20201214 16:29:15.472" critical="yes"></status>
-</test>
-<test id="s1-s1-t2" name="SignUp">
-<kw name="Open Browser To Login Page" library="resource">
-<kw name="Open Browser" library="SeleniumLibrary">
-<doc>Opens a new browser instance to the optional ``url``.</doc>
+<kw name="User Profile Page Should Be Open" library="resource">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
-<arg>${SERVER}</arg>
-<arg>${BROWSER}</arg>
+<arg>id=profileapp-table_wrapper</arg>
 </arguments>
-<msg timestamp="20201214 16:29:15.477" level="INFO">Opening browser 'Chrome' to base url 'localhost:3001'.</msg>
-<status status="PASS" starttime="20201214 16:29:15.476" endtime="20201214 16:29:19.689"></status>
+<msg timestamp="20201214 19:07:04.678" level="INFO">Current page contains element 'id=profileapp-table_wrapper'.</msg>
+<status status="PASS" starttime="20201214 19:07:04.466" endtime="20201214 19:07:04.679"></status>
+</kw>
+<status status="PASS" starttime="20201214 19:07:04.466" endtime="20201214 19:07:04.680"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>css=p:nth-child(3)</arg>
+<arg>Address: 123 Blk 00, sample's address\nContact Number: 09177112470\nBirthday: 1998-12-17</arg>
+</arguments>
+<msg timestamp="20201214 19:07:04.681" level="INFO">Verifying element 'css=p:nth-child(3)' contains exact text 'Address: 123 Blk 00, sample's address
+Contact Number: 09177112470
+Birthday: 1998-12-17'.</msg>
+<status status="PASS" starttime="20201214 19:07:04.681" endtime="20201214 19:07:05.118"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>css=.nav-item &gt; h6</arg>
+<arg>Last, First</arg>
+</arguments>
+<msg timestamp="20201214 19:07:05.119" level="INFO">Verifying element 'css=.nav-item &gt; h6' contains exact text 'Last, First'.</msg>
+<status status="PASS" starttime="20201214 19:07:05.119" endtime="20201214 19:07:05.562"></status>
 </kw>
 <kw name="Click Link" library="SeleniumLibrary">
 <doc>Clicks a link identified by ``locator``.</doc>
 <arguments>
-<arg>link=Login</arg>
+<arg>link=Health Programs</arg>
 </arguments>
-<msg timestamp="20201214 16:29:19.691" level="INFO">Clicking link 'link=Login'.</msg>
-<status status="PASS" starttime="20201214 16:29:19.690" endtime="20201214 16:29:20.392"></status>
+<msg timestamp="20201214 19:07:05.564" level="INFO">Clicking link 'link=Health Programs'.</msg>
+<status status="PASS" starttime="20201214 19:07:05.563" endtime="20201214 19:07:06.612"></status>
 </kw>
-<kw name="Login Page Should Be Open" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
-<arg>id=loginbtn</arg>
+<arg>css=#hp-table_filter &gt; label</arg>
 </arguments>
-<msg timestamp="20201214 16:29:20.612" level="INFO">Current page contains element 'id=loginbtn'.</msg>
-<status status="PASS" starttime="20201214 16:29:20.393" endtime="20201214 16:29:20.613"></status>
-</kw>
-<status status="PASS" starttime="20201214 16:29:20.392" endtime="20201214 16:29:20.613"></status>
-</kw>
-<kw name="Set Selenium Speed" library="SeleniumLibrary">
-<doc>Sets the delay that is waited after each Selenium command.</doc>
-<arguments>
-<arg>${DELAY}</arg>
-</arguments>
-<status status="PASS" starttime="20201214 16:29:20.613" endtime="20201214 16:29:20.614"></status>
-</kw>
-<status status="PASS" starttime="20201214 16:29:15.476" endtime="20201214 16:29:20.614"></status>
+<msg timestamp="20201214 19:07:06.837" level="INFO">Current page contains element 'css=#hp-table_filter &gt; label'.</msg>
+<status status="PASS" starttime="20201214 19:07:06.613" endtime="20201214 19:07:06.837"></status>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <doc>Click the element identified by ``locator``.</doc>
 <arguments>
-<arg>css=small:nth-child(3) &gt; a</arg>
+<arg>css=.sorting:nth-child(1)</arg>
 </arguments>
-<msg timestamp="20201214 16:29:20.615" level="INFO">Clicking element 'css=small:nth-child(3) &gt; a'.</msg>
-<status status="PASS" starttime="20201214 16:29:20.615" endtime="20201214 16:29:21.500"></status>
+<msg timestamp="20201214 19:07:06.839" level="INFO">Clicking element 'css=.sorting:nth-child(1)'.</msg>
+<status status="PASS" starttime="20201214 19:07:06.838" endtime="20201214 19:07:07.316"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>css=.odd:nth-child(1) &gt; .sorting_1 &gt; small</arg>
+<arg>AAA Latest Test Program</arg>
+</arguments>
+<msg timestamp="20201214 19:07:07.318" level="INFO">Verifying element 'css=.odd:nth-child(1) &gt; .sorting_1 &gt; small' contains exact text 'AAA Latest Test Program'.</msg>
+<status status="PASS" starttime="20201214 19:07:07.317" endtime="20201214 19:07:07.762"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>css=.sorting_asc</arg>
+</arguments>
+<msg timestamp="20201214 19:07:07.765" level="INFO">Clicking element 'css=.sorting_asc'.</msg>
+<status status="PASS" starttime="20201214 19:07:07.764" endtime="20201214 19:07:08.235"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>css=.odd:nth-child(1) &gt; .sorting_1 &gt; small</arg>
+<arg>ZZZ Oldest Test Program</arg>
+</arguments>
+<msg timestamp="20201214 19:07:08.236" level="INFO">Verifying element 'css=.odd:nth-child(1) &gt; .sorting_1 &gt; small' contains exact text 'ZZZ Oldest Test Program'.</msg>
+<status status="PASS" starttime="20201214 19:07:08.236" endtime="20201214 19:07:08.679"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>css=.sorting:nth-child(3)</arg>
+</arguments>
+<msg timestamp="20201214 19:07:08.681" level="INFO">Clicking element 'css=.sorting:nth-child(3)'.</msg>
+<status status="PASS" starttime="20201214 19:07:08.680" endtime="20201214 19:07:09.162"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small</arg>
+<arg>ZZZ Oldest Test Program</arg>
+</arguments>
+<msg timestamp="20201214 19:07:09.164" level="INFO">Verifying element 'css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small' contains exact text 'ZZZ Oldest Test Program'.</msg>
+<status status="PASS" starttime="20201214 19:07:09.163" endtime="20201214 19:07:09.612"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>css=.sorting_asc</arg>
+</arguments>
+<msg timestamp="20201214 19:07:09.614" level="INFO">Clicking element 'css=.sorting_asc'.</msg>
+<status status="PASS" starttime="20201214 19:07:09.613" endtime="20201214 19:07:10.096"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small</arg>
+<arg>AAA Latest Test Program</arg>
+</arguments>
+<msg timestamp="20201214 19:07:10.098" level="INFO">Verifying element 'css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small' contains exact text 'AAA Latest Test Program'.</msg>
+<status status="PASS" starttime="20201214 19:07:10.097" endtime="20201214 19:07:10.539"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>css=.sorting:nth-child(4)</arg>
+</arguments>
+<msg timestamp="20201214 19:07:10.540" level="INFO">Clicking element 'css=.sorting:nth-child(4)'.</msg>
+<status status="PASS" starttime="20201214 19:07:10.539" endtime="20201214 19:07:11.032"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small</arg>
+<arg>ZZZ Oldest Test Program</arg>
+</arguments>
+<msg timestamp="20201214 19:07:11.034" level="INFO">Verifying element 'css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small' contains exact text 'ZZZ Oldest Test Program'.</msg>
+<status status="PASS" starttime="20201214 19:07:11.033" endtime="20201214 19:07:11.470"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>css=.sorting_asc</arg>
+</arguments>
+<msg timestamp="20201214 19:07:11.472" level="INFO">Clicking element 'css=.sorting_asc'.</msg>
+<status status="PASS" starttime="20201214 19:07:11.471" endtime="20201214 19:07:11.937"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small</arg>
+<arg>AAA Latest Test Program</arg>
+</arguments>
+<msg timestamp="20201214 19:07:11.939" level="INFO">Verifying element 'css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small' contains exact text 'AAA Latest Test Program'.</msg>
+<status status="PASS" starttime="20201214 19:07:11.938" endtime="20201214 19:07:12.379"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>css=.sorting:nth-child(5)</arg>
+</arguments>
+<msg timestamp="20201214 19:07:12.381" level="INFO">Clicking element 'css=.sorting:nth-child(5)'.</msg>
+<status status="PASS" starttime="20201214 19:07:12.380" endtime="20201214 19:07:12.871"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small</arg>
+<arg>AAA Latest Test Program</arg>
+</arguments>
+<msg timestamp="20201214 19:07:12.872" level="INFO">Verifying element 'css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small' contains exact text 'AAA Latest Test Program'.</msg>
+<status status="PASS" starttime="20201214 19:07:12.871" endtime="20201214 19:07:13.305"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>css=.sorting_asc</arg>
+</arguments>
+<msg timestamp="20201214 19:07:13.306" level="INFO">Clicking element 'css=.sorting_asc'.</msg>
+<status status="PASS" starttime="20201214 19:07:13.305" endtime="20201214 19:07:13.770"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small</arg>
+<arg>ZZZ Oldest Test Program</arg>
+</arguments>
+<msg timestamp="20201214 19:07:13.771" level="INFO">Verifying element 'css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small' contains exact text 'ZZZ Oldest Test Program'.</msg>
+<status status="PASS" starttime="20201214 19:07:13.770" endtime="20201214 19:07:14.213"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>css=.sorting:nth-child(6)</arg>
+</arguments>
+<msg timestamp="20201214 19:07:14.215" level="INFO">Clicking element 'css=.sorting:nth-child(6)'.</msg>
+<status status="PASS" starttime="20201214 19:07:14.214" endtime="20201214 19:07:14.696"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small</arg>
+<arg>ZZZ Oldest Test Program</arg>
+</arguments>
+<msg timestamp="20201214 19:07:14.698" level="INFO">Verifying element 'css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small' contains exact text 'ZZZ Oldest Test Program'.</msg>
+<status status="PASS" starttime="20201214 19:07:14.697" endtime="20201214 19:07:15.129"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>css=.sorting_asc</arg>
+</arguments>
+<msg timestamp="20201214 19:07:15.132" level="INFO">Clicking element 'css=.sorting_asc'.</msg>
+<status status="PASS" starttime="20201214 19:07:15.131" endtime="20201214 19:07:15.590"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small</arg>
+<arg>Adolescent health and development program</arg>
+</arguments>
+<msg timestamp="20201214 19:07:15.592" level="INFO">Verifying element 'css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small' contains exact text 'Adolescent health and development program'.</msg>
+<status status="PASS" starttime="20201214 19:07:15.591" endtime="20201214 19:07:16.030"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>css=.odd:nth-child(1) .btn</arg>
+</arguments>
+<msg timestamp="20201214 19:07:16.033" level="INFO">Clicking element 'css=.odd:nth-child(1) .btn'.</msg>
+<status status="PASS" starttime="20201214 19:07:16.032" endtime="20201214 19:07:16.520"></status>
 </kw>
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
-<arg>id=signupbtn</arg>
+<arg>css=#a5fd721786161150d2281c550 #programsave</arg>
 </arguments>
-<msg timestamp="20201214 16:29:21.724" level="INFO">Current page contains element 'id=signupbtn'.</msg>
-<status status="PASS" starttime="20201214 16:29:21.501" endtime="20201214 16:29:21.724"></status>
+<msg timestamp="20201214 19:07:16.741" level="INFO">Current page contains element 'css=#a5fd721786161150d2281c550 #programsave'.</msg>
+<status status="PASS" starttime="20201214 19:07:16.521" endtime="20201214 19:07:16.741"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>css=#a5fd721786161150d2281c550 .btn-secondary</arg>
+</arguments>
+<msg timestamp="20201214 19:07:16.742" level="INFO">Clicking element 'css=#a5fd721786161150d2281c550 .btn-secondary'.</msg>
+<status status="PASS" starttime="20201214 19:07:16.742" endtime="20201214 19:07:17.221"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>css=input:nth-child(1)</arg>
+</arguments>
+<msg timestamp="20201214 19:07:17.223" level="INFO">Clicking element 'css=input:nth-child(1)'.</msg>
+<status status="PASS" starttime="20201214 19:07:17.222" endtime="20201214 19:07:17.705"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>css=input:nth-child(1)</arg>
+<arg>test</arg>
+</arguments>
+<msg timestamp="20201214 19:07:17.706" level="INFO">Typing text 'test' into text field 'css=input:nth-child(1)'.</msg>
+<status status="PASS" starttime="20201214 19:07:17.705" endtime="20201214 19:07:18.431"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small</arg>
+</arguments>
+<msg timestamp="20201214 19:07:18.646" level="INFO">Current page contains element 'css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small'.</msg>
+<status status="PASS" starttime="20201214 19:07:18.432" endtime="20201214 19:07:18.647"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small</arg>
+<arg>ZZZ Oldest Test Program</arg>
+</arguments>
+<msg timestamp="20201214 19:07:18.650" level="INFO">Verifying element 'css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small' contains exact text 'ZZZ Oldest Test Program'.</msg>
+<status status="PASS" starttime="20201214 19:07:18.649" endtime="20201214 19:07:19.089"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>link=Health Programs</arg>
+</arguments>
+<msg timestamp="20201214 19:07:19.090" level="INFO">Clicking link 'link=Health Programs'.</msg>
+<status status="PASS" starttime="20201214 19:07:19.090" endtime="20201214 19:07:20.213"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>css=.sorting:nth-child(1)</arg>
+</arguments>
+<msg timestamp="20201214 19:07:20.216" level="INFO">Clicking element 'css=.sorting:nth-child(1)'.</msg>
+<status status="PASS" starttime="20201214 19:07:20.215" endtime="20201214 19:07:20.700"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small</arg>
+<arg>AAA Latest Test Program</arg>
+</arguments>
+<msg timestamp="20201214 19:07:20.701" level="INFO">Verifying element 'css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small' contains exact text 'AAA Latest Test Program'.</msg>
+<status status="PASS" starttime="20201214 19:07:20.700" endtime="20201214 19:07:21.141"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id=hp-table_next</arg>
+</arguments>
+<msg timestamp="20201214 19:07:21.142" level="INFO">Clicking element 'id=hp-table_next'.</msg>
+<status status="PASS" starttime="20201214 19:07:21.142" endtime="20201214 19:07:21.630"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>css=.even:nth-child(8) &gt; .sorting_1 &gt; small</arg>
+<arg>ZZZ Oldest Test Program</arg>
+</arguments>
+<msg timestamp="20201214 19:07:21.632" level="INFO">Verifying element 'css=.even:nth-child(8) &gt; .sorting_1 &gt; small' contains exact text 'ZZZ Oldest Test Program'.</msg>
+<status status="PASS" starttime="20201214 19:07:21.631" endtime="20201214 19:07:22.077"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>id=hp-table_previous</arg>
+</arguments>
+<msg timestamp="20201214 19:07:22.078" level="INFO">Clicking element 'id=hp-table_previous'.</msg>
+<status status="PASS" starttime="20201214 19:07:22.078" endtime="20201214 19:07:22.567"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<arguments>
+<arg>css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small</arg>
+<arg>AAA Latest Test Program</arg>
+</arguments>
+<msg timestamp="20201214 19:07:22.568" level="INFO">Verifying element 'css=.odd:nth-child(1) &gt; td:nth-child(1) &gt; small' contains exact text 'AAA Latest Test Program'.</msg>
+<status status="PASS" starttime="20201214 19:07:22.567" endtime="20201214 19:07:23.004"></status>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary" type="teardown">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20201214 16:29:21.725" endtime="20201214 16:29:22.001"></status>
+<status status="PASS" starttime="20201214 19:07:23.005" endtime="20201214 19:07:23.290"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:15.474" endtime="20201214 16:29:22.001" critical="yes"></status>
+<status status="PASS" starttime="20201214 19:06:56.015" endtime="20201214 19:07:23.291" critical="yes"></status>
 </test>
-<test id="s1-s1-t3" name="Invalid User Login">
+<doc>A test suite with tests for Health Program.
+
+This test has a workflow that is created using keywords
+directly from SeleniumLibrary</doc>
+<status status="PASS" starttime="20201214 19:06:55.837" endtime="20201214 19:07:23.293"></status>
+</suite>
+<suite id="s1-s2" name="Login" source="/Users/victortulabot/Desktop/stsweng-kubernetes/src/tests/login.robot">
+<test id="s1-s2-t1" name="Valid Login">
+<kw name="Successful Login" library="resource">
 <kw name="Open Browser To Login Page" library="resource">
 <kw name="Open Browser" library="SeleniumLibrary">
 <doc>Opens a new browser instance to the optional ``url``.</doc>
@@ -179,16 +460,16 @@
 <arg>${SERVER}</arg>
 <arg>${BROWSER}</arg>
 </arguments>
-<msg timestamp="20201214 16:29:22.006" level="INFO">Opening browser 'Chrome' to base url 'localhost:3001'.</msg>
-<status status="PASS" starttime="20201214 16:29:22.006" endtime="20201214 16:29:26.018"></status>
+<msg timestamp="20201214 19:07:23.307" level="INFO">Opening browser 'Chrome' to base url 'localhost:3001'.</msg>
+<status status="PASS" starttime="20201214 19:07:23.307" endtime="20201214 19:07:27.631"></status>
 </kw>
 <kw name="Click Link" library="SeleniumLibrary">
 <doc>Clicks a link identified by ``locator``.</doc>
 <arguments>
 <arg>link=Login</arg>
 </arguments>
-<msg timestamp="20201214 16:29:26.021" level="INFO">Clicking link 'link=Login'.</msg>
-<status status="PASS" starttime="20201214 16:29:26.020" endtime="20201214 16:29:26.720"></status>
+<msg timestamp="20201214 19:07:27.633" level="INFO">Clicking link 'link=Login'.</msg>
+<status status="PASS" starttime="20201214 19:07:27.632" endtime="20201214 19:07:28.330"></status>
 </kw>
 <kw name="Login Page Should Be Open" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -196,19 +477,30 @@
 <arguments>
 <arg>id=loginbtn</arg>
 </arguments>
-<msg timestamp="20201214 16:29:26.944" level="INFO">Current page contains element 'id=loginbtn'.</msg>
-<status status="PASS" starttime="20201214 16:29:26.722" endtime="20201214 16:29:26.944"></status>
+<msg timestamp="20201214 19:07:28.547" level="INFO">Current page contains element 'id=loginbtn'.</msg>
+<status status="PASS" starttime="20201214 19:07:28.332" endtime="20201214 19:07:28.547"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:26.721" endtime="20201214 16:29:26.945"></status>
+<status status="PASS" starttime="20201214 19:07:28.331" endtime="20201214 19:07:28.548"></status>
 </kw>
 <kw name="Set Selenium Speed" library="SeleniumLibrary">
 <doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
 <arg>${DELAY}</arg>
 </arguments>
-<status status="PASS" starttime="20201214 16:29:26.945" endtime="20201214 16:29:26.946"></status>
+<status status="PASS" starttime="20201214 19:07:28.549" endtime="20201214 19:07:28.550"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:22.005" endtime="20201214 16:29:26.946"></status>
+<status status="PASS" starttime="20201214 19:07:23.306" endtime="20201214 19:07:28.551"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="resource">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>id=loginbtn</arg>
+</arguments>
+<msg timestamp="20201214 19:07:28.765" level="INFO">Current page contains element 'id=loginbtn'.</msg>
+<status status="PASS" starttime="20201214 19:07:28.552" endtime="20201214 19:07:28.765"></status>
+</kw>
+<status status="PASS" starttime="20201214 19:07:28.552" endtime="20201214 19:07:28.766"></status>
 </kw>
 <kw name="Input Username" library="resource">
 <arguments>
@@ -220,10 +512,167 @@
 <arg>id=loginemail_modal</arg>
 <arg>${username}</arg>
 </arguments>
-<msg timestamp="20201214 16:29:26.948" level="INFO">Typing text 'sample@gmail.com' into text field 'id=loginemail_modal'.</msg>
-<status status="PASS" starttime="20201214 16:29:26.947" endtime="20201214 16:29:27.749"></status>
+<msg timestamp="20201214 19:07:28.768" level="INFO">Typing text 'sample@gmail.com' into text field 'id=loginemail_modal'.</msg>
+<status status="PASS" starttime="20201214 19:07:28.767" endtime="20201214 19:07:29.597"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:26.946" endtime="20201214 16:29:27.749"></status>
+<status status="PASS" starttime="20201214 19:07:28.766" endtime="20201214 19:07:29.598"></status>
+</kw>
+<kw name="Input Password" library="resource">
+<arguments>
+<arg>sample12</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id=loginpass_modal</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20201214 19:07:29.601" level="INFO">Typing text 'sample12' into text field 'id=loginpass_modal'.</msg>
+<status status="PASS" starttime="20201214 19:07:29.600" endtime="20201214 19:07:30.335"></status>
+</kw>
+<status status="PASS" starttime="20201214 19:07:29.599" endtime="20201214 19:07:30.336"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id=loginbtn</arg>
+</arguments>
+<msg timestamp="20201214 19:07:30.336" level="INFO">Clicking button 'id=loginbtn'.</msg>
+<status status="PASS" starttime="20201214 19:07:30.336" endtime="20201214 19:07:32.665"></status>
+</kw>
+<kw name="User Profile Page Should Be Open" library="resource">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>id=profileapp-table_wrapper</arg>
+</arguments>
+<msg timestamp="20201214 19:07:32.888" level="INFO">Current page contains element 'id=profileapp-table_wrapper'.</msg>
+<status status="PASS" starttime="20201214 19:07:32.667" endtime="20201214 19:07:32.888"></status>
+</kw>
+<status status="PASS" starttime="20201214 19:07:32.666" endtime="20201214 19:07:32.889"></status>
+</kw>
+<status status="PASS" starttime="20201214 19:07:23.305" endtime="20201214 19:07:32.889"></status>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="teardown">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20201214 19:07:32.890" endtime="20201214 19:07:33.212"></status>
+</kw>
+<status status="PASS" starttime="20201214 19:07:23.304" endtime="20201214 19:07:33.212" critical="yes"></status>
+</test>
+<test id="s1-s2-t2" name="SignUp">
+<kw name="Open Browser To Login Page" library="resource">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${SERVER}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20201214 19:07:33.219" level="INFO">Opening browser 'Chrome' to base url 'localhost:3001'.</msg>
+<status status="PASS" starttime="20201214 19:07:33.218" endtime="20201214 19:07:37.681"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>link=Login</arg>
+</arguments>
+<msg timestamp="20201214 19:07:37.683" level="INFO">Clicking link 'link=Login'.</msg>
+<status status="PASS" starttime="20201214 19:07:37.682" endtime="20201214 19:07:38.444"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="resource">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>id=loginbtn</arg>
+</arguments>
+<msg timestamp="20201214 19:07:38.689" level="INFO">Current page contains element 'id=loginbtn'.</msg>
+<status status="PASS" starttime="20201214 19:07:38.446" endtime="20201214 19:07:38.689"></status>
+</kw>
+<status status="PASS" starttime="20201214 19:07:38.445" endtime="20201214 19:07:38.690"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" starttime="20201214 19:07:38.690" endtime="20201214 19:07:38.692"></status>
+</kw>
+<status status="PASS" starttime="20201214 19:07:33.216" endtime="20201214 19:07:38.693"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>css=small:nth-child(3) &gt; a</arg>
+</arguments>
+<msg timestamp="20201214 19:07:38.695" level="INFO">Clicking element 'css=small:nth-child(3) &gt; a'.</msg>
+<status status="PASS" starttime="20201214 19:07:38.694" endtime="20201214 19:07:39.572"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>id=signupbtn</arg>
+</arguments>
+<msg timestamp="20201214 19:07:39.793" level="INFO">Current page contains element 'id=signupbtn'.</msg>
+<status status="PASS" starttime="20201214 19:07:39.573" endtime="20201214 19:07:39.794"></status>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="teardown">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20201214 19:07:39.795" endtime="20201214 19:07:40.081"></status>
+</kw>
+<status status="PASS" starttime="20201214 19:07:33.215" endtime="20201214 19:07:40.081" critical="yes"></status>
+</test>
+<test id="s1-s2-t3" name="Invalid User Login">
+<kw name="Open Browser To Login Page" library="resource">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${SERVER}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20201214 19:07:40.084" level="INFO">Opening browser 'Chrome' to base url 'localhost:3001'.</msg>
+<status status="PASS" starttime="20201214 19:07:40.084" endtime="20201214 19:07:44.183"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>link=Login</arg>
+</arguments>
+<msg timestamp="20201214 19:07:44.185" level="INFO">Clicking link 'link=Login'.</msg>
+<status status="PASS" starttime="20201214 19:07:44.184" endtime="20201214 19:07:44.889"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="resource">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>id=loginbtn</arg>
+</arguments>
+<msg timestamp="20201214 19:07:45.109" level="INFO">Current page contains element 'id=loginbtn'.</msg>
+<status status="PASS" starttime="20201214 19:07:44.891" endtime="20201214 19:07:45.109"></status>
+</kw>
+<status status="PASS" starttime="20201214 19:07:44.890" endtime="20201214 19:07:45.110"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" starttime="20201214 19:07:45.110" endtime="20201214 19:07:45.111"></status>
+</kw>
+<status status="PASS" starttime="20201214 19:07:40.083" endtime="20201214 19:07:45.112"></status>
+</kw>
+<kw name="Input Username" library="resource">
+<arguments>
+<arg>sample@gmail.com</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id=loginemail_modal</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20201214 19:07:45.113" level="INFO">Typing text 'sample@gmail.com' into text field 'id=loginemail_modal'.</msg>
+<status status="PASS" starttime="20201214 19:07:45.113" endtime="20201214 19:07:45.948"></status>
+</kw>
+<status status="PASS" starttime="20201214 19:07:45.112" endtime="20201214 19:07:45.949"></status>
 </kw>
 <kw name="Input Password" library="resource">
 <arguments>
@@ -235,26 +684,26 @@
 <arg>id=loginpass_modal</arg>
 <arg>${password}</arg>
 </arguments>
-<msg timestamp="20201214 16:29:27.751" level="INFO">Typing text 'wrong_password' into text field 'id=loginpass_modal'.</msg>
-<status status="PASS" starttime="20201214 16:29:27.751" endtime="20201214 16:29:28.487"></status>
+<msg timestamp="20201214 19:07:45.952" level="INFO">Typing text 'wrong_password' into text field 'id=loginpass_modal'.</msg>
+<status status="PASS" starttime="20201214 19:07:45.951" endtime="20201214 19:07:46.703"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:27.750" endtime="20201214 16:29:28.487"></status>
+<status status="PASS" starttime="20201214 19:07:45.950" endtime="20201214 19:07:46.704"></status>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
 <doc>Clicks the button identified by ``locator``.</doc>
 <arguments>
 <arg>css=.btn</arg>
 </arguments>
-<msg timestamp="20201214 16:29:28.489" level="INFO">Clicking button 'css=.btn'.</msg>
-<status status="PASS" starttime="20201214 16:29:28.488" endtime="20201214 16:29:29.922"></status>
+<msg timestamp="20201214 19:07:46.705" level="INFO">Clicking button 'css=.btn'.</msg>
+<status status="PASS" starttime="20201214 19:07:46.705" endtime="20201214 19:07:48.129"></status>
 </kw>
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
 <arg>css=.loginModalErrorText</arg>
 </arguments>
-<msg timestamp="20201214 16:29:30.142" level="INFO">Current page contains element 'css=.loginModalErrorText'.</msg>
-<status status="PASS" starttime="20201214 16:29:29.923" endtime="20201214 16:29:30.142"></status>
+<msg timestamp="20201214 19:07:48.348" level="INFO">Current page contains element 'css=.loginModalErrorText'.</msg>
+<status status="PASS" starttime="20201214 19:07:48.129" endtime="20201214 19:07:48.349"></status>
 </kw>
 <kw name="Input Username" library="resource">
 <arguments>
@@ -266,10 +715,10 @@
 <arg>id=loginemail_modal</arg>
 <arg>${username}</arg>
 </arguments>
-<msg timestamp="20201214 16:29:30.144" level="INFO">Typing text 'wrong_email@gmail.com' into text field 'id=loginemail_modal'.</msg>
-<status status="PASS" starttime="20201214 16:29:30.144" endtime="20201214 16:29:30.904"></status>
+<msg timestamp="20201214 19:07:48.352" level="INFO">Typing text 'wrong_email@gmail.com' into text field 'id=loginemail_modal'.</msg>
+<status status="PASS" starttime="20201214 19:07:48.351" endtime="20201214 19:07:49.123"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:30.143" endtime="20201214 16:29:30.905"></status>
+<status status="PASS" starttime="20201214 19:07:48.350" endtime="20201214 19:07:49.124"></status>
 </kw>
 <kw name="Input Password" library="resource">
 <arguments>
@@ -281,41 +730,41 @@
 <arg>id=loginpass_modal</arg>
 <arg>${password}</arg>
 </arguments>
-<msg timestamp="20201214 16:29:30.906" level="INFO">Typing text 'sample12' into text field 'id=loginpass_modal'.</msg>
-<status status="PASS" starttime="20201214 16:29:30.906" endtime="20201214 16:29:31.628"></status>
+<msg timestamp="20201214 19:07:49.126" level="INFO">Typing text 'sample12' into text field 'id=loginpass_modal'.</msg>
+<status status="PASS" starttime="20201214 19:07:49.125" endtime="20201214 19:07:49.879"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:30.905" endtime="20201214 16:29:31.629"></status>
+<status status="PASS" starttime="20201214 19:07:49.124" endtime="20201214 19:07:49.880"></status>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
 <doc>Clicks the button identified by ``locator``.</doc>
 <arguments>
 <arg>css=.btn</arg>
 </arguments>
-<msg timestamp="20201214 16:29:31.630" level="INFO">Clicking button 'css=.btn'.</msg>
-<status status="PASS" starttime="20201214 16:29:31.629" endtime="20201214 16:29:32.901"></status>
+<msg timestamp="20201214 19:07:49.881" level="INFO">Clicking button 'css=.btn'.</msg>
+<status status="PASS" starttime="20201214 19:07:49.880" endtime="20201214 19:07:51.183"></status>
 </kw>
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
 <arg>css=.loginModalErrorText</arg>
 </arguments>
-<msg timestamp="20201214 16:29:33.120" level="INFO">Current page contains element 'css=.loginModalErrorText'.</msg>
-<status status="PASS" starttime="20201214 16:29:32.902" endtime="20201214 16:29:33.121"></status>
+<msg timestamp="20201214 19:07:51.398" level="INFO">Current page contains element 'css=.loginModalErrorText'.</msg>
+<status status="PASS" starttime="20201214 19:07:51.184" endtime="20201214 19:07:51.399"></status>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary" type="teardown">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20201214 16:29:33.122" endtime="20201214 16:29:33.387"></status>
+<status status="PASS" starttime="20201214 19:07:51.401" endtime="20201214 19:07:51.718"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:22.003" endtime="20201214 16:29:33.387" critical="yes"></status>
+<status status="PASS" starttime="20201214 19:07:40.082" endtime="20201214 19:07:51.719" critical="yes"></status>
 </test>
 <doc>A test suite with tests for login.
 
 This test has a workflow that is created using keywords
 directly from SeleniumLibrary</doc>
-<status status="PASS" starttime="20201214 16:29:05.428" endtime="20201214 16:29:33.392"></status>
+<status status="PASS" starttime="20201214 19:07:23.299" endtime="20201214 19:07:51.723"></status>
 </suite>
-<suite id="s1-s2" name="User Profile" source="/Users/victortulabot/Desktop/stsweng-kubernetes/src/tests/user_profile.robot">
-<test id="s1-s2-t1" name="Valid User Profile">
+<suite id="s1-s3" name="User Profile" source="/Users/victortulabot/Desktop/stsweng-kubernetes/src/tests/user_profile.robot">
+<test id="s1-s3-t1" name="Valid User Profile">
 <kw name="Successful Login" library="resource">
 <kw name="Open Browser To Login Page" library="resource">
 <kw name="Open Browser" library="SeleniumLibrary">
@@ -324,16 +773,16 @@ directly from SeleniumLibrary</doc>
 <arg>${SERVER}</arg>
 <arg>${BROWSER}</arg>
 </arguments>
-<msg timestamp="20201214 16:29:33.404" level="INFO">Opening browser 'Chrome' to base url 'localhost:3001'.</msg>
-<status status="PASS" starttime="20201214 16:29:33.404" endtime="20201214 16:29:37.407"></status>
+<msg timestamp="20201214 19:07:51.737" level="INFO">Opening browser 'Chrome' to base url 'localhost:3001'.</msg>
+<status status="PASS" starttime="20201214 19:07:51.736" endtime="20201214 19:07:55.808"></status>
 </kw>
 <kw name="Click Link" library="SeleniumLibrary">
 <doc>Clicks a link identified by ``locator``.</doc>
 <arguments>
 <arg>link=Login</arg>
 </arguments>
-<msg timestamp="20201214 16:29:37.409" level="INFO">Clicking link 'link=Login'.</msg>
-<status status="PASS" starttime="20201214 16:29:37.408" endtime="20201214 16:29:38.093"></status>
+<msg timestamp="20201214 19:07:55.811" level="INFO">Clicking link 'link=Login'.</msg>
+<status status="PASS" starttime="20201214 19:07:55.809" endtime="20201214 19:07:56.523"></status>
 </kw>
 <kw name="Login Page Should Be Open" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -341,19 +790,19 @@ directly from SeleniumLibrary</doc>
 <arguments>
 <arg>id=loginbtn</arg>
 </arguments>
-<msg timestamp="20201214 16:29:38.310" level="INFO">Current page contains element 'id=loginbtn'.</msg>
-<status status="PASS" starttime="20201214 16:29:38.095" endtime="20201214 16:29:38.310"></status>
+<msg timestamp="20201214 19:07:56.742" level="INFO">Current page contains element 'id=loginbtn'.</msg>
+<status status="PASS" starttime="20201214 19:07:56.525" endtime="20201214 19:07:56.743"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:38.094" endtime="20201214 16:29:38.311"></status>
+<status status="PASS" starttime="20201214 19:07:56.524" endtime="20201214 19:07:56.743"></status>
 </kw>
 <kw name="Set Selenium Speed" library="SeleniumLibrary">
 <doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
 <arg>${DELAY}</arg>
 </arguments>
-<status status="PASS" starttime="20201214 16:29:38.311" endtime="20201214 16:29:38.312"></status>
+<status status="PASS" starttime="20201214 19:07:56.744" endtime="20201214 19:07:56.745"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:33.403" endtime="20201214 16:29:38.312"></status>
+<status status="PASS" starttime="20201214 19:07:51.736" endtime="20201214 19:07:56.745"></status>
 </kw>
 <kw name="Login Page Should Be Open" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -361,10 +810,10 @@ directly from SeleniumLibrary</doc>
 <arguments>
 <arg>id=loginbtn</arg>
 </arguments>
-<msg timestamp="20201214 16:29:38.531" level="INFO">Current page contains element 'id=loginbtn'.</msg>
-<status status="PASS" starttime="20201214 16:29:38.313" endtime="20201214 16:29:38.531"></status>
+<msg timestamp="20201214 19:07:56.960" level="INFO">Current page contains element 'id=loginbtn'.</msg>
+<status status="PASS" starttime="20201214 19:07:56.746" endtime="20201214 19:07:56.960"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:38.313" endtime="20201214 16:29:38.531"></status>
+<status status="PASS" starttime="20201214 19:07:56.746" endtime="20201214 19:07:56.961"></status>
 </kw>
 <kw name="Input Username" library="resource">
 <arguments>
@@ -376,10 +825,10 @@ directly from SeleniumLibrary</doc>
 <arg>id=loginemail_modal</arg>
 <arg>${username}</arg>
 </arguments>
-<msg timestamp="20201214 16:29:38.533" level="INFO">Typing text 'sample@gmail.com' into text field 'id=loginemail_modal'.</msg>
-<status status="PASS" starttime="20201214 16:29:38.532" endtime="20201214 16:29:39.351"></status>
+<msg timestamp="20201214 19:07:56.963" level="INFO">Typing text 'sample@gmail.com' into text field 'id=loginemail_modal'.</msg>
+<status status="PASS" starttime="20201214 19:07:56.962" endtime="20201214 19:07:57.794"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:38.532" endtime="20201214 16:29:39.352"></status>
+<status status="PASS" starttime="20201214 19:07:56.961" endtime="20201214 19:07:57.795"></status>
 </kw>
 <kw name="Input Password" library="resource">
 <arguments>
@@ -391,18 +840,18 @@ directly from SeleniumLibrary</doc>
 <arg>id=loginpass_modal</arg>
 <arg>${password}</arg>
 </arguments>
-<msg timestamp="20201214 16:29:39.353" level="INFO">Typing text 'sample12' into text field 'id=loginpass_modal'.</msg>
-<status status="PASS" starttime="20201214 16:29:39.353" endtime="20201214 16:29:40.076"></status>
+<msg timestamp="20201214 19:07:57.797" level="INFO">Typing text 'sample12' into text field 'id=loginpass_modal'.</msg>
+<status status="PASS" starttime="20201214 19:07:57.796" endtime="20201214 19:07:58.572"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:39.352" endtime="20201214 16:29:40.077"></status>
+<status status="PASS" starttime="20201214 19:07:57.795" endtime="20201214 19:07:58.573"></status>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
 <doc>Clicks the button identified by ``locator``.</doc>
 <arguments>
 <arg>id=loginbtn</arg>
 </arguments>
-<msg timestamp="20201214 16:29:40.078" level="INFO">Clicking button 'id=loginbtn'.</msg>
-<status status="PASS" starttime="20201214 16:29:40.077" endtime="20201214 16:29:42.405"></status>
+<msg timestamp="20201214 19:07:58.574" level="INFO">Clicking button 'id=loginbtn'.</msg>
+<status status="PASS" starttime="20201214 19:07:58.573" endtime="20201214 19:08:00.795"></status>
 </kw>
 <kw name="User Profile Page Should Be Open" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -410,12 +859,12 @@ directly from SeleniumLibrary</doc>
 <arguments>
 <arg>id=profileapp-table_wrapper</arg>
 </arguments>
-<msg timestamp="20201214 16:29:42.626" level="INFO">Current page contains element 'id=profileapp-table_wrapper'.</msg>
-<status status="PASS" starttime="20201214 16:29:42.407" endtime="20201214 16:29:42.627"></status>
+<msg timestamp="20201214 19:08:01.015" level="INFO">Current page contains element 'id=profileapp-table_wrapper'.</msg>
+<status status="PASS" starttime="20201214 19:08:00.796" endtime="20201214 19:08:01.016"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:42.406" endtime="20201214 16:29:42.627"></status>
+<status status="PASS" starttime="20201214 19:08:00.795" endtime="20201214 19:08:01.017"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:33.403" endtime="20201214 16:29:42.627"></status>
+<status status="PASS" starttime="20201214 19:07:51.735" endtime="20201214 19:08:01.018"></status>
 </kw>
 <kw name="Element Text Should Be" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
@@ -423,10 +872,10 @@ directly from SeleniumLibrary</doc>
 <arg>css=p:nth-child(3)</arg>
 <arg>Address: 123 Blk 00, sample's address\nContact Number: 09177112470\nBirthday: 1998-12-17</arg>
 </arguments>
-<msg timestamp="20201214 16:29:42.628" level="INFO">Verifying element 'css=p:nth-child(3)' contains exact text 'Address: 123 Blk 00, sample's address
+<msg timestamp="20201214 19:08:01.019" level="INFO">Verifying element 'css=p:nth-child(3)' contains exact text 'Address: 123 Blk 00, sample's address
 Contact Number: 09177112470
 Birthday: 1998-12-17'.</msg>
-<status status="PASS" starttime="20201214 16:29:42.628" endtime="20201214 16:29:43.075"></status>
+<status status="PASS" starttime="20201214 19:08:01.018" endtime="20201214 19:08:01.455"></status>
 </kw>
 <kw name="Element Text Should Be" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
@@ -434,32 +883,32 @@ Birthday: 1998-12-17'.</msg>
 <arg>css=.nav-item &gt; h6</arg>
 <arg>Last, First</arg>
 </arguments>
-<msg timestamp="20201214 16:29:43.077" level="INFO">Verifying element 'css=.nav-item &gt; h6' contains exact text 'Last, First'.</msg>
-<status status="PASS" starttime="20201214 16:29:43.076" endtime="20201214 16:29:43.521"></status>
+<msg timestamp="20201214 19:08:01.456" level="INFO">Verifying element 'css=.nav-item &gt; h6' contains exact text 'Last, First'.</msg>
+<status status="PASS" starttime="20201214 19:08:01.456" endtime="20201214 19:08:01.899"></status>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <doc>Click the element identified by ``locator``.</doc>
 <arguments>
 <arg>css=.shrink</arg>
 </arguments>
-<msg timestamp="20201214 16:29:43.522" level="INFO">Clicking element 'css=.shrink'.</msg>
-<status status="PASS" starttime="20201214 16:29:43.521" endtime="20201214 16:29:44.108"></status>
+<msg timestamp="20201214 19:08:01.902" level="INFO">Clicking element 'css=.shrink'.</msg>
+<status status="PASS" starttime="20201214 19:08:01.901" endtime="20201214 19:08:02.497"></status>
 </kw>
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
 <arg>css=.ml-auto &gt; .nav-item:nth-child(1) &gt; .nav-link</arg>
 </arguments>
-<msg timestamp="20201214 16:29:44.332" level="INFO">Current page contains element 'css=.ml-auto &gt; .nav-item:nth-child(1) &gt; .nav-link'.</msg>
-<status status="PASS" starttime="20201214 16:29:44.109" endtime="20201214 16:29:44.333"></status>
+<msg timestamp="20201214 19:08:02.718" level="INFO">Current page contains element 'css=.ml-auto &gt; .nav-item:nth-child(1) &gt; .nav-link'.</msg>
+<status status="PASS" starttime="20201214 19:08:02.497" endtime="20201214 19:08:02.718"></status>
 </kw>
 <kw name="Click Link" library="SeleniumLibrary">
 <doc>Clicks a link identified by ``locator``.</doc>
 <arguments>
 <arg>link=My Dashboard</arg>
 </arguments>
-<msg timestamp="20201214 16:29:44.334" level="INFO">Clicking link 'link=My Dashboard'.</msg>
-<status status="PASS" starttime="20201214 16:29:44.333" endtime="20201214 16:29:45.392"></status>
+<msg timestamp="20201214 19:08:02.719" level="INFO">Clicking link 'link=My Dashboard'.</msg>
+<status status="PASS" starttime="20201214 19:08:02.719" endtime="20201214 19:08:03.850"></status>
 </kw>
 <kw name="User Profile Page Should Be Open" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -467,18 +916,18 @@ Birthday: 1998-12-17'.</msg>
 <arguments>
 <arg>id=profileapp-table_wrapper</arg>
 </arguments>
-<msg timestamp="20201214 16:29:45.615" level="INFO">Current page contains element 'id=profileapp-table_wrapper'.</msg>
-<status status="PASS" starttime="20201214 16:29:45.393" endtime="20201214 16:29:45.615"></status>
+<msg timestamp="20201214 19:08:04.066" level="INFO">Current page contains element 'id=profileapp-table_wrapper'.</msg>
+<status status="PASS" starttime="20201214 19:08:03.852" endtime="20201214 19:08:04.066"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:45.393" endtime="20201214 16:29:45.615"></status>
+<status status="PASS" starttime="20201214 19:08:03.851" endtime="20201214 19:08:04.067"></status>
 </kw>
 <kw name="Click Link" library="SeleniumLibrary">
 <doc>Clicks a link identified by ``locator``.</doc>
 <arguments>
 <arg>link=Dashboard</arg>
 </arguments>
-<msg timestamp="20201214 16:29:45.616" level="INFO">Clicking link 'link=Dashboard'.</msg>
-<status status="PASS" starttime="20201214 16:29:45.616" endtime="20201214 16:29:46.661"></status>
+<msg timestamp="20201214 19:08:04.069" level="INFO">Clicking link 'link=Dashboard'.</msg>
+<status status="PASS" starttime="20201214 19:08:04.068" endtime="20201214 19:08:05.069"></status>
 </kw>
 <kw name="User Profile Page Should Be Open" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -486,34 +935,34 @@ Birthday: 1998-12-17'.</msg>
 <arguments>
 <arg>id=profileapp-table_wrapper</arg>
 </arguments>
-<msg timestamp="20201214 16:29:46.876" level="INFO">Current page contains element 'id=profileapp-table_wrapper'.</msg>
-<status status="PASS" starttime="20201214 16:29:46.662" endtime="20201214 16:29:46.876"></status>
+<msg timestamp="20201214 19:08:05.288" level="INFO">Current page contains element 'id=profileapp-table_wrapper'.</msg>
+<status status="PASS" starttime="20201214 19:08:05.070" endtime="20201214 19:08:05.289"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:46.661" endtime="20201214 16:29:46.877"></status>
+<status status="PASS" starttime="20201214 19:08:05.069" endtime="20201214 19:08:05.289"></status>
 </kw>
 <kw name="Click Link" library="SeleniumLibrary">
 <doc>Clicks a link identified by ``locator``.</doc>
 <arguments>
 <arg>link=Health Programs</arg>
 </arguments>
-<msg timestamp="20201214 16:29:46.878" level="INFO">Clicking link 'link=Health Programs'.</msg>
-<status status="PASS" starttime="20201214 16:29:46.877" endtime="20201214 16:29:47.842"></status>
+<msg timestamp="20201214 19:08:05.290" level="INFO">Clicking link 'link=Health Programs'.</msg>
+<status status="PASS" starttime="20201214 19:08:05.290" endtime="20201214 19:08:06.305"></status>
 </kw>
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
 <arg>css=#hp-table_filter &gt; label</arg>
 </arguments>
-<msg timestamp="20201214 16:29:48.064" level="INFO">Current page contains element 'css=#hp-table_filter &gt; label'.</msg>
-<status status="PASS" starttime="20201214 16:29:47.843" endtime="20201214 16:29:48.064"></status>
+<msg timestamp="20201214 19:08:06.525" level="INFO">Current page contains element 'css=#hp-table_filter &gt; label'.</msg>
+<status status="PASS" starttime="20201214 19:08:06.306" endtime="20201214 19:08:06.526"></status>
 </kw>
 <kw name="Click Link" library="SeleniumLibrary">
 <doc>Clicks a link identified by ``locator``.</doc>
 <arguments>
 <arg>link=My Dashboard</arg>
 </arguments>
-<msg timestamp="20201214 16:29:48.065" level="INFO">Clicking link 'link=My Dashboard'.</msg>
-<status status="PASS" starttime="20201214 16:29:48.064" endtime="20201214 16:29:49.136"></status>
+<msg timestamp="20201214 19:08:06.527" level="INFO">Clicking link 'link=My Dashboard'.</msg>
+<status status="PASS" starttime="20201214 19:08:06.526" endtime="20201214 19:08:07.551"></status>
 </kw>
 <kw name="User Profile Page Should Be Open" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -521,34 +970,34 @@ Birthday: 1998-12-17'.</msg>
 <arguments>
 <arg>id=profileapp-table_wrapper</arg>
 </arguments>
-<msg timestamp="20201214 16:29:49.355" level="INFO">Current page contains element 'id=profileapp-table_wrapper'.</msg>
-<status status="PASS" starttime="20201214 16:29:49.141" endtime="20201214 16:29:49.356"></status>
+<msg timestamp="20201214 19:08:07.768" level="INFO">Current page contains element 'id=profileapp-table_wrapper'.</msg>
+<status status="PASS" starttime="20201214 19:08:07.554" endtime="20201214 19:08:07.768"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:49.137" endtime="20201214 16:29:49.356"></status>
+<status status="PASS" starttime="20201214 19:08:07.552" endtime="20201214 19:08:07.769"></status>
 </kw>
 <kw name="Click Link" library="SeleniumLibrary">
 <doc>Clicks a link identified by ``locator``.</doc>
 <arguments>
 <arg>link=Doctors</arg>
 </arguments>
-<msg timestamp="20201214 16:29:49.357" level="INFO">Clicking link 'link=Doctors'.</msg>
-<status status="PASS" starttime="20201214 16:29:49.356" endtime="20201214 16:29:50.586"></status>
+<msg timestamp="20201214 19:08:07.770" level="INFO">Clicking link 'link=Doctors'.</msg>
+<status status="PASS" starttime="20201214 19:08:07.770" endtime="20201214 19:08:08.926"></status>
 </kw>
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
 <arg>id=filter</arg>
 </arguments>
-<msg timestamp="20201214 16:29:50.805" level="INFO">Current page contains element 'id=filter'.</msg>
-<status status="PASS" starttime="20201214 16:29:50.587" endtime="20201214 16:29:50.805"></status>
+<msg timestamp="20201214 19:08:09.150" level="INFO">Current page contains element 'id=filter'.</msg>
+<status status="PASS" starttime="20201214 19:08:08.927" endtime="20201214 19:08:09.150"></status>
 </kw>
 <kw name="Click Link" library="SeleniumLibrary">
 <doc>Clicks a link identified by ``locator``.</doc>
 <arguments>
 <arg>link=My Dashboard</arg>
 </arguments>
-<msg timestamp="20201214 16:29:50.806" level="INFO">Clicking link 'link=My Dashboard'.</msg>
-<status status="PASS" starttime="20201214 16:29:50.806" endtime="20201214 16:29:51.874"></status>
+<msg timestamp="20201214 19:08:09.153" level="INFO">Clicking link 'link=My Dashboard'.</msg>
+<status status="PASS" starttime="20201214 19:08:09.151" endtime="20201214 19:08:10.191"></status>
 </kw>
 <kw name="User Profile Page Should Be Open" library="resource">
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
@@ -556,52 +1005,53 @@ Birthday: 1998-12-17'.</msg>
 <arguments>
 <arg>id=profileapp-table_wrapper</arg>
 </arguments>
-<msg timestamp="20201214 16:29:52.092" level="INFO">Current page contains element 'id=profileapp-table_wrapper'.</msg>
-<status status="PASS" starttime="20201214 16:29:51.877" endtime="20201214 16:29:52.092"></status>
+<msg timestamp="20201214 19:08:10.412" level="INFO">Current page contains element 'id=profileapp-table_wrapper'.</msg>
+<status status="PASS" starttime="20201214 19:08:10.195" endtime="20201214 19:08:10.412"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:51.875" endtime="20201214 16:29:52.093"></status>
+<status status="PASS" starttime="20201214 19:08:10.193" endtime="20201214 19:08:10.412"></status>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <doc>Click the element identified by ``locator``.</doc>
 <arguments>
 <arg>link=Appointments</arg>
 </arguments>
-<msg timestamp="20201214 16:29:52.094" level="INFO">Clicking element 'link=Appointments'.</msg>
-<status status="PASS" starttime="20201214 16:29:52.093" endtime="20201214 16:29:52.869"></status>
+<msg timestamp="20201214 19:08:10.414" level="INFO">Clicking element 'link=Appointments'.</msg>
+<status status="PASS" starttime="20201214 19:08:10.413" endtime="20201214 19:08:11.235"></status>
 </kw>
 <kw name="Page Should Contain Element" library="SeleniumLibrary">
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
 <arg>id=submit_btn</arg>
 </arguments>
-<msg timestamp="20201214 16:29:53.092" level="INFO">Current page contains element 'id=submit_btn'.</msg>
-<status status="PASS" starttime="20201214 16:29:52.870" endtime="20201214 16:29:53.092"></status>
+<msg timestamp="20201214 19:08:11.456" level="INFO">Current page contains element 'id=submit_btn'.</msg>
+<status status="PASS" starttime="20201214 19:08:11.235" endtime="20201214 19:08:11.457"></status>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary" type="teardown">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20201214 16:29:53.093" endtime="20201214 16:29:53.378"></status>
+<status status="PASS" starttime="20201214 19:08:11.457" endtime="20201214 19:08:11.735"></status>
 </kw>
-<status status="PASS" starttime="20201214 16:29:33.402" endtime="20201214 16:29:53.378" critical="yes"></status>
+<status status="PASS" starttime="20201214 19:07:51.735" endtime="20201214 19:08:11.736" critical="yes"></status>
 </test>
 <doc>A test suite with tests for valid login of User Profile.
 
 This test has a workflow that is created using keywords
 directly from SeleniumLibrary</doc>
-<status status="PASS" starttime="20201214 16:29:33.396" endtime="20201214 16:29:53.382"></status>
+<status status="PASS" starttime="20201214 19:07:51.728" endtime="20201214 19:08:11.738"></status>
 </suite>
-<status status="PASS" starttime="20201214 16:29:05.388" endtime="20201214 16:29:53.387"></status>
+<status status="PASS" starttime="20201214 19:06:55.800" endtime="20201214 19:08:11.745"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="4" fail="0">Critical Tests</stat>
-<stat pass="4" fail="0">All Tests</stat>
+<stat pass="5" fail="0">Critical Tests</stat>
+<stat pass="5" fail="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="4" fail="0" id="s1" name="Tests">Tests</stat>
-<stat pass="3" fail="0" id="s1-s1" name="Login">Tests.Login</stat>
-<stat pass="1" fail="0" id="s1-s2" name="User Profile">Tests.User Profile</stat>
+<stat pass="5" fail="0" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="0" id="s1-s1" name="Health Program">Tests.Health Program</stat>
+<stat pass="3" fail="0" id="s1-s2" name="Login">Tests.Login</stat>
+<stat pass="1" fail="0" id="s1-s3" name="User Profile">Tests.User Profile</stat>
 </suite>
 </statistics>
 <errors>
