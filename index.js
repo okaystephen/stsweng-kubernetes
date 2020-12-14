@@ -5,7 +5,7 @@ const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const path = require('path');
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 // import routes module
 const routes = require('./routes/routes.js');
@@ -53,6 +53,15 @@ app.engine(
       },
       invalid: function(date, options){
         if(Date.now() > date){
+          return options.fn(this)
+        } else{
+          return options.inverse(this)
+        }
+      },
+      check_program: function(s,a,options){
+        var string = a.toString();
+        var arr = string.split(",");
+        if(arr.includes(s)){
           return options.fn(this)
         } else{
           return options.inverse(this)

@@ -11,10 +11,12 @@ const Appointment = require('../models/AppointmentModel');
 const hp_directoryController = {
     // render health program directory page when client requests '/healthprograms' defined in routes.js
     getHealthPrograms: function (req, res) {
-        db.findMany(HealthProgram, { participants: { $ne: req.session.user } }, '', function (healthprogramsContent) {
+        db.findMany(HealthProgram, {}, '', function (healthprogramsContent) {
             if (req.cookies.user_sid && req.session.user) {
                 res.render('hp_directory', {
                     layout: 'main',
+                    active_session: (req.session.user && req.cookies.user_sid),
+                    user_id: req.session.user,
                     title: 'Health Programs | DoloMed',
                     hp_active: true,
                     user_active: true,
@@ -33,7 +35,7 @@ const hp_directoryController = {
     },
 
     getHealthProgramsFail: function (req, res) {
-        db.findMany(HealthProgram, { participants: { $ne: req.session.user } }, '', function (healthprogramsContent) {
+        db.findMany(HealthProgram, {}, '', function (healthprogramsContent) {
             res.render('hp_directory', {
                 layout: 'main',
                 title: 'Health Programs | DoloMed',
@@ -50,7 +52,7 @@ const hp_directoryController = {
         var password = sanitize(req.body.loginpass_modal);
 
         db.findOne(User, { email: email }, {}, function (user) {
-            db.findMany(HealthProgram, { participants: { $ne: req.session.user } }, '', function (healthprogramsContent) {
+            db.findMany(HealthProgram, {}, '', function (healthprogramsContent) {
                 if (user) {
                     console.log(user);
                     bcrypt.compare(password, user.password, function (err, equal) {
@@ -86,9 +88,11 @@ const hp_directoryController = {
                 var max = flag.hp_maxCap
 
                 if (reason == '') {
-                    db.findMany(HealthProgram, { participants: { $ne: req.session.user } }, '', function (healthprogramsContent) {
+                    db.findMany(HealthProgram, {}, '', function (healthprogramsContent) {
                         res.render('hp_directory', {
                             layout: 'main',
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            user_id: req.session.user,
                             title: 'Health Programs | DoloMed',
                             hp_active: true,
                             user_active: true,
@@ -98,9 +102,11 @@ const hp_directoryController = {
                         })
                     });
                 } else if(cur >= max){
-                    db.findMany(HealthProgram, { participants: { $ne: req.session.user } }, '', function (healthprogramsContent) {
+                    db.findMany(HealthProgram, {}, '', function (healthprogramsContent) {
                         res.render('hp_directory', {
                             layout: 'main',
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            user_id: req.session.user,
                             title: 'Health Programs | DoloMed',
                             hp_active: true,
                             user_active: true,
@@ -117,9 +123,11 @@ const hp_directoryController = {
                                 if(result){
                                     db.updateOne(HealthProgram, {_id: req.params.hpId},  { $push: { participants: req.session.user } }, function (hp){
                                         if(hp){
-                                            db.findMany(HealthProgram, {participants: {$ne: req.session.user }}, '', function(healthprogramsContent){
+                                            db.findMany(HealthProgram, {}, '', function(healthprogramsContent){
                                                 res.render('hp_directory', {
                                                     layout: 'main',
+                                                    active_session: (req.session.user && req.cookies.user_sid),
+                                                    user_id: req.session.user,
                                                     title: 'Health Programs | DoloMed',
                                                     hp_active: true,
                                                     user_active: true,
@@ -171,7 +179,7 @@ const hp_directoryController = {
                                 res.render('profile', {
                                     layout: 'profile',
                                     active_session: (req.session.user && req.cookies.user_sid),
-                                    active_user: req.session.user,
+                                    user_id: req.session.user,
                                     title: 'Profile | DoloMed',
                                     user: user.toObject(),
                                     healthprograms: result,
