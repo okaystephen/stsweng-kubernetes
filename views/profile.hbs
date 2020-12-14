@@ -216,25 +216,6 @@
             }
         }
 
-        function cancelModalApp(id) {
-            $.ajax({
-                url: "/profile/deleteapp",
-                data: { id: id },
-                success: function (response) {
-                    $('.modal-title').text('Successful Cancellation');
-                    $('#cancelAppointment').modal('hide');
-                    $('#successcancelAppointment').modal('show');
-                    // window.location.href = 'profile';
-
-                },
-                error: function (xhr) { }
-            });
-        }
-
-        $('#successcancelAppointment').on('hidden.bs.modal', function () {
-            location.reload();
-        })
-
         function reschedApp() {
             alert("Insert resched modal here")
         }

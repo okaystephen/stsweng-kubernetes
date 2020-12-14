@@ -65,7 +65,12 @@ app.get('/dashboard', dashboardController.getDashboard);
 
 //profile controller
 app.get('/profile', profileController.getProfile);
-app.get('/profile/deleteapp', appointmentController.deleteAppointment);
+app.post('/profile/deleteapp', appointmentController.deleteAppointment);
+app.get('/profile/deleteapp', function (req, res) {
+  req.logout;
+  req.session.destroy(function (err) { });
+  res.redirect('/');
+});
 
 //account controller
 app.get('/account', accountController.getAccount);
