@@ -14,29 +14,31 @@ ${DELAY}        0.2
 
 *** Keywords ***
 Open Browser To Login Page
-    Open Browser                    ${SERVER}        ${BROWSER}
-    Click Link                      link=Login
+    Open Browser                                ${SERVER}        ${BROWSER}
+    Click Link                                  link=Login
     Login Page Should Be Open
-    Set Selenium Speed              ${DELAY}
+    Set Selenium Speed                          ${DELAY}
 
 Login Page Should Be Open
-    Page Should Contain Element     id=loginbtn
+    Wait Until Page Contains Element            id=loginbtn
 
 User Profile Page Should Be Open
-    Page Should Contain Element     id=profileapp-table_wrapper
+    Wait Until Page Contains Element            id=profileapp-table_wrapper
+    Element Text Should Be                      css=p:nth-child(3)                                                      Address: 123 Blk 00, sample's address\nContact Number: 09177112470\nBirthday: 1998-12-17
+    Element Text Should Be                      css=.nav-item > h6                                                      Last, First 
 
 Successful Login
     Open Browser To Login Page
     Login Page Should Be Open
-    Input Username                  sample@gmail.com
-    Input Password                  sample12
-    Click Button                    id=loginbtn
+    Input Username                              sample@gmail.com
+    Input Password                              sample12
+    Click Button                                id=loginbtn
     User Profile Page Should Be Open
 
 Input Username
-    [Arguments]                     ${username}
-    Input Text                      id=loginemail_modal       ${username}
+    [Arguments]                                 ${username}
+    Input Text                                  id=loginemail_modal       ${username}
 
 Input Password
-    [Arguments]                     ${password}
-    Input Text                      id=loginpass_modal        ${password}
+    [Arguments]                                 ${password}
+    Input Text                                  id=loginpass_modal        ${password}

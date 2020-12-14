@@ -15,6 +15,7 @@ Valid Login
     # Click Button                    css=.btn
     # Page Should Contain Element     id=profileapp-table_wrapper
     Successful Login
+    User Profile Page Should Be Open
     [Teardown]  Close Browser
 
 SignUp
