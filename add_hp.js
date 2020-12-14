@@ -4,7 +4,8 @@ const HealthProgram = require('./models/HealthProgramModel');
 const dotenv = require('dotenv');
 
 dotenv.config();
-const url = process.env.MONGO_URI;
+// const url = process.env.MONGO_URI;
+const url = "mongodb+srv://dolomed:Dol0m3d@dolomed.rizqg.mongodb.net/<dbname>?retryWrites=true&w=majority"
 const options = {
     useUnifiedTopology: true,
     useNewUrlParser: true,
@@ -136,7 +137,33 @@ var healthprograms = [
             hp_enddate: "2021-05-10 15:00",
             hp_maxCap: 35,
     },
+
+    {
+        hp_name: 'AAA Latest Test Program',
+            hp_desc: 'This is a test program that has the latest everything to sort.',
+            hp_location: 'AAA Limay, Bulacan',
+            hp_startdate: "3021-04-15 11:00",
+            hp_enddate: "3021-05-10 15:00",
+            hp_maxCap: 1,
+    },
+    {
+        hp_name: 'ZZZ Oldest Test Program',
+            hp_desc: 'This is a test program that has the oldest everything to sort.',
+            hp_location: 'ZZZ Limay, Bulacan',
+            hp_startdate: "1021-01-01 11:00",
+            hp_enddate: "1021-01-01 15:00",
+            hp_maxCap: 1,
+    },
+    {
+        hp_name: 'Test Program',
+            hp_desc: 'This is a test program.',
+            hp_location: 'Limay, Bulacan',
+            hp_startdate: "2021-04-15 11:00",
+            hp_enddate: "2021-05-10 15:00",
+            hp_maxCap: 1,
+    },
 ];
+
 
 db.insertMany(HealthProgram, healthprograms);
 

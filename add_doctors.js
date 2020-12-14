@@ -4,7 +4,8 @@ const Doctor = require('./models/DoctorModel');
 const dotenv = require('dotenv');
 
 dotenv.config();
-const url = process.env.MONGO_URI;
+// const url = process.env.MONGO_URI;
+const url = "mongodb+srv://dolomed:Dol0m3d@dolomed.rizqg.mongodb.net/<dbname>?retryWrites=true&w=majority"
 const options = {
     useUnifiedTopology: true,
     useNewUrlParser: true,
