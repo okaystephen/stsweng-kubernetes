@@ -33,21 +33,24 @@
                 </button>
             </div>
             <div class="modal-body">
-                <input type="hidden" value="{{this.appointment_name}}" name="doctorApp_name">
-                <div style="text-align:left; padding: 10px; ">
-                    <p class="cancelDocAppointmentSuccess" style="display:initial;">
-                        Are you sure you want to <span style="color:red">cancel</span> your appointment with
-                        {{this.appointment_name}} on {{dateFormat this.appointment_date "MMMM DD, YYYY"}}?</p>
-                    <p class="cancelDocAppointmentFail" style="display:initial;">Sorry!
-                        You cannot cancel this appointment because it's within 7 days from now.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    {{!-- <button type="submit" class="btn btn-danger cancelDocAppointmentButton"
-                        style="display:initial;">Confirm</button> --}}
-                    <a class="btn btn-danger cancelDocAppointmentButton" role="button" style="display:initial;"
-                        href="/profile/deleteapp?id={{_id}}&doc={{this.appointment_name}}">Confirm</a>
-                </div>
+                <form method="post" action="/profile/deleteapp?id={{_id}}&doc={{this.appointment_name}}">
+                    <input type="hidden" value="{{this.appointment_name}}" name="doctorApp_name">
+                    <div style="text-align:left; padding: 10px; ">
+                        <p class="cancelDocAppointmentSuccess" style="display:initial;">
+                            Are you sure you want to <span style="color:red">cancel</span> your appointment with
+                            {{this.appointment_name}} on {{dateFormat this.appointment_date "MMMM DD, YYYY"}}?</p>
+                        <p class="cancelDocAppointmentFail" style="display:initial;">Sorry!
+                            You cannot cancel this appointment because it's within 7 days from now.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger cancelDocAppointmentButton"
+                            style="display:initial;">Confirm</button>
+                        {{!-- <a class="btn btn-danger cancelDocAppointmentButton" role="button"
+                            style="display:initial;"
+                            href="/profile/deleteapp?id={{_id}}&doc={{this.appointment_name}}">Confirm</a> --}}
+                    </div>
+                </form>
             </div>
         </div>
     </div>
