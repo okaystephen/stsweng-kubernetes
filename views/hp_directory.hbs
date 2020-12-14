@@ -20,7 +20,9 @@
                 <div class="alert alert-danger hide" style="margin-bottom: 1px;">Registration failed: You tried
                     submitting an empty field. Please try again.</div>
                 {{/if}}
-
+                {{#if max}}
+                <div class="alert alert-danger hide" style="margin-bottom: 1px;">Registration failed: {{test}} has already reached the maximum number of participants.</div>
+                {{/if}}
                 <div class="card-body" style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">
                     <div class="table-responsive text-center">
                         <table class="table text-left blog-project-table" id="hp-table">
