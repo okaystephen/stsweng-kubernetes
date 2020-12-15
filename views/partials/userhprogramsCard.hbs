@@ -1,3 +1,6 @@
+{{#invalid this.hp_enddate}}
+
+{{else}}
 <tr>
     <td>
         {{hp_name}}
@@ -13,6 +16,7 @@
     </td>
 </tr>
 </tr>
+{{/invalid}}
 
 {{!-- Cancel Health Program Modal --}}
 <div class="modal fade" id="a{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

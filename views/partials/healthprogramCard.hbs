@@ -1,7 +1,7 @@
 {{#invalid this.hp_enddate}}
 
 {{else}}
-<tr>
+<tr style="background-color:rgba(255, 255, 255, 0.878)">
     <td>
         <small>{{hp_name}}</small>
     </td>
@@ -35,13 +35,21 @@
         </span>
         {{else}}
         {{#if user_active}}
-        <small><a class="btn btn-success" role="button" data-toggle="modal" data-target="#a{{_id}}">Register</a></small>
+            {{#check_program user participants}}
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
+                title="You are already registered to {{hp_name}}">
+                <button class="btn btn-secondary" style="pointer-events: none;" type="button" disabled>Register</button>
+            </span>
+            {{else}}
+                 <small><a class="btn btn-success" role="button" data-toggle="modal" data-target="#a{{_id}}">Register</a></small>
+            {{/check_program}}
         {{else}}
         <small><a class="btn btn-success" role="button" data-toggle="modal"
                 data-target="#loginModal">Register</a></small>
         {{/if}}
-        {{!-- <small><a class="btn btn-success" role="button" onclick="{{#if ../user_active}}register_user('{{this.hp_name}}'){{else}}register(){{/if}}">Register</a></small> --}}
-        {{/equals}}
+            {{!-- <small><a class="btn btn-success" role="button" onclick="{{#if ../user_active}}register_user('{{this.hp_name}}'){{else}}register(){{/if}}">Register</a></small> --}}
+        {{/equals}} 
+        
     </td>
 </tr>
 

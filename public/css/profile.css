@@ -124,12 +124,21 @@ input[type="checkbox"]:checked+label+.showother {
     text-decoration: none;
   }
 
+.vertical-navbar i{
+    color: #2F8250
+  }
+
+.vertical-navbar li a:hover:not(.active) i{
+    background-color: #555;
+    color: white;
+  }
+
   .vertical-navbar li a.active {
     background-color: #4CAF50;
     color: white;
   }
 
-  .vertical-navbar li a:hover:not(.active) {
+  .vertical-navbar li a:hover:not(.active){
     background-color: #555;
     color: white;
   }

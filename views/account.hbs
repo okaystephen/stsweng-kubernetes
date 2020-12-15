@@ -55,22 +55,22 @@
         <p class="h1" style="font-size: 13vh; font-family: 'Montserrat', sans-serif; color: #2F8250">Account</p>
         <p style="font-size: 25px; font-family: 'Montserrat', sans-serif; color: #2F8250">Update your profile.</p>
 
-        <div class="card mx-auto border shadow-sm" style="width: 50rem; margin-bottom: 2rem;">
+        <div class="card mx-auto border shadow-sm" style="width: 50rem; margin-bottom: 2rem; background-color:rgba(255, 255, 255, 0.878)">
             <div class="card-body">
                 <div class="card-text">
 
                     <div class="row">
                         <div class="col pr-2">
                             <h5><u>First Name</u></h5>
-                            <h6>{{user.name.first}}</h6>
+                            <p>{{user.name.first}}</p>
                         </div>
                         <div class="col pr-2">
                             <h5><u>Middle Name</u></h5>
-                            <h6>{{user.name.middle}}</h6>
+                            <p>{{user.name.middle}}</p>
                         </div>
                         <div class="col pl-2">
                             <h5><u>Last Name</u></h5>
-                            <h6>{{user.name.last}}</h6>
+                            <p>{{user.name.last}}</p>
                         </div>
                     </div>
 
@@ -79,11 +79,11 @@
                     <div class="row">
                         <div class="col pr-2">
                             <h5><u>Home Address</u></h5>
-                            <h6>{{user.address}}</h6>
+                            <p>{{user.address}}</p>
                         </div>
                         <div class="col pl-2">
                             <h5><u>Contact Number</u></h5>
-                            <h6>{{user.phone}}</h6>
+                            <p>{{user.phone}}</p>
                         </div>
                     </div>
 
@@ -92,18 +92,18 @@
                     <div class="row">
                         <div class="col pr-2">
                             <h5><u>Emergency Contact Person</u></h5>
-                            <h6>{{user.eContactPerson}}</h6>
+                            <p>{{user.eContactPerson}}</p>
                         </div>
                         <div class="col pl-2">
                             <h5><u>Relationship</u></h5>
-                            <h6>{{user.relationship}}</h6>
+                            <p>{{user.relationship}}</p>
                         </div>
                     </div>
 
                     <br>
 
                     <h5><u>Emergency Contact Number</u></h5>
-                    <h6>{{user.eContactNum}}</h6>
+                    <p>{{user.eContactNum}}</p>
 
                     <br>
 
@@ -119,7 +119,7 @@
             </center>
         </div>
 
-        <div class="card mx-auto border shadow-sm" style="width: 50rem; margin-bottom: 2rem; margin-top: 2rem;">
+        <div class="card mx-auto border shadow-sm" style="width: 50rem; margin-bottom: 2rem; margin-top: 2rem; background-color:rgba(255, 255, 255, 0.878)">
             <div class="card-body">
                 <div class="card-title" style="font-size: 45px; font-family: 'Montserrat', sans-serif; color: #2F8250;">
                     Medical History</div>
@@ -127,25 +127,25 @@
                     <div class="row">
                         <div class="col pr-2">
                             <h5><u>Medical Problems</u></h5>
-                            <h6>{{user.medhistory.problems}}</h6>
+                            <p>{{user.medhistory.problems}}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col pr-2">
                             <h5><u>Surgeries</u></h5>
-                            <h6>{{user.medhistory.surgeries}}</h6>
+                            <p>{{user.medhistory.surgeries}}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col pr-2">
                             <h5><u>Current Medications</u></h5>
-                            <h6>{{user.medhistory.medications}}</h6>
+                            <p>{{user.medhistory.medications}}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col pr-2">
                             <h5><u>Drug allergies</u></h5>
-                            <h6>{{user.medhistory.medallergic}}</h6>
+                            <p>{{user.medhistory.medallergic}}</p>
                         </div>
                     </div>
                 </div>
