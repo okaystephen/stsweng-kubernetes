@@ -15,12 +15,20 @@
             </p>
         </a>
         <hr>
-        <li><a href="/profile" style="font-size:large; font-family: 'Montserrat', sans-serif; text-decoration:underline"><i class="fas fa-home" style="margin-right: 10px; "></i>Dashboard</a></li>
+        <li><a href="/profile"
+                style="font-size:large; font-family: 'Montserrat', sans-serif; text-decoration:underline"><i
+                    class="fas fa-home" style="margin-right: 10px; "></i>Dashboard</a></li>
         <li>
-            <a href="/healthprograms" style="font-size: large; font-family: 'Montserrat', sans-serif; text-decoration:underline"> <i class="fas fa-book-medical" style="margin-right: 13px;"></i>Health Programs</a>
+            <a href="/healthprograms"
+                style="font-size: large; font-family: 'Montserrat', sans-serif; text-decoration:underline"> <i
+                    class="fas fa-book-medical" style="margin-right: 13px;"></i>Health Programs</a>
         </li>
-        <li><a href="/doctors" style="font-size: large; font-family: 'Montserrat', sans-serif; text-decoration:underline"><i class="fas fa-user-md" style="margin-right: 13px;"></i>Doctors</a></li>
-        <li><a href="/appointments" style="font-size: large; font-family: 'Montserrat', sans-serif; text-decoration:underline"><i class="fas fa-notes-medical" style="margin-right: 15px;"></i>Appointments</a></li>
+        <li><a href="/doctors"
+                style="font-size: large; font-family: 'Montserrat', sans-serif; text-decoration:underline"><i
+                    class="fas fa-user-md" style="margin-right: 13px;"></i>Doctors</a></li>
+        <li><a href="/appointments"
+                style="font-size: large; font-family: 'Montserrat', sans-serif; text-decoration:underline"><i
+                    class="fas fa-notes-medical" style="margin-right: 15px;"></i>Appointments</a></li>
     </ul>
 
     <!-- Sticky Horizontal Navigation Bar -->
@@ -58,7 +66,8 @@
     <!-- End of Navigation Bar -->
 
     <div class="profile-content">
-        <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">Hello, {{user.name.first}}!
+        <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">Hello,
+            {{user.name.first}}!
         </p>
         <p style="font-size: 25px; font-family: 'Montserrat', sans-serif; color: #2F8250">Here's an overview of your
             account.</p>
@@ -70,18 +79,22 @@
             Birthday: {{dateFormat user.birthdate "YYYY-MM-DD"}}
         </p>
         <hr>
-        <div class="card mx-auto border shadow-sm" style="width: 973px; margin-bottom: 2rem; background-color:rgba(255, 255, 255, 0.878)">
+        <div class="card mx-auto border shadow-sm"
+            style="width: 973px; margin-bottom: 2rem; background-color:rgba(255, 255, 255, 0.878)">
             <div class="card-body" style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; font-size: 15px">
                 <div class="card-title" style="font-size: 45px; font-family: 'Montserrat', sans-serif; color: #2F8250;">
                     Your
                     Appointments
-                    <small><a class="btn btn-success" role="button" href="/appointments" style="float: right; margin-top: 15px;"><i class="fas fa-plus-circle" style="padding-right: 5px"></i>Add Appointments</a></small>
+                    <small><a class="btn btn-success" role="button" href="/appointments"
+                            style="float: right; margin-top: 15px;"><i class="fas fa-plus-circle"
+                                style="padding-right: 5px"></i>Add Appointments</a></small>
                 </div>
                 <div class="card mx-auto " style="width: 913px; margin-bottom: 2rem;">
                     {{#if doctor_alert}}
                     <div class="alert alert-success alert-dismissible fade show" role="alert"
                         style="margin-bottom: 20px;">
-                        You have  <span style="font-weight: bold; text-decoration:underline">successfully cancelled </span> 
+                        You have <span style="font-weight: bold; text-decoration:underline">successfully cancelled
+                        </span>
                         your appointment with {{doctor_success}}.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -136,19 +149,23 @@
             </div>
         </div>
 
-        <div class="card mx-auto border shadow-sm" style="width: 973px; margin-bottom: 2rem; background-color:rgba(255, 255, 255, 0.878)">
+        <div class="card mx-auto border shadow-sm"
+            style="width: 973px; margin-bottom: 2rem; background-color:rgba(255, 255, 255, 0.878)">
             <div class="card-body" style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; font-size: 15px">
                 <div class="card-title" style="font-size: 45px; font-family: 'Montserrat', sans-serif; color: #2F8250;">
                     Your Health
                     Programs
-                    <small><a class="btn btn-success" role="button" href="/healthprograms" style="float: right; margin-top: 15px;"> <i class="fas fa-plus-circle" style="padding-right: 5px"></i>Add Health Programs</a></small>
+                    <small><a class="btn btn-success" role="button" href="/healthprograms"
+                            style="float: right; margin-top: 15px;"> <i class="fas fa-plus-circle"
+                                style="padding-right: 5px"></i>Add Health Programs</a></small>
                 </div>
                 <div class="card mx-auto" style="width: 913px; margin-bottom: 2rem;">
                     {{#if alert}}
                     <div class="alert alert-success alert-dismissible fade show" role="alert"
                         style="margin-bottom: 20px;">
-                        You have  <span style="font-weight: bold; text-decoration:underline">successfully cancelled </span>
-                         your registration to {{success}}.
+                        You have <span style="font-weight: bold; text-decoration:underline">successfully cancelled
+                        </span>
+                        your registration to {{success}}.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

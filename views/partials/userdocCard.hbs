@@ -13,10 +13,18 @@
     </td>
     <td class="text-center">
         <small>
-            <button class="btn btn-danger"
-                onclick="cancelApp('{{this._id}}', '{{this.appointment_date}}')">Cancel</button>
+            <div id="docInvalidCancel_{{this._id}}" style="display:none;">
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
+                    title="You cannot cancel this appointment because it's within 7 days from now.">
+                    <button class="btn btn-secondary" style="pointer-events: none;" type="button"
+                        disabled>Cancel</button>
+                </span>
+            </div>
 
-            {{!-- <a class="btn btn-danger" role="button" data-toggle="modal" data-target="#doc{{_id}}">Cancel</a> --}}
+            <div id="docValidCancel_{{this._id}}" style="display:initial;">
+                <button class="btn btn-danger"
+                    onclick="cancelApp('{{this._id}}', '{{this.appointment_date}}')">Cancel</button>
+            </div>
         </small>
     </td>
 </tr>
@@ -46,12 +54,33 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-danger cancelDocAppointmentButton"
                             style="display:initial;">Confirm</button>
-                        {{!-- <a class="btn btn-danger cancelDocAppointmentButton" role="button"
-                            style="display:initial;"
-                            href="/profile/deleteapp?id={{_id}}&doc={{this.appointment_name}}">Confirm</a> --}}
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        var todayDate = new Date();
+        var destDate = new Date("{{this.appointment_date}}");
+        var Difference_In_Time = destDate.getTime() - todayDate.getTime();
+        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+        if (Difference_In_Days <= 7) {
+            var valid = 'docValidCancel_' + "{{this._id}}";
+            var invalid = 'docInvalidCancel_' + "{{this._id}}";
+            $('#' + valid).attr('style', 'display: none');
+            $('#' + invalid).attr('style', 'display: initial');
+        } else {
+            var invalid = 'docInvalidCancel_' + "{{this._id}}";
+            $('#' + invalid).attr('style', 'display: none');
+        }
+    });
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+</script>
