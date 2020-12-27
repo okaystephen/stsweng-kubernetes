@@ -71,9 +71,9 @@
 
     
         {{#equals doctors.length 0}}
-            <div class="alert alert-danger hide col-9 m-0 mb-2" style="margin-bottom: 1px; width:max-content; height: 50px">No doctors were found matching your filter request. Please try again.</div>
+            <div class="alert alert-danger hide col-9 m-0 mb-2" style="margin-bottom: 1px; width:max-content; height: 50px">No doctor/s were found matching your filter request. Please try again.</div>
         {{else}}
-        <div class="col-9 m-0 mb-2" style="display: flex; flex-direction:row; flex-wrap:wrap; padding-left: 50px"></div>
+        <div class="col-9 m-0 mb-2" style="display: flex; flex-direction:row; flex-wrap:wrap; padding-left: 50px">
             {{#each doctors}}
                 {{> doctorCard}}
             {{/each}}
