@@ -63,6 +63,14 @@
         <hr>
         <div class="card mx-auto border shadow-sm pt-2" style="width: 973px; ">
             <div class="card-body">
+                {{#if app_alert}}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-bottom: 20px;">
+                    Sorry! That appointment schedule is not available with {{doctor}}.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{/if}}
                 <div class="card mx-auto " style="width: 913px; ">
                     <form method="POST" class="needs-validation" id="appFormSubmit" novalidate>
                         <div class="form-group">
@@ -71,18 +79,16 @@
                                 onchange="selectDoctor()" required>
                                 <option selected disabled value="">Choose a doctor...</option>
                                 {{#each docList}}
-                                <option class="selectDoc" id="{{this._id}}" value="{{this.lname}}, {{this.fname}}">
+                                <option class="selectDoc" id="{{this._id}}" value="{{this.lname}}, {{this.fname}}" name="
+                                {{#each this.schedule}}
+                                {{#each time}}
+                                <option value={{../day}},{{start}},{{end}}>{{../day}} ({{start}} - {{end}})
+                                {{!-- <option>{{../day}} ({{start}} - {{end}})</option> --}}
+                                {{/each}}
+                                {{/each}}
+                                ">
                                     {{this.lname}}, {{this.fname}}
                                 </option>
-                                {{#each this.schedule}}
-
-                                {{#each time}}
-                                <div class="day_{{../../_id}}" value="{{../day}},{{start}},{{end}}">
-                                </div>
-                                {{/each}}
-
-                                {{/each}}
-
                                 {{/each}}
                             </select>
                             <div class="valid-feedback">
@@ -97,17 +103,6 @@
                             <select id="appointment_day" name="appointment_day" class="form-control"
                                 onchange="selectDay()" disabled required>
                                 <option selected disabled value="">Choose a schedule...</option>
-                                {{#each docList}}
-                                {{#equals this._id '5fd1ee96eb6f0d28f1df65fc'}}
-                                {{#each this.schedule}}
-                                {{#each time}}
-                                <div class="day_{{../../_id}}" value="{{../day}},{{start}},{{end}}">
-                                </div>
-                                <option value="{{../day}},{{start}},{{end}}">{{../day}} ({{start}} - {{end}})</option>
-                                {{/each}}
-                                {{/each}}
-                                {{/equals}}
-                                {{/each}}
                             </select>
                             <div class="valid-feedback">
                                 Looks good!
@@ -257,11 +252,10 @@
         function selectDoctor() {
             $('#appointment_day').prop("disabled", false);
             var id = $('#appointment_name').children(":selected").attr("id");
-            var classname = 'day_' + id;
-            jQuery('.' + classname).each(function (index) {
-                //alert('Hey..');
-                $('#appointment_day').append('<option>' + $(this).val() + '</option>');
-            });
+            // alert($('#' + id).attr('name'));
+            $('#appointment_day').empty();
+            $('#appointment_day').append('<option selected disabled value="">Choose a schedule...</option>');
+            $('#appointment_day').append($('#' + id).attr('name'));
         }
 
         function selectDay() {
@@ -271,7 +265,7 @@
 
             var val = $('#appointment_day').children(":selected").attr("value");
             var res = val.split(",");
-            alert(res[1])
+            // alert(res[1])
             $('#appointment_time').attr('min', res[1]);
             $('#appointment_time').attr('max', res[2]);
             $('#appointment_time').attr('value', res[1]);
