@@ -265,11 +265,48 @@
 
             var val = $('#appointment_day').children(":selected").attr("value");
             var res = val.split(",");
+            var ban_day = 0;
+            var message = "Please choose a day that is ";
             // alert(res[1])
             $('#appointment_time').attr('min', res[1]);
             $('#appointment_time').attr('max', res[2]);
             $('#appointment_time').attr('value', res[1]);
 
+            if (res[0].localeCompare("Sunday") == 0) {
+                alert("Sunday");
+                message = message + "Sunday.";
+                ban_day = [1, 2, 3, 4, 5, 6];
+            } else if (res[0].localeCompare("Monday") == 0) {
+                message = message + "Monday.";
+                ban_day = [0, 2, 3, 4, 5, 6];
+            } else if (res[0].localeCompare("Tuesday") == 0) {
+                message = message + "Tuesday.";
+                ban_day = [0, 1, 3, 4, 5, 6];
+            } else if (res[0].localeCompare("Wednesday") == 0) {
+                message = message + "Wednesday.";
+                ban_day = [0, 1, 2, 4, 5, 6];
+            } else if (res[0].localeCompare("Thursday") == 0) {
+                message = message + "Thursday.";
+                ban_day = [0, 1, 2, 3, 5, 6];
+            } else if (res[0].localeCompare("Friday") == 0) {
+                message = message + "Friday.";
+                ban_day = [0, 1, 2, 3, 4, 6];
+            } else {
+                alert("Saturday");
+                message = message + "Saturday.";
+                ban_day = [0, 1, 2, 3, 4, 5];
+            }
+
+            const picker = document.getElementById('appointment_date');
+            picker.addEventListener('input', function (e) {
+                var day = new Date(this.value).getUTCDay();
+                if (ban_day.includes(day)) {
+                    e.preventDefault();
+                    this.value = '';
+                    //alert('Weekends not allowed');
+                    alert(message);
+                }
+            });
         }
 
         $('#submit_btn').click(function () {
