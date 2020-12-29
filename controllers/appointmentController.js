@@ -30,7 +30,7 @@ const appointmentController = {
     postAppointment: function (req, res) {
 
         var appointment_id = req.session.user;
-        var appointment_date = req.body.appointment_date + " " + req.body.appointment_time;
+        var appointment_date = new Date(req.body.appointment_date + " " + req.body.appointment_time);
         var appointment_name = req.body.appointment_name;
         var appointment_docID = req.body.appointment_docID;
         var appointment_reason = req.body.appointment_reason;
@@ -44,12 +44,30 @@ const appointmentController = {
             appointment_reason: appointment_reason,
         }
 
-        db.insertOne(Appointment, newAppointment, function (f) {
-            if (f) {
-                console.log('Appointment Added: ' + appointment_name);
-                res.redirect('/profile');
-            }
+        Appointment.countDocuments({ appointment_name: appointment_name, appointment_date: appointment_date }, function (err, count) {
+            db.findOne(User, { _id: req.session.user }, '', function (user) {
+                if (count == 0) {
+                    db.insertOne(Appointment, newAppointment, function (f) {
+                        if (f) {
+                            console.log('Appointment Added: ' + appointment_name);
+                            res.redirect('/profile');
+                        }
+                    });
+                } else {
+                    res.render('set_appointment', {
+                        layout: 'profile',
+                        active_session: (req.session.user && req.cookies.user_sid),
+                        active_user: req.session.user,
+                        title: 'Set Appointment | DoloMed',
+                        user: user.toObject(),
+                        doctor: appointment_name,
+                        app_alert: true,
+                    });
+                }
+            })
         });
+
+
     },
 
     deleteAppointment: function (req, res) {
