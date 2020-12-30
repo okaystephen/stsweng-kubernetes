@@ -11,8 +11,8 @@ Health Program Cancel
     User Profile Page Should Be Open
     Element Text Should Be                              css=#profilehp-table td:nth-child(1)                                    Test Program
     Click Link                                          link=Cancel
-    Page Should Contain Element                         xpath=//div[2]/div/div/div/div[2]/div/button
-    Click Element                                       xpath=//div[2]/div/div/div/div[2]/div/button
+    Wait Until Page Contains Element                    css=.btn-secondary
+    Click Element                                       css=.btn-secondary
     Click Link                                          link=Cancel
     Click Element                                       id=programsave
     Wait Until Page Contains Element                    css=#profilehp-table .dataTables_empty

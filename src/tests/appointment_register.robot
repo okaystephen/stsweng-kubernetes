@@ -36,13 +36,14 @@ Set Appointment
     # Element Text Should Be                              css=.form-group:nth-child(3) > .invalid-feedback                         Enter reason for appointment.
     # Input Valid
     Select From List By Value                           id=appointment_name                                                      Albana, Natalio
-    Input Text                                          id=appointment_date                                                      01012021
-    Input Text                                          id=appointment_time                                                      1212am
+    Select From List By Index                           id=appointment_day                                                       1
+    Input Text                                          id=appointment_date                                                      05032021
+    Input Text                                          id=appointment_time                                                      0900am
     Input Text                                          id=appointment_reason                                                    test
     Click Element                                       id=submit_btn
     # Check Confirmation modal
     Wait Until Page Contains Element                    css=.btn-secondary
-    Element Text Should Be                              id=app-date                                                              2021-01-01
+    Element Text Should Be                              id=app-date                                                              2022-01-01
     # Element Text Should Be                              id=app-time                                                              2021-01-01
     Element Text Should Be                              id=app-doc                                                               Albana, Natalio
     Element Text Should Be                              id=app-reason                                                            test
