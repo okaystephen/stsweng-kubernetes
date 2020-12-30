@@ -31,9 +31,9 @@ Set Appointment
     # Input Invalid
     Click Element                                       id=submit_btn
     Element Text Should Be                              css=.invalid-feedback:nth-child(5)                                       Choose a doctor.
-    Element Text Should Be                              css=.col-md-6:nth-child(1) > .invalid-feedback                           Enter a valid date.
-    Element Text Should Be                              css=.form-group:nth-child(2) > .invalid-feedback                         Enter a valid time.
-    Element Text Should Be                              css=.form-group:nth-child(3) > .invalid-feedback                         Enter reason for appointment.
+    # Element Text Should Be                              css=.col-md-6:nth-child(1) > .invalid-feedback                           Enter a valid date.
+    # Element Text Should Be                              css=.form-group:nth-child(2) > .invalid-feedback                         Enter a valid time.
+    # Element Text Should Be                              css=.form-group:nth-child(3) > .invalid-feedback                         Enter reason for appointment.
     # Input Valid
     Select From List By Value                           id=appointment_name                                                      Albana, Natalio
     Input Text                                          id=appointment_date                                                      01012021
