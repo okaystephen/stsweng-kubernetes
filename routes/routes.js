@@ -59,7 +59,7 @@ app.post(
 // landing & login controller
 app.get('/', controller.getLanding);
 app.post('/', loginController.postLogIn);
-app.get('/logout', controller.getLogOut);
+//app.get('/logout', controller.getLogOut);
 
 //dashboard controller
 app.get('/dashboard', dashboardController.getDashboard);
@@ -100,6 +100,10 @@ app.get('/canceluserhealth/:hpId/status', function (req, res) {
   res.redirect('/');
 });
 
+// admin controller
+app.get('/adminhp', adminController.getHP);
+app.get('/admindoc', adminController.getDoctors);
+
 //logout
 app.get('/logout', function (req, res) {
   req.logout;
@@ -111,9 +115,6 @@ app.get('/logout', function (req, res) {
 app.get('/doctors', doc_directoryController.getDocDirectory);
 app.post('/doctors', loginController.postLogIn);
 app.post('/filter', doc_directoryController.getFilter);
-
-// admin controller
-app.get('/adminhp', adminController.getHP);
 
 // enables to export app object when called in another .js file
 module.exports = app;
