@@ -103,6 +103,7 @@ app.get('/canceluserhealth/:hpId/status', function (req, res) {
 // admin controller
 app.get('/adminhp', adminController.getHP);
 app.get('/admindoc', adminController.getDoctors);
+app.post('/adminfilter', adminController.getFilter);
 
 //logout
 app.get('/logout', function (req, res) {
