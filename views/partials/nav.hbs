@@ -1,3 +1,35 @@
+{{#if admin_active}}
+
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+    <a class="navbar-brand" href="/"><img src="/img/rainbow.png" width="60">DoloMed</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+        aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarToggler">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item {{#if hp_active}}active{{/if}}">
+                <a class="nav-link" href="/adminhp">Health Programs</a>
+            </li>
+            <li class="nav-item {{#if doctors_active}}active{{/if}}">
+                <a class="nav-link" href="/doctors">Doctors</a>
+            </li>
+             <li class="nav-item {{#if appointments_active}}active{{/if}}">
+                <a class="nav-link" href="/appointments">Appointments</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            {{#if admin_active}}
+            <li class="nav-item">
+                <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt" style="padding-right: 5px;"></i>Log Out</a>
+            </li>
+            {{/if}}
+        </ul>
+    </div>
+</nav>
+
+{{else}}
+
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
     <a class="navbar-brand" href="/"><img src="/img/rainbow.png" width="60">DoloMed</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
@@ -83,3 +115,4 @@
         </div>
     </div>
 </div>
+{{/if}}

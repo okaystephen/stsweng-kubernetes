@@ -12,6 +12,7 @@ const dashboardController = require('../controllers/dashboardController.js');
 const loginController = require('../controllers/loginController.js');
 const doc_directoryController = require('../controllers/doc_directoryController.js');
 const appointmentController = require('../controllers/appointmentController.js');
+const adminController = require('../controllers/adminController.js');
 
 //form validation
 const validation = require('../helpers/validation.js');
@@ -105,11 +106,14 @@ app.get('/logout', function (req, res) {
   req.session.destroy(function (err) { });
   res.redirect('/');
 });
+
 // doctors directory controller
 app.get('/doctors', doc_directoryController.getDocDirectory);
 app.post('/doctors', loginController.postLogIn);
 app.post('/filter', doc_directoryController.getFilter);
 
+// admin controller
+app.get('/adminhp', adminController.getHP);
 
 // enables to export app object when called in another .js file
 module.exports = app;
