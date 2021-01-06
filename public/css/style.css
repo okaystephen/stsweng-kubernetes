@@ -77,8 +77,8 @@ input[type="checkbox"]:checked+label+.showother {
 }
 
 .dropdown{
-    float: right;	
-    display: inline-block; 
+    /* float: right;	 */
+    /* display: inline-block;  */
     margin: 5px 5px 0 0; 
     position: absolute; 
     top: 0; 
