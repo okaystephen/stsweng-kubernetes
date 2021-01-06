@@ -38,7 +38,7 @@ Without Login Health Program Register
     Click Element                                       css=.odd:nth-child(1) .btn
     Login Page Should Be Open
     # Login
-    Input Username                                      sample@gmail.com
+    Input Username                                      test_sample@gmail.com
     Set Selenium Speed                                  0.2
     Input Password                                      sample12
     Click Button                                        id=loginbtn
