@@ -28,7 +28,6 @@ const appointmentController = {
     },
 
     postAppointment: function (req, res) {
-
         var appointment_id = req.session.user;
         var appointment_date = new Date(req.body.appointment_date + " " + req.body.appointment_time);
         var appointment_name = req.body.appointment_name;
@@ -66,8 +65,30 @@ const appointmentController = {
                 }
             })
         });
+    },
 
-
+    reschedAppointment: function (req, res) {
+        var id = req.query.id;
+        if (!req.session.user) res.redirect('/')
+        else {
+            db.findOne(User, { _id: req.session.user }, '', function (user) {
+                db.findMany(Doctor, {}, {}, function (docList) {
+                    db.findOne(Appointment, { _id: id }, {}, function (app) {
+                        console.log(app);
+                        res.render('resched_appointment', {
+                            layout: 'profile',
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Reschedule Appointment | DoloMed',
+                            user: user.toObject(),
+                            date: moment(user.date).format('YYYY-MM-DD'),
+                            docList: docList,
+                            app: app.toObject(),
+                        })
+                    })
+                });
+            })
+        }
     },
 
     deleteAppointment: function (req, res) {

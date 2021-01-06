@@ -2,6 +2,7 @@ const db = require('../models/db');
 const User = require('../models/UserModel');
 const HealthProgram = require('../models/HealthProgramModel.js');
 const Appointment = require('../models/AppointmentModel');
+const Doctor = require('../models/DoctorModel');
 
 const profileController = {
     // render account page when client requests '/profile' defined in routes.js
