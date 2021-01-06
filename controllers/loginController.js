@@ -19,6 +19,7 @@ const loginController = {
                         // console.log('Username and password is correct.. Redirecting..');
                         if(user.email.trim() == 'admin@gmail.com'){
                             req.session.user = user._id;
+                            req.session.type = 'admin';
                             res.redirect('/adminhp');
                         } else{
                             req.session.user = user._id;
