@@ -35,6 +35,14 @@ Successful Login
     Click Button                                id=loginbtn
     User Profile Page Should Be Open
 
+Successful Admin Login
+    Open Browser To Login Page
+    Login Page Should Be Open
+    Input Username                              admin@gmail.com
+    Input Password                              admin123
+    Click Button                                id=loginbtn
+    User Profile Page Should Be Open
+
 Input Username
     [Arguments]                                 ${username}
     Input Text                                  id=loginemail_modal       ${username}
