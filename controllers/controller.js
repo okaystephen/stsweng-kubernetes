@@ -8,12 +8,22 @@ const controller = {
     // Add controllers here
     getLanding: function (req, res) {
         if (req.cookies.user_sid && req.session.user) {
-            res.render('landing', {
-                layout: 'main',
-                title: 'Home | DoloMed',
-                home_active: true,
-                user_active: true,
-            })
+            if(req.session.type == 'admin'){
+                res.render('landing', {
+                    layout: 'main',
+                    title: 'Home | DoloMed',
+                    home_active: true,
+                    admin_active: true,
+                })
+            }
+            else{
+                res.render('landing', {
+                    layout: 'main',
+                    title: 'Home | DoloMed',
+                    home_active: true,
+                    user_active: true,
+                })
+            }
         }
         else {
             res.render('landing', {

@@ -1,10 +1,21 @@
 <div class="card" style="width: 15rem; height:fit-content; background-color: #E0E0E0; margin-bottom: 20px">
-    <img class="card-img-top mx-auto" src="/img/{{avatar}}" alt="Card image cap" style="height: 200px; width: 100%; object-fit: cover;">
+    <div style="position: relative;">
+    <img class="card-img-top mx-auto" src="/img/{{avatar}}" alt="Card image cap" style="height: 200px; width: 100%; object-fit: cover; position: relative">
+    {{#if admin_active}}
+        <div class="dropdown">
+          <i class="fas fa-ellipsis-h" style="color: gray;"></i>
+          <div class="dropdown-content">
+              <a href="#"><i class="fas fa-pen" style="color: gray"></i> Edit</a>
+              <a href="#"><i class="far fa-trash-alt" style="color:rgb(175, 43, 43)"></i> Delete</a>
+          </div>
+        </div>
+    {{/if}}
+    </div>
     <div class="card-body">
         <h5 class="card-title mb-0">{{lname}}, {{fname}}</h5>
         <p class="card-text">{{specialization}}</p>
         <p class="card-text" style="text-align: center">
-            <button type="button" class="btn btn-primary w-75 mt-2" data-toggle="modal" data-target="#a{{_id}}"> View Schedule </button>
+            <button type="button" class="btn btn-primary w-75 mt-2" data-toggle="modal" data-target="#a{{_id}}">View Schedule</button>
         </p>
     </div>
 </div>

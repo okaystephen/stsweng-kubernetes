@@ -5,7 +5,7 @@
     <td>
         <small>{{hp_name}}</small>
     </td>
-    <td style="font-size:small;">
+    <td style="font-size:small; text-align:justify">
         <small>{{this.hp_desc}}</small>
     </td>
     <td class="text-center">
@@ -25,31 +25,48 @@
         <small
             style="color: {{#equals participants_count hp_maxCap}}red{{else}}#2F8250{{/equals}};">{{participants_count}}/{{this.hp_maxCap}}</small>
     </td>
-    <td class="text-center">    
-        {{#equals participants_count hp_maxCap}}
-        {{!-- <span tabindex="0" data-toggle="tooltip" data-placement="right" title="You already sent your response to this applicant"></span>
-        <small><button class="btn btn-secondary" role="button" style="pointer-events: none;" disabled>Register</button></small> --}}
-        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
-            title="{{hp_name}} has already reached the maximum number of participants">
-            <button class="btn btn-secondary" style="pointer-events: none;" type="button" disabled>Register</button>
-        </span>
+    <td class="text-center">
+        {{#if admin_active}}
+        {{!-- <div style="position: relative; height: 200px">
+            <div style="margin:0; position:absolute; top: 50%; left:50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);"> --}}
+                <small><a class="btn btn-success" role="button" style="font-size:10px"><span style="font-size: 15px;"><i class="fas fa-pen"></i></span></a></small>
+                <small><a class="btn btn-danger" role="button" style="font-size:10px"><span style="font-size: 15px;"><i class="fas fa-trash-alt"></i></span></a></small>
+            {{!-- </div>
+        </div> --}}
+            {{!-- <div class="dropdown_hp">
+                <i class="fas fa-ellipsis-h" style="color: gray"></i>
+                <div class="dropdown-content">
+                    <a href="#"><i class="fas fa-pen" style="color: gray"></i> Edit</a>
+                    <a href="#"><i class="far fa-trash-alt" style="color:rgb(175, 43, 43)"></i> Delete</a>
+                </div>
+            </div> --}}
         {{else}}
-        {{#if user_active}}
-            {{#check_program user participants}}
+
+            {{#equals participants_count hp_maxCap}}
+                {{!-- <span tabindex="0" data-toggle="tooltip" data-placement="right" title="You already sent your response to this applicant"></span>
+                <small><button class="btn btn-secondary" role="button" style="pointer-events: none;" disabled>Register</button></small> --}}
                 <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
-                title="You are already registered to {{hp_name}}">
-                <button class="btn btn-secondary" style="pointer-events: none;" type="button" disabled>Register</button>
-            </span>
-            {{else}}
-                 <small><a class="btn btn-success" role="button" data-toggle="modal" data-target="#a{{_id}}">Register</a></small>
-            {{/check_program}}
-        {{else}}
-        <small><a class="btn btn-success" role="button" data-toggle="modal"
-                data-target="#loginModal">Register</a></small>
-        {{/if}}
-            {{!-- <small><a class="btn btn-success" role="button" onclick="{{#if ../user_active}}register_user('{{this.hp_name}}'){{else}}register(){{/if}}">Register</a></small> --}}
-        {{/equals}} 
-        
+                    title="{{hp_name}} has already reached the maximum number of participants">
+                    <button class="btn btn-secondary" style="pointer-events: none;" type="button" disabled>Register</button>
+                </span>
+                {{else}}
+                {{#if user_active}}
+                    {{#check_program user participants}}
+                        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
+                        title="You are already registered to {{hp_name}}">
+                        <button class="btn btn-secondary" style="pointer-events: none;" type="button" disabled>Register</button>
+                    </span>
+                    {{else}}
+                        <small><a class="btn btn-success" role="button" data-toggle="modal" data-target="#a{{_id}}">Register</a></small>
+                    {{/check_program}}
+                {{else}}
+                <small><a class="btn btn-success" role="button" data-toggle="modal"
+                        data-target="#loginModal">Register</a></small>
+                {{/if}}
+                    {{!-- <small><a class="btn btn-success" role="button" onclick="{{#if ../user_active}}register_user('{{this.hp_name}}'){{else}}register(){{/if}}">Register</a></small> --}}
+            {{/equals}} 
+        {{/if}}   
+            
     </td>
 </tr>
 

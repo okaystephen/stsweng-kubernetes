@@ -17,8 +17,14 @@ const loginController = {
                     // console.log(equal)
                     if (equal) {
                         // console.log('Username and password is correct.. Redirecting..');
-                        req.session.user = user._id;
-                        res.redirect('/profile');
+                        if(user.email.trim() == 'admin@gmail.com'){
+                            req.session.user = user._id;
+                            req.session.type = 'admin';
+                            res.redirect('/adminhp');
+                        } else{
+                            req.session.user = user._id;
+                            res.redirect('/profile');
+                        }
                     }
                     else {
                         res.render('landing', {
