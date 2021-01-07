@@ -41,7 +41,6 @@ Successful Admin Login
     Input Username                              admin@gmail.com
     Input Password                              admin123
     Click Button                                id=loginbtn
-    User Profile Page Should Be Open
 
 Input Username
     [Arguments]                                 ${username}

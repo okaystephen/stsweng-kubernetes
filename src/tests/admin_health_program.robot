@@ -8,7 +8,6 @@ Resource          resource.robot
 *** Test Cases ***
 Admin Health Program Directory
     Successful Admin Login
-    User Profile Page Should Be Open
     Click Link                      link=Health Programs
     Page Should Contain Element     css=#hp-table_filter > label
     # Name Sort
@@ -37,8 +36,8 @@ Admin Health Program Directory
     Click Element                   css=.sorting_asc
     Element Text Should Be          css=.odd:nth-child(1) > td:nth-child(1) > small                         Adolescent health and development program
     # Edit and Delete Button
-    Page Should Contain Element     css=#a5fd721786161150d2281c550 #programsave
-    Page Should Contain Element     css=#a5fd721786161150d2281c550 #programsave
+    Page Should Contain Element     css=.odd:nth-child(1) .btn-success .fas
+    Page Should Contain Element     css=.odd:nth-child(1) .btn-danger .fas
     # Search
     Click Element                   css=input:nth-child(1)
     Input Text                      css=input:nth-child(1)                                                  test
