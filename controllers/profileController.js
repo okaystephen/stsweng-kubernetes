@@ -8,6 +8,9 @@ const profileController = {
 
     getProfile: function (req, res) {
         if (!req.session.user) res.redirect('/')
+        else if(req.session.type == 'admin'){
+            res.redirect('/adminhp');
+        }
         else {
             db.findOne(User, { _id: req.session.user }, '', function (user) {
                 db.findMany(HealthProgram, {participants: {$elemMatch: {$eq: req.session.user }}}, '', function(result){

@@ -194,7 +194,7 @@ const adminController = {
                     })
             }
 
-            else if ((input.surname != '') && (input.specialization == 'All') && (input.availability != 'AAll')) {
+            else if ((input.surname != '') && (input.specialization == 'All') && (input.availability != 'All')) {
                 Doctor.find({ lname: { $regex: input.surname, $options: "i" }, schedule: { $elemMatch: { day: input.availability } } })
                     .lean()
                     .sort({ lname: 1 })
@@ -228,7 +228,7 @@ const adminController = {
                     })
             }
 
-            else if ((input.surname != '') && (input.specialization != 'All') && (input.availability == 'AAll')) {
+            else if ((input.surname != '') && (input.specialization != 'All') && (input.availability == 'All')) {
                 Doctor.find({ lname: { $regex: input.surname, $options: "i" }, specialization: input.specialization })
                     .lean()
                     .sort({ lname: 1 })
