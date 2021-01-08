@@ -30,8 +30,16 @@ User Profile Page Should Be Open
 Successful Login
     Open Browser To Login Page
     Login Page Should Be Open
-    Input Username                              sample@gmail.com
+    Input Username                              test_sample@gmail.com
     Input Password                              sample12
+    Click Button                                id=loginbtn
+    User Profile Page Should Be Open
+
+Successful Admin Login
+    Open Browser To Login Page
+    Login Page Should Be Open
+    Input Username                              admin@gmail.com
+    Input Password                              admin123
     Click Button                                id=loginbtn
     User Profile Page Should Be Open
 
