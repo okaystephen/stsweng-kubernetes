@@ -101,7 +101,7 @@
                         <div class="form-group">
                             <label for="appointment_day">Schedule</label>
                             <select id="appointment_day" name="appointment_day" class="form-control"
-                                onchange="selectDay()"  required>
+                                onchange="selectDay()" required>
                                 <option selected disabled value="">Choose a schedule...</option>
                             </select>
                             <div class="valid-feedback">
@@ -116,8 +116,8 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="appointment_date">Date</label>
-                                <input type="date" class="form-control" id="appointment_date" name="appointment_date" value="{{dateFormat app.appointment_date "YYYY-MM-DD"}}"
-                                     required>
+                                <input type="date" class="form-control" id="appointment_date" name="appointment_date"
+                                    value="{{dateFormat app.appointment_date "YYYY-MM-DD"}}" required>
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
@@ -129,7 +129,7 @@
                                 <label for="appointment_time">Time</label>
                                 <input type="time" class="form-control" id="appointment_time" name="appointment_time"
                                     min="09:00" max="18:00" value="{{dateFormat app.appointment_date "HH:mm"}}"
-                                     required>
+                                    required>
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
@@ -141,7 +141,7 @@
                         <div class="form-group">
                             <label for="appointment_reason">Reason for appointment</label>
                             <textarea class="form-control" id="appointment_reason" name="appointment_reason" rows="3"
-                                 required>{{app.appointment_reason}}</textarea>
+                                required>{{app.appointment_reason}}</textarea>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
@@ -151,7 +151,7 @@
                         </div>
                         <div class="form-group text-center pt-3">
                             <input type="hidden" id="appointment_docID" name="appointment_docID" value="{{docID}}">
-                            <input type="hidden" id="appointment_initID" name="appointment_initID" value="{{_id}}">
+                            <input type="hidden" id="appointment_initID" name="appointment_initID" value="{{initID}}">
                             <button class="btn btn-success" id="submit_btn" type="submit">Submit</button>
                         </div>
 
@@ -239,7 +239,7 @@
 
         $(document).ready(function () {
             $('#appointment_name').select2();
-            
+
             var id = $('#appointment_name').children(":selected").attr("id");
             $('#appointment_day').append($('#' + id).attr('name'));
         });

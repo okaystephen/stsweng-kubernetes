@@ -93,14 +93,23 @@
                     {{#if doctor_alert}}
                     <div class="alert alert-success alert-dismissible fade show" role="alert"
                         style="margin-bottom: 20px;">
-                        You have <span style="font-weight: bold; text-decoration:underline">successfully cancelled
-                        </span>
-                        your appointment with {{doctor_success}}.
+                        You have <span style="font-weight: bold; text-decoration:underline">successfully cancelled</span> your appointment with {{doctor_success}}.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     {{/if}}
+
+                    {{#if resched_alert}}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert"
+                        style="margin-bottom: 20px;">
+                        You have <span style="font-weight: bold; text-decoration:underline">successfully rescheduled</span> your appointment with {{doctor_success}}.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {{/if}}
+
                     <div class="table-responsive text-center">
                         <table class="table text-left" id="profileapp-table">
                             <thead class=" text-primary">

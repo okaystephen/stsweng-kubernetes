@@ -83,6 +83,7 @@ const appointmentController = {
                             title: 'Reschedule Appointment | DoloMed',
                             user: user.toObject(),
                             date: moment(user.date).format('YYYY-MM-DD'),
+                            initID: id,
                             docID: docID,
                             docList: docList,
                             app: app.toObject(),
@@ -94,8 +95,8 @@ const appointmentController = {
     },
 
     postreschedAppointment: function (req, res) {
-        //var id = req.query.id;
-        //var docID = req.query.doc;
+        var id = req.query.id;
+        var docID = req.query.doc;
 
         var appointment_id = req.session.user;
         var appointment_initID = req.body.appointment_initID;
@@ -115,10 +116,33 @@ const appointmentController = {
         Appointment.countDocuments({ appointment_name: appointment_name, appointment_date: appointment_date }, function (err, count) {
             db.findOne(User, { _id: req.session.user }, '', function (user) {
                 if (count == 0) {
-                    db.updateOne(Appointment, { _id: appointment_initID }, appointment_details, function (err, res) { });
+                    Appointment.updateOne({ _id: ObjectID(appointment_initID) }, appointment_details, function (err, docs) {
+                        if (err) {
+                            console.log(err)
+                        }
+                        else {
+                            console.log("Updated Docs : ", docs);
+                            db.findMany(HealthProgram, { participants: { $elemMatch: { $eq: req.session.user } } }, '', function (result) {
+                                db.findMany(Appointment, { appointment_id: req.session.user }, {}, function (appList) {
+                                    res.render('profile', {
+                                        layout: 'profile',
+                                        active_session: (req.session.user && req.cookies.user_sid),
+                                        active_user: req.session.user,
+                                        title: 'Profile | DoloMed',
+                                        user: user.toObject(),
+                                        healthprograms: result,
+                                        appList: appList,
+                                        doctor_success: appointment_name,
+                                        resched_alert: true,
+                                    });
+                                })
+                            });
+                        }
+                    });
+
                 } else {
                     db.findMany(Doctor, {}, {}, function (docList) {
-                        db.findOne(Appointment, { _id: id }, {}, function (app) {
+                        db.findOne(Appointment, { _id: ObjectID(id) }, {}, function (app) {
                             res.render('resched_appointment', {
                                 layout: 'profile',
                                 active_session: (req.session.user && req.cookies.user_sid),
@@ -127,25 +151,16 @@ const appointmentController = {
                                 user: user.toObject(),
                                 date: moment(user.date).format('YYYY-MM-DD'),
                                 docID: docID,
+                                initID: id,
                                 docList: docList,
                                 app: app.toObject(),
-                            })
+                                doctor: appointment_name,
+                                app_alert: true,
+                            });
                         })
                     });
 
-                    res.render('resched_appointment', {
-                        layout: 'profile',
-                        active_session: (req.session.user && req.cookies.user_sid),
-                        active_user: req.session.user,
-                        title: 'Reschedule Appointment | DoloMed',
-                        user: user.toObject(),
-                        date: moment(user.date).format('YYYY-MM-DD'),
-                        docID: docID,
-                        docList: docList,
-                        app: app.toObject(),
-                        doctor: appointment_name,
-                        app_alert: true,
-                    });
+
                 }
             })
         });
