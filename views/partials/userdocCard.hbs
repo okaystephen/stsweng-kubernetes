@@ -9,7 +9,7 @@
         {{dateFormat this.appointment_date "YYYY-MM-DD"}}
     </td>
     <td class="text-center">
-        <small><a class="btn btn-success" href="/reschedule-appointments?id={{this._id}}"
+        <small><a class="btn btn-success" href="/reschedule-appointments?id={{this._id}}&doc={{this.appointment_docID}}"
                 role="button">Reschedule</a></small>
     </td>
     <td class="text-center">

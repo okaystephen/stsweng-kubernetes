@@ -73,9 +73,6 @@
                 </div>
                 {{/if}}
 
-                {{app.appointment_docID}}
-                {{#equals app.appointment_docID app.appointment_docID}}selected{{/equals}}
-
                 <div class="card mx-auto " style="width: 913px; ">
                     <form method="POST" class="needs-validation" id="appFormSubmit" novalidate>
                         <div class="form-group">
@@ -90,8 +87,7 @@
                                 <option value={{../day}},{{start}},{{end}}>{{../day}} ({{start}} - {{end}})
                                 {{/each}}
                                 {{/each}}
-                                " {{#equals this._id ../app.appointment_docID}}selected{{/equals}}>
-                                    {{#equals this._id ../app.appointment_docID}}selected{{/equals}} {{this.lname}}, {{this.fname}}
+                                " {{#equals _id ../docID}}selected{{/equals}}>{{this.lname}}, {{this.fname}}
                                 </option>
                                 {{/each}}
                             </select>
@@ -154,7 +150,8 @@
                             </div>
                         </div>
                         <div class="form-group text-center pt-3">
-                            <input type="hidden" id="appointment_docID" name="appointment_docID" value="">
+                            <input type="hidden" id="appointment_docID" name="appointment_docID" value="{{docID}}">
+                            <input type="hidden" id="appointment_initID" name="appointment_initID" value="{{_id}}">
                             <button class="btn btn-success" id="submit_btn" type="submit">Submit</button>
                         </div>
 
@@ -271,7 +268,6 @@
             $('#appointment_time').attr('value', res[1]);
 
             if (res[0].localeCompare("Sunday") == 0) {
-                alert("Sunday");
                 message = message + "Sunday.";
                 ban_day = [1, 2, 3, 4, 5, 6];
             } else if (res[0].localeCompare("Monday") == 0) {
@@ -290,7 +286,6 @@
                 message = message + "Friday.";
                 ban_day = [0, 1, 2, 3, 4, 6];
             } else {
-                alert("Saturday");
                 message = message + "Saturday.";
                 ban_day = [0, 1, 2, 3, 4, 5];
             }

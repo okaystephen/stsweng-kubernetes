@@ -69,12 +69,13 @@ const appointmentController = {
 
     reschedAppointment: function (req, res) {
         var id = req.query.id;
+        var docID = req.query.doc;
+
         if (!req.session.user) res.redirect('/')
         else {
             db.findOne(User, { _id: req.session.user }, '', function (user) {
                 db.findMany(Doctor, {}, {}, function (docList) {
                     db.findOne(Appointment, { _id: id }, {}, function (app) {
-                        console.log(app);
                         res.render('resched_appointment', {
                             layout: 'profile',
                             active_session: (req.session.user && req.cookies.user_sid),
@@ -82,6 +83,7 @@ const appointmentController = {
                             title: 'Reschedule Appointment | DoloMed',
                             user: user.toObject(),
                             date: moment(user.date).format('YYYY-MM-DD'),
+                            docID: docID,
                             docList: docList,
                             app: app.toObject(),
                         })
@@ -89,6 +91,64 @@ const appointmentController = {
                 });
             })
         }
+    },
+
+    postreschedAppointment: function (req, res) {
+        //var id = req.query.id;
+        //var docID = req.query.doc;
+
+        var appointment_id = req.session.user;
+        var appointment_initID = req.body.appointment_initID;
+        var appointment_date = new Date(req.body.appointment_date + " " + req.body.appointment_time);
+        var appointment_name = req.body.appointment_name;
+        var appointment_docID = req.body.appointment_docID;
+        var appointment_reason = req.body.appointment_reason;
+
+        var appointment_details = {
+            appointment_id: ObjectID(appointment_id),
+            appointment_date: appointment_date,
+            appointment_docID: ObjectID(appointment_docID),
+            appointment_name: appointment_name,
+            appointment_reason: appointment_reason,
+        }
+
+        Appointment.countDocuments({ appointment_name: appointment_name, appointment_date: appointment_date }, function (err, count) {
+            db.findOne(User, { _id: req.session.user }, '', function (user) {
+                if (count == 0) {
+                    db.updateOne(Appointment, { _id: appointment_initID }, appointment_details, function (err, res) { });
+                } else {
+                    db.findMany(Doctor, {}, {}, function (docList) {
+                        db.findOne(Appointment, { _id: id }, {}, function (app) {
+                            res.render('resched_appointment', {
+                                layout: 'profile',
+                                active_session: (req.session.user && req.cookies.user_sid),
+                                active_user: req.session.user,
+                                title: 'Reschedule Appointment | DoloMed',
+                                user: user.toObject(),
+                                date: moment(user.date).format('YYYY-MM-DD'),
+                                docID: docID,
+                                docList: docList,
+                                app: app.toObject(),
+                            })
+                        })
+                    });
+
+                    res.render('resched_appointment', {
+                        layout: 'profile',
+                        active_session: (req.session.user && req.cookies.user_sid),
+                        active_user: req.session.user,
+                        title: 'Reschedule Appointment | DoloMed',
+                        user: user.toObject(),
+                        date: moment(user.date).format('YYYY-MM-DD'),
+                        docID: docID,
+                        docList: docList,
+                        app: app.toObject(),
+                        doctor: appointment_name,
+                        app_alert: true,
+                    });
+                }
+            })
+        });
     },
 
     deleteAppointment: function (req, res) {
