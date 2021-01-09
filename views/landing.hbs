@@ -60,7 +60,8 @@
                 {{!-- <p class="pt-2" style="font-family: Roboto Mono;">yea</p> --}}
             </div>
         </div>
-        <div class="col-lg offset-lg-1 py-1 shadow form-group" onclick="modal()"
+        <div class="col-lg offset-lg-1 py-1 shadow form-group" {{#if
+            user_active}}onclick="location.href='appointments';" {{else}}onclick="modal()" {{/if}}
             style="cursor:pointer; border-radius: 5px; background-image: url('/img/3.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;  background-color: gray; height: 350px;">
             <div class="pt-3 link">
                 <h2 style="font-family: Montserrat; color: #F2F2F2;">Book an appointment now</h2>
