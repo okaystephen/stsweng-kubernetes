@@ -12,6 +12,7 @@ const dashboardController = require('../controllers/dashboardController.js');
 const loginController = require('../controllers/loginController.js');
 const doc_directoryController = require('../controllers/doc_directoryController.js');
 const appointmentController = require('../controllers/appointmentController.js');
+const adminController = require('../controllers/adminController.js');
 
 //form validation
 const validation = require('../helpers/validation.js');
@@ -58,7 +59,7 @@ app.post(
 // landing & login controller
 app.get('/', controller.getLanding);
 app.post('/', loginController.postLogIn);
-app.get('/logout', controller.getLogOut);
+//app.get('/logout', controller.getLogOut);
 
 //dashboard controller
 app.get('/dashboard', dashboardController.getDashboard);
@@ -101,17 +102,22 @@ app.get('/canceluserhealth/:hpId/status', function (req, res) {
   res.redirect('/');
 });
 
+// admin controller
+app.get('/adminhp', adminController.getHP);
+app.get('/admindoc', adminController.getDoctors);
+app.post('/adminfilter', adminController.getFilter);
+
 //logout
 app.get('/logout', function (req, res) {
   req.logout;
   req.session.destroy(function (err) { });
   res.redirect('/');
 });
+
 // doctors directory controller
 app.get('/doctors', doc_directoryController.getDocDirectory);
 app.post('/doctors', loginController.postLogIn);
 app.post('/filter', doc_directoryController.getFilter);
-
 
 // enables to export app object when called in another .js file
 module.exports = app;
