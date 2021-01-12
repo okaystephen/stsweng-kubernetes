@@ -7,21 +7,8 @@
 <body style="background-color: rgb(243, 243, 243); margin: 0; font-family: 'Roboto Mono';">
     <!-- Navigation Bar -->
     <!-- Sticky Vertical Navigation Bar -->
-    <ul class="vertical-navbar">
-        <a href="/" style=" text-decoration: none;">
-            <p class="h1 shrink gradient-text"
-                style="text-align: center; margin-left: 8px; margin-top: .5rem; font-family: 'Montserrat', sans-serif;">
-                DoloMed <i class="far fa-hospital"></i>
-            </p>
-        </a>
-        <hr>
-        <li><a href="/profile" style="font-size: medium;">Dashboard</a></li>
-        <li>
-            <a href="/healthprograms" style="font-size: medium;">Health Programs</a>
-        </li>
-        <li><a href="/doctors" style="font-size: medium;">Doctors</a></li>
-        <li><a href="/appointments" style="font-size: medium;">Appointments</a></li>
-    </ul>
+    
+    {{> profileSidebar}}
 
     <!-- Sticky Horizontal Navigation Bar -->
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark"
@@ -108,7 +95,7 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Choose a doctor.
+                                Choose a schedule.
                             </div>
                         </div>
 

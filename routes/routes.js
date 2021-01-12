@@ -57,6 +57,7 @@ app.post(
 );
 
 // landing & login controller
+app.get('', controller.getLanding);
 app.get('/', controller.getLanding);
 app.post('/', loginController.postLogIn);
 //app.get('/logout', controller.getLogOut);
