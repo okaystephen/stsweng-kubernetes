@@ -7,21 +7,8 @@
 <body style="background-color: rgb(243, 243, 243); margin: 0; font-family: 'Roboto Mono';">
     <!-- Navigation Bar -->
     <!-- Sticky Vertical Navigation Bar -->
-    <ul class="vertical-navbar">
-        <a href="/" style=" text-decoration: none;">
-            <p class="h1 shrink gradient-text"
-                style="text-align: center; margin-left: 8px; margin-top: .5rem; font-family: 'Montserrat', sans-serif;">
-                DoloMed <i class="far fa-hospital"></i>
-            </p>
-        </a>
-        <hr>
-        <li><a href="/profile" style="font-size: medium;">Dashboard</a></li>
-        <li>
-            <a href="/healthprograms" style="font-size: medium;">Health Programs</a>
-        </li>
-        <li><a href="/doctors" style="font-size: medium;">Doctors</a></li>
-        <li><a href="/appointments" style="font-size: medium;">Appointments</a></li>
-    </ul>
+    
+    {{> profileSidebar}}
 
     <!-- Sticky Horizontal Navigation Bar -->
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark"
@@ -108,7 +95,7 @@
                                 Looks good!
                             </div>
                             <div class="invalid-feedback">
-                                Choose a doctor.
+                                Choose a schedule.
                             </div>
                         </div>
 
@@ -116,7 +103,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="appointment_date">Date</label>
-                                <input type="date" class="form-control" id="appointment_date" name="appointment_date"
+                                <input type="date" class="form-control" id="appointment_date" name="appointment_date" onchange="dateChange()"
                                     value="{{dateFormat app.appointment_date "YYYY-MM-DD"}}" required>
                                 <div class="valid-feedback">
                                     Looks good!
@@ -239,13 +226,12 @@
 
         $(document).ready(function () {
             $('#appointment_name').select2();
-
             var id = $('#appointment_name').children(":selected").attr("id");
             $('#appointment_day').append($('#' + id).attr('name'));
+            //$("#appointment_date").flatpickr();
         });
 
         function selectDoctor() {
-            $('#appointment_day').prop("disabled", false);
             var id = $('#appointment_name').children(":selected").attr("id");
             // alert($('#' + id).attr('name'));
             $('#appointment_day').empty();
@@ -254,15 +240,58 @@
         }
 
         function selectDay() {
-            $('#appointment_date').prop("disabled", false);
-            $('#appointment_time').prop("disabled", false);
-            $('#appointment_reason').prop("disabled", false);
-
             var val = $('#appointment_day').children(":selected").attr("value");
             var res = val.split(",");
             var ban_day = 0;
+
             var message = "Please choose a day that is ";
             // alert(res[1])
+            $('#appointment_time').attr('min', res[1]);
+            $('#appointment_time').attr('max', res[2]);
+            $('#appointment_time').attr('value', res[1]);
+
+            alert(res[0] + ' ' + res[1]);
+
+            if (res[0].localeCompare("Sunday") == 0) {
+                message = message + "Sunday.";
+                ban_day = [1, 2, 3, 4, 5, 6];
+            } else if (res[0].localeCompare("Monday") == 0) {
+                message = message + "Monday.";
+                ban_day = [0, 2, 3, 4, 5, 6];
+            } else if (res[0].localeCompare("Tuesday") == 0) {
+                message = message + "Tuesday.";
+                ban_day = [0, 1, 3, 4, 5, 6];
+            } else if (res[0].localeCompare("Wednesday") == 0) {
+                message = message + "Wednesday.";
+                ban_day = [0, 1, 2, 4, 5, 6];
+            } else if (res[0].localeCompare("Thursday") == 0) {
+                message = message + "Thursday.";
+                ban_day = [0, 1, 2, 3, 5, 6];
+            } else if (res[0].localeCompare("Friday") == 0) {
+                message = message + "Friday.";
+                ban_day = [0, 1, 2, 3, 4, 6];
+            } else {
+                message = message + "Saturday.";
+                ban_day = [0, 1, 2, 3, 4, 5];
+            }
+
+            //const picker = document.getElementById('appointment_date');
+            //picker.addEventListener('change', function (e) {
+            //    var day = new Date(this.value).getUTCDay();
+            //    if (ban_day.includes(day)) {
+            //        e.preventDefault();
+            //        this.value = '';
+            //        alert(message);
+            //    }
+            //});
+        }
+
+        function dateChange(){
+            var val = $('#appointment_day').children(":selected").attr("value");
+            var res = val.split(",");
+            var ban_day = 0;
+
+            var message = "Please choose a day that is ";
             $('#appointment_time').attr('min', res[1]);
             $('#appointment_time').attr('max', res[2]);
             $('#appointment_time').attr('value', res[1]);
@@ -290,16 +319,13 @@
                 ban_day = [0, 1, 2, 3, 4, 5];
             }
 
-            const picker = document.getElementById('appointment_date');
-            picker.addEventListener('input', function (e) {
-                var day = new Date(this.value).getUTCDay();
-                if (ban_day.includes(day)) {
-                    e.preventDefault();
-                    this.value = '';
-                    //alert('Weekends not allowed');
-                    alert(message);
-                }
-            });
+            var picker = document.getElementById('appointment_date');
+            var day = new Date(picker.value).getUTCDay();
+
+            if (ban_day.includes(day)) {
+                alert(message);
+                picker.value = '';
+            }
         }
 
         $('#submit_btn').click(function () {

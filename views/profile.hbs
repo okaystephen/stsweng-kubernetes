@@ -7,29 +7,8 @@
 <body style="background-color: rgb(243, 243, 243); margin: 0; font-family: 'Roboto Mono';">
     <!-- Navigation Bar -->
     <!-- Sticky Vertical Navigation Bar -->
-    <ul class="vertical-navbar">
-        <a href="/" style=" text-decoration: none;">
-            <p class="h1 shrink gradient-text"
-                style="text-align: center; margin-left: 8px; margin-top: .5rem; font-family: 'Montserrat', sans-serif;">
-                DoloMed <i class="far fa-hospital"></i>
-            </p>
-        </a>
-        <hr>
-        <li><a href="/profile"
-                style="font-size:large; font-family: 'Montserrat', sans-serif; text-decoration:underline"><i
-                    class="fas fa-home" style="margin-right: 10px; "></i>Dashboard</a></li>
-        <li>
-            <a href="/healthprograms"
-                style="font-size: large; font-family: 'Montserrat', sans-serif; text-decoration:underline"> <i
-                    class="fas fa-book-medical" style="margin-right: 13px;"></i>Health Programs</a>
-        </li>
-        <li><a href="/doctors"
-                style="font-size: large; font-family: 'Montserrat', sans-serif; text-decoration:underline"><i
-                    class="fas fa-user-md" style="margin-right: 13px;"></i>Doctors</a></li>
-        <li><a href="/appointments"
-                style="font-size: large; font-family: 'Montserrat', sans-serif; text-decoration:underline"><i
-                    class="fas fa-notes-medical" style="margin-right: 15px;"></i>Appointments</a></li>
-    </ul>
+    
+    {{> profileSidebar}}
 
     <!-- Sticky Horizontal Navigation Bar -->
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark"
