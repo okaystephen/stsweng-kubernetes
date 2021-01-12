@@ -1,6 +1,8 @@
 const db = require('../models/db');
 const HealthProgram = require('../models/HealthProgramModel.js');
 const Doctor = require('../models/DoctorModel');
+const User = require('../models/UserModel');
+const UserProgram = require('../models/UserHProgramModel.js');
 const sanitize = require('mongo-sanitize');
 
 const adminController = {
@@ -315,6 +317,50 @@ const adminController = {
             }
 
         }
+    },
+
+    addHP: function (req, res){
+        if (!req.session.user) res.redirect('/')
+        else if(req.session.type != 'admin'){
+            res.redirect('/profile');
+        }
+        else{
+            res.render('add_healthprogram', {
+                layout: 'main',
+                active_session: (req.session.user && req.cookies.user_sid),
+                user_id: req.session.user,
+                title: 'Add Program | DoloMed',
+                admin_active: true, 
+                hp_active: true,
+                addhp_active: true,
+            })
+        }
+    },
+
+    postaddHP: function (req,res){
+        console.log(req.body);
+    },
+
+    deleteHP: function (req, res){
+        var hpID = req.params.hpId;
+        db.updateMany(User, {} ,{$pull: {programs: hpID}}, function(user){
+            db.deleteMany(UserProgram, {healthprogram: hpID}, function(userprog){
+                db.deleteOne(HealthProgram, {_id: hpID})
+                db.findMany(HealthProgram, {}, '', function (healthprogramsContent) {
+                    res.render('hp_directory', {
+                        layout: 'main',
+                        active_session: (req.session.user && req.cookies.user_sid),
+                        user_id: req.session.user,
+                        title: 'Health Programs | DoloMed',
+                        admin_active: true,
+                        hp_active: true,
+                        delete: true,
+                        test: req.body.hp_name,
+                        healthprogramsContent: healthprogramsContent,
+                    })
+                });
+            })
+        })
     }
 }
 
