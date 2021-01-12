@@ -2,12 +2,16 @@ const db = require('../models/db');
 const User = require('../models/UserModel');
 const HealthProgram = require('../models/HealthProgramModel.js');
 const Appointment = require('../models/AppointmentModel');
+const Doctor = require('../models/DoctorModel');
 
 const profileController = {
     // render account page when client requests '/profile' defined in routes.js
 
     getProfile: function (req, res) {
         if (!req.session.user) res.redirect('/')
+        else if(req.session.type == 'admin'){
+            res.redirect('/adminhp');
+        }
         else {
             db.findOne(User, { _id: req.session.user }, '', function (user) {
                 db.findMany(HealthProgram, {participants: {$elemMatch: {$eq: req.session.user }}}, '', function(result){
