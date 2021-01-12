@@ -106,6 +106,12 @@ app.get('/canceluserhealth/:hpId/status', function (req, res) {
 app.get('/adminhp', adminController.getHP);
 app.get('/admindoc', adminController.getDoctors);
 app.post('/adminfilter', adminController.getFilter);
+app.post('/deleteHP/:hpId', adminController.deleteHP);
+// app.get('/deleteHP/:hpId', function (req, res) {
+//   req.logout;
+//   req.session.destroy(function (err) { });
+//   res.redirect('/');
+// });
 
 //logout
 app.get('/logout', function (req, res) {

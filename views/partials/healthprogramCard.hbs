@@ -29,8 +29,8 @@
         {{#if admin_active}}
         {{!-- <div style="position: relative; height: 200px">
             <div style="margin:0; position:absolute; top: 50%; left:50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);"> --}}
-                <small><a class="btn btn-success" role="button" style="font-size:10px; margin-bottom: 7px"><span style="font-size: 15px;"><i class="fas fa-pen"></i></span></a></small>
-                <small><a class="btn btn-danger" role="button" style="font-size:10px"><span style="font-size: 15px;"><i class="fas fa-trash-alt"></i></span></a></small>
+                <small><a class="btn btn-success" role="button" style="font-size:10px; margin-bottom: 7px" data-toggle="modal" data-target="#editHP{{_id}}"><span style="font-size: 15px;"><i class="fas fa-pen"></i></span></a></small>
+                <small><a class="btn btn-danger" role="button" style="font-size:10px" data-toggle="modal" data-target="#deleteHP{{_id}}"><span style="font-size: 15px;"><i class="fas fa-trash-alt"></i></span></a></small>
             {{!-- </div>
         </div> --}}
             {{!-- <div class="dropdown_hp">
@@ -108,6 +108,54 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary" id="programsave">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- Delete Health Program Modal --}}
+<div class="modal fade" id="deleteHP{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Confirm Delete</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="deleteHP" method="post" action="/deleteHP/{{_id}}">
+                    <input type="hidden" value="{{hp_name}}" name="hp_name" id="hp_name"/> 
+                    <p style="text-align:left; padding: 10px">Are you sure you want to <span style="color:red">delete</span> {{hp_name}}?</p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger" id="programsave">Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{!-- Edit Health Program Modal --}}
+<div class="modal fade" id="#editHP{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Edit {{hp_name}}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editHP" method="post" action="/editHP/{{_id}}">
+                    <input type="hidden" value="{{hp_name}}" name="hp_name" id="hp_name"/> 
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger" id="programsave">Confirm</button>
                     </div>
                 </form>
             </div>
