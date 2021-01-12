@@ -319,6 +319,24 @@ const adminController = {
         }
     },
 
+    addHP: function (req, res){
+        if (!req.session.user) res.redirect('/')
+        else if(req.session.type != 'admin'){
+            res.redirect('/profile');
+        }
+        else{
+            res.render('add_healthprogram', {
+                layout: 'main',
+                active_session: (req.session.user && req.cookies.user_sid),
+                user_id: req.session.user,
+                title: 'Add Program | DoloMed',
+                admin_active: true, 
+                hp_active: true,
+                addhp_active: true,
+            })
+        }
+    },
+
     deleteHP: function (req, res){
         var hpID = req.params.hpId;
         db.updateMany(User, {} ,{$pull: {programs: hpID}}, function(user){
