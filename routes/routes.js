@@ -19,6 +19,7 @@ const validation = require('../helpers/validation.js');
 const profileController = require('../controllers/profileController.js');
 const accountController = require('../controllers/accountController.js');
 const hp_directoryController = require('../controllers/hp_directoryController.js');
+const healthprogramsController = require('../controllers/healthprogramsController.js');
 
 const app = express();
 
@@ -83,6 +84,9 @@ app.get('/appointments', appointmentController.getAppointment);
 app.post('/appointments', appointmentController.postAppointment);
 app.get('/reschedule-appointments/', appointmentController.reschedAppointment);
 app.post('/reschedule-appointments/', appointmentController.postreschedAppointment);
+
+//add health program controller
+app.get('/add_healthprogram', healthprogramsController.getHealthProgramsAdd);
 
 // health program controller
 app.get('/healthprograms', hp_directoryController.getHealthPrograms);
