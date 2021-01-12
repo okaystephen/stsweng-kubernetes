@@ -111,6 +111,7 @@ app.get('/adminhp', adminController.getHP);
 app.get('/admindoc', adminController.getDoctors);
 app.get('/addhp', adminController.addHP);
 app.post('/adminfilter', adminController.getFilter);
+app.post('/addhp', adminController.postaddHP);
 app.post('/deleteHP/:hpId', adminController.deleteHP);
 // app.get('/deleteHP/:hpId', function (req, res) {
 //   req.logout;

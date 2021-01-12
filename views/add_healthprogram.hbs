@@ -7,8 +7,10 @@
     <div>
         <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh; padding-top: 30px; padding-left: 50px">Add a Program </p>
         <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; padding-left: 50px">Insert caption here.</p>
-        <div class="card mx-auto border shadow-sm pt-2" style="width: 973px; ">
-            <div class="card-body">
+            <div class="card mx-auto border shadow-sm pt-2" style="width: 973px; ">
+                <div class="card-body">
+                    <form id="add_program" method="POST" action="/addhp">
+
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <label for="hp_name">Name of Health Program</label>
@@ -17,10 +19,11 @@
                             <div class="form-group col-md-1"></div>
                             <div class="form-group col-md-1">
                                 <label for="hp_cap">Cap</label>
-                                <input type="number" class="form-control" id="hp_cap" name="hp_cap"
+                                <input type="number" class="form-control" id="hp_cap" name="hp_cap" value="1"
                                     min="1">
                             </div>
                         </div>
+
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="hp_startdate">Start Date</label>
@@ -32,6 +35,7 @@
                                 <input type="date" class="form-control" id="hp_enddate" name="hp_enddate">
                             </div>
                         </div>
+
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="hp_starttime">Start Time</label>
@@ -43,21 +47,24 @@
                                 <input type="time" class="form-control" id="hp_endtime" name="hp_endtime">
                             </div>
                         </div>
+
                         <div class="form-row">
                             <div class="form-group col-md-7">
                                 <label for="hp_location">Location</label>
                                 <input type="text" class="form-control" id="hp_location" name="hp_location">
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label for="appointment_reason">Description</label>
                             <textarea class="form-control" id="appointment_reason" name="appointment_reason" rows="3"></textarea>
                         </div>
+
                         <div class="form-group text-center pt-3">
-                            <button class="btn btn-success" id="submit_btn">Add</button>
+                            <button class="btn btn-success" id="submit_btn" type="submit">Add</button>
                         </div>
+
                     </form>
                 </div>
             </div>
-        </div>
     </div>

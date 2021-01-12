@@ -337,6 +337,10 @@ const adminController = {
         }
     },
 
+    postaddHP: function (req,res){
+        console.log(req.body);
+    },
+
     deleteHP: function (req, res){
         var hpID = req.params.hpId;
         db.updateMany(User, {} ,{$pull: {programs: hpID}}, function(user){
