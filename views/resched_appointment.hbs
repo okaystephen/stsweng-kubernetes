@@ -2,6 +2,19 @@
     th {
         color: #2F8250 !important;
     }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        background: transparent;
+        bottom: 0;
+        color: transparent;
+        cursor: pointer;
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
 </style>
 
 <body style="background-color: rgb(243, 243, 243); margin: 0; font-family: 'Roboto Mono';">
@@ -103,7 +116,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="appointment_date">Date</label>
-                                <input type="date" class="form-control" id="appointment_date" name="appointment_date" onchange="dateChange()"
+                                <input type="date" class="form-control" id="appointment_date" name="appointment_date" onchange="dateChange()" onfocus="clear()" placeholder="mm/dd/yyyy"
                                     value="{{dateFormat app.appointment_date "YYYY-MM-DD"}}" required>
                                 <div class="valid-feedback">
                                     Looks good!
@@ -114,7 +127,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="appointment_time">Time</label>
-                                <input type="time" class="form-control" id="appointment_time" name="appointment_time"
+                                <input type="time" class="form-control" id="appointment_time" name="appointment_time" placeholder="HH:mm"
                                     min="09:00" max="18:00" value="{{dateFormat app.appointment_date "HH:mm"}}"
                                     required>
                                 <div class="valid-feedback">
@@ -245,12 +258,9 @@
             var ban_day = 0;
 
             var message = "Please choose a day that is ";
-            // alert(res[1])
             $('#appointment_time').attr('min', res[1]);
             $('#appointment_time').attr('max', res[2]);
             $('#appointment_time').attr('value', res[1]);
-
-            alert(res[0] + ' ' + res[1]);
 
             if (res[0].localeCompare("Sunday") == 0) {
                 message = message + "Sunday.";
@@ -270,20 +280,20 @@
             } else if (res[0].localeCompare("Friday") == 0) {
                 message = message + "Friday.";
                 ban_day = [0, 1, 2, 3, 4, 6];
-            } else {
+            } else if (res[0].localeCompare("Saturday") == 0) {
                 message = message + "Saturday.";
                 ban_day = [0, 1, 2, 3, 4, 5];
+            } else {
+                message = "Please choose a schedule.";
+                ban_day = [0, 1, 2, 3, 4, 5, 6];
             }
 
-            //const picker = document.getElementById('appointment_date');
-            //picker.addEventListener('change', function (e) {
-            //    var day = new Date(this.value).getUTCDay();
-            //    if (ban_day.includes(day)) {
-            //        e.preventDefault();
-            //        this.value = '';
-            //        alert(message);
-            //    }
-            //});
+            var picker = document.getElementById('appointment_date');
+            var day = new Date(picker.value).getUTCDay();
+
+            if (ban_day.includes(day)) {
+                picker.value = '';
+            }
         }
 
         function dateChange(){
@@ -314,9 +324,12 @@
             } else if (res[0].localeCompare("Friday") == 0) {
                 message = message + "Friday.";
                 ban_day = [0, 1, 2, 3, 4, 6];
-            } else {
+            } else if (res[0].localeCompare("Saturday") == 0) {
                 message = message + "Saturday.";
                 ban_day = [0, 1, 2, 3, 4, 5];
+            } else {
+                message = "Please choose a schedule.";
+                ban_day = [0, 1, 2, 3, 4, 5, 6];
             }
 
             var picker = document.getElementById('appointment_date');
@@ -326,6 +339,11 @@
                 alert(message);
                 picker.value = '';
             }
+        }
+
+        function clear(){
+            var picker = document.getElementById('appointment_date');
+            picker.value = '';
         }
 
         $('#submit_btn').click(function () {
