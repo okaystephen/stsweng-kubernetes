@@ -141,11 +141,11 @@
 
 
 {{!-- Edit Health Program Modal --}}
-<div class="modal fade" id="#editHP{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="editHP{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLongTitle">Edit {{hp_name}}</h4>
+                <h4 class="modal-title" id="exampleModalLongTitle">Edit Program <span style="font-size: 20px;"><i class="fas fa-pen"></i></span> </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -153,9 +153,62 @@
             <div class="modal-body">
                 <form id="editHP" method="post" action="/editHP/{{_id}}">
                     <input type="hidden" value="{{hp_name}}" name="hp_name" id="hp_name"/> 
+                    <div class="form-group" style="text-align: left; margin-bottom: 5px;">
+                         <div class="form-row">
+                            <div class="form-group col-md-9">
+                                <label for="hp_name" style="font-weight:500;">Health Program Name<span class="text-danger"> *</span></label>
+                                <textarea class="form-control" id="hp_name" name="hp_name" style="height: 38px; width: 350px">{{this.hp_name}}</textarea>
+                                <div class="col-sm-10" style="font-size: smaller; color: red"></div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="hp_cap" style="font-weight:500;">Cap<span class="text-danger"> *</span></label>
+                                <input type="number" class="form-control" id="hp_cap" name="hp_cap" value={{this.hp_maxCap}}
+                                    min="1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: left;  margin-bottom: 5px;">
+                         <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="hp_startdate" style="font-weight:500;">Start Date<span class="text-danger"> *</span></label>
+                                <input type="date" class="form-control" id="hp_startdate" name="hp_startdate" value={{dateFormat this.hp_startdate "YYYY-MM-DD"}}>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="hp_enddate" style="font-weight:500;">End Date<span class="text-danger"> *</span></label>
+                                <input type="date" class="form-control" id="hp_enddate" name="hp_enddate" value={{dateFormat this.hp_enddate "YYYY-MM-DD"}}>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: left;  margin-bottom: 5px;">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="hp_starttime" style="font-weight:500;">Start Time<span class="text-danger"> *</span></label>
+                                <input type="time" class="form-control" id="hp_starttime" name="hp_starttime" value={{dateFormat this.hp_startdate "HH:mm"}}>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="hp_endtime" style="font-weight:500;">End Time<span class="text-danger"> *</span></label>
+                                <input type="time" class="form-control" id="hp_endtime" name="hp_endtime" value={{dateFormat this.hp_enddate "HH:mm"}}>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: left;  margin-bottom: 5px;">
+                        <div class="form-row">
+                            <div class="form-group col-md-14">
+                                <label for="hp_location" style="font-weight:500;">Location<span class="text-danger"> *</span></label>
+                                <textarea class="form-control" id="hp_location" name="hp_location" style="height: 40px; width: 467px">{{this.hp_location}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: left;">
+                         <div class="form-group">
+                            <label for="hp_description" style="font-weight:500;">Description<span class="text-danger"> *</span></label>
+                            <textarea class="form-control" id="hp_description" name="hp_description" rows="3">{{this.hp_desc}}</textarea>
+                        </div>
+                    </div>
+                   
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-danger" id="programsave">Confirm</button>
+                        <button type="submit" class="btn btn-primary" id="programsave">Confirm</button>
                     </div>
                 </form>
             </div>

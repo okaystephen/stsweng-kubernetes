@@ -42,13 +42,13 @@ window.onload = function(){
 
                         <div class="form-row">
                             <div class="form-group col-md-5">
-                                <label for="hp_name">Name of Health Program</label>
+                                <label for="hp_name">Name of Health Program<span class="text-danger"> *</span></label>
                                 <input type="text" class="form-control" id="hp_name" name="hp_name" value={{input.hp_name}}>
                                 <p style="color: red; font-size: 13.5px;">{{details.hp_nameError}}</p>
                             </div>
                             <div class="form-group col-md-1"></div>
                             <div class="form-group col-md-1">
-                                <label for="hp_cap">Cap</label>
+                                <label for="hp_cap">Cap<span class="text-danger"> *</span></label>
                                 <input type="number" class="form-control" id="hp_cap" name="hp_cap" value={{input.hp_cap}}
                                     min="1">
                                 <p style="color: red; font-size: 13.5px;">{{details.hp_capError}}</p>
@@ -57,45 +57,42 @@ window.onload = function(){
 
                         <div class="form-row">
                             <div class="form-group col-md-3">
-                                <label for="hp_startdate">Start Date</label>
+                                <label for="hp_startdate">Start Date<span class="text-danger"> *</span></label>
                                 <input type="date" class="form-control" id="hp_startdate" name="hp_startdate" value={{input.hp_startdate}}>
                                 <p style="color: red; font-size: 13.5px;">{{details.hp_startdateError}}</p>
                             </div>
                             <div class="form-group col-md-3"></div>
                             <div class="form-group col-md-3">
-                                <label for="hp_enddate">End Date</label>
+                                <label for="hp_enddate">End Date<span class="text-danger"> *</span></label>
                                 <input type="date" class="form-control" id="hp_enddate" name="hp_enddate" value={{input.hp_enddate}}>
                                 <p style="color: red; font-size: 13.5px;">{{details.hp_enddateError}}</p>
-                                <p style="color: red; font-size: 13.5px;">{{dateError}}</p>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-3">
-                                <label for="hp_starttime">Start Time</label>
+                                <label for="hp_starttime">Start Time<span class="text-danger"> *</span></label>
                                 <input type="time" class="form-control" id="hp_starttime" name="hp_starttime" value={{input.hp_starttime}}>
                                 <p style="color: red; font-size: 13.5px;">{{details.hp_starttimeError}}</p>
-                                <p style="color: red; font-size: 13.5px;">{{startError}}</p>
                             </div>
                             <div class="form-group col-md-3"></div>
                             <div class="form-group col-md-3">
-                                <label for="hp_endtime">End Time</label>
+                                <label for="hp_endtime">End Time<span class="text-danger"> *</span></label>
                                 <input type="time" class="form-control" id="hp_endtime" name="hp_endtime" value={{input.hp_endtime}}>
                                 <p style="color: red; font-size: 13.5px;">{{details.hp_endtimeError}}</p>
-                                <p style="color: red; font-size: 13.5px;">{{timeError}}</p>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-7">
-                                <label for="hp_location">Location</label>
+                                <label for="hp_location">Location<span class="text-danger"> *</span></label>
                                 <textarea class="form-control" id="hp_location" name="hp_location" style="height: 40px; width: 386px">{{input.hp_location}}</textarea>
                                 <p style="color: red; font-size: 13.5px;">{{details.hp_locationError}}</p>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="hp_description">Description</label>
+                            <label for="hp_description">Description<span class="text-danger"> *</span></label>
                             <textarea class="form-control" id="hp_description" name="hp_description" rows="3">{{input.hp_description}}</textarea>
                             <p style="color: red; font-size: 13.5px;">{{details.hp_descriptionError}}</p>
                         </div>
