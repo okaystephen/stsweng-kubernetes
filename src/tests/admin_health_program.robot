@@ -18,7 +18,7 @@ Health Program Cancel
     Wait Until Page Contains Element                    css=#profilehp-table .dataTables_empty
     Page Should Contain Element                         css=.alert                                                              #You have successfully cancelled your registration to Test Program.\n×
     Click Element                                       css=.alert > .close > span
-    Wait Until Page Does Not Contain Element            css=.alert
+    #Wait Until Page Does Not Contain Element            css=.alert
     [Teardown]  Close All Browsers
 
 Invalid Register Field
@@ -149,28 +149,28 @@ Admin Add Health Program - User View
 
 Admin Delete Health Program
     Successful Admin Login
-    Click Link                          link=Health Programs
-    Page Should Contain Element         css=#hp-table_filter > label
+    Click Link                                          link=Health Programs
+    Page Should Contain Element                         css=#hp-table_filter > label
     # Search Added program
-    Click Element                       css=input:nth-child(1)
-    Input Text                          css=input:nth-child(1)                                                  test delete
-    Page Should Contain Element         css=td:nth-child(1) > small
-    Element Text Should Be              css=td:nth-child(1) > small                                             test delete
-    Page Should Contain Element         css=.btn-success
-    Page Should Contain Element         css=.btn-danger:nth-child(1)
+    Click Element                                       css=input:nth-child(1)
+    Input Text                                          css=input:nth-child(1)                                                  test delete
+    Page Should Contain Element                         css=td:nth-child(1) > small
+    Element Text Should Be                              css=td:nth-child(1) > small                                             test delete
+    Page Should Contain Element                         css=.btn-success
+    Page Should Contain Element                         css=.btn-danger:nth-child(1)
     # Delete program
-    Click Element                       css=.btn-danger:nth-child(1)
-    Wait Until Page Contains Element    xpath=(//button[@type='button'])[113]
-    Click Element                       xpath=(//button[@type='button'])[113]
-    Click Element                       css=.btn-danger:nth-child(1)
-    Wait Until Page Contains Element    xpath=(//button[@id='programsave'])[56]
-    Click Element                       xpath=(//button[@id='programsave'])[56]
-    Wait Until Page Contains Element    css=.alert
-    Page Should Contain Element         css=.alert                                                              #You have successfully deleted test delete.\nx
+    Click Element                                       css=.btn-danger:nth-child(1)
+    Wait Until Page Contains Element                    xpath=(//button[@type='button'])[113]
+    Click Element                                       xpath=(//button[@type='button'])[113]
+    Click Element                                       css=.btn-danger:nth-child(1)
+    Wait Until Page Contains Element                    xpath=//div[56]/div/div/div[2]/div/button[2]
+    Click Element                                       xpath=//div[56]/div/div/div[2]/div/button[2]
+    Wait Until Page Contains Element                    css=.alert
+    Page Should Contain Element                         css=.alert                                                              #You have successfully deleted test delete.\nx
     Click Element                                       css=.alert > .close > span
-    Wait Until Page Does Not Contain Element            css=.alert
+    # Wait Until Page Does Not Contain Element            css=.alert
     # Search Non-Existing program
-    Click Element                       css=input:nth-child(1)
-    Input Text                          css=input:nth-child(1)                                                  test delete
-    Page Should Contain Element         css=.dataTables_empty
+    Click Element                                       css=input:nth-child(1)
+    Input Text                                          css=input:nth-child(1)                                                  test delete
+    Page Should Contain Element                         css=.dataTables_empty
     [Teardown]  Close All Browsers
