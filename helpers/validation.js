@@ -187,6 +187,14 @@ const validation = {
                 .withMessage('Start time is required.')
                 .bail()
                 .custom((value, { req, location, path }) => {
+                    var [year, month, day] = req.body.hp_startdate.split('-');
+                    var input = Date.UTC(
+                        Number(year),
+                        Number(month) - 1, // parameter month starts at 0
+                        Number(day),
+                    );
+                    var now = Date.now();
+
                     // get system local time
                     var d = new Date();
                     var m = d.getMinutes();
@@ -204,7 +212,9 @@ const validation = {
                     var startTime = hour_start+"."+min_start
 
                     if(startTime < currentTime){
-                        throw new Error("Invalid start time. Start time is pass the current time.")
+                        if(input < now){
+                            throw new Error("Invalid start time. Start time is pass the current time.")
+                        }
                     }
 
                     return true;
