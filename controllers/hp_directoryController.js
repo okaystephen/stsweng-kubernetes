@@ -57,11 +57,26 @@ const hp_directoryController = {
                     console.log(user);
                     bcrypt.compare(password, user.password, function (err, equal) {
                         if (equal) {
-                            req.session.user = user._id;
-                            res.redirect('/healthprograms');
+                            // console.log('Username and password is correct.. Redirecting..');
+                            if(user.email.trim() == 'admin@gmail.com'){
+                                req.session.user = user._id;
+                                req.session.type = 'admin';
+                                res.redirect('/adminhp');
+                            } else{
+                                req.session.user = user._id;
+                                res.redirect('/profile');
+                            }
                         }
                         else {
-                            res.redirect('/healthprograms/fail');
+                            res.render('landing', {
+                                layout: 'main',
+                                title: 'Home | DoloMed',
+                                home_active: true,
+                                login_active: true,
+                                loginError: 'Invalid credentials!',
+                                loginmodalError: true,
+                            });
+                            // res.redirect('back');
                         }
                     });
                 }

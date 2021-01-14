@@ -1,12 +1,12 @@
 <form id="form-edit-program" method="POST" action="/editHP/{{hpData._id}}">
-    <div class="form-group" style="text-align: left; margin-bottom: 5px;">
+    <div class="form-group" style="text-align: left; margin-bottom: 3px;">
             <div class="form-row">
-            <div class="form-group col-md-9">
+            <div class="form-group col-md-8">
                 <label for="hp_name" style="font-weight:500;">Health Program Name<span class="text-danger"> *</span></label>
-                <textarea class="form-control" id="hp_name" name="hp_name" style="height: 38px; width: 350px">{{hpData.hp_name}}</textarea>
+                <textarea class="form-control" id="hp_name" name="hp_name" style="height: 38px; width: 305px">{{hpData.hp_name}}</textarea>
                 <p style="color: red; font-size: 13.5px;">{{details.hp_nameError}}</p>
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-4">
                 <label for="hp_cap" style="font-weight:500;">Cap<span class="text-danger"> *</span></label>
                 <input type="number" class="form-control" id="hp_cap" name="hp_cap" value={{hpData.hp_maxCap}}
                     min="1">
@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <div class="form-group" style="text-align: left;  margin-bottom: 5px;">
+    <div class="form-group" style="text-align: left;  margin-bottom: 3px;">
             <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="hp_startdate" style="font-weight:500;">Start Date<span class="text-danger"> *</span></label>
@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="form-group" style="text-align: left;  margin-bottom: 5px;">
+    <div class="form-group" style="text-align: left;  margin-bottom: 3px;">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="hp_starttime" style="font-weight:500;">Start Time<span class="text-danger"> *</span></label>
@@ -42,11 +42,11 @@
             </div>
         </div>
     </div>
-    <div class="form-group" style="text-align: left;  margin-bottom: 5px;">
+    <div class="form-group" style="text-align: left;  margin-bottom: 3px;">
         <div class="form-row">
             <div class="form-group col-md-14">
                 <label for="hp_location" style="font-weight:500;">Location<span class="text-danger"> *</span></label>
-                <textarea class="form-control" id="hp_location" name="hp_location" style="height: 40px; width: 467px">{{hpData.hp_location}}</textarea>
+                <textarea class="form-control" id="hp_location" name="hp_location" style="height: 40px; width: 450px">{{hpData.hp_location}}</textarea>
                 <p style="color: red; font-size: 13.5px;">{{details.hp_locationError}}</p>
             </div>
         </div>
