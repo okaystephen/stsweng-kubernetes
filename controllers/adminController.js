@@ -429,7 +429,6 @@ const adminController = {
                             })
                         });
                     } else{
-                       
                         db.insertOne(HealthProgram, program, function(flag){
                             if(flag){
                                 db.findMany(HealthProgram, {}, '', function (healthprogramsContent) {
@@ -448,14 +447,108 @@ const adminController = {
                             }
                         })
                     }
-                } 
+                } else{
+                    db.insertOne(HealthProgram, program, function(flag){
+                        if(flag){
+                            db.findMany(HealthProgram, {}, '', function (healthprogramsContent) {
+                                res.render('hp_directory', {
+                                    layout: 'main',
+                                    active_session: (req.session.user && req.cookies.user_sid),
+                                    user_id: req.session.user,
+                                    title: 'Health Programs | DoloMed',
+                                    admin_active: true,
+                                    hp_active: true,
+                                    add: true,
+                                    test: input.hp_name,
+                                    healthprogramsContent: healthprogramsContent,
+                                })
+                            });
+                        }
+                    })
+                }
             })
 
         }
     },
 
-    editHP: function(req, res){
-        console.log("yes");
+    getPopulatedEditProgram: function (req, res){    
+        HealthProgram.findOne({_id: req.params.hpId}, '')
+            .exec()
+            .then(doc =>
+                res.render(
+                    './partials/editProgramForm',
+                    { hpData: doc.toObject(), layout: false },
+                    (err, html) => {
+                        if (err) throw err;
+                        res.send(html);
+                    },
+                ),
+            )
+            .catch(err => {
+                console.log(err);
+                res.send(err);
+            });
+    },
+
+    postEditProgram: function(req, res){
+        var errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            errors = errors.errors;
+
+            res.send(errors.map(e => e.msg));
+        } else {
+            //sanitize user inputs
+            const input = {};
+            for (const field in req.body) {
+                if (req.body.hasOwnProperty(field)) {
+                    input[field] = sanitize(req.body[field]);
+
+                }
+            }
+
+             //concatenate start date and time hp_startdate: "2021-01-20 08:00",
+             var start_time =  input.hp_starttime.split(":");
+             var hour_start = start_time[0];
+             if(hour_start == '00') {hour_start = 24}
+             var min_start = start_time[1];
+
+             var start = "";
+             start += input.hp_startdate;
+             start += " ";
+             start += hour_start+":"+min_start;
+
+             //concatenate end date and time
+             var end_time =  input.hp_endtime.split(":");
+             var hour_end = end_time[0];
+             if(hour_end == '00') {hour_end = 24}
+             var min_end = end_time[1];
+
+             var end = "";
+             end += input.hp_enddate;
+             end += " ";
+             end += hour_end+":"+min_end;
+
+             var program = {
+                _id: new mongoose.Types.ObjectId(),
+                hp_name: input.hp_name,
+                hp_desc: input.hp_description,
+                hp_location: input.hp_location,
+                hp_startdate: start,
+                hp_enddate: end,
+                hp_maxCap: input.hp_cap,
+            }
+
+            console.log(program);
+
+            // db.updateOne(HealthProgram, { _id: req.params.hpId }, obj, result => {
+            //     if (result) {
+            //         res.send(obj);
+            //     } else {
+            //         res.status(500).send('An error occurred in the server');
+            //     }
+            // });
+        }
     },
 
     deleteHP: function (req, res){

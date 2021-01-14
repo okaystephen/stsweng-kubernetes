@@ -114,7 +114,10 @@ app.post('/adminfilter', adminController.getFilter);
 app.post('/addhp',
       validation.programValidation(),
       adminController.postaddHP);
-app.post('/edithp/:hpId', adminController.editHP);
+app.get('/editHP/data/:hpId', adminController.getPopulatedEditProgram);
+app.post('/editHP/:hpId', 
+      validation.programValidation(),
+      adminController.postEditProgram);
 app.post('/deleteHP/:hpId', adminController.deleteHP);
 // app.get('/deleteHP/:hpId', function (req, res) {
 //   req.logout;
