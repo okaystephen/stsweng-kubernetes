@@ -49,6 +49,13 @@
                         </button>
                     </div>
                 {{/if}}
+                {{#if duplicate}}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-bottom: 1px;">Error: Duplicate record for <span style="font-weight: bold; text-decoration:underline">{{test}}</span> found. Please try again.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                {{/if}}
 
                 <div class="card-body" style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; background-color:rgba(255, 255, 255, 0.878)">
                     <div class="table-responsive text-center">
@@ -122,5 +129,5 @@
         //    error: function (xhr) { }
         //});
         //} 
-    }
+    }     
 </script>

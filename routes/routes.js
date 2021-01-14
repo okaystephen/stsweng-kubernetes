@@ -114,6 +114,7 @@ app.post('/adminfilter', adminController.getFilter);
 app.post('/addhp',
       validation.programValidation(),
       adminController.postaddHP);
+app.post('/edithp/:hpId', adminController.editHP);
 app.post('/deleteHP/:hpId', adminController.deleteHP);
 // app.get('/deleteHP/:hpId', function (req, res) {
 //   req.logout;
