@@ -119,18 +119,20 @@ app.get('/admindoc/delete', function (req, res) {
 app.get('/addhp', adminController.addHP);
 app.post('/adminfilter', adminController.getFilter);
 app.post('/addhp',
-      validation.programValidation(),
-      adminController.postaddHP);
+  validation.programValidation(),
+  adminController.postaddHP);
 app.get('/editHP/data/:hpId', adminController.getPopulatedEditProgram);
-app.post('/editHP/:hpId', 
-      validation.programValidation(),
-      adminController.postEditProgram);
+app.post('/editHP/:hpId',
+  validation.programValidation(),
+  adminController.postEditProgram);
 app.post('/deleteHP/:hpId', adminController.deleteHP);
 // app.get('/deleteHP/:hpId', function (req, res) {
 //   req.logout;
 //   req.session.destroy(function (err) { });
 //   res.redirect('/');
 // });
+app.get('/adddoc', adminController.addDoctor);
+app.post('/adddoc', adminController.postaddDoctor);
 
 //logout
 app.get('/logout', function (req, res) {

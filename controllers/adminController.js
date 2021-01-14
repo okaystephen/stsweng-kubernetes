@@ -8,23 +8,6 @@ const { validationResult } = require('express-validator');
 const sanitize = require('mongo-sanitize');
 
 const adminController = {
-    getHP: function (req, res) {
-        if (!req.session.user) res.redirect('/')
-        else {
-            db.findMany(HealthProgram, {}, '', function (healthprogramsContent) {
-                res.render('hp_directory', {
-                    layout: 'main',
-                    active_session: (req.session.user && req.cookies.user_sid),
-                    user_id: req.session.user,
-                    title: 'Health Programs | DoloMed',
-                    admin_active: true,
-                    hp_active: true,
-                    healthprogramsContent: healthprogramsContent,
-                })
-            });
-        }
-    },
-
     getDoctors: function (req, res) {
         if (!req.session.user) res.redirect('/')
         else {
@@ -50,15 +33,86 @@ const adminController = {
         }
     },
 
-    deleteDoctor: function (req, res) {
-        var id = req.query.id;
-        var fname = req.query.fname;
-        var lname = req.query.lname;
-
-        db.deleteOne(Doctor, { _id: id });
-
+    addDoctor: function (req, res) {
         if (!req.session.user) res.redirect('/')
+        else if (req.session.type != 'admin') {
+            res.redirect('/profile');
+        }
         else {
+            res.render('add_doctor', {
+                layout: 'main',
+                active_session: (req.session.user && req.cookies.user_sid),
+                user_id: req.session.user,
+                title: 'Add Doctor | DoloMed',
+                admin_active: true,
+                doctors_active: true,
+                adddoc_active: true
+            })
+        }
+    },
+
+    postaddDoctor: function (req, res) {
+        if (!req.session.user) res.redirect('/')
+        else if (req.session.type != 'admin') {
+            res.redirect('/profile');
+        }
+        else {
+            var doc = {
+                _id: new mongoose.Types.ObjectId(),
+                fname: req.body.doc_fname,
+                lname: req.body.doc_lname,
+                specialization: req.body.doc_specialization,
+                avatar: "doctor.png",
+                department: "Department of " + req.body.doc_specialization,
+                schedule: [{
+                    _id: new mongoose.Types.ObjectId(),
+                    day: req.body.doc_day,
+                    time: [{
+                        _id: new mongoose.Types.ObjectId(),
+                        start: req.body.doc_stime,
+                        end: req.body.doc_etime
+                    }]
+                }]
+            };
+
+            db.insertOne(Doctor, doc, function (flag) {
+                if (flag) {
+                    Doctor.find({})
+                        .lean()
+                        .sort({ lname: 1 })
+                        .exec(function (err, doctors) {
+                            if (err) {
+                                throw err
+                            }
+                            else {
+                                res.render('doc_directory', {
+                                    layout: 'main',
+                                    doctors_active: true,
+                                    admin_active: true,
+                                    active_session: (req.session.user && req.cookies.user_sid),
+                                    active_user: req.session.user,
+                                    title: 'Doctors | DoloMed',
+                                    doctors: doctors
+                                })
+                            }
+                        })
+                }
+            })
+        }
+    },
+
+    deleteDoctor: function (req, res) {
+        if (!req.session.user) res.redirect('/')
+        else if (req.session.type != 'admin') {
+            res.redirect('/profile');
+        }
+        else {
+            var id = req.query.id;
+            var fname = req.query.fname;
+            var lname = req.query.lname;
+
+            db.deleteOne(Doctor, { _id: id });
+
             Doctor.find({})
                 .lean()
                 .sort({ lname: 1 })
@@ -352,6 +406,23 @@ const adminController = {
                     })
             }
 
+        }
+    },
+
+    getHP: function (req, res) {
+        if (!req.session.user) res.redirect('/')
+        else {
+            db.findMany(HealthProgram, {}, '', function (healthprogramsContent) {
+                res.render('hp_directory', {
+                    layout: 'main',
+                    active_session: (req.session.user && req.cookies.user_sid),
+                    user_id: req.session.user,
+                    title: 'Health Programs | DoloMed',
+                    admin_active: true,
+                    hp_active: true,
+                    healthprogramsContent: healthprogramsContent,
+                })
+            });
         }
     },
 
