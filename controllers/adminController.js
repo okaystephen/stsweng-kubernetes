@@ -492,11 +492,36 @@ const adminController = {
 
     postEditProgram: function(req, res){
         var errors = validationResult(req);
-
+    
         if (!errors.isEmpty()) {
             errors = errors.errors;
 
-            res.send(errors.map(e => e.msg));
+            // var details = {};
+
+            // for (let i = 0; i < errors.length; i++) {
+            //     // remove array indices for wildcard checks
+            //     details[`${errors[i].param.replace(/\[\d\]/g, '')}Error`] =
+            //         errors[i].msg;
+            // }
+
+            // HealthProgram.findOne({_id: req.params.hpId}, '')
+            // .exec()
+            // .then(doc =>
+            //     res.render(
+            //         './partials/editProgramForm',
+            //         { hpData: doc.toObject(), details: details, layout: false },
+            //         (err, html) => {
+            //             if (err) throw err;
+            //             console.log("send html with errors");
+            //             res.send(html);
+            //         },
+            //     ),
+            // )
+            // .catch(err => {
+            //     console.log(err);
+            //     res.send(err);
+            // });
+             res.send(errors.map(e => e.msg));
         } else {
             //sanitize user inputs
             const input = {};
@@ -530,7 +555,6 @@ const adminController = {
              end += hour_end+":"+min_end;
 
              var program = {
-                _id: new mongoose.Types.ObjectId(),
                 hp_name: input.hp_name,
                 hp_desc: input.hp_description,
                 hp_location: input.hp_location,
@@ -541,9 +565,38 @@ const adminController = {
 
             console.log(program);
 
-            // db.updateOne(HealthProgram, { _id: req.params.hpId }, obj, result => {
+            db.findOne(HealthProgram, {hp_name: input.hp_name}, '', function(flag){
+                if(flag){
+                    var start_date = new Date(start);
+                    var end_date = new Date(end);
+                    if((flag.hp_startdate.getTime() == start_date.getTime()) && (flag.hp_enddate.getTime() == end_date.getTime()) && (flag.hp_desc == input.hp_description) && (flag.hp_location == input.hp_location) && (flag.hp_maxCap == input.hp_cap)){
+                        res.send(false);
+                    } else{
+                        db.updateOne(HealthProgram, {_id: req.params.hpId}, program, function(result){
+                            console.log(result);
+                            if (result) {
+                                res.send(program);
+                            } else {
+                                res.status(500).send('An error occurred in the server');
+                            }
+                        })
+                    }
+                } else{
+                    db.updateOne(HealthProgram, {_id: req.params.hpId}, program, function(result){
+                        console.log(result);
+                        if (result) {
+                            res.send(program);
+                        } else {
+                            res.status(500).send('An error occurred in the server');
+                        }
+                    })
+                }
+            })
+
+
+            // db.updateOne(HealthProgram, { _id: req.params.hpId }, program, result => {
             //     if (result) {
-            //         res.send(obj);
+            //         res.send(program);
             //     } else {
             //         res.status(500).send('An error occurred in the server');
             //     }

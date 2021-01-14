@@ -142,7 +142,7 @@
 
 {{!-- Edit Health Program Modal --}}
 <div class="modal fade" id="editHP" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="exampleModalLongTitle">Edit Program <span style="font-size: 20px;"><i class="fas fa-pen"></i></span> </h4>
@@ -151,13 +151,37 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="alert alert-danger" id="error-container" style="display: none;">
+                <div class="alert alert-danger" id="error-container" style="display: none; text-align:left; font-size: 13px"></div>
+                 <div class="alert alert-danger alert-dismissible fade show" id="duplicate"role="alert" style="margin-bottom: 5px; display: none; text-align:left">Error: Duplicate record found.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                 </div>
                 <div id="container-edit-program"></div>
             </div>
              <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary" form="form-edit-program">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- update successful modal --}}
+<div class="modal fade" id="success" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Success! <i class="far fa-check-circle" style="color: rgb(58, 136, 58)"></i></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="text-align: left; font-size: 15px;">
+                Update Successful! Please check the program directory to view your changes.
+            </div>
+             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -183,17 +207,79 @@
         //var modal = $(this)
         //modal.find('.modal-body .hello').val(id)
         
+        // reset error-container
+        $('#error-container').text('').css('display', 'none');
 
         var action = `/editHP/data/${id}`
         $.get(action, (data, status) => {
             if (status === 'success') {
                 $('#container-edit-program').html(data); 
 
-              
+                $('#form-edit-program').on('submit', event => {
+                    event.preventDefault();
+                    //alert("confirm");
+
+                    var action = $('#form-edit-program').attr('action');
+                    var $inputs = $('#form-edit-program :input:not(button):not(input[type=radio])');
+                    var values = {};
+                    $inputs.each((i, elem) => {
+                        values[$(elem).attr('name')] = $(elem).val();
+                    });
+
+                    $.post(action, values, (data, status) => {
+                            //alert("post");
+                        if (status === 'success') {
+                            //if(data){
+                                //alert("errors");
+                                //$('#container-edit-program').html(data); 
+                                //$('#editHP .modal-body').scrollTop(0);
+                           // }
+                            if (data.map) {
+                                var $ul = $('<ul/>').css('margin-bottom', 0);
+                                var $lis = data.map(msg => $('<li/>').text(msg));
+                                $ul.append($lis)
+                                $('#error-container').html($ul).css('display', 'block');
+                                $('#duplicate').css('display', 'none');
+                                $('#editHP .modal-body').scrollTop(0);
+                            } else if(data == false){
+                                $('#duplicate').css('display', 'block');
+                                $('#editHP .modal-body').scrollTop(0);
+                            }
+                            else {
+                                console.log('ok');
+                                $('#error-container').text('').css('display', 'none');
+
+                                //dismiss modal on save
+                                $('#editHP').modal('hide');
+
+                                $('#editHP').on('hidden.bs.modal', function(){
+                                    $('#success').modal('show');
+                                })
+                                
+                                $('#success').on('hidden.bs.modal', function(){
+                                    location.reload();
+                                })
+                                //refresh page
+                                //location.reload();
+                            }
+
+                        } else {
+                            console.log('error');
+                            console.log(data);
+                        }
+                    });
+                })
+    
             } else {
                 console.log(data);
             }
         })
+
+
+    })
+
+    $('#success').on('hidden.bs.modal', function(){
+        location.reload();
     })
     
 </script>

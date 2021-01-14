@@ -149,7 +149,7 @@ const validation = {
                     var now = Date.now();
 
                     if(input < now){
-                        throw new Error("Please enter a date that comes after the date today.")
+                        throw new Error("Please enter a start date that comes after the date today.")
                     }
 
                     return true;
