@@ -126,6 +126,134 @@ const validation = {
             check('medprob_other.*').trim(),
 
         ]
+    },
+
+    programValidation: function (){
+        return[
+            check('hp_name')
+                .notEmpty()
+                .withMessage('Health Program name is required.'),
+            check('hp_cap')
+                .notEmpty()
+                .withMessage('Required field.'),
+            check('hp_startdate')
+                .notEmpty()
+                .withMessage('Start date is required.')
+                .custom((value, { req, location, path }) => {
+                    var [year, month, day] = value.split('-');
+                    var input = Date.UTC(
+                        Number(year),
+                        Number(month) - 1, // parameter month starts at 0
+                        Number(day),
+                    );
+                    var now = Date.now();
+
+                    if(input < now){
+                        throw new Error("Please enter a start date that comes after the date today.")
+                    }
+
+                    return true;
+                    
+                }),
+            check('hp_enddate')
+                .notEmpty()
+                .withMessage('End date is required.')
+                .custom((value, { req, location, path }) => {
+                    var [year, month, day] = req.body.hp_startdate.split('-');
+
+                    var input_start = Date.UTC(
+                        Number(year),
+                        Number(month) - 1, // parameter month starts at 0
+                        Number(day),
+                    );
+                    
+                    var [year, month, day] = value.split('-');
+
+                    var input_end = Date.UTC(
+                        Number(year),
+                        Number(month) - 1, // parameter month starts at 0
+                        Number(day),
+                    );
+
+                    if(input_end < input_start){
+                        throw new Error("Invalid end date. Please enter a date that is after or equal the start date.")
+                    }
+
+                    return true;
+                    
+                }),
+            check('hp_starttime')
+                .notEmpty()
+                .withMessage('Start time is required.')
+                .bail()
+                .custom((value, { req, location, path }) => {
+                    var [year, month, day] = req.body.hp_startdate.split('-');
+                    var input = Date.UTC(
+                        Number(year),
+                        Number(month) - 1, // parameter month starts at 0
+                        Number(day),
+                    );
+                    var now = Date.now();
+
+                    // get system local time
+                    var d = new Date();
+                    var m = d.getMinutes();
+                    var h = d.getHours();
+                    if (h == '0') { h = 24}
+
+                    var currentTime = h+"."+m;
+
+                     //input start time
+                    var start_time =  value.split(":");
+                    var hour_start = start_time[0];
+                    if(hour_start == '00') {hour_start = 24}
+                    var min_start = start_time[1]
+
+                    var startTime = hour_start+"."+min_start
+
+                    if(startTime < currentTime){
+                        if(input < now){
+                            throw new Error("Invalid start time. Start time is pass the current time.")
+                        }
+                    }
+
+                    return true;
+                    
+                }),
+            check('hp_endtime')
+                .notEmpty()
+                .withMessage('End time is required.')
+                .custom((value, { req, location, path }) => {
+                     //input start time
+                    var start_time =  req.body.hp_starttime.split(":");
+                    var hour_start = start_time[0];
+                    if(hour_start == '00') {hour_start = 24}
+                    var min_start = start_time[1]
+
+                    var startTime = hour_start+"."+min_start
+
+                     //input end time
+                    var end_time =  req.body.hp_endtime.split(":");
+                    var hour_end = end_time[0];
+                    if(hour_end == '00') {hour_end = 24}
+                    var min_end = end_time[1]
+            
+                    var endTime = hour_end+"."+min_end
+                    
+                    if(endTime < startTime){
+                        throw new Error("Invalid end time. End time is pass the start time.")
+                    }
+
+                    return true;
+                    
+                }),
+            check('hp_location')
+                .notEmpty()
+                .withMessage('Location is required.'),
+            check('hp_description')
+                .notEmpty()
+                .withMessage('Description is required.'),
+        ]
     }
 }
 

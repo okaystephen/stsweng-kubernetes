@@ -195,5 +195,5 @@ const appointmentController = {
     },
 }
 
-// enables to profile controller object when called in another .js file
+// enables to export appointment controller object when called in another .js file
 module.exports = appointmentController;

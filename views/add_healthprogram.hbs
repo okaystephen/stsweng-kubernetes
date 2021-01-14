@@ -1,0 +1,106 @@
+<script>
+
+function setPermaDate() {
+    var dateObj = new Date();
+    let month = dateObj.getMonth() + 1;
+
+    if(month < 10) {
+        month = '0' + month;
+    } 
+
+    let day = dateObj.getDate() + 1;
+
+    if(day < 10) {
+        day = '0' + day;
+    } 
+
+    let year = dateObj.getFullYear();
+
+    let output = year+'-'+month+'-'+day;
+
+    document.getElementById('hp_startdate').defaultValue = output;
+}
+
+window.onload = function(){
+    setPermaDate();
+}
+
+</script>
+
+<style>
+    th {
+        color: #2F8250 !important;
+    }
+</style>
+
+    <div>
+        <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh; padding-top: 30px; padding-left: 50px">Add a Program </p>
+        <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; padding-left: 50px">Insert caption here.</p>
+            <div class="card mx-auto border shadow-sm pt-2" style="width: 973px; ">
+                <div class="card-body">
+                    <form id="add_program" method="POST" action="/addhp">
+
+                        <div class="form-row">
+                            <div class="form-group col-md-5">
+                                <label for="hp_name">Name of Health Program<span class="text-danger"> *</span></label>
+                                <input type="text" class="form-control" id="hp_name" name="hp_name" value={{input.hp_name}}>
+                                <p style="color: red; font-size: 13.5px;">{{details.hp_nameError}}</p>
+                            </div>
+                            <div class="form-group col-md-1"></div>
+                            <div class="form-group col-md-1">
+                                <label for="hp_cap">Cap<span class="text-danger"> *</span></label>
+                                <input type="number" class="form-control" id="hp_cap" name="hp_cap" value={{input.hp_cap}}
+                                    min="1">
+                                <p style="color: red; font-size: 13.5px;">{{details.hp_capError}}</p>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="hp_startdate">Start Date<span class="text-danger"> *</span></label>
+                                <input type="date" class="form-control" id="hp_startdate" name="hp_startdate" value={{input.hp_startdate}}>
+                                <p style="color: red; font-size: 13.5px;">{{details.hp_startdateError}}</p>
+                            </div>
+                            <div class="form-group col-md-3"></div>
+                            <div class="form-group col-md-3">
+                                <label for="hp_enddate">End Date<span class="text-danger"> *</span></label>
+                                <input type="date" class="form-control" id="hp_enddate" name="hp_enddate" value={{input.hp_enddate}}>
+                                <p style="color: red; font-size: 13.5px;">{{details.hp_enddateError}}</p>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="hp_starttime">Start Time<span class="text-danger"> *</span></label>
+                                <input type="time" class="form-control" id="hp_starttime" name="hp_starttime" value={{input.hp_starttime}}>
+                                <p style="color: red; font-size: 13.5px;">{{details.hp_starttimeError}}</p>
+                            </div>
+                            <div class="form-group col-md-3"></div>
+                            <div class="form-group col-md-3">
+                                <label for="hp_endtime">End Time<span class="text-danger"> *</span></label>
+                                <input type="time" class="form-control" id="hp_endtime" name="hp_endtime" value={{input.hp_endtime}}>
+                                <p style="color: red; font-size: 13.5px;">{{details.hp_endtimeError}}</p>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-7">
+                                <label for="hp_location">Location<span class="text-danger"> *</span></label>
+                                <textarea class="form-control" id="hp_location" name="hp_location" style="height: 40px; width: 386px">{{input.hp_location}}</textarea>
+                                <p style="color: red; font-size: 13.5px;">{{details.hp_locationError}}</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hp_description">Description<span class="text-danger"> *</span></label>
+                            <textarea class="form-control" id="hp_description" name="hp_description" rows="3">{{input.hp_description}}</textarea>
+                            <p style="color: red; font-size: 13.5px;">{{details.hp_descriptionError}}</p>
+                        </div>
+
+                        <div class="form-group text-center pt-3">
+                            <button class="btn btn-success" id="submit_btn" type="submit">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>

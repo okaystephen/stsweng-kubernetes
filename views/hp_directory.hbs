@@ -13,16 +13,50 @@
             </p>
             <div class="card ">
                 {{#if alert}}
-                <div class="alert alert-success hide" style="margin-bottom: 1px;">You have <span style="font-weight: bold; text-decoration:underline">successfully registered</span> to
-                    {{test}}. Please check your dashboard.</div>
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 1px;">You have <span style="font-weight: bold; text-decoration:underline">successfully registered</span> to
+                    {{test}}. Please check your dashboard.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
                 {{/if}}
                 {{#if error}}
-                <div class="alert alert-danger hide" style="margin-bottom: 1px;">Registration failed: You tried
-                    submitting an empty field. Please try again.</div>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-bottom: 1px;">Registration failed: You tried
+                    submitting an empty field. Please try again.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
                 {{/if}}
                 {{#if max}}
-                <div class="alert alert-danger hide" style="margin-bottom: 1px;">Registration failed: {{test}} has already reached the maximum number of participants.</div>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-bottom: 1px;">Registration failed: {{test}} has already reached the maximum number of participants.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
                 {{/if}}
+                {{#if delete}}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 1px;">You have <span style="font-weight: bold; text-decoration:underline">successfully deleted </span>{{test}}.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {{/if}}
+                {{#if add}}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 1px;">You have <span style="font-weight: bold; text-decoration:underline">successfully added </span>{{test}}.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {{/if}}
+                {{#if duplicate}}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-bottom: 1px;">Error: Duplicate record for <span style="font-weight: bold; text-decoration:underline">{{test}}</span> found. Please try again.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                {{/if}}
+
                 <div class="card-body" style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; background-color:rgba(255, 255, 255, 0.878)">
                     <div class="table-responsive text-center">
                         <table class="table text-left blog-project-table" id="hp-table">
@@ -95,5 +129,77 @@
         //    error: function (xhr) { }
         //});
         //} 
-    }
+    }     
+
+     $('#editHP').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var id = button.data('id') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        //var modal = $(this)
+        //modal.find('.modal-body .hello').val(id)
+        
+        // reset error-container
+        $('#error-container').text('').css('display', 'none');
+
+        var action = `/editHP/data/${id}`
+        $.get(action, (data, status) => {
+            if (status === 'success') {
+                $('#container-edit-program').html(data); 
+
+                $('#form-edit-program').on('submit', event => {
+                    event.preventDefault();
+                    //alert("confirm");
+
+                    var action = $('#form-edit-program').attr('action');
+                    var $inputs = $('#form-edit-program :input:not(button):not(input[type=radio])');
+                    var values = {};
+                    $inputs.each((i, elem) => {
+                        values[$(elem).attr('name')] = $(elem).val();
+                    });
+
+                    $.post(action, values, (data, status) => {
+                            //alert("post");
+                        if (status === 'success') {
+                            //if(data){
+                                //alert("errors");
+                                //$('#container-edit-program').html(data); 
+                                //$('#editHP .modal-body').scrollTop(0);
+                           // }
+                            if (data.map) {
+                                var $ul = $('<ul/>').css('margin-bottom', 0);
+                                var $lis = data.map(msg => $('<li/>').text(msg));
+                                $ul.append($lis)
+                                $('#error-container').html($ul).css('display', 'block');
+                                $('#editHP .modal-body').scrollTop(0);
+                            } else if(data == false){
+                                $('#duplicate').css('display', 'block');
+                                $('#editHP .modal-body').scrollTop(0);
+                            }
+                            else {
+                                console.log('ok');
+                                $('#error-container').text('').css('display', 'none');
+                                $('#edit').css('display', 'block');
+                                //dismiss modal on save
+                                $('#editHP').modal('toggle');
+
+                                //refresh page
+                                location.reload();
+                            }
+
+                        } else {
+                            console.log('error');
+                            console.log(data);
+                        }
+                    });
+                })
+    
+            } else {
+                console.log(data);
+            }
+        })
+
+
+    })
+
 </script>
