@@ -26,13 +26,15 @@ SignUp
 
 Invalid User Login
     Open Browser to Login Page
-    Input Username                  sample@gmail.com
-    Input Password                  wrong_password
-    Click Button                    css=.btn
-    Page Should Contain Element     css=.loginModalErrorText               
+    Input Username                      sample@gmail.com
+    Input Password                      wrong_password
+    Click Button                        css=.btn
+    Page Should Not Contain Element     id=profileapp-table_wrapper         
 
-    Input Username                  wrong_email@gmail.com
-    Input Password                  sample12
-    Click Button                    css=.btn
-    Page Should Contain Element     css=.loginModalErrorText               
+    Click Link                          link=Login
+    Login Page Should Be Open
+    Input Username                      wrong_email@gmail.com
+    Input Password                      sample12
+    Click Button                        css=.btn
+    Page Should Not Contain Element     id=profileapp-table_wrapper       
     [Teardown]  Close Browser

@@ -18,7 +18,7 @@ Cancel Appointment
     Wait Until Page Contains Element                    css=.cancelDocAppointmentButton
     Click Element                                       css=.cancelDocAppointmentButton
     Wait Until Page Contains Element                    css=#profileapp-table .dataTables_empty
-    Element Text Should Be                              css=.alert                                                              You have successfully cancelled your appointment with Albana, Natalio.\n×
+    Page Should Contain Element                         css=.alert                                                              #You have successfully cancelled your appointment with Albana, Natalio.\n×
     Click Element                                       css=.alert > .close > span
     Wait Until Page Does Not Contain Element            css=.alert
     [Teardown]  Close All Browsers
