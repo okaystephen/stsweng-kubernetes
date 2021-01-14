@@ -16,14 +16,14 @@ Health Program Cancel
     Click Link                                          link=Cancel
     Click Element                                       id=programsave
     Wait Until Page Contains Element                    css=#profilehp-table .dataTables_empty
-    Element Text Should Be                              css=.alert                                                              You have successfully cancelled your registration to Test Program.\n×
+    Page Should Contain Element                         css=.alert                                                              #You have successfully cancelled your registration to Test Program.\n×
     Click Element                                       css=.alert > .close > span
     Wait Until Page Does Not Contain Element            css=.alert
     [Teardown]  Close All Browsers
 
 Invalid Register Field
     Click Element                                       css=#a5fd721786161150d2281c55c #programsave
-    Element Text Should Be                              css=.alert                                                              Registration failed: You tried submitting an empty field. Please try again.
+    Page Should Contain Element                         css=.alert                                                              #Registration failed: You tried submitting an empty field. Please try again.
     Input Text                                          css=input:nth-child(1)                                                  test
     Page Should Contain Element                         css=.odd:nth-child(1) > td:nth-child(1) > small
     Click Element                                       css=.odd:nth-child(3) .btn
@@ -156,7 +156,7 @@ Without Login Health Program Register
     # Valid Reason Field Input
     Input Text                                          css=#a5fd721786161150d2281c55c #reason                                  test
     Click Element                                       css=#a5fd721786161150d2281c55c #programsave
-    Element Text Should Be                              css=.alert                                                              You have successfully registered to Test Program. Please check your dashboard.
+    Page Should Contain Element                         css=.alert                                                              #You have successfully registered to Test Program. Please check your dashboard.
     # Check User Profile if successfully registered
     Click Link                                          link=My Dashboard
     Element Text Should Be                              css=#profilehp-table td:nth-child(1)                                    Test Program
@@ -183,7 +183,7 @@ With Login Health Program Register
     # Valid Reason Field Input
     Input Text                                          css=#a5fd721786161150d2281c55c #reason                                  test
     Click Element                                       css=#a5fd721786161150d2281c55c #programsave
-    Element Text Should Be                              css=.alert                                                              You have successfully registered to Test Program. Please check your dashboard.
+    Page Should Contain Element                         css=.alert                                                              #You have successfully registered to Test Program. Please check your dashboard.
     # Check User Profile if successfully registered
     Click Link                                          link=My Dashboard
     Element Text Should Be                              css=#profilehp-table td:nth-child(1)                                    Test Program
