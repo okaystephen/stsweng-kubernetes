@@ -1,0 +1,201 @@
+<script>
+
+    function setPermaDate() {
+        var dateObj = new Date();
+        let month = dateObj.getMonth() + 1;
+
+        if (month < 10) {
+            month = '0' + month;
+        }
+
+        let day = dateObj.getDate() + 1;
+
+        if (day < 10) {
+            day = '0' + day;
+        }
+
+        let year = dateObj.getFullYear();
+
+        let output = year + '-' + month + '-' + day;
+
+        document.getElementById('hp_startdate').defaultValue = output;
+    }
+
+    window.onload = function () {
+        setPermaDate();
+    }
+
+</script>
+
+<style>
+    th {
+        color: #2F8250 !important;
+    }
+</style>
+
+<div class="container-fluid p-5">
+    <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh; ">
+        Add a Doctor </p>
+    <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">Insert caption here.</p>
+    <div class="card mx-auto border shadow-sm pt-2">
+        <div class="card-body">
+            <form method="POST" class="needs-validation" novalidate>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="doc_fname">First Name<span class="text-danger"> *</span></label>
+                        <input type="text" class="form-control" id="doc_fname" name="doc_fname" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Enter a first name.
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="doc_lname">Last Name<span class="text-danger"> *</span></label>
+                        <input type="text" class="form-control" id="doc_lname" name="doc_lname" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Enter a last name.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="doc_specialization">Specialization<span class="text-danger"> *</span></label>
+                        <select class="form-control" id="doc_specialization" name="doc_specialization" required>
+                            <option selected disabled value="">Choose a specialization...</option>
+                            <option value="Anesthesiology">Anesthesiology</option>
+                            <option value="Dental Medicine">Dental Medicine</option>
+                            <option value="Dermatology">Dermatology</option>
+                            <option value="Family Medicine">Family Medicine</option>
+                            <option value="Internal Medicine">Internal Medicine</option>
+                            <option value="Laboratory Medicine">Laboratory Medicine</option>
+                            <option value="Legal Medicine">Legal Medicine</option>
+                            <option value="Nuclear Medicine">Nuclear Medicine</option>
+                            <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
+                            <option value="Occupational Medicine">Occupational Medicine</option>
+                            <option value="Ophthalmology">Ophthalmology</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                            <option value="Otorhinolaryngology">Otorhinolaryngology</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Radiology">Radiology</option>
+                            <option value="Rehabilitation Medicine">Rehabilitation Medicine</option>
+                            <option value="Surgery">Surgery</option>
+                        </select>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Select a specialization.
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <div class="row d-flex align-items-center">
+                        <div class="col text-left">
+                            <h1>Schedule</h1>
+                        </div>
+                        <div class="col text-right">
+                            <i class="fas fa-plus-circle fa-2x" style="color:#2F8250; cursor:pointer;"
+                                onclick="addDate()"></i>
+                            <i class="fas fa-minus-circle fa-2x" style="color:red; cursor:pointer;"
+                                onclick="removeDate()"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="docDates">
+                    <div class="form-row row-doc-0">
+                        <div class="form-group col-md-6">
+                            <label for="doc_day">Day<span class="text-danger"> *</span></label>
+                            <select class="form-control" id="doc_day" name="doc_day" required>
+                                <option selected disabled value="">Choose a day...</option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                            </select>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Select a day.
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="doc_stime">Start Time<span class="text-danger"> *</span></label>
+                            <input type="time" class="form-control" id="doc_stime" name="doc_stime" placeholder="HH:mm"
+                                required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Enter a start time.
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="doc_etime">End Time<span class="text-danger"> *</span></label>
+                            <input type="time" class="form-control" id="doc_etime" name="doc_etime" placeholder="HH:mm"
+                                required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Enter an end time.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group text-center pt-3">
+                    <button class="btn btn-success" type="submit">Add Doctor</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    var count = 0;
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+    function addDate() {
+        count++;
+        var code = '<div class="form-row row-doc-' + count + '"><div class="form-group col-md-6"><label for="doc_day">Day<span class="text-danger"> *</span></label><select class="form-control" id="doc_day" name="doc_day" required><option selected disabled value="">Choose a day...</option><option value="Monday">Monday</option><option value="Tuesday">Tuesday</option><option value="Wednesday">Wednesday</option><option value="Thursday">Thursday</option><option value="Friday">Friday</option><option value="Saturday">Saturday</option><option value="Sunday">Sunday</option></select><div class="valid-feedback">Looks good!</div><div class="invalid-feedback">Select a day.</div></div><div class="form-group col-md-3"><label for="doc_stime">Start Time<span class="text-danger"> *</span></label><input type="time" class="form-control" id="doc_stime" name="doc_stime" placeholder="HH:mm" required><div class="valid-feedback">Looks good!</div><div class="invalid-feedback">Enter a start time.</div></div><div class="form-group col-md-3"><label for="doc_etime">End Time<span class="text-danger"> *</span></label><input type="time" class="form-control" id="doc_etime" name="doc_etime" placeholder="HH:mm"required><div class="valid-feedback">Looks good!</div><div class="invalid-feedback">Enter an end time.</div></div></div>'
+        $(".docDates").append(code);
+    }
+
+    function removeDate() {
+        if (count == 0) {
+            alert("You cannot have no schedules at all!");
+        } else {
+            $(".row-doc-" + count).remove();
+            count--;
+        }
+
+    }
+</script>
