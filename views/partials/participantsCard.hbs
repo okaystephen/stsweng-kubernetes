@@ -1,0 +1,20 @@
+<tr style="background-color:rgba(255, 255, 255, 0.878)">
+    <td>
+        <small>{{this.user.name.last}}, {{this.user.name.first}} {{this.user.name.middle}} </small>
+    </td>
+    <td style="text-center">
+        <small>{{this.user.address}}</small>
+    </td>
+    <td class="text-center">
+        <small>{{this.user.sex}}</small>
+    </td>
+    <td class="text-center">
+        <small>{{dateFormat this.user.birthdate "YYYY-MM-DD"}}</small>
+    </td>
+    <td class="text-center">
+        <small>{{this.user.eContactNum}}</small>
+    </td>
+    <td style="text-align:justify">
+        <small>{{this.reason}}</small>
+    </td>
+</tr>
