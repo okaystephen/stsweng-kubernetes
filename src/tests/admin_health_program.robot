@@ -174,3 +174,49 @@ Admin Delete Health Program
     #Input Text                                          css=input:nth-child(1)                                                  test delete
     #Page Should Contain Element                         css=.dataTables_empty
     [Teardown]  Close All Browsers
+
+Admin Edit Health Program
+    Successful Admin Login
+    Click Link                                          link=Health Programs
+    Page Should Contain Element                         css=#hp-table_filter > label
+    # Search Added program
+    Click Element                                       css=input:nth-child(1)
+    Input Text                                          css=input:nth-child(1)                                                  test
+    Click Element                                       css=.odd:nth-child(3) .btn-success
+    Wait Until Page Contains Element                    xpath=//div[3]/button
+    Click Element                                       xpath=//div[3]/button
+    Click Element                                       css=.odd:nth-child(3) .btn-success
+    Click Element                                       xpath=//div[3]/button[2]
+    Page Should Contain Element                         id=duplicate
+    # Blank Inputs
+    Clear Element Text                                          css=.form-group > #hp_name                                              #Test Program
+    Clear Element Text                                          id=hp_cap                                                               #1
+    Clear Element Text                                          id=hp_startdate                                                         #15042021
+    Clear Element Text                                          id=hp_enddate                                                           #11062021
+    Clear Element Text                                          id=hp_starttime                                                         #1100am
+    Clear Element Text                                          id=hp_endtime                                                           #0300pm
+    Clear Element Text                                          id=hp_location                                                          #Limay, Bulacan
+    Clear Element Text                                          id=hp_description                                                       #This is a test program.
+    Click Element                                       xpath=//div[3]/button[2]
+    Page Should Contain Element                         id=error-container
+    # Valid Inputs
+    Input Text                                          css=.form-group > #hp_name                                              Test Program1
+    Input Text                                          id=hp_cap                                                               12
+    Input Text                                          id=hp_startdate                                                         15042022
+    Input Text                                          id=hp_enddate                                                           11062022
+    Input Text                                          id=hp_starttime                                                         1100am
+    Input Text                                          id=hp_endtime                                                           0300pm
+    Input Text                                          id=hp_location                                                          Limay, Bulacan123
+    Input Text                                          id=hp_description                                                       This is a test program.123
+    Click Element                                       xpath=//div[3]/button[2]
+    # Revert Inputs
+    Input Text                                          css=.form-group > #hp_name                                              Test Program
+    Input Text                                          id=hp_cap                                                               1
+    Input Text                                          id=hp_startdate                                                         15042021
+    Input Text                                          id=hp_enddate                                                           11062021
+    Input Text                                          id=hp_starttime                                                         1100am
+    Input Text                                          id=hp_endtime                                                           0300pm
+    Input Text                                          id=hp_location                                                          Limay, Bulacan
+    Input Text                                          id=hp_description                                                       This is a test program.
+    Click Element                                       xpath=//div[3]/button[2]
+    [Teardown]  Close All Browsers
