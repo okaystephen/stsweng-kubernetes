@@ -110,8 +110,8 @@ With Login Health Program Directory
     Element Text Should Be          css=.odd:nth-child(1) > td:nth-child(1) > small                         Blood Donation Program
     # Register
     Click Element                   css=.odd:nth-child(1) .btn
-    Page Should Contain Element     css=#a5fd721786161150d2281c550 #programsave
-    Click Element                   css=#a5fd721786161150d2281c550 .btn-secondary
+    Page Should Contain Element     css=#a5fd721786161150d2281c54b #programsave
+    Click Element                   css=#a5fd721786161150d2281c54b .btn-secondary
     # Search
     Click Element                   css=input:nth-child(1)
     Input Text                      css=input:nth-child(1)                                                  test
