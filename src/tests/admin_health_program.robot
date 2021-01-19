@@ -9,7 +9,7 @@ Resource          resource.robot
 Health Program Cancel
     Successful Login
     User Profile Page Should Be Open
-    Element Text Should Be                              css=#profilehp-table td:nth-child(1)                                    Test Program
+    Element Text Should Be                              css=#profilehp-table td:nth-child(1)                                    test delete
     Click Link                                          link=Cancel
     Wait Until Page Contains Element                    css=.btn-secondary
     Click Element                                       css=.btn-secondary
@@ -22,11 +22,11 @@ Health Program Cancel
     [Teardown]  Close All Browsers
 
 Invalid Register Field
-    Click Element                                       css=#a5fd721786161150d2281c55c #programsave
+    Click Element                                       xpath=//div[73]/div/div/div[2]/div[2]/button[2]
     Page Should Contain Element                         css=.alert                                                              #Registration failed: You tried submitting an empty field. Please try again.\nx
-    Input Text                                          css=input:nth-child(1)                                                  test
+    Input Text                                          css=input:nth-child(1)                                                  test delete
     Page Should Contain Element                         css=.odd:nth-child(1) > td:nth-child(1) > small
-    Click Element                                       css=.odd:nth-child(3) .btn
+    Click Element                                       css=.odd:nth-child(1) .btn
 
 
 *** Test Cases ***
@@ -92,7 +92,7 @@ Admin Add Health Program
     Page Should Contain Element         css=.col-md-5 > p
     Input Text                          id=hp_startdate                                                         01012020
     Click Element                       id=submit_btn
-    Element Text Should Be              css=.form-row:nth-child(2) > .form-group:nth-child(1) > p               Please enter a date that comes after the date today.
+    Element Text Should Be              css=.form-row:nth-child(2) > .form-group:nth-child(1) > p               Please enter a start date that comes after the date today.
     Input Text                          id=hp_enddate                                                           01012020
     Click Element                       id=submit_btn
     Element Text Should Be              css=.form-row:nth-child(2) > .form-group:nth-child(3) > p               Invalid end date. Please enter a date that is after or equal the start date.
@@ -127,22 +127,22 @@ Admin Add Health Program - User View
     Page Should Contain Element                         css=#hp-table_filter > label
     # Search and Register
     Click Element                                       css=input:nth-child(1)
-    Input Text                                          css=input:nth-child(1)                                                  test
+    Input Text                                          css=input:nth-child(1)                                                  test delete
     Page Should Contain Element                         css=.odd:nth-child(1) > td:nth-child(1) > small
-    Click Element                                       css=.odd:nth-child(3) .btn
-    Page Should Contain Element                         css=#a5fd721786161150d2281c55c #programsave
+    Click Element                                       css=.odd:nth-child(1) .btn
+    Page Should Contain Element                         xpath=//div[73]/div/div/div[2]/div[2]/button[2]
     # Close modal and reopen
-    Click Element                                       css=#a5fd721786161150d2281c55c .btn-secondary
-    Click Element                                       css=.odd:nth-child(3) .btn
+    Click Element                                       xpath=//div[73]/div/div/div[2]/div[2]/button
+    Click Element                                       css=.odd:nth-child(1) .btn
     # Test Invalid Reason Field Input
     Invalid Register Field
     # Valid Reason Field Input
-    Input Text                                          css=#a5fd721786161150d2281c55c #reason                                  test
-    Click Element                                       css=#a5fd721786161150d2281c55c #programsave
+    Input Text                                          xpath=//div[73]/div/div/div[2]/div/div/textarea                         test
+    Click Element                                       xpath=//div[73]/div/div/div[2]/div[2]/button[2]
     Page Should Contain Element                         css=.alert                                                              #You have successfully registered to Test Program. Please check your dashboard.
     # Check User Profile if successfully registered
     Click Link                                          link=My Dashboard
-    Element Text Should Be                              css=#profilehp-table td:nth-child(1)                                    Test Program
+    Element Text Should Be                              css=#profilehp-table td:nth-child(1)                                    test delete
     Close Browser
     # Health Program Cancel
     Health Program Cancel
@@ -160,17 +160,17 @@ Admin Delete Health Program
     Page Should Contain Element                         css=.btn-danger:nth-child(1)
     # Delete program
     Click Element                                       css=.btn-danger:nth-child(1)
-    Wait Until Page Contains Element                    xpath=(//button[@type='button'])[113]
-    Click Element                                       xpath=(//button[@type='button'])[113]
+    Wait Until Page Contains Element                    xpath=//div[74]/div/div/div[2]/div/button
+    Click Element                                       xpath=//div[74]/div/div/div[2]/div/button
     Click Element                                       css=.btn-danger:nth-child(1)
-    Wait Until Page Contains Element                    xpath=//div[56]/div/div/div[2]/div/button[2]
-    Click Element                                       xpath=//div[56]/div/div/div[2]/div/button[2]
+    Wait Until Page Contains Element                    xpath=//div[74]/div/div/div[2]/div/button[2]
+    Click Element                                       xpath=//div[74]/div/div/div[2]/div/button[2]
     Wait Until Page Contains Element                    css=.alert
     Page Should Contain Element                         css=.alert                                                              #You have successfully deleted test delete.\nx
     Click Element                                       css=.alert > .close > span
     # Wait Until Page Does Not Contain Element            css=.alert
     # Search Non-Existing program
-    Click Element                                       css=input:nth-child(1)
-    Input Text                                          css=input:nth-child(1)                                                  test delete
-    Page Should Contain Element                         css=.dataTables_empty
+    #Click Element                                       css=input:nth-child(1)
+    #Input Text                                          css=input:nth-child(1)                                                  test delete
+    #Page Should Contain Element                         css=.dataTables_empty
     [Teardown]  Close All Browsers
