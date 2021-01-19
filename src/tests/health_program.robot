@@ -31,6 +31,7 @@ Invalid Register Field
 *** Test Cases ***
 Without Login Health Program Directory
     Open Browser                    ${SERVER}        ${BROWSER}
+    Set Selenium Speed              0.2
     Click Link                      link=Health Programs
     Page Should Contain Element     css=#hp-table_filter > label
     # Name Sort
@@ -128,10 +129,11 @@ With Login Health Program Directory
 
 Without Login Health Program Register
     Open Browser                                        ${SERVER}        ${BROWSER}
+    Set Selenium Speed                                  0.2
     Click Link                                          link=Health Programs
     Page Should Contain Element                         css=#hp-table_filter > label
     Set Selenium Speed                                  1
-    # Register
+    # # Register
     Click Element                                       css=.odd:nth-child(1) .btn
     Login Page Should Be Open
     # Login
@@ -141,6 +143,7 @@ Without Login Health Program Register
     Click Button                                        id=loginbtn
     # Successful login
     Page Should Contain Element                         css=.ml-auto > .nav-item:nth-child(1) > .nav-link
+    Click Link                                          link=Health Programs
     Page Should Contain Element                         css=#hp-table_filter > label
     # Search and Register
     Click Element                                       css=input:nth-child(1)
