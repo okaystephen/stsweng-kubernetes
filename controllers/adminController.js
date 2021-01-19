@@ -769,6 +769,56 @@ const adminController = {
                 });
             })
         })
+    },
+
+    getParticipants: function(req, res){
+        if(req.session.type != "admin"){
+            res.redirect('/')
+        } else{
+            db.findMany(HealthProgram, {}, '_id hp_name', function(hp){
+                res.render('participants', {
+                    layout: 'main',
+                    active_session: (req.session.user && req.cookies.user_sid),
+                    user_id: req.session.user,
+                    title: 'Participants | DoloMed',
+                    admin_active: true,
+                    participants_active: true,
+                    hp: hp
+                })
+            })
+        }
+    },
+
+    postParticipants: function(req, res){
+        var active_session = (req.session.user && req.cookies.user_sid);
+        var user_id = req.session.user;
+
+        if(req.body.program == '0'){
+            res.redirect('/participants')
+        } else{
+            UserProgram.find({healthprogram: req.body.program})
+            .populate('user')
+            .lean()
+            .exec(function(err, participants){
+                if (err) {
+                    throw err
+                } else{
+                    db.findMany(HealthProgram, {}, '_id hp_name', function(hp){
+                        res.render('participants', {
+                            layout: 'main',
+                            active_session: active_session,
+                            user_id: user_id,
+                            title: 'Participants | DoloMed',
+                            admin_active: true,
+                            participants_active: true,
+                            hp: hp, 
+                            participants, participants
+                        })
+                    })
+                }
+            })
+        }
+            
     }
 }
 
