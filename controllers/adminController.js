@@ -57,23 +57,60 @@ const adminController = {
             res.redirect('/profile');
         }
         else {
-            var doc = {
-                _id: new mongoose.Types.ObjectId(),
-                fname: req.body.doc_fname,
-                lname: req.body.doc_lname,
-                specialization: req.body.doc_specialization,
-                avatar: "doctor.png",
-                department: "Department of " + req.body.doc_specialization,
-                schedule: [{
+            // insert here the 'count' var from frontend
+            // then idk do some if else 
+            var count = req.body.doc_count;
+
+            if (count == 0) {
+                var doc = {
                     _id: new mongoose.Types.ObjectId(),
-                    day: req.body.doc_day,
-                    time: [{
+                    fname: req.body.doc_fname,
+                    lname: req.body.doc_lname,
+                    specialization: req.body.doc_specialization,
+                    avatar: "doctor.png",
+                    department: "Department of " + req.body.doc_specialization,
+                    schedule: [{
                         _id: new mongoose.Types.ObjectId(),
-                        start: req.body.doc_stime,
-                        end: req.body.doc_etime
+                        day: req.body.doc_day_0,
+                        time: [{
+                            _id: new mongoose.Types.ObjectId(),
+                            start: req.body.doc_stime_0,
+                            end: req.body.doc_etime_0
+                        }]
                     }]
-                }]
-            };
+                };
+            } else {
+                var temp_count = 0;
+                var arrsched = [];
+                while (temp_count <= count) {
+                    var doc_day = 'req.body.doc_day_' + temp_count;
+                    var doc_stime = 'req.body.doc_stime_' + temp_count;
+                    var doc_etime = 'req.body.doc_etime_' + temp_count;
+                    // doc_day.replace(/['']+/g, '')
+                    arrsched.push({
+                        _id: new mongoose.Types.ObjectId(),
+                        day: eval(doc_day),
+                        time: [{
+                            _id: new mongoose.Types.ObjectId(),
+                            start: eval(doc_stime),
+                            end: eval(doc_etime),
+                        }]
+                    });
+                    temp_count++;
+                }
+
+                console.log(arrsched);
+
+                var doc = {
+                    _id: new mongoose.Types.ObjectId(),
+                    fname: req.body.doc_fname,
+                    lname: req.body.doc_lname,
+                    specialization: req.body.doc_specialization,
+                    avatar: "doctor.png",
+                    department: "Department of " + req.body.doc_specialization,
+                    schedule: arrsched,
+                };
+            }
 
             db.insertOne(Doctor, doc, function (flag) {
                 if (flag) {
@@ -92,7 +129,10 @@ const adminController = {
                                     active_session: (req.session.user && req.cookies.user_sid),
                                     active_user: req.session.user,
                                     title: 'Doctors | DoloMed',
-                                    doctors: doctors
+                                    doctors: doctors,
+                                    fname: req.body.doc_fname,
+                                    lname: req.body.doc_lname,
+                                    newdoc: true,
                                 })
                             }
                         })
