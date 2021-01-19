@@ -58,7 +58,7 @@ Admin Health Program Directory
     Click Element                       css=.sorting:nth-child(6)
     Element Text Should Be              css=.odd:nth-child(1) > td:nth-child(1) > small                         ZZZ Oldest Test Program
     Click Element                       css=.sorting_asc
-    Element Text Should Be              css=.odd:nth-child(1) > td:nth-child(1) > small                         Adolescent health and development program
+    Element Text Should Be              css=.odd:nth-child(1) > td:nth-child(1) > small                         Blood Donation Program
     # Edit and Delete Button
     Page Should Contain Element         css=.odd:nth-child(1) .btn-success .fas
     Page Should Contain Element         css=.odd:nth-child(1) .btn-danger .fas

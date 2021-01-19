@@ -58,7 +58,7 @@ Without Login Health Program Directory
     Click Element                   css=.sorting:nth-child(6)
     Element Text Should Be          css=.odd:nth-child(1) > td:nth-child(1) > small                         ZZZ Oldest Test Program
     Click Element                   css=.sorting_asc
-    Element Text Should Be          css=.odd:nth-child(1) > td:nth-child(1) > small                         Adolescent health and development program
+    Element Text Should Be          css=.odd:nth-child(1) > td:nth-child(1) > small                         Blood Donation Program
     # Register
     Click Element                   css=.odd:nth-child(1) .btn
     Login Page Should Be Open
@@ -107,11 +107,11 @@ With Login Health Program Directory
     Click Element                   css=.sorting:nth-child(6)
     Element Text Should Be          css=.odd:nth-child(1) > td:nth-child(1) > small                         ZZZ Oldest Test Program
     Click Element                   css=.sorting_asc
-    Element Text Should Be          css=.odd:nth-child(1) > td:nth-child(1) > small                         Adolescent health and development program
+    Element Text Should Be          css=.odd:nth-child(1) > td:nth-child(1) > small                         Blood Donation Program
     # Register
     Click Element                   css=.odd:nth-child(1) .btn
-    Page Should Contain Element     css=#a5fd721786161150d2281c550 #programsave
-    Click Element                   css=#a5fd721786161150d2281c550 .btn-secondary
+    Page Should Contain Element     css=#a5fd721786161150d2281c54b #programsave
+    Click Element                   css=#a5fd721786161150d2281c54b .btn-secondary
     # Search
     Click Element                   css=input:nth-child(1)
     Input Text                      css=input:nth-child(1)                                                  test
