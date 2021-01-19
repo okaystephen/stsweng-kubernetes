@@ -174,3 +174,69 @@ Admin Delete Health Program
     #Input Text                                          css=input:nth-child(1)                                                  test delete
     #Page Should Contain Element                         css=.dataTables_empty
     [Teardown]  Close All Browsers
+
+# Admin Edit Health Program
+#     Successful Admin Login
+#     Click Link                                          link=Health Programs
+#     Page Should Contain Element                         css=#hp-table_filter > label
+#     # Search Added program
+#     Click Element                                       css=input:nth-child(1)
+#     Input Text                                          css=input:nth-child(1)                                                  test
+#     Click Element                                       css=.odd:nth-child(3) .btn-success
+#     Wait Until Page Contains Element                    xpath=//div[3]/button
+#     Click Element                                       xpath=//div[3]/button
+#     Click Element                                       css=.odd:nth-child(3) .btn-success
+#     Click Element                                       xpath=//div[3]/button[2]
+#     Page Should Contain Element                         id=duplicate
+#     # Blank Inputs
+#     Click Element                                       xpath=//form/div/div/div/textarea
+#     Press Keys                                          xpath=//textarea[@id='hp_name']                                              CTRL+a
+#     Press Keys                                          xpath=//textarea[@id='hp_name']                                              BACKSPACE
+#     Press Keys                                          id=hp_cap                                                               CTRL+a
+#     Press Keys                                          id=hp_cap                                                               BACKSPACE
+#     Press Keys                                          id=hp_startdate                                                         CTRL+a
+#     Press Keys                                          id=hp_startdate                                                         BACKSPACE
+#     Press Keys                                          id=hp_enddate                                                           CTRL+a
+#     Press Keys                                          id=hp_enddate                                                           BACKSPACE
+#     Press Keys                                          id=hp_starttime                                                         CTRL+a
+#     Press Keys                                          id=hp_starttime                                                         BACKSPACE
+#     Press Keys                                          id=hp_endtime                                                           CTRL+a
+#     Press Keys                                          id=hp_endtime                                                           BACKSPACE
+#     Press Keys                                          id=hp_location                                                          CTRL+a
+#     Press Keys                                          id=hp_location                                                          BACKSPACE
+#     Press Keys                                          id=hp_description                                                       CTRL+a
+#     Press Keys                                          id=hp_description                                                       BACKSPACE
+#     Click Element                                       xpath=//div[3]/button[2]
+#     Page Should Contain Element                         id=error-container
+#     # Valid Inputs
+#     Input Text                                          css=.form-group > #hp_name                                              Test Program1
+#     Input Text                                          id=hp_cap                                                               12
+#     Input Text                                          id=hp_startdate                                                         15042022
+#     Input Text                                          id=hp_enddate                                                           11062022
+#     Input Text                                          id=hp_starttime                                                         1100am
+#     Input Text                                          id=hp_endtime                                                           0300pm
+#     Input Text                                          id=hp_location                                                          Limay, Bulacan123
+#     Input Text                                          id=hp_description                                                       This is a test program.123
+#     Click Element                                       xpath=//div[3]/button[2]
+#     # Revert Inputs
+#     Input Text                                          css=.form-group > #hp_name                                              Test Program
+#     Input Text                                          id=hp_cap                                                               1
+#     Input Text                                          id=hp_startdate                                                         15042021
+#     Input Text                                          id=hp_enddate                                                           11062021
+#     Input Text                                          id=hp_starttime                                                         1100am
+#     Input Text                                          id=hp_endtime                                                           0300pm
+#     Input Text                                          id=hp_location                                                          Limay, Bulacan
+#     Input Text                                          id=hp_description                                                       This is a test program.
+#     Click Element                                       xpath=//div[3]/button[2]
+#     [Teardown]  Close All Browsers
+
+# Admin Participants Health Program
+#     Successful Admin Login
+#     Click Link                                          link=Participants
+#     Page Should Contain Element                         id=participants-table_wrapper
+#     # Search program
+#     Select From List By Index                           id=program                                                              11
+#     Click Element                                       id=signupbtn
+#     Element Text Should Be                              css=.odd > td:nth-child(1) > small                                      Tulabot, Victor
+
+#     [Teardown]  Close All Browsers
