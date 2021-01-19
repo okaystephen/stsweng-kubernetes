@@ -101,8 +101,8 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label for="doc_stime_0">Start Time<span class="text-danger"> *</span></label>
-                            <input type="time" class="form-control" id="doc_stime_0" name="doc_stime_0"
-                                placeholder="HH:mm" required>
+                            <input type="time" class="form-control time-start" id="doc_stime_0" name="doc_stime_0"
+                                placeholder="HH:mm" onblur="check_time_start(this)" required>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
@@ -112,8 +112,8 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label for="doc_etime_0">End Time<span class="text-danger"> *</span></label>
-                            <input type="time" class="form-control" id="doc_etime_0" name="doc_etime_0"
-                                placeholder="HH:mm" required>
+                            <input type="time" class="form-control time-end" id="doc_etime_0" name="doc_etime_0"
+                                placeholder="HH:mm" onblur="check_time_end(this)" required>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
@@ -157,7 +157,7 @@
 
     function addDate() {
         count++;
-        var code = '<div class="form-row row-doc-' + count + '"><div class="form-group col-md-6"><label for="doc_day_' + count + '">Day<span class="text-danger"> *</span></label><select class="form-control" id="doc_day_' + count + '" name="doc_day_' + count + '" required><option selected disabled value="">Choose a day...</option><option value="Monday">Monday</option><option value="Tuesday">Tuesday</option><option value="Wednesday">Wednesday</option><option value="Thursday">Thursday</option><option value="Friday">Friday</option><option value="Saturday">Saturday</option><option value="Sunday">Sunday</option></select><div class="valid-feedback">Looks good!</div><div class="invalid-feedback">Select a day.</div></div><div class="form-group col-md-3"><label for="doc_stime_' + count + '">Start Time<span class="text-danger"> *</span></label><input type="time" class="form-control" id="doc_stime_' + count + '" name="doc_stime_' + count + '" placeholder="HH:mm" required><div class="valid-feedback">Looks good!</div><div class="invalid-feedback">Enter a start time.</div></div><div class="form-group col-md-3"><label for="doc_etime_' + count + '">End Time<span class="text-danger"> *</span></label><input type="time" class="form-control" id="doc_etime_' + count + '" name="doc_etime_' + count + '" placeholder="HH:mm"required><div class="valid-feedback">Looks good!</div><div class="invalid-feedback">Enter an end time.</div></div></div>'
+        var code = '<div class="form-row row-doc-' + count + '"><div class="form-group col-md-6"><label for="doc_day_' + count + '">Day<span class="text-danger"> *</span></label><select class="form-control" id="doc_day_' + count + '" name="doc_day_' + count + '" required><option selected disabled value="">Choose a day...</option><option value="Monday">Monday</option><option value="Tuesday">Tuesday</option><option value="Wednesday">Wednesday</option><option value="Thursday">Thursday</option><option value="Friday">Friday</option><option value="Saturday">Saturday</option><option value="Sunday">Sunday</option></select><div class="valid-feedback">Looks good!</div><div class="invalid-feedback">Select a day.</div></div><div class="form-group col-md-3"><label for="doc_stime_' + count + '">Start Time<span class="text-danger"> *</span></label><input type="time" class="form-control time-start" id="doc_stime_' + count + '" name="doc_stime_' + count + '" placeholder="HH:mm" onblur="check_time_start(this)" required><div class="valid-feedback">Looks good!</div><div class="invalid-feedback">Enter a start time.</div></div><div class="form-group col-md-3"><label for="doc_etime_' + count + '">End Time<span class="text-danger"> *</span></label><input type="time" class="form-control time-end" id="doc_etime_' + count + '" name="doc_etime_' + count + '" placeholder="HH:mm" onblur="check_time_end(this)" required><div class="valid-feedback">Looks good!</div><div class="invalid-feedback">Enter an end time.</div></div></div>'
         $(".docDates").append(code);
         $("#doc_count").val(count);
     }
@@ -169,6 +169,25 @@
             $(".row-doc-" + count).remove();
             count--;
             $("#doc_count").val(count);
+        }
+    }
+
+    function check_time_start(time) {
+        var self = $(time).val();
+        var check = $(time).parent().next().children('.time-end').val();
+
+        if (self > check) {
+            $(time).parent().next().children('.time-end').val(0);
+        }
+    }
+
+    function check_time_end(time) {
+        var self = $(time).val();
+        var check = $(time).parent().prev().children('.time-start').val();
+
+        if (self < check) {
+            alert("There's something wrong with the time interval! Please try again.");
+            self = $(time).val(0);
         }
     }
 </script>
