@@ -58,6 +58,7 @@ app.post(
 );
 
 // landing & login controller
+app.get('', controller.getLanding);
 app.get('/', controller.getLanding);
 app.post('/', loginController.postLogIn);
 //app.get('/logout', controller.getLogOut);
@@ -109,15 +110,21 @@ app.get('/canceluserhealth/:hpId/status', function (req, res) {
 // admin controller
 app.get('/adminhp', adminController.getHP);
 app.get('/admindoc', adminController.getDoctors);
+app.post('/admindoc/delete', adminController.deleteDoctor);
+app.get('/admindoc/delete', function (req, res) {
+  req.logout;
+  req.session.destroy(function (err) { });
+  res.redirect('/');
+});
 app.get('/addhp', adminController.addHP);
 app.post('/adminfilter', adminController.getFilter);
 app.post('/addhp',
-      validation.programValidation(),
-      adminController.postaddHP);
+  validation.programValidation(),
+  adminController.postaddHP);
 app.get('/editHP/data/:hpId', adminController.getPopulatedEditProgram);
-app.post('/editHP/:hpId', 
-      validation.programValidation(),
-      adminController.postEditProgram);
+app.post('/editHP/:hpId',
+  validation.programValidation(),
+  adminController.postEditProgram);
 app.post('/deleteHP/:hpId', adminController.deleteHP);
 app.get('/participants', adminController.getParticipants);
 app.post('/participants', adminController.postParticipants);
@@ -127,6 +134,8 @@ app.post('/remove', adminController.removeParticipants);
 //   req.session.destroy(function (err) { });
 //   res.redirect('/');
 // });
+app.get('/adddoc', adminController.addDoctor);
+app.post('/adddoc', adminController.postaddDoctor);
 
 //logout
 app.get('/logout', function (req, res) {

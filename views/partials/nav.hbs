@@ -14,7 +14,7 @@
             <li class="nav-item {{#if doctors_active}}active{{/if}}">
                 <a class="nav-link" href="/admindoc">Doctors</a>
             </li>
-             <li class="nav-item {{#if appointments_active}}active{{/if}}">
+            <li class="nav-item {{#if appointments_active}}active{{/if}}">
                 <a class="nav-link" href="/appointments">Appointments</a>
             </li>
             <li class="nav-item {{#if participants_active}}active{{/if}}">
@@ -23,17 +23,20 @@
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             {{#if doctors_active}}
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-plus-circle" style="padding-right: 5px;"></i>Add a Doctor</a>
+            <li class="nav-item {{#if adddoc_active}}active{{/if}}">
+                <a class="nav-link" href="/adddoc"><i class="fas fa-plus-circle" style="padding-right: 5px;"></i>Add a
+                    Doctor</a>
             </li>
             {{/if}}
             {{#if hp_active}}
             <li class="nav-item {{#if addhp_active}}active{{/if}}">
-                <a class="nav-link" href="/addhp"><i class="fas fa-plus-circle" style="padding-right: 5px;"></i>Add a Program</a>
+                <a class="nav-link" href="/addhp"><i class="fas fa-plus-circle" style="padding-right: 5px;"></i>Add a
+                    Program</a>
             </li>
             {{/if}}
             <li class="nav-item">
-                <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt" style="padding-right: 5px;"></i>Log Out</a>
+                <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt" style="padding-right: 5px;"></i>Log
+                    Out</a>
             </li>
         </ul>
     </div>
@@ -65,20 +68,24 @@
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             {{#if user_active}}
             <li class="nav-item">
-                <a class="nav-link" href="/profile"><i class="fas fa-home" style="padding-right: 7px;"></i>My Dashboard</a>
+                <a class="nav-link" href="/profile"><i class="fas fa-home" style="padding-right: 7px;"></i>My
+                    Dashboard</a>
             </li>
             {{else}}
             <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#loginModal" style="cursor:pointer"><i class="fas fa-sign-in-alt" style="padding-right: 7px;"></i>Login</a>
+                <a class="nav-link" data-toggle="modal" data-target="#loginModal" style="cursor:pointer"><i
+                        class="fas fa-sign-in-alt" style="padding-right: 7px;"></i>Login</a>
             </li>
             {{/if}}
             {{#if user_active}}
             <li class="nav-item">
-                <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt" style="padding-right: 5px;"></i>Log Out</a>
+                <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt" style="padding-right: 5px;"></i>Log
+                    Out</a>
             </li>
             {{else}}
             <li class="nav-item {{#if register_active}}active{{/if}}">
-                <a class="nav-link" href="/register"><i class="fas fa-user-plus" style="padding-right: 7px"></i>Sign Up</a>
+                <a class="nav-link" href="/register"><i class="fas fa-user-plus" style="padding-right: 7px"></i>Sign
+                    Up</a>
             </li>
             {{/if}}
         </ul>
@@ -99,7 +106,8 @@
             <div class="modal-body">
                 <form method="POST" action="{{#if hp_active}}/healthprograms/modal{{else}}/{{/if}}">
                     <div class="text-center pb-2" style="color: red">
-                        <small class="loginModalErrorText"></small></div>
+                        <small class="loginModalErrorText"></small>
+                    </div>
                     <div class="form-group text-center">
                         <label for="loginemail_modal">Email address</label>
                         <input type="email" class="form-control" name="loginemail_modal" id="loginemail_modal"
