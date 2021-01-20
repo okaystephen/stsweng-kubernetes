@@ -126,6 +126,9 @@ app.post('/editHP/:hpId',
   validation.programValidation(),
   adminController.postEditProgram);
 app.post('/deleteHP/:hpId', adminController.deleteHP);
+app.get('/participants', adminController.getParticipants);
+app.post('/participants', adminController.postParticipants);
+app.post('/remove', adminController.removeParticipants);
 // app.get('/deleteHP/:hpId', function (req, res) {
 //   req.logout;
 //   req.session.destroy(function (err) { });
