@@ -20,6 +20,7 @@ const profileController = require('../controllers/profileController.js');
 const accountController = require('../controllers/accountController.js');
 const hp_directoryController = require('../controllers/hp_directoryController.js');
 const healthprogramsController = require('../controllers/healthprogramsController.js');
+const aboutController = require('../controllers/aboutController.js');
 
 const app = express();
 
@@ -62,6 +63,9 @@ app.get('', controller.getLanding);
 app.get('/', controller.getLanding);
 app.post('/', loginController.postLogIn);
 //app.get('/logout', controller.getLogOut);
+
+//about controller
+app.get('/about', aboutController.getAbout);
 
 //dashboard controller
 app.get('/dashboard', dashboardController.getDashboard);
