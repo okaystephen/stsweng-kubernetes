@@ -798,6 +798,7 @@ const adminController = {
         } else{
             UserProgram.find({healthprogram: req.body.program})
             .populate('user')
+            .populate('healthprogram')
             .lean()
             .exec(function(err, participants){
                 if (err) {
@@ -819,6 +820,32 @@ const adminController = {
             })
         }
             
+    },
+
+    removeParticipants: function (req, res){
+        var hp_name = req.body.hp_name;
+        var name = req.body.lname + ', ' + req.body.fname + ' ' + req.body.mname 
+        db.updateOne(User, {_id: req.body.user_id}, {$pull: {programs: req.body.hp_id}}, function(result){
+            db.updateOne(HealthProgram, {_id: req.body.hp_id},  { $pull: { participants: req.body.user_id } }, function (hp){
+                if(hp){
+                    db.deleteOne(UserProgram, {user: req.body.user_id, healthprogram: req.body.hp_id})
+                    db.findMany(HealthProgram, {}, '_id hp_name', function(hp){
+                        res.render('participants', {
+                            layout: 'main',
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            user_id: req.session.user,
+                            title: 'Participants | DoloMed',
+                            admin_active: true,
+                            participants_active: true,
+                            remove: true,
+                            hp: hp,
+                            hp_name: hp_name,
+                            user: name
+                        })
+                    })
+                }
+            })
+        })
     }
 }
 

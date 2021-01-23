@@ -53,7 +53,7 @@ const UserSchema = mongoose.Schema({
     }],
     programs: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'UserHProgram'
+        ref: 'HealthProgram'
     }],
     created: {
         type: Date,
