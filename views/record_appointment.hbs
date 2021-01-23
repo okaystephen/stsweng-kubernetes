@@ -73,32 +73,30 @@
     {{/if}}
     <div class="card-body"
         style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; background-color:rgba(255, 255, 255, 0.878)">
-        <div class="table-responsive text-center">
-            <table class="table text-left blog-project-table" id="record-table">
-                <thead class=" text-primary">
+        <div class="table-responsive ">
+            <table class="table text-left" id="record-table">
+                <thead class="text-primary">
                     <th style="width:20%">
                         Name
                     </th>
-                    <th class="text-center" style="width:15%">
+                    <th style="width:20%">
                         Address
                     </th>
-                    <th class="text-center" style="width:10%">
+                    <th style="width:10%">
                         Gender
                     </th>
-                    <th class="text-center" style="width:15%">
+                    <th style="width:15%">
                         Birthday
                     </th>
-                    <th class="text-center" style="width:15%">
+                    <th style="width:15%">
                         Time Slot
                     </th>
                     <th style="width:20%">
                         Doctor
                     </th>
-                    <th class="text-center" style="width:5%">
-
-                    </th>
+                    {{!-- <th class="text-center" style="width:5%"></th> --}}
                 </thead>
-                <tbody id="entries-table">
+                <tbody>
                     {{#each select_app}}
                     {{> recordsCard}}
                     {{/each}}
@@ -143,7 +141,7 @@
             "aaSorting": [],
             columnDefs: [{
                 orderable: false,
-                targets: [6]
+                //targets: [6]
             }]
         })
     });
