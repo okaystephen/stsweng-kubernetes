@@ -4,7 +4,7 @@ const AppointmentSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     appointment_id: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
+        ref: 'User',
     },
     appointment_date: {
         type: Date,

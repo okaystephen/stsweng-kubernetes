@@ -136,6 +136,8 @@ app.post('/remove', adminController.removeParticipants);
 // });
 app.get('/adddoc', adminController.addDoctor);
 app.post('/adddoc', adminController.postaddDoctor);
+app.get('/appointment', adminController.getRecords);
+app.post('/appointment', adminController.postRecords);
 
 //logout
 app.get('/logout', function (req, res) {

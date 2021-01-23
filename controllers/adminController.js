@@ -4,10 +4,76 @@ const HealthProgram = require('../models/HealthProgramModel.js');
 const Doctor = require('../models/DoctorModel');
 const User = require('../models/UserModel');
 const UserProgram = require('../models/UserHProgramModel.js');
+const Appointment = require('../models/AppointmentModel');
 const { validationResult } = require('express-validator');
 const sanitize = require('mongo-sanitize');
 
 const adminController = {
+    getRecords: function (req, res) {
+        if (req.session.type != "admin") {
+            res.redirect('/')
+        } else {
+            Appointment.find({})
+                .lean()
+                .sort({ appointment_date: 1 })
+                .exec(function (err, app) {
+                    if (err) {
+                        throw err
+                    }
+                    else {
+                        res.render('record_appointment', {
+                            layout: 'main',
+                            appointment_active: true,
+                            admin_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Appointment Records | DoloMed',
+                            app: app,
+                            post_rec: false,
+                        })
+                    }
+                })
+        }
+    },
+
+    postRecords: function (req, res) {
+        var active_session = (req.session.user && req.cookies.user_sid);
+        var user_id = req.session.user;
+        var date = new Date(req.body.record_date);
+        var date_inc = new Date(req.body.record_date);
+        date_inc.setDate(date.getDate() + 1);
+
+        Appointment.find({ appointment_date: { "$gte": date, "$lt": date_inc } })
+            .populate('appointment_id')
+            .lean()
+            .exec(function (err, select_app) {
+                if (err) {
+                    throw err
+                } else {
+                    db.findMany(Appointment, {}, '', function (app) {
+                        db.findMany(User, {}, '', function (rec_app) {
+                            console.log(select_app);
+                            res.render('record_appointment', {
+                                active_session: active_session,
+                                user_id: user_id,
+                                layout: 'main',
+                                appointment_active: true,
+                                admin_active: true,
+                                active_user: req.session.user,
+                                title: 'Appointment Records | DoloMed',
+                                select_app: select_app,
+                                rec_app: rec_app,
+                                app: app,
+                                date: date,
+                                post_rec: true,
+                            })
+                        })
+                    })
+                }
+            })
+
+    },
+
     getDoctors: function (req, res) {
         if (!req.session.user) res.redirect('/')
         else {
@@ -788,11 +854,11 @@ const adminController = {
         })
     },
 
-    getParticipants: function(req, res){
-        if(req.session.type != "admin"){
+    getParticipants: function (req, res) {
+        if (req.session.type != "admin") {
             res.redirect('/')
-        } else{
-            db.findMany(HealthProgram, {}, '_id hp_name', function(hp){
+        } else {
+            db.findMany(HealthProgram, {}, '_id hp_name', function (hp) {
                 res.render('participants', {
                     layout: 'main',
                     active_session: (req.session.user && req.cookies.user_sid),
@@ -806,47 +872,48 @@ const adminController = {
         }
     },
 
-    postParticipants: function(req, res){
+    postParticipants: function (req, res) {
         var active_session = (req.session.user && req.cookies.user_sid);
         var user_id = req.session.user;
 
-        if(req.body.program == '0'){
+        if (req.body.program == '0') {
             res.redirect('/participants')
-        } else{
-            UserProgram.find({healthprogram: req.body.program})
-            .populate('user')
-            .populate('healthprogram')
-            .lean()
-            .exec(function(err, participants){
-                if (err) {
-                    throw err
-                } else{
-                    db.findMany(HealthProgram, {}, '_id hp_name', function(hp){
-                        res.render('participants', {
-                            layout: 'main',
-                            active_session: active_session,
-                            user_id: user_id,
-                            title: 'Participants | DoloMed',
-                            admin_active: true,
-                            participants_active: true,
-                            hp: hp, 
-                            participants, participants
+        } else {
+            UserProgram.find({ healthprogram: req.body.program })
+                .populate('user')
+                .populate('healthprogram')
+                .lean()
+                .exec(function (err, participants) {
+                    if (err) {
+                        throw err
+                    } else {
+                        console.log(participants);
+                        db.findMany(HealthProgram, {}, '_id hp_name', function (hp) {
+                            res.render('participants', {
+                                layout: 'main',
+                                active_session: active_session,
+                                user_id: user_id,
+                                title: 'Participants | DoloMed',
+                                admin_active: true,
+                                participants_active: true,
+                                hp: hp,
+                                participants, participants
+                            })
                         })
-                    })
-                }
-            })
+                    }
+                })
         }
-            
+
     },
 
-    removeParticipants: function (req, res){
+    removeParticipants: function (req, res) {
         var hp_name = req.body.hp_name;
-        var name = req.body.lname + ', ' + req.body.fname + ' ' + req.body.mname 
-        db.updateOne(User, {_id: req.body.user_id}, {$pull: {programs: req.body.hp_id}}, function(result){
-            db.updateOne(HealthProgram, {_id: req.body.hp_id},  { $pull: { participants: req.body.user_id } }, function (hp){
-                if(hp){
-                    db.deleteOne(UserProgram, {user: req.body.user_id, healthprogram: req.body.hp_id})
-                    db.findMany(HealthProgram, {}, '_id hp_name', function(hp){
+        var name = req.body.lname + ', ' + req.body.fname + ' ' + req.body.mname
+        db.updateOne(User, { _id: req.body.user_id }, { $pull: { programs: req.body.hp_id } }, function (result) {
+            db.updateOne(HealthProgram, { _id: req.body.hp_id }, { $pull: { participants: req.body.user_id } }, function (hp) {
+                if (hp) {
+                    db.deleteOne(UserProgram, { user: req.body.user_id, healthprogram: req.body.hp_id })
+                    db.findMany(HealthProgram, {}, '_id hp_name', function (hp) {
                         res.render('participants', {
                             layout: 'main',
                             active_session: (req.session.user && req.cookies.user_sid),
