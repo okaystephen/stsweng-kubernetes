@@ -276,36 +276,6 @@ const adminController = {
     },
 
     posteditDoctor: function (req, res) {
-        // if (!req.session.user) res.redirect('/')
-        // else if (req.session.type != 'admin') {
-        //     res.redirect('/profile');
-        // }
-        // else {
-        //     var id = req.query.id;
-
-        //     Doctor.findOne({ _id: id })
-        //         .lean()
-        //         .exec(function (err, doc) {
-        //             if (err) {
-        //                 throw err
-        //             }
-        //             else {
-        //                 var arr = doc.schedule;
-        //                 var num = arr.length - 1;
-        //                 res.render('edit_doctor', {
-        //                     layout: 'main',
-        //                     active_session: (req.session.user && req.cookies.user_sid),
-        //                     user_id: req.session.user,
-        //                     title: 'Edit Doctor | DoloMed',
-        //                     admin_active: true,
-        //                     doctors_active: true,
-        //                     doc: doc,
-        //                     count: num,
-        //                 })
-        //             }
-        //         })
-        // }
-
         if (!req.session.user) res.redirect('/')
         else if (req.session.type != 'admin') {
             res.redirect('/profile');
@@ -364,8 +334,6 @@ const adminController = {
                 };
             }
 
-            // wait
-
             Doctor.updateOne({ _id: ObjectID(id) }, doc, function (err, docs) {
                 if (err) {
                     console.log(err)
@@ -396,8 +364,6 @@ const adminController = {
                         })
                 }
             });
-
-            // yea
         }
     },
 
