@@ -29,6 +29,7 @@ const adminController = {
                             active_user: req.session.user,
                             title: 'Appointment Records | DoloMed',
                             app: app,
+                            post_rec: false,
                         })
                     }
                 })
@@ -42,22 +43,16 @@ const adminController = {
         var date_inc = new Date(req.body.record_date);
         date_inc.setDate(date.getDate() + 1);
 
-        // console.log(date);
-        // console.log(date_inc);
-
-        Appointment.find({})
+        Appointment.find({ appointment_date: { "$gte": date, "$lt": date_inc } })
+            .populate('appointment_id')
             .lean()
-            .sort({ appointment_date: 1 })
-            .exec(function (err, app) {
+            .exec(function (err, select_app) {
                 if (err) {
                     throw err
-                }
-                else {
-                    db.findMany(Appointment, { appointment_date: { "$gte": date, "$lt": date_inc } }, '', function (rec_app) {
-                        db.findMany(User, { _id: { $elemMatch: rec_app.appointment_id } }, '', function (user_list) {
-                            console.log(rec_app);
-                            console.log(rec_app.toObject());
-                            // console.log(user_list);
+                } else {
+                    db.findMany(Appointment, {}, '', function (app) {
+                        db.findMany(User, {}, '', function (rec_app) {
+                            console.log(select_app);
                             res.render('record_appointment', {
                                 active_session: active_session,
                                 user_id: user_id,
@@ -66,88 +61,16 @@ const adminController = {
                                 admin_active: true,
                                 active_user: req.session.user,
                                 title: 'Appointment Records | DoloMed',
-                                app: app,
+                                select_app: select_app,
                                 rec_app: rec_app,
-                                user_list: user_list,
+                                app: app,
+                                date: date,
+                                post_rec: true,
                             })
                         })
                     })
                 }
             })
-
-        // Appointment.find({ appointment_date: { "$gte": date, "$lt": date_inc } })
-        //     // .populate('appointment_id')
-        //     .lean()
-        //     .exec(function (err, select_app) {
-        //         if (err) {
-        //             throw err
-        //         } else {
-        //             db.findMany(Appointment, {}, '', function (app) {
-        //                 db.findMany(User, {}, '', function (rec_app) {
-        //                     console.log(select_app);
-        //                     res.render('record_appointment', {
-        //                         active_session: active_session,
-        //                         user_id: user_id,
-        //                         layout: 'main',
-        //                         appointment_active: true,
-        //                         admin_active: true,
-        //                         active_user: req.session.user,
-        //                         title: 'Appointment Records | DoloMed',
-        //                         select_app: select_app,
-        //                         rec_app: rec_app,
-        //                         app: app,
-        //                     })
-        //                 })
-        //             })
-        //         }
-        //     })
-
-        // User.find({})
-        //     // .populate('appointment_id')
-        //     .lean()
-        //     .exec(function (err, select_app) {
-        //         if (err) {
-        //             throw err
-        //         } else {
-        //             db.findMany(Appointment, { appointment_date: { "$gte": date, "$lt": date_inc } }, '', function (rec_app) {
-        //                 console.log(select_app);
-        //                 res.render('record_appointment', {
-        //                     active_session: active_session,
-        //                     user_id: user_id,
-        //                     layout: 'main',
-        //                     appointment_active: true,
-        //                     admin_active: true,
-        //                     active_user: req.session.user,
-        //                     title: 'Appointment Records | DoloMed',
-        //                     select_app: select_app,
-        //                     rec_app: rec_app,
-        //                 })
-        //             })
-        //         }
-        //     })
-
-        // UserProgram.find({ healthprogram: req.body.program })
-        //     .populate('user')
-        //     .populate('healthprogram')
-        //     .lean()
-        //     .exec(function (err, participants) {
-        //         if (err) {
-        //             throw err
-        //         } else {
-        //             db.findMany(HealthProgram, {}, '_id hp_name', function (hp) {
-        //                 res.render('participants', {
-        //                     layout: 'main',
-        //                     active_session: active_session,
-        //                     user_id: user_id,
-        //                     title: 'Participants | DoloMed',
-        //                     admin_active: true,
-        //                     participants_active: true,
-        //                     hp: hp,
-        //                     participants, participants
-        //                 })
-        //             })
-        //         }
-        //     })
 
     },
 
@@ -947,6 +870,7 @@ const adminController = {
                     if (err) {
                         throw err
                     } else {
+                        console.log(participants);
                         db.findMany(HealthProgram, {}, '_id hp_name', function (hp) {
                             res.render('participants', {
                                 layout: 'main',

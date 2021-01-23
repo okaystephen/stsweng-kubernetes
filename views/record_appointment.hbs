@@ -9,7 +9,12 @@
         <div class="col">
             <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">Appointment
                 Records</p>
-            <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">Insert caption here.
+            <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">
+                {{#if post_rec}}
+                Appointments in <b>{{dateFormat date "MMMM DD, YYYY"}}</b>.
+                {{else}}
+                Pick a date to show all the appointments within that day.
+                {{/if}}
             </p>
 
             <form class="needs-validation" id="form" method="POST" novalidate>
@@ -20,8 +25,8 @@
                             <div class="form-group">
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-8 text-center">
-                                            <select id="record_date" name="record_date" class="form-control"
+                                        <div class="col-8 ">
+                                            {{!-- <select id="record_date" name="record_date" class="form-control"
                                                 style="border: solid 1px rgb(119, 118, 118); background-color: white; cursor: pointer; height: 38px;  margin-bottom: 25px"
                                                 required>
                                                 <option value="" selected disabled>Select a date</option>
@@ -31,13 +36,15 @@
                                                     this.appointment_date "MMMM DD, YYYY"}}
                                                 </option>
                                                 {{/each}}
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                                <div class="invalid-feedback">
-                                                    Choose a date.
-                                                </div>
-                                            </select>
+                                            </select> --}}
+                                            <input type="date" class="form-control" id="record_date" name="record_date"
+                                                placeholder="mm/dd/yyyy" value="" required>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Choose a date.
+                                            </div>
                                         </div>
                                         <div class="col-4 text-center">
                                             <button id="signupbtn" type="submit" class="btn btn-primary"
@@ -55,7 +62,7 @@
     </div>
 </div>
 
-<div class="card ">
+<div class="card print">
     {{#if remove}}
     <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 1px;">You have <span
             style="font-weight: bold; text-decoration:underline">successfully removed</span> {{user}} in {{hp_name}}.
@@ -92,21 +99,8 @@
                     </th>
                 </thead>
                 <tbody id="entries-table">
-                    {{#each rec_app}}
-                    {{#each ../user_list}}
-                    {{!-- {{email}} --}}
-
-                    {{!-- {{#each ../user_list}} --}}
-                    {{!-- {{_id}} {{../appointment_id}} --}}
-                    {{!-- {{../appointment_id}} --}}
-                    {{!-- <br> --}}
-                    {{!-- {{#equals _id ../appointment_id}} --}}
-                    {{!-- ano ba --}}
-                    {{!-- {{../appointment_id}} --}}
-                    {{> recordsCard appointment_name = ../appointment_name appointment_date = ../appointment_date}}
-                    {{!-- {{/equals}} --}}
-                    {{!-- {{/each}} --}}
-                    {{/each}}
+                    {{#each select_app}}
+                    {{> recordsCard}}
                     {{/each}}
                 </tbody>
             </table>
@@ -115,7 +109,7 @@
 </div>
 <div class="row p-4">
     <div class="col text-center">
-        <button id="signupbtn" type="submit" class="btn btn-primary" style="font-family: 'Montserrat', sans-serif;"><i
+        <button type="button" class="btn btn-primary printBtn" style="font-family: 'Montserrat', sans-serif;"><i
                 class="fas fa-print"></i> Print</button>
     </div>
 </div>
@@ -149,9 +143,13 @@
             "aaSorting": [],
             columnDefs: [{
                 orderable: false,
-                targets: [5]
+                targets: [6]
             }]
         })
+    });
+
+    $('.printBtn').click(function () {
+        window.print();
     });
 
 </script>
