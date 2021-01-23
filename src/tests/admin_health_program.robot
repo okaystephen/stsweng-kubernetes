@@ -122,7 +122,6 @@ Admin Add Health Program
 
 Admin Add Health Program - User View
     Successful Login
-    User Profile Page Should Be Open
     Click Link                                          link=Health Programs
     Page Should Contain Element                         css=#hp-table_filter > label
     # Search and Register
@@ -230,13 +229,31 @@ Admin Delete Health Program
 #     Click Element                                       xpath=//div[3]/button[2]
 #     [Teardown]  Close All Browsers
 
-# Admin Participants Health Program
-#     Successful Admin Login
-#     Click Link                                          link=Participants
-#     Page Should Contain Element                         id=participants-table_wrapper
-#     # Search program
-#     Select From List By Index                           id=program                                                              11
-#     Click Element                                       id=signupbtn
-#     Element Text Should Be                              css=.odd > td:nth-child(1) > small                                      Tulabot, Victor
-
-#     [Teardown]  Close All Browsers
+Admin Participants Health Program
+    # Register a user to delete
+    Successful Login
+    Click Link                                          link=Health Programs
+    Page Should Contain Element                         css=#hp-table_filter > label
+    # Search and Register
+    Click Element                                       css=input:nth-child(1)
+    Input Text                                          css=input:nth-child(1)                                                  Blood Donation Program
+    Page Should Contain Element                         css=.odd:nth-child(1) > td:nth-child(1) > small
+    Click Element                                       css=.btn-success
+    Input Text                                          css=#a5fd721786161150d2281c54b #reason                                  test delete
+    Click Element                                       css=#a5fd721786161150d2281c54b #programsave
+    Wait Until Page Contains Element                    css=.alert-success
+    Click Element                                       css=.ml-auto > .nav-item:nth-child(2) > .nav-link
+    # Open Admin
+    Successful Admin Login
+    Click Link                                          link=Participants
+    Page Should Contain Element                         id=participants-table_wrapper
+    # Search program
+    Select From List By Index                           id=program                                                              11
+    Click Element                                       id=signupbtn
+    Element Text Should Be                              css=.odd > td:nth-child(1) > small                                      Tulabot, Victor
+    Page Should Contain Element                         css=.odd .btn
+    Element Text Should Be                              css=.odd:nth-child(3) > td:nth-child(6) > small                         test delete
+    Click Element                                       css=.odd:nth-child(3) .btn
+    Click Element                                       xpath=//div[3]/div/div/div[2]/div/button[2]
+    Wait Until Page Contains Element                    css=.alert
+    [Teardown]  Close All Browsers
