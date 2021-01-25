@@ -25,7 +25,7 @@ const aboutController = {
         else {
             res.render('about', {
                 layout: 'main',
-                title: 'Home | DoloMed',
+                title: 'About | DoloMed',
                 home_active: true,
                 user_active: false,
             })
