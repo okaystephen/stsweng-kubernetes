@@ -53,7 +53,6 @@ const adminController = {
                 } else {
                     db.findMany(Appointment, {}, '', function (app) {
                         db.findMany(User, {}, '', function (rec_app) {
-                            console.log(select_app);
                             res.render('record_appointment', {
                                 active_session: active_session,
                                 user_id: user_id,
@@ -73,6 +72,45 @@ const adminController = {
                 }
             })
 
+    },
+
+    deleteRecords: function (req, res) {
+        if (req.session.type != "admin") {
+            res.redirect('/')
+        } else {
+            var id = req.query.id;
+            var name = req.query.name;
+            var appointment_details = {
+                _id: ObjectID(id)
+            }
+
+            db.deleteOne(Appointment, appointment_details);
+
+            Appointment.find({})
+                .lean()
+                .sort({ appointment_date: 1 })
+                .exec(function (err, app) {
+                    if (err) {
+                        throw err
+                    }
+                    else {
+
+                        res.render('record_appointment', {
+                            layout: 'main',
+                            appointment_active: true,
+                            admin_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Appointment Records | DoloMed',
+                            app: app,
+                            post_rec: false,
+                            remove: true,
+                            name: name,
+                        })
+                        // res.redirect('/appointment')
+                    }
+                })
+        }
     },
 
     getDoctors: function (req, res) {
@@ -601,7 +639,7 @@ const adminController = {
                                     active_user: req.session.user,
                                     title: 'Doctors | DoloMed',
                                     doctors: doctors
-        
+
                                 })
                             } else {
                                 res.render('doc_directory', {
