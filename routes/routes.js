@@ -140,6 +140,7 @@ app.get('/editdoc', adminController.editDoctor);
 app.post('/editdoc', adminController.posteditDoctor);
 app.get('/appointment', adminController.getRecords);
 app.post('/appointment', adminController.postRecords);
+app.post('/appointment/removeappointment', adminController.deleteRecords);
 
 //logout
 app.get('/logout', function (req, res) {
