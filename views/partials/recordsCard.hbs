@@ -1,0 +1,54 @@
+<tr style="background-color:rgba(255, 255, 255, 0.878)">
+    <td>
+        <small>{{this.appointment_id.name.last}}, {{this.appointment_id.name.first}}
+            {{this.appointment_id.name.middle}}</small>
+    </td>
+    <td>
+        <small>{{this.appointment_id.address}}</small>
+    </td>
+    <td>
+        <small>{{this.appointment_id.sex}}</small>
+    </td>
+    <td>
+        <small>{{dateFormat this.appointment_id.birthdate "YYYY-MM-DD"}}</small>
+    </td>
+    <td>
+        <small>{{dateFormat this.appointment_date "h:mm a"}}</small>
+    </td>
+    <td>
+        <small>{{this.appointment_name}}</small>
+    </td>
+    <td>
+        <small><a class="btn btn-danger" role="button" data-toggle="modal" data-target="#a{{_id}}">Remove</a></small>
+    </td>
+
+</tr>
+
+{{!-- Remove Participant Modal --}}
+<div class="modal fade" id="a{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Confirm Cancel</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST"
+                    action="/appointment/removeappointment?id={{_id}}&name={{this.appointment_id.name.first}} {{this.appointment_id.name.last}}">
+                    <p style="text-align:left; padding: 10px">Are you sure you want to <span
+                            style="color:red">remove</span>
+                        <b>{{this.appointment_id.name.first}} {{this.appointment_id.name.last}}'s</b> appointment with
+                        <b>{{this.appointment_name}}</b>?
+                    </p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Confirm</button></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
