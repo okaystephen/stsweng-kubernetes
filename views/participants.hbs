@@ -2,14 +2,25 @@
     th {
         color: #2F8250 !important;
     }
+
+    .btn-pdf{
+        background-color: rgb(177, 177, 177); 
+    }
+
+    .btn-pdf:hover{
+        background-color: rgb(151, 151, 151); ;
+    }
 </style>
 
 <div class="container-fluid p-5">
     <div class="row">
         <div class="col">
             <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">List of Participants</p>
-            <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">Insert caption here.
-            </p>
+            {{#if result}}
+                <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">List of participants for <b>{{program}}</b>.</p>
+            {{else}}
+                <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">Select a program to view its participants.</p>
+            {{/if}}
 
             <form class="dirty" id="form" method="POST" action="/participants">
                 <div class="card mx-auto" style="width: 50rem; margin-bottom: -60px; background-color:  rgb(243, 243, 243); font-family: 'Montserrat', sans-serif;">
@@ -41,7 +52,7 @@
 
             </form>
 
-
+            <input type="hidden" value="{{program}}" id="program_name">
             <div class="card ">
                 {{#if remove}}
                     <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 1px;">You have <span style="font-weight: bold; text-decoration:underline">successfully removed</span> {{user}} in {{hp_name}}.
@@ -51,25 +62,25 @@
                     </div>
                 {{/if}}
                 <div class="card-body" style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; background-color:rgba(255, 255, 255, 0.878)">
-                    <div class="table-responsive text-center">
+                    <div class="table-responsive text-center" id="content">
                         <table class="table text-left blog-project-table" id="participants-table">
                             <thead class=" text-primary">
-                                <th style="width:20%">
+                                <th style="width:15%">
                                     Name
                                 </th>
-                                <th class="text-center" style="width:15%">
+                                <th style="width:15%">
                                     Address
                                 </th>
-                                <th class="text-center" style="width:10%">
+                                <th style="width:8%">
                                     Gender
                                 </th>
-                                <th class="text-center" style="width:15%">
+                                <th style="width:10%">
                                     Birthday
                                 </th>
-                                <th class="text-center" style="width:15%">
+                                <th style="width:12%">
                                     Contact Number
                                 </th>
-                                <th style="width:20%">
+                                <th style="width:15%">
                                     Reason
                                 </th>
                                 <th class="text-center" style="width:5%">
@@ -85,10 +96,17 @@
                     </div>
                 </div>
             </div>
+            {{#if result}}
+                <div class="row p-4">
+                    <div class="col text-center">
+                        <button type="button" class="btn btn-primary printBtn" style="font-family: 'Montserrat', sans-serif;"><i
+                                class="fas fa-print"></i> Print</button>
+                    </div>
+                </div>
+            {{/if}}
         </div>
     </div>
 </div>
-
 
 <script>
     // List of Programs Table Sort
@@ -97,9 +115,13 @@
             "aaSorting": [],
             columnDefs: [{
                 orderable: false,
-                targets: [5]
+                targets: [6]
             }]
         })
+    });
+
+     $('.printBtn').click(function () {
+        window.print();
     });
 
 </script>
