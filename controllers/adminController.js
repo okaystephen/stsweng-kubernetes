@@ -1027,7 +1027,8 @@ const adminController = {
                     title: 'Participants | DoloMed',
                     admin_active: true,
                     participants_active: true,
-                    hp: hp
+                    hp: hp,
+                    result: false
                 })
             })
         }
@@ -1048,7 +1049,11 @@ const adminController = {
                     if (err) {
                         throw err
                     } else {
-                        console.log(participants);
+                        var result=false;
+                        var program = participants[0].healthprogram.hp_name;
+                        if(participants.length != 0){
+                            result=true
+                        }
                         db.findMany(HealthProgram, {}, '_id hp_name', function (hp) {
                             res.render('participants', {
                                 layout: 'main',
@@ -1058,7 +1063,9 @@ const adminController = {
                                 admin_active: true,
                                 participants_active: true,
                                 hp: hp,
-                                participants, participants
+                                participants, participants,
+                                program: program,
+                                result: result
                             })
                         })
                     }
