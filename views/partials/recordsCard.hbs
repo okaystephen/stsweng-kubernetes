@@ -3,29 +3,25 @@
         <small>{{this.appointment_id.name.last}}, {{this.appointment_id.name.first}}
             {{this.appointment_id.name.middle}}</small>
     </td>
-    <td style="text-center">
+    <td>
         <small>{{this.appointment_id.address}}</small>
     </td>
-    <td class="text-center">
+    <td>
         <small>{{this.appointment_id.sex}}</small>
     </td>
-    <td class="text-center">
+    <td>
         <small>{{dateFormat this.appointment_id.birthdate "YYYY-MM-DD"}}</small>
     </td>
-    <td class="text-center">
+    <td>
         <small>{{dateFormat this.appointment_date "h:mm a"}}</small>
     </td>
-    <td style="text-align:justify">
+    <td>
         <small>{{this.appointment_name}}</small>
     </td>
-    <td class="text-center">
-        {{!-- <small><a class="btn btn-danger" role="button" data-toggle="modal"
-                data-target="#a{{_id}}">Remove</a></small> --}}
-
-        <small><button class="btn btn-success" type="button" style="font-size:10px; margin-bottom: 7px" data-id={{_id}}
-                data-toggle="modal" data-target="#a{{_id}}"><span style="font-size: 15px;"><i
-                        class="fas fa-pen"></i></span></button></small>
+    <td>
+        <small><a class="btn btn-danger" role="button" data-toggle="modal" data-target="#a{{_id}}">Remove</a></small>
     </td>
+
 </tr>
 
 {{!-- Remove Participant Modal --}}
@@ -40,19 +36,16 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="removeParticipant" method="post" action="/remove">
-                    <input type="hidden" value="{{this.user._id}}" name="user_id" id="user_id" />
-                    <input type="hidden" value="{{this.user.name.first}}" name="fname" id="fname" />
-                    <input type="hidden" value="{{this.user.name.middle}}" name="mname" id="mname" />
-                    <input type="hidden" value="{{this.user.name.last}}" name="lname" id="lname" />
-                    <input type="hidden" value="{{this.healthprogram._id}}" name="hp_id" id="hp_id" />
-                    <input type="hidden" value="{{this.healthprogram.hp_name}}" name="hp_name" id="hp_name" />
+                <form method="POST"
+                    action="/appointment/removeappointment?id={{_id}}&name={{this.appointment_id.name.first}} {{this.appointment_id.name.last}}">
                     <p style="text-align:left; padding: 10px">Are you sure you want to <span
-                            style="color:red">remove</span> {{this.user.name.last}}, {{this.user.name.first}}
-                        {{this.user.name.middle}} in {{this.healthprogram.hp_name}}?</p>
+                            style="color:red">remove</span>
+                        <b>{{this.appointment_id.name.first}} {{this.appointment_id.name.last}}'s</b> appointment with
+                        <b>{{this.appointment_name}}</b>?
+                    </p>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-danger" id="programsave">Confirm</button>
+                        <button type="submit" class="btn btn-danger">Confirm</button></a>
                     </div>
                 </form>
             </div>

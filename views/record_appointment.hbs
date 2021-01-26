@@ -16,27 +16,19 @@
                 Pick a date to show all the appointments within that day.
                 {{/if}}
             </p>
-
-            <form class="needs-validation" id="form" method="POST" novalidate>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form class="needs-validation" method="POST" action="/appointment" novalidate>
                 <div class="card mx-auto"
-                    style="width: 50rem; margin-bottom: -60px; background-color:  rgb(243, 243, 243); font-family: 'Montserrat', sans-serif;">
+                    style="width: 80%; margin-bottom: -60px; background-color:  rgb(243, 243, 243); font-family: 'Montserrat', sans-serif;">
                     <div class="card-body">
                         <div class="card-text">
                             <div class="form-group">
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-8 ">
-                                            {{!-- <select id="record_date" name="record_date" class="form-control"
-                                                style="border: solid 1px rgb(119, 118, 118); background-color: white; cursor: pointer; height: 38px;  margin-bottom: 25px"
-                                                required>
-                                                <option value="" selected disabled>Select a date</option>
-                                                {{#each app}}
-                                                <option value={{dateFormat this.appointment_date "YYYY-MM-DD" }}>
-                                                    {{dateFormat
-                                                    this.appointment_date "MMMM DD, YYYY"}}
-                                                </option>
-                                                {{/each}}
-                                            </select> --}}
+                                        <div class="col-7">
                                             <input type="date" class="form-control" id="record_date" name="record_date"
                                                 placeholder="mm/dd/yyyy" value="" required>
                                             <div class="valid-feedback">
@@ -46,10 +38,9 @@
                                                 Choose a date.
                                             </div>
                                         </div>
-                                        <div class="col-4 text-center">
+                                        <div class="col-5 text-center">
                                             <button id="signupbtn" type="submit" class="btn btn-primary"
                                                 style="width: 100%;">Search</button>
-                                            {{!-- <button class="btn btn-success" type="submit">Search</button> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +56,7 @@
 <div class="card print">
     {{#if remove}}
     <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 1px;">You have <span
-            style="font-weight: bold; text-decoration:underline">successfully removed</span> {{user}} in {{hp_name}}.
+            style="font-weight: bold; text-decoration:underline">successfully removed</span> {{name}}'s appointment.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -73,32 +64,30 @@
     {{/if}}
     <div class="card-body"
         style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; background-color:rgba(255, 255, 255, 0.878)">
-        <div class="table-responsive text-center">
-            <table class="table text-left blog-project-table" id="record-table">
-                <thead class=" text-primary">
+        <div class="table-responsive ">
+            <table class="table text-left" id="record-table">
+                <thead class="text-primary">
                     <th style="width:20%">
                         Name
                     </th>
-                    <th class="text-center" style="width:15%">
+                    <th style="width:20%">
                         Address
                     </th>
-                    <th class="text-center" style="width:10%">
+                    <th style="width:10%">
                         Gender
                     </th>
-                    <th class="text-center" style="width:15%">
+                    <th style="width:15%">
                         Birthday
                     </th>
-                    <th class="text-center" style="width:15%">
+                    <th style="width:15%">
                         Time Slot
                     </th>
                     <th style="width:20%">
                         Doctor
                     </th>
-                    <th class="text-center" style="width:5%">
-
-                    </th>
+                    <th class="text-center" style="width:5%"></th>
                 </thead>
-                <tbody id="entries-table">
+                <tbody>
                     {{#each select_app}}
                     {{> recordsCard}}
                     {{/each}}

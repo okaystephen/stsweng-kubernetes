@@ -6,6 +6,7 @@ const User = require('../models/UserModel');
 const UserProgram = require('../models/UserHProgramModel.js');
 const Appointment = require('../models/AppointmentModel');
 const { validationResult } = require('express-validator');
+const { ObjectID } = require('mongodb');
 const sanitize = require('mongo-sanitize');
 
 const adminController = {
@@ -52,7 +53,6 @@ const adminController = {
                 } else {
                     db.findMany(Appointment, {}, '', function (app) {
                         db.findMany(User, {}, '', function (rec_app) {
-                            console.log(select_app);
                             res.render('record_appointment', {
                                 active_session: active_session,
                                 user_id: user_id,
@@ -72,6 +72,45 @@ const adminController = {
                 }
             })
 
+    },
+
+    deleteRecords: function (req, res) {
+        if (req.session.type != "admin") {
+            res.redirect('/')
+        } else {
+            var id = req.query.id;
+            var name = req.query.name;
+            var appointment_details = {
+                _id: ObjectID(id)
+            }
+
+            db.deleteOne(Appointment, appointment_details);
+
+            Appointment.find({})
+                .lean()
+                .sort({ appointment_date: 1 })
+                .exec(function (err, app) {
+                    if (err) {
+                        throw err
+                    }
+                    else {
+
+                        res.render('record_appointment', {
+                            layout: 'main',
+                            appointment_active: true,
+                            admin_active: true,
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            active_user: req.session.user,
+                            title: 'Appointment Records | DoloMed',
+                            app: app,
+                            post_rec: false,
+                            remove: true,
+                            name: name,
+                        })
+                        // res.redirect('/appointment')
+                    }
+                })
+        }
     },
 
     getDoctors: function (req, res) {
@@ -123,8 +162,6 @@ const adminController = {
             res.redirect('/profile');
         }
         else {
-            // insert here the 'count' var from frontend
-            // then idk do some if else 
             var count = req.body.doc_count;
 
             if (count == 0) {
@@ -241,6 +278,130 @@ const adminController = {
                         })
                     }
                 })
+        }
+    },
+
+    editDoctor: function (req, res) {
+        if (!req.session.user) res.redirect('/')
+        else if (req.session.type != 'admin') {
+            res.redirect('/profile');
+        }
+        else {
+            var id = req.query.id;
+
+            Doctor.findOne({ _id: id })
+                .lean()
+                .exec(function (err, doc) {
+                    if (err) {
+                        throw err
+                    }
+                    else {
+                        var arr = doc.schedule;
+                        var num = arr.length - 1;
+                        res.render('edit_doctor', {
+                            layout: 'main',
+                            active_session: (req.session.user && req.cookies.user_sid),
+                            user_id: req.session.user,
+                            title: 'Edit Doctor | DoloMed',
+                            admin_active: true,
+                            doctors_active: true,
+                            doc: doc,
+                            count: num,
+                        })
+                    }
+                })
+        }
+    },
+
+    posteditDoctor: function (req, res) {
+        if (!req.session.user) res.redirect('/')
+        else if (req.session.type != 'admin') {
+            res.redirect('/profile');
+        }
+        else {
+            var count = req.body.doc_count;
+            var id = req.body.id;
+
+            if (count == 0) {
+                var doc = {
+                    // _id: new mongoose.Types.ObjectId(),
+                    fname: req.body.doc_fname,
+                    lname: req.body.doc_lname,
+                    specialization: req.body.doc_specialization,
+                    avatar: "doctor.png",
+                    department: "Department of " + req.body.doc_specialization,
+                    schedule: [{
+                        _id: new mongoose.Types.ObjectId(),
+                        day: req.body.doc_day_0,
+                        time: [{
+                            _id: new mongoose.Types.ObjectId(),
+                            start: req.body.doc_stime_0,
+                            end: req.body.doc_etime_0
+                        }]
+                    }]
+                };
+            } else {
+                var temp_count = 0;
+                var arrsched = [];
+                while (temp_count <= count) {
+                    var doc_day = 'req.body.doc_day_' + temp_count;
+                    var doc_stime = 'req.body.doc_stime_' + temp_count;
+                    var doc_etime = 'req.body.doc_etime_' + temp_count;
+                    arrsched.push({
+                        _id: new mongoose.Types.ObjectId(),
+                        day: eval(doc_day),
+                        time: [{
+                            _id: new mongoose.Types.ObjectId(),
+                            start: eval(doc_stime),
+                            end: eval(doc_etime),
+                        }]
+                    });
+                    temp_count++;
+                }
+
+                console.log(arrsched);
+
+                var doc = {
+                    // _id: new mongoose.Types.ObjectId(),
+                    fname: req.body.doc_fname,
+                    lname: req.body.doc_lname,
+                    specialization: req.body.doc_specialization,
+                    avatar: "doctor.png",
+                    department: "Department of " + req.body.doc_specialization,
+                    schedule: arrsched,
+                };
+            }
+
+            Doctor.updateOne({ _id: ObjectID(id) }, doc, function (err, docs) {
+                if (err) {
+                    console.log(err)
+                }
+                else {
+                    console.log("Updated Docs : ", docs);
+                    Doctor.find({})
+                        .lean()
+                        .sort({ lname: 1 })
+                        .exec(function (err, doctors) {
+                            if (err) {
+                                throw err
+                            }
+                            else {
+                                res.render('doc_directory', {
+                                    layout: 'main',
+                                    doctors_active: true,
+                                    admin_active: true,
+                                    active_session: (req.session.user && req.cookies.user_sid),
+                                    active_user: req.session.user,
+                                    title: 'Doctors | DoloMed',
+                                    doctors: doctors,
+                                    fname: req.body.doc_fname,
+                                    lname: req.body.doc_lname,
+                                    updatedoc: true,
+                                })
+                            }
+                        })
+                }
+            });
         }
     },
 
@@ -478,7 +639,7 @@ const adminController = {
                                     active_user: req.session.user,
                                     title: 'Doctors | DoloMed',
                                     doctors: doctors
-        
+
                                 })
                             } else {
                                 res.render('doc_directory', {
@@ -866,7 +1027,8 @@ const adminController = {
                     title: 'Participants | DoloMed',
                     admin_active: true,
                     participants_active: true,
-                    hp: hp
+                    hp: hp,
+                    result: false
                 })
             })
         }
@@ -887,7 +1049,11 @@ const adminController = {
                     if (err) {
                         throw err
                     } else {
-                        console.log(participants);
+                        var result=false;
+                        var program = participants[0].healthprogram.hp_name;
+                        if(participants.length != 0){
+                            result=true
+                        }
                         db.findMany(HealthProgram, {}, '_id hp_name', function (hp) {
                             res.render('participants', {
                                 layout: 'main',
@@ -897,7 +1063,9 @@ const adminController = {
                                 admin_active: true,
                                 participants_active: true,
                                 hp: hp,
-                                participants, participants
+                                participants, participants,
+                                program: program,
+                                result: result
                             })
                         })
                     }
