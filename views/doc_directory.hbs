@@ -16,7 +16,7 @@
 
 {{#if admin_active}}
 
-<div class="mb-4 p-0" style="display: flex; margin-top: 20px">
+<div class="mb-4 p-0" style="display: flex; margin-top: 20px; ">
     <div class="col-sm-3 p-0" style="display: flex; flex-direction:column;">
 
         <form class="container" action="/adminfilter" method="POST">
@@ -107,7 +107,7 @@
     <div class="alert alert-danger hide col-9 m-0 mb-2" style="margin-bottom: 1px; width:max-content; height: 50px">No
         doctor/s were found matching your filter request. Please try again.</div>
     {{else}}
-    <div class="col-9 m-0 mb-2" style="display: flex; flex-direction:row; flex-wrap:wrap; padding-left: 50px">
+    <div class="col-9 m-0 mb-2" style="display: flex; flex-direction:row; flex-wrap:wrap; padding-left: 50px; min-height: 100vh">
         {{#each doctors}}
         {{> doctorCard admin_active = ../admin_active}}
         {{/each}}
@@ -116,8 +116,9 @@
 </div>
 
 {{else}}
-<div class="mb-4 p-0" style="display: flex; margin-top: 20px;">
-    <div class="col-sm-3 p-0" style="display: flex; flex-direction:column;">
+<div class="mb-4 p-0" style="display: flex; margin-top: 20px;  min-height: 100vh;">
+    <div class="col-sm-3 p-0" style="display: flex; flex-direction:column;  min-height: 100vh;">
+
         <form class="container" action="/filter" method="POST">
             <div class="p-3 card border m-0 mb-2" style="background-color: #E0E0E0;">
                 <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif;">Doctors Directory</p>
@@ -185,7 +186,7 @@
     <div class="alert alert-danger hide col-9 m-0 mb-2" style="margin-bottom: 1px; width:max-content; height: 50px">No
         doctor/s were found matching your filter request. Please try again.</div>
     {{else}}
-    <div class="col-9 m-0 mb-2" style="display: flex; flex-direction:row; flex-wrap:wrap; padding-left: 50px">
+    <div class="col-9 m-0 mb-2" style="display: flex; flex-direction:row; flex-wrap:wrap; padding-left: 50px; min-height: 100vh">
         {{#each doctors}}
         {{> doctorCard}}
         {{/each}}
@@ -195,4 +196,6 @@
 
 {{/if}}
 
+
 {{> footer}}
+
