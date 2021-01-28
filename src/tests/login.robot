@@ -31,7 +31,7 @@ Invalid User Login
     Click Button                        css=.btn
     Page Should Not Contain Element     id=profileapp-table_wrapper         
 
-    Click Link                          link=Login
+    # Click Link                          link=Login
     Login Page Should Be Open
     Input Username                      wrong_email@gmail.com
     Input Password                      sample12

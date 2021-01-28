@@ -139,6 +139,7 @@ Admin Doctor Appointment Directory
     # Filter All
     Click Element                       id=filter
     Click Element                       css=.card:nth-child(1) > .card-body .btn
+    Wait Until Page Contains Element    id=exampleModalLabel
     Element Text Should Be              id=exampleModalLabel                                                    Albana's Schedule(Department of Surgery)
     Click Element                       css=#a5fd721be0c8b580d5312144b .btn
     # Filter Existing doctor through Availability
