@@ -44,7 +44,6 @@
         </ul>
     </div>
 </nav>
-
 {{else}}
 
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
@@ -68,6 +67,11 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            {{#if dashboard_active}}
+            <li class="nav-item {{#if settings_active}}active{{/if}}">
+                <a class=" nav-link" href="/account"><i class="fas fa-cog" style="padding-right: 5px;"></i>Settings</a>
+            </li>
+            {{else}}
             {{#if user_active}}
             <li class="nav-item">
                 <a class="nav-link" href="/profile"><i class="fas fa-home" style="padding-right: 7px;"></i>My
@@ -79,6 +83,8 @@
                         class="fas fa-sign-in-alt" style="padding-right: 7px;"></i>Login</a>
             </li>
             {{/if}}
+            {{/if}}
+
             {{#if user_active}}
             <li class="nav-item">
                 <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt" style="padding-right: 5px;"></i>Log

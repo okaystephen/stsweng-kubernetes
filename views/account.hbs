@@ -1,52 +1,24 @@
+<style>
+    .breadcrumb a {
+        color: #2F8250 !important;
+    }
+</style>
+
 <body style="background-color: rgb(243, 243, 243); margin: 0; font-family: 'Roboto Mono';">
-    <!-- Navigation Bar -->
-    <!-- Sticky Vertical Navigation Bar -->
-    
-    {{> profileSidebar}}
-
-    <!-- Sticky Horizontal Navigation Bar -->
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark"
-        style="height: 72px; padding-top: 1rem; margin-left: 20%;">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <h6 style="font-family: 'Roboto Mono';">{{user.name.last}}, {{user.name.first}} {{user.name.middle}}
-                </h6>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0" style="list-style-type: none;">
-            <li class="nav-item dropdown {{#if login_active}}show{{/if}}">
-                <a class="nav-link dropdown-toggle caret-off" href="#" id="navbarDropdownMenuLink"
-                    data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="{{#if login_active}}true{{else}}false{{/if}}">
-                     <h6><i class="fas fa-cog" style="padding-right: 7px;"></i>Settings</h6>
-
-                </a>
-                <div class="dropdown-menu dropdown-menu-right p-4 {{#if login_active}}show{{/if}}"
-                    aria-labelledby="navbarDropdownMenuLink">
-                    <div class="container-fluid m-auto text-center p-auto">
-                        <form method="POST">
-                            <div class="text-center px-3">
-                                <h6><a href="/account" style="color:#2F8250;">Account</a></h6>
-                                <hr>
-                                <h6><a href="/logout" style="color:#2F8250;">Log Out</a></h6>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </nav>
-    <!-- End of Navigation Bar -->
-
-    <div class="profile-content">
-
-        <p class="h1" style="font-size: 13vh; font-family: 'Montserrat', sans-serif; color: #2F8250">Account</p>
+    <div class="container-fluid px-5 py-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/profile">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Settings</li>
+            </ol>
+        </nav>
+        <p class="h1" style="font-size: 8vw; font-family: 'Montserrat', sans-serif; color: #2F8250">Account</p>
         <p style="font-size: 25px; font-family: 'Montserrat', sans-serif; color: #2F8250">Update your profile.</p>
 
-        <div class="card mx-auto border shadow-sm" style="width: 50rem; margin-bottom: 2rem; background-color:rgba(255, 255, 255, 0.878)">
+        <div class="card mx-auto border shadow-sm"
+            style="margin-bottom: 2rem; background-color:rgba(255, 255, 255, 0.878)">
             <div class="card-body" style="margin-bottom: -30px;">
                 <div class="card-text">
-
                     <div class="row">
                         <div class="col pr-2">
                             <h5><u>First Name</u></h5>
@@ -101,13 +73,14 @@
             <div style="margin-bottom: 15px">
                 <center>
                     <button type="submit" class="btn btn-primary w-25" data-toggle="modal" data-id="2"
-                        data-target="#accountEdit" >Edit</button>
+                        data-target="#accountEdit">Edit</button>
                 </center>
             </div>
 
         </div>
 
-        <div class="card mx-auto border shadow-sm" style="width: 50rem; margin-bottom: 2rem; margin-top: 2rem; background-color:rgba(255, 255, 255, 0.878)">
+        <div class="card mx-auto border shadow-sm"
+            style="margin-bottom: 2rem; margin-top: 2rem; background-color:rgba(255, 255, 255, 0.878)">
             <div class="card-body">
                 <div class="card-title" style="font-size: 45px; font-family: 'Montserrat', sans-serif; color: #2F8250;">
                     Medical History</div>

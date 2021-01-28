@@ -24,6 +24,8 @@ const profileController = {
                             user: user.toObject(),
                             healthprograms: result,
                             appList: appList,
+                            user_active: true,
+                            dashboard_active: true,
                         });
                     })
                 });

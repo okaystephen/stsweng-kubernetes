@@ -2,63 +2,39 @@
     th {
         color: #2F8250 !important;
     }
+
+    .select2 {
+        width: 100% !important;
+    }
+
+    .breadcrumb a {
+        color: #2F8250 !important;
+    }
 </style>
 
 <body style="background-color: rgb(243, 243, 243); margin: 0; font-family: 'Roboto Mono';">
-    <!-- Navigation Bar -->
-    <!-- Sticky Vertical Navigation Bar -->
-    
-    {{> profileSidebar}}
-
-    <!-- Sticky Horizontal Navigation Bar -->
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark"
-        style="height: 72px; padding-top: 1rem; margin-left: 20%;">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <h6 style="font-family: 'Roboto Mono';">{{user.name.last}}, {{user.name.first}} {{user.name.middle}}
-                </h6>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0" style="list-style-type: none;">
-            <li class="nav-item dropdown {{#if login_active}}show{{/if}}">
-                <a class="nav-link dropdown-toggle caret-off" href="#" id="navbarDropdownMenuLink"
-                    data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="{{#if login_active}}true{{else}}false{{/if}}">
-                    <h6>Settings</h6>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right p-4 {{#if login_active}}show{{/if}}"
-                    aria-labelledby="navbarDropdownMenuLink">
-                    <div class="container-fluid m-auto text-center p-auto">
-                        <form method="POST">
-                            <div class="text-center px-3">
-                                <h6><a href="/account" style="color:#2F8250;">Account</a></h6>
-                                <hr>
-                                <h6><a href="/logout" style="color:#2F8250;">Log Out</a></h6>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </nav>
-
-    <!-- End of Navigation Bar -->
-
-    <div class="profile-content">
-        <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">Set an appointment
+    <div class="container-fluid px-5 py-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/profile">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Set an appointment</li>
+            </ol>
+        </nav>
+        <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:7vw;">Set an appointment
         </p>
         <hr>
-        <div class="card mx-auto border shadow-sm pt-2" style="width: 973px; ">
+        <div class="card mx-auto border shadow-sm pt-2">
             <div class="card-body">
                 {{#if app_alert}}
                 <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-bottom: 20px;">
-                    Sorry! That appointment schedule is not available with <span style="font-weight: bold;">{{doctor}}</span>.
+                    Sorry! That appointment schedule is not available with <span
+                        style="font-weight: bold;">{{doctor}}</span>.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 {{/if}}
-                <div class="card mx-auto " style="width: 913px; ">
+                <div class="card mx-auto">
                     <form method="POST" class="needs-validation" id="appFormSubmit" novalidate>
                         <div class="form-group">
                             <label for="appointment_name">Doctor</label>
