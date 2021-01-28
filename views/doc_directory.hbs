@@ -23,7 +23,7 @@
             <div class="p-3 card border m-0 mb-2" style="background-color: #E0E0E0;">
                 {{#if delete}}
                 <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 8px;">
-                    {{fname}} {{lname}} has been
+                    <span style="font-weight: bold;">{{fname}} {{lname}}</span> has been
                     <span style="font-weight: bold; text-decoration:underline">removed</span> from the database.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -32,7 +32,7 @@
                 {{/if}}
                 {{#if newdoc}}
                 <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 8px;">
-                    {{fname}} {{lname}} has been
+                    <span style="font-weight: bold;">{{fname}} {{lname}}</span> has been
                     <span style="font-weight: bold; text-decoration:underline">added</span> to the database.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -41,7 +41,7 @@
                 {{/if}}
                 {{#if updatedoc}}
                 <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 8px;">
-                    {{fname}} {{lname}} has been
+                    <span style="font-weight: bold;">{{fname}} {{lname}}</span> has been
                     <span style="font-weight: bold; text-decoration:underline">updated</span> in the database.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
