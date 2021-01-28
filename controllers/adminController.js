@@ -1050,10 +1050,11 @@ const adminController = {
                         throw err
                     } else {
                         var result=false;
-                        var program = participants[0].healthprogram.hp_name;
+                        var program;
                         if(participants.length != 0){
                             result=true
-                        }
+                            program = participants[0].healthprogram.hp_name
+                        } 
                         db.findMany(HealthProgram, {}, '_id hp_name', function (hp) {
                             res.render('participants', {
                                 layout: 'main',

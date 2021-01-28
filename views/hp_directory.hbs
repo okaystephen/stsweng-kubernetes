@@ -9,56 +9,58 @@
         <div class="col">
             <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">Health
                 Programs</p>
-            <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">Insert caption here.
+            <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; margin-bottom: 30px">Dolomed offers available health programs. These programs aim to 
+                prevent or control disease, injury, disability, and death. It also offers a comprehensive health 
+                initiative designed to maintain or improve well-being through proper diet, exercise, stress management, and illness prevention. 
+                Register now!
             </p>
             <div class="card mx-auto border shadow-sm pt-2">
                 {{#if alert}}
-                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 1px;">
+                <div class="alert alert-success alert-dismissible fade show" role="alert"style="margin-top: -9px;">
                     You have <span style="font-weight: bold; text-decoration:underline">successfully registered</span>
                     to
-                    {{test}}. Please check your dashboard.
+                    <span style="font-weight: bold;">{{test}}</span>. Please check your dashboard.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 {{/if}}
                 {{#if error}}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-bottom: 1px;">
-                    Registration failed: You tried
-                    submitting an empty field. Please try again.
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: -9px;">
+                    <span style="font-weight: bold; text-decoration:underline">Registration failed:</span> You tried to register to a program <span style="font-weight: bold;">without a reason</span>. Please try again.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 {{/if}}
                 {{#if max}}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-bottom: 1px;">
-                    Registration failed: {{test}} has already reached the maximum number of participants.
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: -9px;">
+                    Registration failed: <span style="font-weight: bold;">{{test}}</span> has already reached the maximum number of participants.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 {{/if}}
                 {{#if delete}}
-                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 1px;">
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: -9px;">
                     You have <span style="font-weight: bold; text-decoration:underline">successfully deleted
-                    </span>{{test}}.
+                    </span><span style="font-weight: bold;">{{test}}</span>.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 {{/if}}
                 {{#if add}}
-                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 1px;">
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: -9px;">
                     You have <span style="font-weight: bold; text-decoration:underline">successfully added
-                    </span>{{test}}.
+                    </span><span style="font-weight: bold;">{{test}}</span>.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 {{/if}}
                 {{#if duplicate}}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-bottom: 1px;">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: -9px;">
                     Error: Duplicate record for <span
                         style="font-weight: bold; text-decoration:underline">{{test}}</span> found. Please try again.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

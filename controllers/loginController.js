@@ -17,11 +17,11 @@ const loginController = {
                     // console.log(equal)
                     if (equal) {
                         // console.log('Username and password is correct.. Redirecting..');
-                        if(user.email.trim() == 'admin@gmail.com'){
+                        if (user.email.trim() == 'admin@gmail.com') {
                             req.session.user = user._id;
                             req.session.type = 'admin';
                             res.redirect('/adminhp');
-                        } else{
+                        } else {
                             req.session.user = user._id;
                             res.redirect('/profile');
                         }
@@ -45,7 +45,8 @@ const loginController = {
                     title: 'Home | DoloMed',
                     home_active: true,
                     login_active: true,
-                    loginError: 'Invalid credentials!'
+                    loginError: 'Invalid credentials!',
+                    loginmodalError: true,
                 });
                 // res.redirect('back');
             }
