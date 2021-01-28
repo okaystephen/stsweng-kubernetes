@@ -1,29 +1,4 @@
 <style>
-    .link {
-        color: #fff;
-        text-decoration: none;
-        display: inline-block;
-        position: relative;
-    }
-
-    .link:after {
-        background: none repeat scroll 0 0 transparent;
-        bottom: 0;
-        content: "";
-        display: block;
-        height: 2px;
-        left: 50%;
-        position: absolute;
-        background: #fff;
-        transition: width 0.3s ease 0s, left 0.3s ease 0s;
-        width: 0;
-    }
-
-    .link:hover:after {
-        width: 100%;
-        left: 0;
-    }
-
     .shadow {
         transition: box-shadow .3s;
         position: relative;
@@ -53,7 +28,9 @@
 </div>
 <div class="container-fluid pb-5 pt-4 px-5">
     <div class="row">
-        <div class="col-lg py-1 shadow form-group" onclick= {{#if admin_active}}"location.href='adminhp';" {{/if}} {{#if home_active}} "location.href='healthprograms';" {{/if}}{{#if user_active}} "location.href='healthprograms';" {{/if}}
+        <div class="col-lg py-1 shadow form-group" onclick={{#if admin_active}}"location.href='adminhp' ;" {{/if}} {{#if
+            home_active}} "location.href='healthprograms';" {{/if}}{{#if user_active}} "location.href='healthprograms';"
+            {{/if}}
             style="cursor:pointer; border-radius: 5px; background-image: url('/img/2.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;  background-color: gray; height: 350px;">
             <div class="pt-3 link">
                 <h2 style="font-family: Montserrat; color: #F2F2F2;">Health Programs</h2>
