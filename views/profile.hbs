@@ -6,10 +6,10 @@
 
 <body style="background-color: rgb(243, 243, 243); margin: 0; font-family: 'Roboto Mono';">
     <div class="container-fluid px-5 py-4">
-        <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">Hello,
+        <p class="h1" style="color: #2F6982 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">Hello,
             {{user.name.first}}!
         </p>
-        <p style="font-size: 25px; font-family: 'Montserrat', sans-serif; color: #2F8250">Here's an overview of your
+        <p style="font-size: 25px; font-family: 'Montserrat', sans-serif; color: #2F6982">Here's an overview of your
             account.</p>
         <p style="color: #5C6B6B ; font-family: 'Roboto Mono',">
             Address: {{user.address}}
@@ -22,12 +22,12 @@
         <div class="card mx-auto border shadow-sm"
             style="margin-bottom: 2rem; background-color:rgba(255, 255, 255, 0.878)">
             <div class="card-body" style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; font-size: 15px">
-                <div class="card-title" style="font-size: 45px; font-family: 'Montserrat', sans-serif; color: #2F8250;">
+                <div class="card-title" style="font-size: 45px; font-family: 'Montserrat', sans-serif; color: #2F6982;">
                     Your
                     Appointments
                     <small><a class="btn btn-success" role="button" href="/appointments"
                             style="float: right; margin-top: 15px;"><i class="fas fa-plus-circle"
-                                style="padding-right: 5px"></i>Add Appointments</a></small>
+                                style="padding-right: 5px"></i>Set an Appointment</a></small>
                 </div>
                 <div class="card mx-auto " style="margin-bottom: 2rem;">
                     {{#if doctor_alert}}
@@ -83,7 +83,7 @@
         {{!-- Cancel Appointment Modal --}}
         <div class="modal fade" id="cancelAppointment" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
-            style="font-size: 45px; font-family: 'Montserrat', sans-serif; color: #2F8250;">
+            style="font-size: 45px; font-family: 'Montserrat', sans-serif; color: #2F6982;">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -105,12 +105,12 @@
         <div class="card mx-auto border shadow-sm"
             style="margin-bottom: 2rem; background-color:rgba(255, 255, 255, 0.878)">
             <div class="card-body" style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; font-size: 15px">
-                <div class="card-title" style="font-size: 45px; font-family: 'Montserrat', sans-serif; color: #2F8250;">
+                <div class="card-title" style="font-size: 45px; font-family: 'Montserrat', sans-serif; color: #2F6982;">
                     Your Health
                     Programs
                     <small><a class="btn btn-success" role="button" href="/healthprograms"
                             style="float: right; margin-top: 15px;"> <i class="fas fa-plus-circle"
-                                style="padding-right: 5px"></i>Add Health Programs</a></small>
+                                style="padding-right: 5px"></i>Register to a Health Program</a></small>
                 </div>
                 <div class="card mx-auto" style="margin-bottom: 2rem;">
                     {{#if alert}}
