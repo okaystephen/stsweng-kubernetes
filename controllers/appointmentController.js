@@ -21,6 +21,8 @@ const appointmentController = {
                         user: user.toObject(),
                         date: moment(user.date).format('YYYY-MM-DD'),
                         docList: docList,
+                        user_active: true,
+                        dashboard_active: true,
                     })
                 });
             })
@@ -61,6 +63,8 @@ const appointmentController = {
                         user: user.toObject(),
                         doctor: appointment_name,
                         app_alert: true,
+                        user_active: true,
+                        dashboard_active: true,
                     });
                 }
             })
@@ -87,6 +91,8 @@ const appointmentController = {
                             docID: docID,
                             docList: docList,
                             app: app.toObject(),
+                            user_active: true,
+                            dashboard_active: true,
                         })
                     })
                 });
@@ -134,6 +140,8 @@ const appointmentController = {
                                         appList: appList,
                                         doctor_success: appointment_name,
                                         resched_alert: true,
+                                        user_active: true,
+                                        dashboard_active: true,
                                     });
                                 })
                             });
@@ -156,6 +164,8 @@ const appointmentController = {
                                 app: app.toObject(),
                                 doctor: appointment_name,
                                 app_alert: true,
+                                user_active: true,
+                                dashboard_active: true,
                             });
                         })
                     });
@@ -188,6 +198,8 @@ const appointmentController = {
                         appList: appList,
                         doctor_success: docname,
                         doctor_alert: true,
+                        user_active: true,
+                        dashboard_active: true,
                     });
                 })
             });
