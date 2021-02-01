@@ -1,0 +1,224 @@
+<style>
+    th {
+        color: #2F6982 !important;
+    }
+</style>
+
+<div class="container-fluid p-5">
+    <div class="row">
+        <div class="col">
+            <p class="h1" style="color: #2F6982 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">Health
+                Programs</p>
+            <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; margin-bottom: 30px">Dolomed offers
+                available health programs. These programs aim to
+                prevent or control disease, injury, disability, and death. It also offers a comprehensive health
+                initiative designed to maintain or improve well-being through proper diet, exercise, stress management,
+                and illness prevention.
+                Register now!
+            </p>
+            <div class="card mx-auto border shadow-sm pt-2">
+                {{#if alert}}
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: -9px;">
+                    You have <span style="font-weight: bold; text-decoration:underline">successfully registered</span>
+                    to
+                    <span style="font-weight: bold;">{{test}}</span>. Please check your dashboard.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{/if}}
+                {{#if error}}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: -9px;">
+                    <span style="font-weight: bold; text-decoration:underline">Registration failed:</span> You tried to
+                    register to a program <span style="font-weight: bold;">without a reason</span>. Please try again.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{/if}}
+                {{#if max}}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: -9px;">
+                    Registration failed: <span style="font-weight: bold;">{{test}}</span> has already reached the
+                    maximum number of participants.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{/if}}
+                {{#if delete}}
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: -9px;">
+                    You have <span style="font-weight: bold; text-decoration:underline">successfully deleted
+                    </span><span style="font-weight: bold;">{{test}}</span>.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{/if}}
+                {{#if add}}
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: -9px;">
+                    You have <span style="font-weight: bold; text-decoration:underline">successfully added
+                    </span><span style="font-weight: bold;">{{test}}</span>.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{/if}}
+                {{#if duplicate}}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: -9px;">
+                    Error: Duplicate record for <span
+                        style="font-weight: bold; text-decoration:underline">{{test}}</span> found. Please try again.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{/if}}
+
+                <div class="card-body"
+                    style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; background-color:rgba(255, 255, 255, 0.878)">
+                    <div class="table-responsive text-center">
+                        <table class="table text-left blog-project-table" id="hp-table">
+                            <thead class=" text-primary">
+                                <th style="width:20%">
+                                    Name
+                                </th>
+                                <th style="width:30%">
+                                    Description
+                                </th>
+                                <th class="text-center" style="width:15%">
+                                    Start Date
+                                </th>
+                                <th class="text-center" style="width:15%">
+                                    End Date
+                                </th>
+                                <th class="text-center" style="width:15%">
+                                    Location
+                                </th>
+                                <th class="text-center" style="width:5%">
+                                    Cap
+                                </th>
+                                <th class="text-center" style="width:5%">
+
+                                </th>
+                            </thead>
+                            <tbody id="entries-table">
+                                {{#each healthprogramsContent}}
+                                {{> healthprogramCard admin_active = ../admin_active user_active = ../user_active
+                                participants_count = this.participants.length user = ../user_id}}
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{> footer}}
+
+<script src="/js/userProgram.js"></script>
+
+<script>
+    // Health Programs Table Sort
+    $(document).ready(function () {
+        $('#hp-table').DataTable({
+            "aaSorting": [],
+            columnDefs: [{
+                orderable: false,
+                targets: [1, 6]
+            }]
+        })
+    });
+
+    function register_user(hp_name) {
+        //var hp_confirm = confirm("Do you want to register in the following program: " + hp_name );
+
+        //$('.reasonErrorMsg').show();
+        var reason = $('#reason').val()
+        if (reason == '') {
+            $('.reasonErrorMsg').show();
+        }
+        //if (hp_confirm == true) {
+        //$.ajax({
+        //    url: "/healthprograms-reserve/",
+        //    data: { id: self },
+        //    success: function (response) {
+        //        alert("Successfully reserved! Please check your dashboard.")
+        //    },
+        //    error: function (xhr) { }
+        //});
+        //} 
+    }
+
+    $('#editHP').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var id = button.data('id') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        //var modal = $(this)
+        //modal.find('.modal-body .hello').val(id)
+
+        // reset error-container
+        $('#error-container').text('').css('display', 'none');
+
+        var action = `/editHP/data/${id}`
+        $.get(action, (data, status) => {
+            if (status === 'success') {
+                $('#container-edit-program').html(data);
+
+                $('#form-edit-program').on('submit', event => {
+                    event.preventDefault();
+                    //alert("confirm");
+
+                    var action = $('#form-edit-program').attr('action');
+                    var $inputs = $('#form-edit-program :input:not(button):not(input[type=radio])');
+                    var values = {};
+                    $inputs.each((i, elem) => {
+                        values[$(elem).attr('name')] = $(elem).val();
+                    });
+
+                    $.post(action, values, (data, status) => {
+                        //alert("post");
+                        if (status === 'success') {
+                            //if(data){
+                            //alert("errors");
+                            //$('#container-edit-program').html(data); 
+                            //$('#editHP .modal-body').scrollTop(0);
+                            // }
+                            if (data.map) {
+                                var $ul = $('<ul/>').css('margin-bottom', 0);
+                                var $lis = data.map(msg => $('<li/>').text(msg));
+                                $ul.append($lis)
+                                $('#error-container').html($ul).css('display', 'block');
+                                $('#editHP .modal-body').scrollTop(0);
+                            } else if (data == false) {
+                                $('#duplicate').css('display', 'block');
+                                $('#editHP .modal-body').scrollTop(0);
+                            }
+                            else {
+                                console.log('ok');
+                                $('#error-container').text('').css('display', 'none');
+                                $('#edit').css('display', 'block');
+                                //dismiss modal on save
+                                $('#editHP').modal('toggle');
+
+                                //refresh page
+                                location.reload();
+                            }
+
+                        } else {
+                            console.log('error');
+                            console.log(data);
+                        }
+                    });
+                })
+
+            } else {
+                console.log(data);
+            }
+        })
+
+
+    })
+
+</script>

@@ -1,0 +1,86 @@
+<tr>
+    <td>
+        {{this.appointment_name}}
+    </td>
+    <td>
+        {{dateFormat this.appointment_date "h:mm a"}}
+    </td>
+    <td>
+        {{dateFormat this.appointment_date "YYYY-MM-DD"}}
+    </td>
+    <td class="text-center">
+        <small><a class="btn btn-success" href="/reschedule-appointments?id={{this._id}}&doc={{this.appointment_docID}}"
+                role="button">Reschedule</a></small>
+    </td>
+    <td class="text-center">
+        <small>
+            <div id="docInvalidCancel_{{this._id}}" style="display:none;">
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
+                    title="You cannot cancel this appointment because it's within 7 days from now.">
+                    <button class="btn btn-secondary" style="pointer-events: none;" type="button"
+                        disabled>Cancel</button>
+                </span>
+            </div>
+
+            <div id="docValidCancel_{{this._id}}" style="display:initial;">
+                <button class="btn btn-danger"
+                    onclick="cancelApp('{{this._id}}', '{{this.appointment_date}}')">Cancel</button>
+            </div>
+        </small>
+    </td>
+</tr>
+
+{{!-- Cancel Health Program Modal --}}
+<div class="modal fade" id="doc{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="cancelDocAppointmentTitle">Confirm Cancel</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/profile/deleteapp?id={{_id}}&doc={{this.appointment_name}}">
+                    <input type="hidden" value="{{this.appointment_name}}" name="doctorApp_name">
+                    <div style="text-align:left; padding: 10px; ">
+                        <p class="cancelDocAppointmentSuccess" style="display:initial;">
+                            Are you sure you want to <span style="color:red">cancel</span> your appointment with
+                            {{this.appointment_name}} on {{dateFormat this.appointment_date "MMMM DD, YYYY"}}?</p>
+                        <p class="cancelDocAppointmentFail" style="display:initial;">Sorry!
+                            You cannot cancel this appointment because it's within 7 days from now.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger cancelDocAppointmentButton"
+                            style="display:initial;">Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var todayDate = new Date();
+        var destDate = new Date("{{this.appointment_date}}");
+        var Difference_In_Time = destDate.getTime() - todayDate.getTime();
+        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+        if (Difference_In_Days <= 7) {
+            var valid = 'docValidCancel_' + "{{this._id}}";
+            var invalid = 'docInvalidCancel_' + "{{this._id}}";
+            $('#' + valid).attr('style', 'display: none');
+            $('#' + invalid).attr('style', 'display: initial');
+        } else {
+            var invalid = 'docInvalidCancel_' + "{{this._id}}";
+            $('#' + invalid).attr('style', 'display: none');
+        }
+    });
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>

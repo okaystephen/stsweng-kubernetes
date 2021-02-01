@@ -21,7 +21,7 @@ const database = {
             console.log(error);
             if (error) return callback(false);
             console.log('Added ' + result);
-            return callback(true);
+            return callback(result);
         });
     },
 
@@ -62,6 +62,13 @@ const database = {
         });
     },
 
+    find: function (model, query, projection, callback) {
+        model.find(query, projection, function (error, result) {
+            if (error) return callback(false);
+            return callback(result);
+        });
+    },
+
     /*
         updates the value defined in the object `update`
         on a single document based on the model `model`
@@ -80,7 +87,7 @@ const database = {
         on multiple documents based on the model `model`
         filtered using the object `filter`
     */
-    updateMany: function (model, filter, update) {
+    updateMany: function (model, filter, update, callback) {
         model.updateMany(filter, update, function (error, result) {
             if (error) return callback(false);
             console.log('Documents modified: ' + result.nModified);

@@ -1,0 +1,284 @@
+{{#invalid this.hp_enddate}}
+
+{{else}}
+<tr style="background-color:rgba(255, 255, 255, 0.878)">
+    <td>
+        <small>{{hp_name}}</small>
+    </td>
+    <td style="font-size:small; text-align:justify">
+        <small>{{this.hp_desc}}</small>
+    </td>
+    <td class="text-center">
+        <small>{{dateFormat this.hp_startdate "YYYY-MM-DD"}}</small>
+        <br>
+        <small>{{dateFormat this.hp_startdate "h:mm a"}}</small>
+    </td>
+    <td class="text-center">
+        <small>{{dateFormat this.hp_enddate "YYYY-MM-DD"}}</small>
+        <br>
+        <small>{{dateFormat this.hp_enddate "h:mm a"}}</small>
+    </td>
+    <td class="text-center">
+        <small>{{this.hp_location}}</small>
+    </td>
+    <td class="text-center">
+        <small style="color: {{#equals participants_count hp_maxCap}}red{{else}}#2F8250{{/equals}};">{{participants_count}}/{{this.hp_maxCap}}</small>
+    </td>
+    <td class="text-center">
+        {{#if admin_active}}
+        {{!-- <div style="position: relative; height: 200px">
+            <div style="margin:0; position:absolute; top: 50%; left:50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);"> --}}
+                <small><button class="btn btn-success" type="button" style="font-size:10px; margin-bottom: 7px" data-id={{_id}} data-toggle="modal" data-target="#editHP"><span style="font-size: 15px;"><i class="fas fa-pen"></i></span></button></small>
+                <small><a class="btn btn-danger" role="button" style="font-size:10px" data-toggle="modal" data-target="#deleteHP{{_id}}"><span style="font-size: 15px;"><i class="fas fa-trash-alt"></i></span></a></small>
+            {{!-- </div>
+        </div> --}}
+            {{!-- <div class="dropdown_hp">
+                <i class="fas fa-ellipsis-h" style="color: gray"></i>
+                <div class="dropdown-content">
+                    <a href="#"><i class="fas fa-pen" style="color: gray"></i> Edit</a>
+                    <a href="#"><i class="far fa-trash-alt" style="color:rgb(175, 43, 43)"></i> Delete</a>
+                </div>
+            </div> --}}
+        {{else}}
+
+            {{#equals participants_count hp_maxCap}}
+                {{!-- <span tabindex="0" data-toggle="tooltip" data-placement="right" title="You already sent your response to this applicant"></span>
+                <small><button class="btn btn-secondary" role="button" style="pointer-events: none;" disabled>Register</button></small> --}}
+                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
+                    title="{{hp_name}} has already reached the maximum number of participants">
+                    <button class="btn btn-secondary" style="pointer-events: none;" type="button" disabled>Register</button>
+                </span>
+                {{else}}
+                {{#if user_active}}
+                    {{#check_program user participants}}
+                        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
+                        title="You are already registered to {{hp_name}}">
+                        <button class="btn btn-secondary" style="pointer-events: none;" type="button" disabled>Register</button>
+                    </span>
+                    {{else}}
+                        <small><a class="btn btn-success" role="button" data-toggle="modal" data-target="#a{{_id}}">Register</a></small>
+                    {{/check_program}}
+                {{else}}
+                <small><a class="btn btn-success" role="button" data-toggle="modal"
+                        data-target="#loginModal">Register</a></small>
+                {{/if}}
+                    {{!-- <small><a class="btn btn-success" role="button" onclick="{{#if ../user_active}}register_user('{{this.hp_name}}'){{else}}register(){{/if}}">Register</a></small> --}}
+            {{/equals}} 
+        {{/if}}   
+            
+    </td>
+</tr>
+
+{{!-- Register Health Program Modal --}}
+<div class="modal fade" id="a{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Registration Confirmation</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="registerUserProgram" method="post" action="/registerhealth/{{_id}}/status">
+                    <div class="form-group">
+                        <div class="col-12">
+                            <label for="streetAdd"
+                                style="margin-left: -220px; font-weight:bolder; font-size: 13px">Reason for joining the
+                                program<span class="text-danger"> *</span></label>
+                            <textarea class="form-control" id="reason" name="reason" class="access required"
+                                data-errormsg="reasonErrorMsg" aria-describedby="homeAdd" placeholder=""
+                                value=""></textarea>
+                        </div>
+                        {{!-- <p class="hide reasonErrorMsg error">Please enter first name</p>
+                        <div style="font-size: 12px; color: red; margin-left: -400px"></div> --}}
+
+                    </div>
+
+                    {{!-- <input type="hidden" value="{{this.hp_enddate}}" name="hp_enddate" id="hp_enddate"/>  --}}
+                    {{!-- <input type="hidden" value="{{dateFormat this.hp_enddate "MMM-DD-YYYY"}}" name="hp_enddate" id="hp_enddate"/> 
+                    <input type="hidden" value="{{dateFormat this.hp_startdate "MMM-DD-YYYY"}}" name="hp_startdate" id="hp_startdate"/> 
+                    <input type="hidden" value="{{dateFormat this.hp_enddate "h:mm a"}}" name="hp_endtime" id="hp_endtime"/> 
+                    <input type="hidden" value="{{dateFormat this.hp_startdate "h:mm a"}}" name="hp_starttime" id="hp_starttime"/> 
+                    <input type="hidden" value="{{hp_location}}" name="hp_location" id="hp_location"/>  --}}
+                    <input type="hidden" value="{{_id}}" name="hp_id" id="hp_id" />
+                    <input type="hidden" value="{{hp_name}}" name="hp_name" id="hp_name" />
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="programsave">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- Delete Health Program Modal --}}
+<div class="modal fade" id="deleteHP{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Confirm Delete</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="deleteHP" method="post" action="/deleteHP/{{_id}}">
+                    <input type="hidden" value="{{hp_name}}" name="hp_name" id="hp_name"/> 
+                    <p style="text-align:left; padding: 10px">Are you sure you want to <span style="color:red">delete</span> {{hp_name}}?</p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger" id="programsave">Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{!-- Edit Health Program Modal --}}
+<div class="modal fade" id="editHP" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Edit Program <span style="font-size: 20px;"><i class="fas fa-pen"></i></span> </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger" id="error-container" style="display: none; text-align:left; font-size: 13px"></div>
+                 <div class="alert alert-danger alert-dismissible fade show" id="duplicate"role="alert" style="margin-bottom: 5px; display: none; text-align:left">Error: Duplicate record found.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div id="container-edit-program"></div>
+            </div>
+             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" form="form-edit-program">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- update successful modal --}}
+<div class="modal fade" id="success" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Success! <i class="far fa-check-circle" style="color: rgb(58, 136, 58)"></i></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="text-align: left; font-size: 15px;">
+                Update Successful! Please check the program directory to view your changes.
+            </div>
+             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{/invalid}}
+
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    
+    $('#editHP').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var id = button.data('id') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        //var modal = $(this)
+        //modal.find('.modal-body .hello').val(id)
+        
+        // reset error-container
+        $('#error-container').text('').css('display', 'none');
+
+        var action = `/editHP/data/${id}`
+        $.get(action, (data, status) => {
+            if (status === 'success') {
+                $('#container-edit-program').html(data); 
+
+                $('#form-edit-program').on('submit', event => {
+                    event.preventDefault();
+                    //alert("confirm");
+
+                    var action = $('#form-edit-program').attr('action');
+                    var $inputs = $('#form-edit-program :input:not(button):not(input[type=radio])');
+                    var values = {};
+                    $inputs.each((i, elem) => {
+                        values[$(elem).attr('name')] = $(elem).val();
+                    });
+
+                    $.post(action, values, (data, status) => {
+                            //alert("post");
+                        if (status === 'success') {
+                            //if(data){
+                                //alert("errors");
+                                //$('#container-edit-program').html(data); 
+                                //$('#editHP .modal-body').scrollTop(0);
+                           // }
+                            if (data.map) {
+                                var $ul = $('<ul/>').css('margin-bottom', 0);
+                                var $lis = data.map(msg => $('<li/>').text(msg));
+                                $ul.append($lis)
+                                $('#error-container').html($ul).css('display', 'block');
+                                $('#duplicate').css('display', 'none');
+                                $('#editHP .modal-body').scrollTop(0);
+                            } else if(data == false){
+                                $('#duplicate').css('display', 'block');
+                                $('#editHP .modal-body').scrollTop(0);
+                            }
+                            else {
+                                console.log('ok');
+                                $('#error-container').text('').css('display', 'none');
+
+                                //dismiss modal on save
+                                $('#editHP').modal('hide');
+
+                                $('#editHP').on('hidden.bs.modal', function(){
+                                    $('#success').modal('show');
+                                })
+                                
+                                $('#success').on('hidden.bs.modal', function(){
+                                    location.reload();
+                                })
+                                //refresh page
+                                //location.reload();
+                            }
+
+                        } else {
+                            console.log('error');
+                            console.log(data);
+                        }
+                    });
+                })
+    
+            } else {
+                console.log(data);
+            }
+        })
+
+
+    })
+
+    $('#success').on('hidden.bs.modal', function(){
+        location.reload();
+    })
+    
+</script>

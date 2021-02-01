@@ -1,0 +1,61 @@
+<form id="form-edit-program" method="POST" action="/editHP/{{hpData._id}}">
+    <div class="form-group" style="text-align: left; margin-bottom: 3px;">
+            <div class="form-row">
+            <div class="form-group col-md-8">
+                <label for="hp_name" style="font-weight:500;">Health Program Name<span class="text-danger"> *</span></label>
+                <textarea class="form-control" id="hp_name" name="hp_name" style="height: 38px; width: 305px">{{hpData.hp_name}}</textarea>
+                <p style="color: red; font-size: 13.5px;">{{details.hp_nameError}}</p>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="hp_cap" style="font-weight:500;">Cap<span class="text-danger"> *</span></label>
+                <input type="number" class="form-control" id="hp_cap" name="hp_cap" value={{hpData.hp_maxCap}}
+                    min="1">
+                <p style="color: red; font-size: 13.5px;">{{details.hp_capError}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="text-align: left;  margin-bottom: 3px;">
+            <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="hp_startdate" style="font-weight:500;">Start Date<span class="text-danger"> *</span></label>
+                <input type="date" class="form-control" id="hp_startdate" name="hp_startdate" value={{dateFormat hpData.hp_startdate "YYYY-MM-DD"}}>
+                    <p style="color: red; font-size: 13.5px;">{{details.hp_startdateError}}</p>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="hp_enddate" style="font-weight:500;">End Date<span class="text-danger"> *</span></label>
+                <input type="date" class="form-control" id="hp_enddate" name="hp_enddate" value={{dateFormat hpData.hp_enddate "YYYY-MM-DD"}}>
+                <p style="color: red; font-size: 13.5px;">{{details.hp_enddateError}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="text-align: left;  margin-bottom: 3px;">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="hp_starttime" style="font-weight:500;">Start Time<span class="text-danger"> *</span></label>
+                <input type="time" class="form-control" id="hp_starttime" name="hp_starttime" value={{dateFormat hpData.hp_startdate "HH:mm"}}>
+                <p style="color: red; font-size: 13.5px;">{{details.hp_starttimeError}}</p>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="hp_endtime" style="font-weight:500;">End Time<span class="text-danger"> *</span></label>
+                <input type="time" class="form-control" id="hp_endtime" name="hp_endtime" value={{dateFormat hpData.hp_enddate "HH:mm"}}>
+                <p style="color: red; font-size: 13.5px;">{{details.hp_endtimeError}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="text-align: left;  margin-bottom: 3px;">
+        <div class="form-row">
+            <div class="form-group col-md-14">
+                <label for="hp_location" style="font-weight:500;">Location<span class="text-danger"> *</span></label>
+                <textarea class="form-control" id="hp_location" name="hp_location" style="height: 40px; width: 450px">{{hpData.hp_location}}</textarea>
+                <p style="color: red; font-size: 13.5px;">{{details.hp_locationError}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="text-align: left;">
+            <div class="form-group">
+            <label for="hp_description" style="font-weight:500;">Description<span class="text-danger"> *</span></label>
+            <textarea class="form-control" id="hp_description" name="hp_description" rows="3">{{hpData.hp_desc}}</textarea>
+            <p style="color: red; font-size: 13.5px;">{{details.hp_descriptionError}}</p>
+        </div>
+    </div>
+</form>

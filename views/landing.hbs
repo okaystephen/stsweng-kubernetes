@@ -1,0 +1,63 @@
+<style>
+    .shadow {
+        transition: box-shadow .3s;
+        position: relative;
+        z-index: 10;
+    }
+
+    .shadow:hover {
+        box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+    }
+</style>
+
+<div class="container-fluid pb-4">
+    <div class="row">
+        <div class="col"
+            style="background-image: url('/img/doctorbanner.png'); background-size: cover; background-repeat: no-repeat; background-position: center;  background-color: gray; height: 400px;">
+            <div class="pt-5 pl-3">
+                <h1 style="font-family: Montserrat; color: #376078; font-weight: 700;">
+                    Making Healthcare Better Together
+                </h1>
+                <p class="pt-2" style="font-family: Roboto Mono; font-size:medium; color: #000000; width: 50%;">
+                    Located in Makati, Philippines, and staffed with highly-trained and compassionate professionals, Dolomed is proud to provide area families with high quality healthcare.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid pb-5 pt-4 px-5">
+    <div class="row">
+        <div class="col-lg py-1 shadow form-group" onclick={{#if admin_active}}"location.href='adminhp' ;" {{/if}} {{#if
+            home_active}} "location.href='healthprograms';" {{/if}}{{#if user_active}} "location.href='healthprograms';"
+            {{/if}}
+            style="cursor:pointer; border-radius: 5px; background-image: url('/img/2.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;  background-color: gray; height: 350px;">
+            <div class="pt-3 link">
+                <h2 style="font-family: Montserrat; color: #F2F2F2;">Health Programs</h2>
+                {{!-- <p class="pt-2" style="font-family: Roboto Mono;">yea</p> --}}
+            </div>
+        </div>
+        <div class="col-lg offset-lg-1 py-1 shadow form-group" {{#if
+            user_active}}onclick="location.href='appointments';" {{else}}onclick="modal()" {{/if}}
+            style="cursor:pointer; border-radius: 5px; background-image: url('/img/3.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;  background-color: gray; height: 350px;">
+            <div class="pt-3 link">
+                <h2 style="font-family: Montserrat; color: #F2F2F2;">Book an appointment now</h2>
+                {{!-- <p class="pt-2" style="font-family: Roboto Mono;">yea</p> --}}
+            </div>
+        </div>
+        <div class="col-lg offset-lg-1 py-1 shadow form-group" onclick="location.href='doctors';"
+            style="cursor:pointer; position:relative; border-radius: 5px; background-image: url('/img/4.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;  background-color: gray; height: 350px;">
+            <div class="pt-3 link">
+                <h2 style="font-family: Montserrat; color: #F2F2F2;">Meet the doctors</h2>
+                {{!-- <p class="pt-2" style="font-family: Roboto Mono;">yea</p> --}}
+            </div>
+        </div>
+    </div>
+</div>
+
+{{> footer}}
+
+<script>
+    function modal() {
+        $('#loginModal').modal('show');
+    }
+</script>

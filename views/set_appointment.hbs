@@ -1,0 +1,295 @@
+<style>
+    th {
+        color: #2F6982 !important;
+    }
+
+    .select2 {
+        width: 100% !important;
+    }
+
+    .breadcrumb a {
+        color: #2F6982 !important;
+    }
+</style>
+
+<body style="background-color: rgb(243, 243, 243); margin: 0; font-family: 'Roboto Mono';">
+    <div class="container-fluid px-5 py-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/profile">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Set an appointment</li>
+            </ol>
+        </nav>
+        <p class="h1" style="color: #2F6982 ; font-family: 'Montserrat', sans-serif; font-size:7vw;">Set an appointment
+        </p>
+        <hr>
+        <div class="card mx-auto border shadow-sm pt-2">
+            <div class="card-body">
+                {{#if app_alert}}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-bottom: 20px;">
+                    Sorry! That appointment schedule is not available with <span
+                        style="font-weight: bold;">{{doctor}}</span>.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{/if}}
+                <div class="card mx-auto">
+                    <form method="POST" class="needs-validation" id="appFormSubmit" novalidate>
+                        <div class="form-group">
+                            <label for="appointment_name">Doctor</label>
+                            <select id="appointment_name" name="appointment_name" class="form-control"
+                                onchange="selectDoctor()" required>
+                                <option selected disabled value="">Choose a doctor...</option>
+                                {{#each docList}}
+                                <option class="selectDoc" id="{{this._id}}" value="{{this.lname}}, {{this.fname}}" name="
+                                {{#each this.schedule}}
+                                {{#each time}}
+                                <option value={{../day}},{{start}},{{end}}>{{../day}} ({{start}} - {{end}})
+                                {{!-- <option>{{../day}} ({{start}} - {{end}})</option> --}}
+                                {{/each}}
+                                {{/each}}
+                                ">
+                                    {{this.lname}}, {{this.fname}}
+                                </option>
+                                {{/each}}
+                            </select>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Choose a doctor.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="appointment_day">Schedule</label>
+                            <select id="appointment_day" name="appointment_day" class="form-control"
+                                onchange="selectDay()" disabled required>
+                                <option selected disabled value="">Choose a schedule...</option>
+                            </select>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Choose a schedule.
+                            </div>
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="appointment_date">Date</label>
+                                <input type="date" class="form-control" id="appointment_date" name="appointment_date"
+                                    disabled required>
+                                {{!-- <input type="date" id="appointment_date" class="form-control"
+                                    name="appointment_date" placeholder="MM/DD/YYYY" data-input disabled required />
+                                --}}
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Enter a valid date.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="appointment_time">Time</label>
+                                <input type="time" class="form-control" id="appointment_time" name="appointment_time"
+                                    min="09:00" max="18:00" value="13:30" disabled required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Enter a valid time.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="appointment_reason">Reason for appointment</label>
+                            <textarea class="form-control" id="appointment_reason" name="appointment_reason" rows="3"
+                                disabled required></textarea>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Enter reason for appointment.
+                            </div>
+                        </div>
+                        <div class="form-group text-center pt-3">
+                            <input type="hidden" id="appointment_docID" name="appointment_docID" value="">
+
+                            {{!-- <input type="button" name="btn" id="submit_btn" value="Submit" class="btn btn-success"
+                                data-toggle="modal" data-target="#a{{_id}}"> --}}
+
+                            <button class="btn btn-success" id="submit_btn" type="submit">Submit</button>
+
+                            {{!-- <a class=" btn btn-success" id="submit_btn" role="button" data-toggle="modal"
+                                data-target="#a{{_id}}">Submit</a> --}}
+                        </div>
+
+                        {{!-- Set Appointment Modal --}}
+                        <div class="modal fade" id="confirmAppointment" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Appointment Details</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Date: <span id="app-date"></span></p>
+                                        <p>Time: <span id="app-time"></span></p>
+                                        <p>Doctor: <span id="app-doc"></span></p>
+                                        <p>Reason: <span id="app-reason"></span></p>
+                                        <br>
+                                        <p>Ready to submit appointment?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="submit" id="submit_btn_modal" class="btn btn-success"
+                                            onclick="returnTrue()">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        else {
+                            event.preventDefault();
+                            $('#confirmAppointment').modal('show');
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+
+        $(function () {
+            var dtToday = new Date();
+
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
+
+            var maxDate = year + '-' + month + '-' + day;
+            $('#appointment_date').attr('min', maxDate);
+        });
+
+        $('#submit_btn_modal').click(function () {
+            document.getElementById("appFormSubmit").submit();
+        });
+
+    </script>
+
+    <script>
+        window.onscroll = function () { myFunction() };
+
+        $(document).ready(function () {
+            $('#appointment_name').select2();
+        });
+
+        function selectDoctor() {
+            $('#appointment_day').prop("disabled", false);
+            var id = $('#appointment_name').children(":selected").attr("id");
+            // alert($('#' + id).attr('name'));
+            $('#appointment_day').empty();
+            $('#appointment_day').append('<option selected disabled value="">Choose a schedule...</option>');
+            $('#appointment_day').append($('#' + id).attr('name'));
+        }
+
+        function selectDay() {
+            $('#appointment_date').prop("disabled", false);
+            $('#appointment_time').prop("disabled", false);
+            $('#appointment_reason').prop("disabled", false);
+
+            var val = $('#appointment_day').children(":selected").attr("value");
+            var res = val.split(",");
+            var ban_day = 0;
+            var message = "Please choose a day that is ";
+            // alert(res[1])
+            $('#appointment_time').attr('min', res[1]);
+            $('#appointment_time').attr('max', res[2]);
+            $('#appointment_time').attr('value', res[1]);
+
+            if (res[0].localeCompare("Sunday") == 0) {
+                alert("Sunday");
+                message = message + "Sunday.";
+                ban_day = [1, 2, 3, 4, 5, 6];
+            } else if (res[0].localeCompare("Monday") == 0) {
+                message = message + "Monday.";
+                ban_day = [0, 2, 3, 4, 5, 6];
+            } else if (res[0].localeCompare("Tuesday") == 0) {
+                message = message + "Tuesday.";
+                ban_day = [0, 1, 3, 4, 5, 6];
+            } else if (res[0].localeCompare("Wednesday") == 0) {
+                message = message + "Wednesday.";
+                ban_day = [0, 1, 2, 4, 5, 6];
+            } else if (res[0].localeCompare("Thursday") == 0) {
+                message = message + "Thursday.";
+                ban_day = [0, 1, 2, 3, 5, 6];
+            } else if (res[0].localeCompare("Friday") == 0) {
+                message = message + "Friday.";
+                ban_day = [0, 1, 2, 3, 4, 6];
+            } else {
+                alert("Saturday");
+                message = message + "Saturday.";
+                ban_day = [0, 1, 2, 3, 4, 5];
+            }
+
+            const picker = document.getElementById('appointment_date');
+            picker.addEventListener('input', function (e) {
+                var day = new Date(this.value).getUTCDay();
+                if (ban_day.includes(day)) {
+                    e.preventDefault();
+                    this.value = '';
+                    //alert('Weekends not allowed');
+                    alert(message);
+                }
+            });
+        }
+
+        $('#submit_btn').click(function () {
+            $('#app-date').text($('#appointment_date').val());
+            $('#app-time').text($('#appointment_time').val());
+            $('#app-doc').text($('#appointment_name').val());
+            $('#app-reason').text($('#appointment_reason').val());
+
+            $('#appointment_docID').val($('#appointment_name').children(":selected").attr("id"));
+        });
+
+        var navbar = document.getElementById("navbar navbar-expand-lg sticky-top navbar-dark");
+        var sticky = navbar.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+    </script>
+</body>

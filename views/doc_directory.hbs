@@ -1,0 +1,201 @@
+<style>
+    .unit {
+        background-color: white;
+        width: 200px;
+        height: 200px;
+        line-height: 100px;
+        margin: 10px;
+        text-align: center;
+    }
+
+    .container {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 10px;
+    }
+</style>
+
+{{#if admin_active}}
+
+<div class="mb-4 p-0" style="display: flex; margin-top: 20px; ">
+    <div class="col-sm-3 p-0" style="display: flex; flex-direction:column;">
+
+        <form class="container" action="/adminfilter" method="POST">
+            <div class="p-3 card border m-0 mb-2" style="background-color: #E0E0E0;">
+                {{#if delete}}
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 8px;">
+                    <span style="font-weight: bold;">{{fname}} {{lname}}</span> has been
+                    <span style="font-weight: bold; text-decoration:underline">removed</span> from the database.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{/if}}
+                {{#if newdoc}}
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 8px;">
+                    <span style="font-weight: bold;">{{fname}} {{lname}}</span> has been
+                    <span style="font-weight: bold; text-decoration:underline">added</span> to the database.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{/if}}
+                {{#if updatedoc}}
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 8px;">
+                    <span style="font-weight: bold;">{{fname}} {{lname}}</span> has been
+                    <span style="font-weight: bold; text-decoration:underline">updated</span> in the database.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{/if}}
+                <p class="h1" style="color: #2F6982 ; font-family: 'Montserrat', sans-serif;">Doctors Directory</p>
+                <hr>
+
+                <p class="h6"> Doctor's Surname </p>
+                <input type="text" name="surname" placeholder="Surname" id="temporary" style="margin-bottom: 15px;">
+
+                <p class="h6"> Specialization </p>
+
+                <select id="specialization" name="specialization"
+                    style="border: solid 1px rgb(119, 118, 118); background-color: white; cursor: pointer; height: 28px; margin-bottom: 15px">
+                    <option value="All">All</option>
+                    <option value="Anesthesiology">Anesthesiology</option>
+                    <option value="Dental Medicine">Dental Medicine</option>
+                    <option value="Dermatology">Dermatology</option>
+                    <option value="Family Medicine">Family Medicine</option>
+                    <option value="Internal Medicine">Internal Medicine</option>
+                    <option value="Laboratory Medicine">Laboratory Medicine</option>
+                    <option value="Legal Medicine">Legal Medicine</option>
+                    <option value="Nuclear Medicine">Nuclear Medicine</option>
+                    <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
+                    <option value="Occupational Medicine">Occupational Medicine</option>
+                    <option value="Ophthalmology">Ophthalmology</option>
+                    <option value="Orthopedics">Orthopedics</option>
+                    <option value="Otorhinolaryngology">Otorhinolaryngology</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                    <option value="Radiology">Radiology</option>
+                    <option value="Rehabilitation Medicine">Rehabilitation Medicine</option>
+                    <option value="Surgery">Surgery</option>
+                </select>
+
+
+                <p class="h6"> Availability </p>
+
+                <select id="availablity" name="availability"
+                    style="border: solid 1px rgb(119, 118, 118); background-color: white; cursor: pointer; height: 28px; margin-bottom: 25px">
+                    <option value="All">All</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+
+
+
+                <button id="filter" class="btn btn-primary w-100" role="button" type="submit"> <i
+                        class="fas fa-filter"></i> Filter</button>
+
+            </div>
+        </form>
+    </div>
+
+
+    {{#equals doctors.length 0}}
+    <div class="alert alert-danger hide col-9 m-0 mb-2" style="margin-bottom: 1px; width:max-content; height: 50px">No
+        doctor/s were found matching your filter request. Please try again.</div>
+    {{else}}
+    <div class="col-9 m-0 mb-2" style="display: flex; flex-direction:row; flex-wrap:wrap; padding-left: 50px; min-height: 100vh">
+        {{#each doctors}}
+        {{> doctorCard admin_active = ../admin_active}}
+        {{/each}}
+    </div>
+    {{/equals}}
+</div>
+
+{{else}}
+<div class="mb-4 p-0" style="display: flex; margin-top: 20px;  min-height: 100vh;">
+    <div class="col-sm-3 p-0" style="display: flex; flex-direction:column;  min-height: 100vh;">
+
+        <form class="container" action="/filter" method="POST">
+            <div class="p-3 card border m-0 mb-2" style="background-color: #E0E0E0;">
+                <p class="h1" style="color: #2F6982 ; font-family: 'Montserrat', sans-serif;">Doctors Directory</p>
+                <hr>
+
+                <p class="h6"> Doctor's Surname </p>
+                <input type="text" name="surname" placeholder="Surname" id="temporary" style="margin-bottom: 15px;">
+
+                <p class="h6"> Specialization </p>
+
+                <select id="specialization" name="specialization"
+                    style="border: solid 1px rgb(119, 118, 118); background-color: white; cursor: pointer; height: 28px; margin-bottom: 15px">
+                    <option value="All">All</option>
+                    <option value="Anesthesiology">Anesthesiology</option>
+                    <option value="Dental Medicine">Dental Medicine</option>
+                    <option value="Dermatology">Dermatology</option>
+                    <option value="Family Medicine">Family Medicine</option>
+                    <option value="Internal Medicine">Internal Medicine</option>
+                    <option value="Laboratory Medicine">Laboratory Medicine</option>
+                    <option value="Legal Medicine">Legal Medicine</option>
+                    <option value="Nuclear Medicine">Nuclear Medicine</option>
+                    <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
+                    <option value="Occupational Medicine">Occupational Medicine</option>
+                    <option value="Ophthalmology">Ophthalmology</option>
+                    <option value="Orthopedics">Orthopedics</option>
+                    <option value="Otorhinolaryngology">Otorhinolaryngology</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                    <option value="Radiology">Radiology</option>
+                    <option value="Rehabilitation Medicine">Rehabilitation Medicine</option>
+                    <option value="Surgery">Surgery</option>
+                </select>
+
+
+                <p class="h6"> Availability </p>
+
+                <select id="availablity" name="availability"
+                    style="border: solid 1px rgb(119, 118, 118); background-color: white; cursor: pointer; height: 28px; margin-bottom: 25px">
+                    <option value="All">All</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+
+
+
+                <button id="filter" class="btn btn-primary w-100" role="button" type="submit"> <i
+                        class="fas fa-filter"></i> Filter</button>
+
+            </div>
+        </form>
+        {{!-- <div class="container" style="margin-top: 15px">
+            <div class="p-2 card border m-0 mb-2" style="background-color: #8da385; border-radius: 60px;">
+                <button id="filter" class="btn w-100" role="button" type="submit" style="color: white"><i
+                        class="fas fa-user-plus"></i> Register a Doctor</button>
+            </div>
+        </div> --}}
+    </div>
+
+
+    {{#equals doctors.length 0}}
+    <div class="alert alert-danger hide col-9 m-0 mb-2" style="margin-bottom: 1px; width:max-content; height: 50px">No
+        doctor/s were found matching your filter request. Please try again.</div>
+    {{else}}
+    <div class="col-9 m-0 mb-2" style="display: flex; flex-direction:row; flex-wrap:wrap; padding-left: 50px; min-height: 100vh">
+        {{#each doctors}}
+        {{> doctorCard}}
+        {{/each}}
+    </div>
+    {{/equals}}
+</div>
+
+{{/if}}
+
+
+{{> footer}}
+

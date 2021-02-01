@@ -1,0 +1,101 @@
+<div class="card" style="width: 15rem; height: 370px; background-color: #E0E0E0; margin-bottom: 20px">
+  <div style="position: relative;">
+    <img class="card-img-top mx-auto" src="/img/{{avatar}}" alt="Card image cap"
+      style="height: 200px; width: 100%; object-fit: cover; position: relative">
+    {{#if admin_active}}
+    <div class="dropdown">
+      <i class="fas fa-ellipsis-h" style="color: gray;"></i>
+      <div class="dropdown-content">
+        <a href="/editdoc?id={{_id}}"><i class="fas fa-pen" style="color: gray"></i> Edit</a>
+        <a href="#" data-toggle="modal" data-target="#deleteDoc{{_id}}"><i class="far fa-trash-alt"
+            style="color:rgb(175, 43, 43)"></i> Delete</a>
+      </div>
+    </div>
+    {{/if}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title mb-0">{{lname}}, {{fname}}</h5>
+    <p class="card-text">{{specialization}}</p>
+    <p class="card-text" style="text-align: center">
+      <button type="button" class="btn btn-primary w-75 mt-2" data-toggle="modal" data-target="#a{{_id}}">View
+        Schedule</button>
+    </p>
+  </div>
+</div>
+
+{{!-- Cancel Appointment Modal --}}
+<div class="modal fade" id="deleteDoc{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true" style="font-family: 'Montserrat', sans-serif; color: #5C6B6B ; ">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Delete Doctor</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/admindoc/delete?id={{_id}}&fname={{fname}}&lname={{lname}}">
+          <p class="cancelMessage">Are you sure you want to <span style="color:red">remove</span> <b>{{fname}}
+              {{lname}}</b> from the database?</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-danger" style="display:initial;">Confirm</button>
+          </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="a{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{lname}}'s Schedule<span
+            style="font-style: italic; font-size:12px; font-weight:normal; margin-left: 4px">({{department}})</span>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="row">
+                <div class="col-8 col-sm-6"
+                  style="padding: 5px; background-color: #8DA385; border: 1px rgb(184, 181, 181) solid; color: #F2F2F2">
+                  Day
+                </div>
+                <div class="col-4 col-sm-6"
+                  style="padding:5px; background-color: #8DA385; border: 1px rgb(184, 181, 181) solid; color: #F2F2F2">
+                  Time
+                </div>
+              </div>
+              <div class="row">
+                {{#each schedule}}
+                <div class="col-8 col-sm-6" style="padding: 5px; border: 1px rgb(184, 181, 181) solid">
+                  {{day}}
+                </div>
+
+                <div class="col-4 col-sm-6" style="padding:5px; border: 1px rgb(184, 181, 181) solid;">
+                  {{#each time}}
+                  {{start}} - {{end}} <br>
+                  {{/each}}
+                </div>
+
+                {{/each}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
