@@ -1,22 +1,24 @@
 <style>
     th {
-        color: #2F8250 !important;
+        color: #2F6982 !important;
     }
 </style>
 
 <div class="container-fluid p-5">
     <div class="row">
         <div class="col">
-            <p class="h1" style="color: #2F8250 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">Health
+            <p class="h1" style="color: #2F6982 ; font-family: 'Montserrat', sans-serif; font-size:13vh;">Health
                 Programs</p>
-            <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; margin-bottom: 30px">Dolomed offers available health programs. These programs aim to 
-                prevent or control disease, injury, disability, and death. It also offers a comprehensive health 
-                initiative designed to maintain or improve well-being through proper diet, exercise, stress management, and illness prevention. 
+            <p style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif; margin-bottom: 30px">Dolomed offers
+                available health programs. These programs aim to
+                prevent or control disease, injury, disability, and death. It also offers a comprehensive health
+                initiative designed to maintain or improve well-being through proper diet, exercise, stress management,
+                and illness prevention.
                 Register now!
             </p>
             <div class="card mx-auto border shadow-sm pt-2">
                 {{#if alert}}
-                <div class="alert alert-success alert-dismissible fade show" role="alert"style="margin-top: -9px;">
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: -9px;">
                     You have <span style="font-weight: bold; text-decoration:underline">successfully registered</span>
                     to
                     <span style="font-weight: bold;">{{test}}</span>. Please check your dashboard.
@@ -27,7 +29,8 @@
                 {{/if}}
                 {{#if error}}
                 <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: -9px;">
-                    <span style="font-weight: bold; text-decoration:underline">Registration failed:</span> You tried to register to a program <span style="font-weight: bold;">without a reason</span>. Please try again.
+                    <span style="font-weight: bold; text-decoration:underline">Registration failed:</span> You tried to
+                    register to a program <span style="font-weight: bold;">without a reason</span>. Please try again.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -35,7 +38,8 @@
                 {{/if}}
                 {{#if max}}
                 <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: -9px;">
-                    Registration failed: <span style="font-weight: bold;">{{test}}</span> has already reached the maximum number of participants.
+                    Registration failed: <span style="font-weight: bold;">{{test}}</span> has already reached the
+                    maximum number of participants.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

@@ -44,10 +44,9 @@
         </ul>
     </div>
 </nav>
-
 {{else}}
 
-<nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="font-family: 'Roboto Mono';">
     <a class="navbar-brand " href="/">
         <i class="far fa-hospital fa-lg"></i>
         DoloMed</a>
@@ -60,9 +59,6 @@
             <li class="nav-item {{#if home_active}}active{{/if}}">
                 <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item {{#if about_active}}active{{/if}}">
-                <a class="nav-link" href="/about">About</a>
-            </li>
             <li class="nav-item {{#if hp_active}}active{{/if}}">
                 <a class="nav-link" href="/healthprograms">Health Programs</a>
             </li>
@@ -71,6 +67,11 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            {{#if dashboard_active}}
+            <li class="nav-item {{#if settings_active}}active{{/if}}">
+                <a class=" nav-link" href="/account"><i class="fas fa-cog" style="padding-right: 5px;"></i>Settings</a>
+            </li>
+            {{else}}
             {{#if user_active}}
             <li class="nav-item">
                 <a class="nav-link" href="/profile"><i class="fas fa-home" style="padding-right: 7px;"></i>My
@@ -78,10 +79,12 @@
             </li>
             {{else}}
             <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#loginModal" style="cursor:pointer"><i
+                <a class="nav-link" data-toggle="modal" data-target="#loginModal" style="cursor:pointer;"><i
                         class="fas fa-sign-in-alt" style="padding-right: 7px;"></i>Login</a>
             </li>
             {{/if}}
+            {{/if}}
+
             {{#if user_active}}
             <li class="nav-item">
                 <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt" style="padding-right: 5px;"></i>Log
@@ -99,7 +102,7 @@
 
 {{!-- Register Health Program Login Modal --}}
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true"
-    style="color: #5C6B6B ; font-family: 'Montserrat', sans-serif;">
+    style="color: #5C6B6B ; font-family: 'Roboto Mono';">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -128,9 +131,6 @@
                         <button id="loginbtn" class="btn btn-primary pb-1">Submit</button>
                     </div>
                     <div class="text-center pt-3">
-                        <small><a href="/forgotpassword" style="color:#2F8250;">Forgot
-                                password?</a></small>
-                        <hr>
                         <small>Don't have an account? <a href="/register" style="color:#2F8250;">Sign
                                 up.</a></small>
                     </div>
