@@ -22,13 +22,13 @@ Successful Admin Login
     Click Button     id=loginbtn
 
 Delete Doctor
-    Click Element    css=.card:nth-child(67) .dropdown > .fas
-    Click Element    css=.card:nth-child(67) a:nth-child(2)
-    Click Element    css=#deleteDoc6020e26f30a5754378dbd419 .btn-danger
+    Click Element    css=.card:nth-child(52) .dropdown > .fas
+    Click Element    css=.card:nth-child(52) a:nth-child(2)
+    Click Element    xpath=//div[53]/div/div/div[2]/form/div/button[2]
     Wait Until Page Contains Element    css=.alert
 
 *** Test Cases ***
-Add Doctor
+Add & Delete Doctor
     Open Website
     Successful Admin Login       admin@gmail.com    admin123
     Click Element                css=.nav-item:nth-child(2) > .nav-link
@@ -41,5 +41,7 @@ Add Doctor
     Input Text                   id=doc_etime_0    1000AM
     Click Element                css=.btn
     Wait Until Page Contains Element    css=.alert
-    Element Text Should Be       css=.card:nth-child(67) .card-title    ZZZ, Doctor
+    Element Text Should Be       css=.card:nth-child(52) .card-title    ZZZ, Doctor
     Delete Doctor
+    Wait Until Page Contains Element    css=.alert
+    
