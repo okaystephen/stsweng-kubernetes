@@ -72,7 +72,7 @@ Input Relationship
 *** Test Cases ***
 Valid Sign Up
     Open Website to Sign Up Page
-    Input Email    sample2@gmail.com
+    Input Email    sample123@gmail.com
     Input Password    sample123
     Input Confirm Password    sample123
     Input First Name    First
@@ -85,8 +85,8 @@ Valid Sign Up
     Input Emergency Contact Person    eFirst eLast
     Input Emergency Contact Person Number    09173214321
     Input Relationship    Mother
-    Click Button    id=signupbtn
-    Element Text Should Be    css=p:nth-child(2)    Here's an overview of your account.
+#    Click Button    id=signupbtn
+#    Element Text Should Be    css=p:nth-child(2)    Here's an overview of your account.
 
 Blank Sign Up
     Open Website to Sign Up Page
