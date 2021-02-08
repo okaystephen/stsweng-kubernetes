@@ -47,7 +47,7 @@ Reschedule Appointment
     Click Element                       css=.text-center > small > .btn
     Select From List by Index           id=appointment_name      0
     Select From List By Index           id=appointment_day       2
-    Input Text                          id=appointment_time                                                      0300pm
+    Input Text                          id=appointment_time                                                      0300 pm
     Input Text                          id=appointment_reason    Reason123
     Click Element                       id=submit_btn
     Click Element                       id=submit_btn_modal
