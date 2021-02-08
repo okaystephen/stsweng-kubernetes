@@ -72,7 +72,7 @@ Input Relationship
 *** Test Cases ***
 Valid Sign Up
     Open Website to Sign Up Page
-    Input Email    sample123@gmail.com
+    Input Email    sample2@gmail.com
     Input Password    sample123
     Input Confirm Password    sample123
     Input First Name    First
