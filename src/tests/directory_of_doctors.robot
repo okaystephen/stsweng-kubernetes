@@ -17,7 +17,7 @@ Open Website
 *** Test Cases ***
 Search
     Open Website
-    Click Element                       css=.nav-item:nth-child(4) > .nav-link
+    Click Element                       css=.nav-item:nth-child(3) > .nav-link
     Wait Until Page Contains Element    css=.card:nth-child(1) .card-title
     Click Element                       id=temporary
     Input Text                          id=temporary    Albana
@@ -26,7 +26,7 @@ Search
 
 Filter
     Open Website
-    Click Element                       css=.nav-item:nth-child(4) > .nav-link
+    Click Element                       css=.nav-item:nth-child(3) > .nav-link
     Wait Until Page Contains Element    css=.card:nth-child(1) .card-title
     Select From List By Index           id=specialization    17
     Click Element                       id=availablity
