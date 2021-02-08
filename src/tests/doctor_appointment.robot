@@ -27,7 +27,7 @@ Cancel Appointment
 Set Appointment
     Successful Login
     User Profile Page Should Be Open
-    Click Link                                          link=Appointments
+    Click Link                                          link=Set an Appointment
     Wait Until Page Contains Element                    id=submit_btn
     # Input Invalid
     Click Element                                       id=submit_btn

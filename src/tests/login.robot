@@ -20,7 +20,11 @@ Valid Login
 
 SignUp
     Open Browser to Login Page
-    Click Element                   css=small:nth-child(3) > a
+    Click Element                   css=small > a
+    Page Should Contain Element     id=signupbtn
+    Close Browser
+    Open Browser                    localhost:3001              Chrome
+    Click Element                   css=.ml-auto > .nav-item:nth-child(2) > .nav-link
     Page Should Contain Element     id=signupbtn
     [Teardown]  Close Browser
 

@@ -25,7 +25,7 @@ Login Page Should Be Open
 User Profile Page Should Be Open
     Wait Until Page Contains Element            id=profileapp-table_wrapper
     Element Text Should Be                      css=p:nth-child(3)                                                      Address: 123 Blk 00, sample's address\nContact Number: 09177112470\nBirthday: 1998-12-17
-    Element Text Should Be                      css=.nav-item > h6                                                      Last, First 
+    Element Text Should Be                      css=.h1                                                                 Hello, First!
 
 Successful Login
     Open Browser To Login Page
