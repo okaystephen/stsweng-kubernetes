@@ -51,19 +51,19 @@ app.engine(
       equals: function (arg1, arg2, options) {
         return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
       },
-      invalid: function(date, options){
-        if(Date.now() > date){
+      invalid: function (date, options) {
+        if (Date.now() > date) {
           return options.fn(this)
-        } else{
+        } else {
           return options.inverse(this)
         }
       },
-      check_program: function(s,a,options){
+      check_program: function (s, a, options) {
         var string = a.toString();
         var arr = string.split(",");
-        if(arr.includes(s)){
+        if (arr.includes(s)) {
           return options.fn(this)
-        } else{
+        } else {
           return options.inverse(this)
         }
       }
@@ -99,8 +99,9 @@ mongoose.connect(url, options, err => {
   console.log('Connected at ' + url);
 });
 
-app.listen(port, function () {
-  console.log('App listening at port ' + port)
+// For Heroku
+app.listen(process.env.PORT || 3001, function () {
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
 // Add helpers here
