@@ -22,7 +22,7 @@ Health Program Cancel
     [Teardown]  Close All Browsers
 
 Invalid Register Field
-    Click Element                                       xpath=//div[73]/div/div/div[2]/div[2]/button[2]
+    Click Element                                       xpath=//div[65]/div/div/div[2]/div[2]/button[2]
     Page Should Contain Element                         css=.alert                                                              #Registration failed: You tried submitting an empty field. Please try again.\nx
     Input Text                                          css=input:nth-child(1)                                                  test delete
     Page Should Contain Element                         css=.odd:nth-child(1) > td:nth-child(1) > small
@@ -72,7 +72,7 @@ Admin Health Program Directory
     Click Element                       css=.sorting:nth-child(1)
     Element Text Should Be              css=.odd:nth-child(1) > td:nth-child(1) > small                         AAA Latest Test Program
     Click Element                       id=hp-table_next
-    Element Text Should Be              css=.even:nth-child(8) > .sorting_1 > small                             ZZZ Oldest Test Program
+    Element Text Should Be              css=.even:nth-child(6) > .sorting_1 > small                             ZZZ Oldest Test Program
     Click Element                       id=hp-table_previous
     Element Text Should Be              css=.odd:nth-child(1) > td:nth-child(1) > small                         AAA Latest Test Program
     [Teardown]  Close Browser
@@ -129,15 +129,15 @@ Admin Add Health Program - User View
     Input Text                                          css=input:nth-child(1)                                                  test delete
     Page Should Contain Element                         css=.odd:nth-child(1) > td:nth-child(1) > small
     Click Element                                       css=.odd:nth-child(1) .btn
-    Page Should Contain Element                         xpath=//div[73]/div/div/div[2]/div[2]/button[2]
+    Page Should Contain Element                         xpath=//div[65]/div/div/div[2]/div[2]/button
     # Close modal and reopen
-    Click Element                                       xpath=//div[73]/div/div/div[2]/div[2]/button
+    Click Element                                       xpath=//div[65]/div/div/div[2]/div[2]/button
     Click Element                                       css=.odd:nth-child(1) .btn
     # Test Invalid Reason Field Input
     Invalid Register Field
     # Valid Reason Field Input
-    Input Text                                          xpath=//div[73]/div/div/div[2]/div/div/textarea                         test
-    Click Element                                       xpath=//div[73]/div/div/div[2]/div[2]/button[2]
+    Input Text                                          xpath=//div[65]/div/div/div[2]/div/div/textarea                         test
+    Click Element                                       xpath=//div[65]/div/div/div[2]/div[2]/button[2]
     Page Should Contain Element                         css=.alert                                                              #You have successfully registered to Test Program. Please check your dashboard.
     # Check User Profile if successfully registered
     Click Link                                          link=My Dashboard
@@ -159,11 +159,11 @@ Admin Delete Health Program
     Page Should Contain Element                         css=.btn-danger:nth-child(1)
     # Delete program
     Click Element                                       css=.btn-danger:nth-child(1)
-    Wait Until Page Contains Element                    xpath=//div[74]/div/div/div[2]/div/button
-    Click Element                                       xpath=//div[74]/div/div/div[2]/div/button
+    Wait Until Page Contains Element                    xpath=//div[66]/div/div/div[2]/div/button
+    Click Element                                       xpath=//div[66]/div/div/div[2]/div/button
     Click Element                                       css=.btn-danger:nth-child(1)
-    Wait Until Page Contains Element                    xpath=//div[74]/div/div/div[2]/div/button[2]
-    Click Element                                       xpath=//div[74]/div/div/div[2]/div/button[2]
+    Wait Until Page Contains Element                    xpath=//div[66]/div/div/div[2]/div/button[2]
+    Click Element                                       xpath=//div[66]/div/div/div[2]/div/button[2]
     Wait Until Page Contains Element                    css=.alert
     Page Should Contain Element                         css=.alert                                                              #You have successfully deleted test delete.\nx
     Click Element                                       css=.alert > .close > span

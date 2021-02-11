@@ -73,7 +73,7 @@ Without Login Health Program Directory
     Click Element                   css=.sorting:nth-child(1)
     Element Text Should Be          css=.odd:nth-child(1) > td:nth-child(1) > small                         AAA Latest Test Program
     Click Element                   id=hp-table_next
-    Element Text Should Be          css=.even:nth-child(8) > .sorting_1 > small                             ZZZ Oldest Test Program
+    Element Text Should Be          css=.even:nth-child(6) > .sorting_1 > small                             ZZZ Oldest Test Program
     Click Element                   id=hp-table_previous
     Element Text Should Be          css=.odd:nth-child(1) > td:nth-child(1) > small                         AAA Latest Test Program
     [Teardown]  Close Browser
@@ -122,7 +122,7 @@ With Login Health Program Directory
     Click Element                   css=.sorting:nth-child(1)
     Element Text Should Be          css=.odd:nth-child(1) > td:nth-child(1) > small                         AAA Latest Test Program
     Click Element                   id=hp-table_next
-    Element Text Should Be          css=.even:nth-child(8) > .sorting_1 > small                             ZZZ Oldest Test Program
+    Element Text Should Be          css=.even:nth-child(6) > .sorting_1 > small                             ZZZ Oldest Test Program
     Click Element                   id=hp-table_previous
     Element Text Should Be          css=.odd:nth-child(1) > td:nth-child(1) > small                         AAA Latest Test Program
     [Teardown]  Close Browser
